@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_department.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_user.dart';
@@ -75,8 +78,8 @@ class _MainDrawerState extends State<MainDrawer> {
                 Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false);
             },
             child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
+              width: MediaQuery.of(context).size.width*0.78,
+              height: MediaQuery.of(context).size.width*0.125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: Theme.of(context).colorScheme.inversePrimary,
@@ -91,8 +94,8 @@ class _MainDrawerState extends State<MainDrawer> {
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false);
             },
             child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
+              width: MediaQuery.of(context).size.width*0.78,
+              height: MediaQuery.of(context).size.width*0.125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: Theme.of(context).colorScheme.inversePrimary,
@@ -107,8 +110,8 @@ class _MainDrawerState extends State<MainDrawer> {
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false);
             },
             child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
+              width: MediaQuery.of(context).size.width*0.78,
+              height: MediaQuery.of(context).size.width*0.125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: Theme.of(context).colorScheme.inversePrimary,
@@ -120,27 +123,11 @@ class _MainDrawerState extends State<MainDrawer> {
           const SizedBox(height: 20,),
           GestureDetector(
             onTap: (){
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false);
-            },
-            child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  border: Border.all(color: Colors.purpleAccent.shade200,width: 1)
-              ),
-              child: const Center(child: Text("Past Lead",style: TextStyle(fontSize: 16))),
-            ),
-          ),
-          const SizedBox(height: 20,),
-          GestureDetector(
-            onTap: (){
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const ViewReminders()),(route) => route.isFirst);
             },
             child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
+              width: MediaQuery.of(context).size.width*0.78,
+              height: MediaQuery.of(context).size.width*0.125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: Theme.of(context).colorScheme.inversePrimary,
@@ -155,8 +142,8 @@ class _MainDrawerState extends State<MainDrawer> {
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const AddDepartment()),(route) => route.isFirst);
             },
             child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
+              width: MediaQuery.of(context).size.width*0.78,
+              height: MediaQuery.of(context).size.width*0.125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: Theme.of(context).colorScheme.inversePrimary,
@@ -171,14 +158,43 @@ class _MainDrawerState extends State<MainDrawer> {
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const AddUser()),(route) => route.isFirst);
             },
             child: Container(
-              width: MediaQuery.of(context).size.width*0.75,
-              height: 45,
+              width: MediaQuery.of(context).size.width*0.78,
+              height: MediaQuery.of(context).size.width*0.125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: Theme.of(context).colorScheme.inversePrimary,
                   border: Border.all(color: Colors.purpleAccent.shade200,width: 1)
               ),
               child: const Center(child: Text("Add User",style: TextStyle(fontSize: 16))),
+            ),
+          ),
+          const SizedBox(height: 20,),
+          GestureDetector(
+            onTap: (){
+              showAlertDialog(context);
+            },
+            child: BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                  failed: (error){
+                    showErrorToastMessage(error!);
+                  },
+                  success: (success){
+                    showToastMessage(success!);
+                  },
+                  orElse: (){}
+              );
+            },
+              child: Container(
+                width: MediaQuery.of(context).size.width*0.78,
+                height: MediaQuery.of(context).size.width*0.125,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                    border: Border.all(color: Colors.purpleAccent.shade200,width: 1)
+                ),
+                child: const Center(child: Text("Logout",style: TextStyle(fontSize: 16))),
+              ),
             ),
           ),
         ],

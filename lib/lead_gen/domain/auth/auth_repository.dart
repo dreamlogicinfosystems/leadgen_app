@@ -8,4 +8,6 @@ abstract class AuthRepository{
   Future<Either<ErrorMessage,Success>> tryLogin(String email,String password,BuildContext context);
 
   Future<Either<ErrorMessage,Success>> registerUser(User user,BuildContext context);
+
+  Future<Either<ErrorMessage,Success>> doLogOut(BuildContext context);
 }

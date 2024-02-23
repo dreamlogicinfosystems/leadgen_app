@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/custom_button.dart';
@@ -30,6 +31,26 @@ class _ProfileBodyState extends State<ProfileBody> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _phoneController.dispose();
+    _businessNameControll.dispose();
+    _addressController.dispose();
+    _stateController.dispose();
+    _countryController.dispose();
+    _pincodeController.dispose();
+    _companyWebsiteControll.dispose();
+    _registeredAddressContr.dispose();
+    _facebook.dispose();
+    _instagram.dispose();
+    _twitter.dispose();
+    _linkedin.dispose();
+    _google.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
@@ -58,6 +79,8 @@ class _ProfileBodyState extends State<ProfileBody> {
                   validator: (value){
                     if(value=='' || value!.trim()==''){
                       return 'Enter Name';
+                    }else if(value.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                      return 'Invalid name';
                     }else if(value.length>20){
                       return "Name cannot exceed 20 letter's";
                     }else{
@@ -73,6 +96,58 @@ class _ProfileBodyState extends State<ProfileBody> {
                   validator: (value){
                     if(value=='' || value!.trim()==''){
                       return 'Enter Email';
+                    }else if(!EmailValidator.validate(value)){
+                      return "Invalid Email";
+                    }else if(value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                      return 'Invalid Email';
+                    }else{
+                      return null;
+                    }
+                  },
+              ),
+              const SizedBox(height: 15),
+              CustomTextField(
+                controller: _phoneController,
+                hintText: 'Phone',
+                keyBoardType: TextInputType.number,
+                validator: (value){
+                  if(value=='' || value!.trim()==''){
+                    return 'Enter Phone Number';
+                  }else if(value.contains(RegExp(r'[-.,]')) || value.contains(' ')){
+                    return 'Invalid Phone Number';
+                  }else if(value.length>10 || value.length<10){
+                    return 'Phone number should be of 10 digit';
+                  }else{
+                    return null;
+                  }
+                },
+              ),
+              const SizedBox(height: 15),
+              CustomTextField(
+                controller: _businessNameControll,
+                hintText: 'Business Name',
+                keyBoardType: TextInputType.text,
+                validator: (value){
+                  if(value=='' || value!.trim()==''){
+                    return 'Enter Business Name';
+                  }else if(value.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                    return 'Invalid Business Name';
+                  }else if(value.length>20){
+                    return "cannot exceed 20 letter's";
+                  }else{
+                    return null;
+                  }
+                },
+              ),
+              const SizedBox(height: 15),
+              CustomTextField(
+                  controller: _addressController,
+                  hintText: 'Address',
+                  keyBoardType: TextInputType.text,
+                  maxLines: 3,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                      return 'Invalid address';
                     }else{
                       return null;
                     }
@@ -83,14 +158,12 @@ class _ProfileBodyState extends State<ProfileBody> {
                 children: [
                   Expanded(
                     child: CustomTextField(
-                        controller: _phoneController,
-                        hintText: 'Phone',
-                        keyBoardType: TextInputType.number,
+                        controller: _stateController,
+                        hintText: 'State',
+                        keyBoardType: TextInputType.text,
                         validator: (value){
-                          if(value=='' || value!.trim()==''){
-                            return 'Enter Phone Number';
-                          }else if(value.length>10){
-                            return "Cannot exceed 10 digit";
+                          if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                            return 'Invalid state name';
                           }else{
                             return null;
                           }
@@ -100,14 +173,12 @@ class _ProfileBodyState extends State<ProfileBody> {
                   const SizedBox(width: 10),
                   Expanded(
                       child: CustomTextField(
-                          controller: _businessNameControll,
-                          hintText: 'Business Name',
+                          controller: _countryController,
+                          hintText: 'Country',
                           keyBoardType: TextInputType.text,
                           validator: (value){
-                            if(value=='' || value!.trim()==''){
-                              return 'Enter Business Name';
-                            }else if(value.length>20){
-                              return "cannot exceed 20 letter's";
+                            if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                              return 'Invalid country name';
                             }else{
                               return null;
                             }
@@ -118,36 +189,16 @@ class _ProfileBodyState extends State<ProfileBody> {
               ),
               const SizedBox(height: 15),
               CustomTextField(
-                  controller: _addressController,
-                  hintText: 'Address',
-                  keyBoardType: TextInputType.text,
-                  maxLines: 3,
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                        controller: _stateController,
-                        hintText: 'State',
-                        keyBoardType: TextInputType.text
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                      child: CustomTextField(
-                          controller: _countryController,
-                          hintText: 'Country',
-                          keyBoardType: TextInputType.text
-                      )
-                  )
-                ],
-              ),
-              const SizedBox(height: 15),
-              CustomTextField(
                   controller: _pincodeController,
                   hintText: 'Pin code',
-                  keyBoardType: TextInputType.number
+                  keyBoardType: TextInputType.number,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-.,]')) || value.contains(" ")){
+                      return 'Invalid Pin-Code';
+                    }else{
+                      return null;
+                    }
+                  },
               ),
               const SizedBox(height: 20),
               const Align(
@@ -161,7 +212,14 @@ class _ProfileBodyState extends State<ProfileBody> {
               CustomTextField(
                   controller: _companyWebsiteControll,
                   hintText: 'Company website',
-                  keyBoardType: TextInputType.text
+                  keyBoardType: TextInputType.text,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!#$%^&*()_=+{};,<>"]'))){
+                      return 'Invalid website';
+                    }else{
+                      return null;
+                    }
+                  },
               ),
               const SizedBox(height: 15),
               CustomTextField(
@@ -169,6 +227,13 @@ class _ProfileBodyState extends State<ProfileBody> {
                   hintText: 'Registered Address',
                   keyBoardType: TextInputType.text,
                   maxLines: 3,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                      return 'Invalid Registered Address';
+                    }else{
+                      return null;
+                    }
+                  },
               ),
               const SizedBox(height: 20),
               const Align(
@@ -183,30 +248,65 @@ class _ProfileBodyState extends State<ProfileBody> {
                 controller: _facebook,
                 hintText: 'Facebook',
                 keyBoardType: TextInputType.text,
+                validator: (value){
+                  if(value!.contains(RegExp(r'[-~`!#$%^&*()_+{};,<>"]'))){
+                    return 'Invalid facebook id';
+                  }else{
+                    return null;
+                  }
+                },
               ),
               const SizedBox(height: 15),
               CustomTextField(
                 controller: _instagram,
                 hintText: 'Instagram',
                 keyBoardType: TextInputType.text,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!#$%^&*()+{};,<>"]'))){
+                      return 'Invalid instagram id';
+                    }else{
+                      return null;
+                    }
+                  }
               ),
               const SizedBox(height: 15),
               CustomTextField(
                 controller: _twitter,
                 hintText: 'Twitter',
                 keyBoardType: TextInputType.text,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!#$%^&*()+{};,<>"]'))){
+                      return 'Invalid twitter id';
+                    }else{
+                      return null;
+                    }
+                  }
               ),
               const SizedBox(height: 15),
               CustomTextField(
                 controller: _linkedin,
                 hintText: 'LinkedIn',
                 keyBoardType: TextInputType.text,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!#$%^&*()+{};,<>"]'))){
+                      return 'Invalid linkedIn id';
+                    }else{
+                      return null;
+                    }
+                  }
               ),
               const SizedBox(height: 15),
               CustomTextField(
                 controller: _google,
                 hintText: 'Google',
                 keyBoardType: TextInputType.text,
+                  validator: (value){
+                    if(value!.contains(RegExp(r'[-~`!#$%^&*()+{};,<>"]'))){
+                      return 'Invalid linkedIn id';
+                    }else{
+                      return null;
+                    }
+                  }
               ),
               const SizedBox(height: 40),
               CustomButton(

@@ -1,10 +1,14 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/register.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/verify_number.dart';
+
+import '../../constants/constant.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -33,14 +37,35 @@ class _LoginState extends State<Login> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
-            child: Form(
+            child: BlocListener<AuthBloc, AuthState>(
+              listener: (context, state) {
+                state.maybeWhen(
+                    success: (message){
+                      showToastMessage(message!);
+                      Navigator.pop(context);
+                      Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(builder: (context) => const Home()),(route) => false);
+                    },
+                    failed: (error){
+                      showErrorToastMessage(error!);
+                      Navigator.pop(context);
+                    },
+                    loadingInProgress: (){
+                      showLoader(context);
+                    },
+                    orElse: (){}
+                );
+              },
+              child: Form(
               key: _formKey,
-              child: Column(
+                child: Column(
                 children: [
                   const SizedBox(height: 190,),
                   const Text("Welcome Back!",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25),),
                   const SizedBox(height: 40,),
                   CustomTextField(
+                      isLogin: true,
+                      icon: Icons.mail,
                       controller: _emailController,
                       hintText: 'Email',
                       keyBoardType: TextInputType.emailAddress,
@@ -58,6 +83,8 @@ class _LoginState extends State<Login> {
                   ),
                   const SizedBox(height: 30,),
                   CustomTextField(
+                      isLogin: true,
+                      icon: Icons.lock,
                       controller: _passwordController,
                       hintText: 'Password',
                       keyBoardType: TextInputType.visiblePassword,
@@ -79,9 +106,13 @@ class _LoginState extends State<Login> {
                   CustomButton(
                       name: 'Login',
                       onTap: (){
-                        if(_formKey.currentState!.validate()){
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false);
-                        }
+                        // if(_formKey.currentState!.validate()){
+                        //   context.read<AuthBloc>().add(AuthEvent.tryLogin(
+                        //       _emailController.text, _passwordController.text, context
+                        //   ));
+                        // }
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (context) => const Home()),(route) => false);
                       },
                   ),
                   const SizedBox(height: 60,),
@@ -112,6 +143,7 @@ class _LoginState extends State<Login> {
                   )
                 ],
               ),
+            ),
             ),
           ),
         ),

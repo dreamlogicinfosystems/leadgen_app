@@ -12,7 +12,7 @@ class ApiMethods{
   ApiMethods(this._localDataSource);
   static final String _ip = "${Url.baseUrl}/api/";
 
-  Future<http.Response?> post({required String url,required data,required BuildContext context}) async{
+  Future<http.Response?> post({required String url,data,required BuildContext context}) async{
     final String fullUrl = _ip + url;
     final Map<String,String> headers = await header();
 

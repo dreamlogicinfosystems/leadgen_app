@@ -10,6 +10,8 @@ class CustomTextField extends StatefulWidget {
   final bool? isChatPage;
   final int? maxLength;
   final Function()? onTap;
+  final IconData? icon;
+  final bool? isLogin;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
 
@@ -22,7 +24,7 @@ class CustomTextField extends StatefulWidget {
         this.maxLines,
         this.readOnly,
         this.isChatPage,
-        this.maxLength, this.onTap, this.validator, this.onChanged})
+        this.maxLength, this.onTap, this.validator, this.onChanged, this.icon, this.isLogin})
       : super(key: key);
 
   @override
@@ -60,6 +62,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.keyBoardType,
       maxLength: widget.maxLength,
       decoration: InputDecoration(
+        prefixIcon: widget.isLogin==true? Icon(widget.icon) : null,
         fillColor: Colors.grey[100],
         filled: true,
         hintText: widget.hintText,

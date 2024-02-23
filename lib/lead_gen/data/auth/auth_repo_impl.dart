@@ -43,4 +43,17 @@ class AuthRepositoryImpl extends AuthRepository{
       });
     }
   }
+
+  @override
+  Future<Either<ErrorMessage, Success>> doLogOut(BuildContext context) async{
+    final doLogOut = await _apiDataSource.logOut(context);
+
+    return doLogOut.fold(
+            (error){
+              return Left(error);
+            },
+            (success){
+              return Right(success);
+            });
+    }
 }

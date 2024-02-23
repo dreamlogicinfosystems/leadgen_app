@@ -23,23 +23,23 @@ class AuthApiDataSource{
     map['password'] = userDto.password;
     map['confirm_password'] = userDto.confirmPass;
 
-    // final response = await _apiMethods.post(
-    //     url: 'register',
-    //     data: map,
-    //     context: context
-    // );
-    //
-    // final result = jsonDecode(response!.body);
-    //
+    final response = await _apiMethods.post(
+        url: 'register',
+        data: map,
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
     // await _localDataSource.storeUserData(
     //     userDto.name!, userDto.phoneNumber!,
     //     userDto.email!, result['token']
     // );
-    Map<String,dynamic> result = {
-      'status':'success'
-    };
+    // Map<String,dynamic> result = {
+    //   'status':'true'
+    // };
 
-    if(result['status'] == 'success'){
+    if(result['status'] == 'true'){
       return Right(Success('User registered successfully!!'));
     }else{
       return Left(ErrorMessage('Something went wrong'));
@@ -60,10 +60,27 @@ class AuthApiDataSource{
 
     final result = jsonDecode(response!.body);
 
-    if(result['status'] == ''){
+    if(result['status'] == 'true'){
       return Right(Success(''));
     }else{
-      return Left(ErrorMessage(''));
+      return Left(ErrorMessage(result['message']));
+    }
+  }
+
+  Future<Either<ErrorMessage,Success>> logOut(BuildContext context) async{
+    final response = await _apiMethods.post(
+        url: 'logout',
+        context: context
+    );
+
+    print(response!.body);
+
+    final result = jsonDecode(response!.body);
+
+    if(result['status'] == 'true'){
+      return Right(Success(result['message']));
+    }else{
+      return Left(ErrorMessage(result['message']));
     }
   }
 }

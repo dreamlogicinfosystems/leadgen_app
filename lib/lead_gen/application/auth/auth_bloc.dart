@@ -47,6 +47,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(AuthState.success(success.successMessage));
           });
         },
+        logOut: (e) async {
+          emit(const AuthState.loadingInProgress());
+
+          final tryLogin = await _authRepository.doLogOut(e.context);
+
+          tryLogin.fold((error){
+            emit(AuthState.failed(error.message));
+          },(success){
+            emit(AuthState.success(success.successMessage));
+          });
+        },
     );
   }
 }

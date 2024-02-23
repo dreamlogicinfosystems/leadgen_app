@@ -23,6 +23,7 @@ mixin _$AuthEvent {
             String email, String password, BuildContext context)
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AuthEvent {
     TResult? Function(String email, String password, BuildContext context)?
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,6 +39,7 @@ mixin _$AuthEvent {
     TResult Function(String email, String password, BuildContext context)?
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,18 +47,21 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -184,6 +190,7 @@ class _$tryLoginImpl implements _tryLogin {
             String email, String password, BuildContext context)
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
   }) {
     return tryLogin(email, password, context);
   }
@@ -194,6 +201,7 @@ class _$tryLoginImpl implements _tryLogin {
     TResult? Function(String email, String password, BuildContext context)?
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
   }) {
     return tryLogin?.call(email, password, context);
   }
@@ -204,6 +212,7 @@ class _$tryLoginImpl implements _tryLogin {
     TResult Function(String email, String password, BuildContext context)?
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
     required TResult orElse(),
   }) {
     if (tryLogin != null) {
@@ -217,6 +226,7 @@ class _$tryLoginImpl implements _tryLogin {
   TResult map<TResult extends Object?>({
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
   }) {
     return tryLogin(this);
   }
@@ -226,6 +236,7 @@ class _$tryLoginImpl implements _tryLogin {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
   }) {
     return tryLogin?.call(this);
   }
@@ -235,6 +246,7 @@ class _$tryLoginImpl implements _tryLogin {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
     required TResult orElse(),
   }) {
     if (tryLogin != null) {
@@ -346,6 +358,7 @@ class _$registerUserImpl implements _registerUser {
             String email, String password, BuildContext context)
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
   }) {
     return registerUser(user, context);
   }
@@ -356,6 +369,7 @@ class _$registerUserImpl implements _registerUser {
     TResult? Function(String email, String password, BuildContext context)?
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
   }) {
     return registerUser?.call(user, context);
   }
@@ -366,6 +380,7 @@ class _$registerUserImpl implements _registerUser {
     TResult Function(String email, String password, BuildContext context)?
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -379,6 +394,7 @@ class _$registerUserImpl implements _registerUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
   }) {
     return registerUser(this);
   }
@@ -388,6 +404,7 @@ class _$registerUserImpl implements _registerUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
   }) {
     return registerUser?.call(this);
   }
@@ -397,6 +414,7 @@ class _$registerUserImpl implements _registerUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -416,6 +434,152 @@ abstract class _registerUser implements AuthEvent {
   @override
   @JsonKey(ignore: true)
   _$$registerUserImplCopyWith<_$registerUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$logOutImplCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory _$$logOutImplCopyWith(
+          _$logOutImpl value, $Res Function(_$logOutImpl) then) =
+      __$$logOutImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$logOutImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$logOutImpl>
+    implements _$$logOutImplCopyWith<$Res> {
+  __$$logOutImplCopyWithImpl(
+      _$logOutImpl _value, $Res Function(_$logOutImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$logOutImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$logOutImpl implements _logOut {
+  const _$logOutImpl(this.context);
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'AuthEvent.logOut(context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$logOutImpl &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$logOutImplCopyWith<_$logOutImpl> get copyWith =>
+      __$$logOutImplCopyWithImpl<_$logOutImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String email, String password, BuildContext context)
+        tryLogin,
+    required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
+  }) {
+    return logOut(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
+  }) {
+    return logOut?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
+    required TResult orElse(),
+  }) {
+    if (logOut != null) {
+      return logOut(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_tryLogin value) tryLogin,
+    required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
+  }) {
+    return logOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_tryLogin value)? tryLogin,
+    TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
+  }) {
+    return logOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_tryLogin value)? tryLogin,
+    TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (logOut != null) {
+      return logOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _logOut implements AuthEvent {
+  const factory _logOut(final BuildContext context) = _$logOutImpl;
+
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$logOutImplCopyWith<_$logOutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
