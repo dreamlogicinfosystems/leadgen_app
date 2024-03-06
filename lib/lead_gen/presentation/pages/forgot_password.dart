@@ -47,13 +47,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               const SizedBox(height: 20,),
               CustomTextField(
                   controller: _passController,
-                  hintText: 'New Password',
+                  labelText: 'New Password',
                   keyBoardType: TextInputType.visiblePassword
               ),
               const SizedBox(height: 20,),
               CustomTextField(
                   controller: _confirmPassController,
-                  hintText: 'Confirm New Password',
+                  labelText: 'Confirm New Password',
                   keyBoardType: TextInputType.visiblePassword
               ),
               const SizedBox(height: 40),

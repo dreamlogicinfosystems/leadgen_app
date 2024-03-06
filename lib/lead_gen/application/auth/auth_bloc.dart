@@ -25,7 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               phoneNumber: e.user.phoneNumber,
               email: e.user.email,
               password: e.user.password,
-              confirmPass: e.user.confirmPass
+              businessName: e.user.businessName
             ),
             e.context
           );
@@ -50,9 +50,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         logOut: (e) async {
           emit(const AuthState.loadingInProgress());
 
-          final tryLogin = await _authRepository.doLogOut(e.context);
+          final tryLogOut = await _authRepository.doLogOut(e.context);
 
-          tryLogin.fold((error){
+          tryLogOut.fold((error){
             emit(AuthState.failed(error.message));
           },(success){
             emit(AuthState.success(success.successMessage));

@@ -6,6 +6,7 @@ import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_department.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_user.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/login.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/view_reminders.dart';
 
@@ -181,6 +182,8 @@ class _MainDrawerState extends State<MainDrawer> {
                   },
                   success: (success){
                     showToastMessage(success!);
+                    Navigator.pushAndRemoveUntil(context,
+                        MaterialPageRoute(builder: (context) => const Login()), (route) => false);
                   },
                   orElse: (){}
               );

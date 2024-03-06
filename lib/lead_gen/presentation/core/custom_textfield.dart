@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
-  final String hintText;
+  final String? hintText;
+  final String? labelText;
   final TextInputType keyBoardType;
   final bool? obscureText;
   final int? maxLines;
@@ -18,13 +19,13 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField(
       {Key? key,
         required this.controller,
-        required this.hintText,
+        this.hintText,
         required this.keyBoardType,
         this.obscureText,
         this.maxLines,
         this.readOnly,
         this.isChatPage,
-        this.maxLength, this.onTap, this.validator, this.onChanged, this.icon, this.isLogin})
+        this.maxLength, this.onTap, this.validator, this.onChanged, this.icon, this.isLogin, this.labelText})
       : super(key: key);
 
   @override
@@ -50,7 +51,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       controller: widget.controller,
       onTap: (){
-        widget.onTap!() ?? ();
+        if(widget.onTap!=null){
+          widget.onTap!();
+        }
       },
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -66,6 +69,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         fillColor: Colors.grey[100],
         filled: true,
         hintText: widget.hintText,
+        labelText: widget.labelText,
         enabled: true,
         enabledBorder: widget.isChatPage==true? planBorder :border,
         focusedErrorBorder: widget.isChatPage==true? planBorder :border,

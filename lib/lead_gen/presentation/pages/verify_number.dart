@@ -41,7 +41,7 @@ class _VerifyNumberState extends State<VerifyNumber> {
             const SizedBox(height: 20,),
             CustomTextField(
                 controller: _phoneNoController,
-                hintText: 'Phone Number',
+                labelText: 'Phone Number',
                 keyBoardType: TextInputType.number,
                 maxLength: 10,
             ),

@@ -29,7 +29,7 @@ abstract class UserDto implements _$UserDto{
       phoneNumber: user.phoneNumber,
       email: user.email,
       password: user.password,
-      confirmPass: user.confirmPass
+      businessName: user.businessName
     );
   }
 }

@@ -20,32 +20,17 @@ class _RegisterState extends State<Register> {
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
-  final _businessController = TextEditingController();
   final _passswordController = TextEditingController();
-  final _confirmPassController = TextEditingController();
+  final _businessNameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  String registeredAs = '';
-  bool isBusiness = false;
-
-  getRegisterAs(String value){
-    setState(() {
-      registeredAs = value;
-    });
-    if(registeredAs=='Business'){
-      isBusiness = true;
-    }else{
-      isBusiness = false;
-    }
-  }
 
   @override
   void dispose() {
     _nameController.dispose();
     _phoneController.dispose();
     _emailController.dispose();
-    _businessController.dispose();
     _passswordController.dispose();
-    _confirmPassController.dispose();
+    _businessNameController.dispose();
     super.dispose();
   }
 
@@ -89,7 +74,7 @@ class _RegisterState extends State<Register> {
                                 const SizedBox(height: 25,),
                                 CustomTextField(
                                   controller: _nameController,
-                                  hintText: 'Name',
+                                  labelText: 'Name',
                                   keyBoardType: TextInputType.text,
                                   validator: (value){
                                     if(value=='' || value?.trim()==''){
@@ -106,7 +91,7 @@ class _RegisterState extends State<Register> {
                                 const SizedBox(height: 20,),
                                 CustomTextField(
                                   controller: _emailController,
-                                  hintText: 'Email',
+                                  labelText: 'Email',
                                   keyBoardType: TextInputType.emailAddress,
                                   validator: (value){
                                     if(value=='' || value?.trim()==''){
@@ -126,7 +111,7 @@ class _RegisterState extends State<Register> {
                                     Expanded(
                                       child: CustomTextField(
                                         controller: _phoneController,
-                                        hintText: 'Phone Number',
+                                        labelText: 'Phone Number',
                                         keyBoardType: TextInputType.number,
                                         maxLines: 1,
                                         validator: (value){
@@ -142,42 +127,28 @@ class _RegisterState extends State<Register> {
                                         },
                                       ),
                                     ),
-                                    // const SizedBox(width: 10),
-                                    // Expanded(
-                                    //   child: CustomDropDown(
-                                    //       items: const ['Individual','Business'],
-                                    //       getSelectedValue: getRegisterAs,
-                                    //       hintText: 'Registered as',
-                                    //       validator: (value){
-                                    //         print("drop down value: $value");
-                                    //         if(value==null){
-                                    //           return "Select Registered as";
-                                    //         }
-                                    //       },
-                                    //     ),
-                                    // ),
                                   ],
                                 ),
-                                isBusiness==true? const SizedBox(height: 20) : const SizedBox(height: 0),
-                                Visibility(
-                                  visible: isBusiness,
-                                  child: CustomTextField(
-                                    controller: _businessController,
-                                    hintText: 'Business Name',
-                                    keyBoardType: TextInputType.text,
-                                    validator: (value){
-                                      if(value=='' || value?.trim()==''){
-                                        return 'Enter Business Name';
-                                      }else{
-                                        return null;
-                                      }
-                                    },
-                                  ),
+                                const SizedBox(height: 20,),
+                                CustomTextField(
+                                  controller: _businessNameController,
+                                  labelText: 'Business Name',
+                                  keyBoardType: TextInputType.text,
+                                  maxLines: 1,
+                                  validator: (value){
+                                    if(value=='' || value?.trim()==''){
+                                      return 'Enter Business Name';
+                                    }else if(value!.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                                      return 'Invalid Business Name';
+                                    }else{
+                                      return null;
+                                    }
+                                  },
                                 ),
                                 const SizedBox(height: 20,),
                                 CustomTextField(
                                   controller: _passswordController,
-                                  hintText: 'Password',
+                                  labelText: 'Password',
                                   keyBoardType: TextInputType.visiblePassword,
                                   obscureText: true,
                                   maxLines: 1,
@@ -193,29 +164,9 @@ class _RegisterState extends State<Register> {
                                     }
                                   },
                                 ),
-                                const SizedBox(height: 20,),
-                                CustomTextField(
-                                  controller: _confirmPassController,
-                                  hintText: 'Confirm Password',
-                                  keyBoardType: TextInputType.visiblePassword,
-                                  obscureText: true,
-                                  maxLines: 1,
-                                  validator: (value){
-                                    if(value=='' || value?.trim()==''){
-                                      return 'Enter Confirm Password';
-                                    }else if(value!.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
-                                      return 'Invalid Password';
-                                    }else if(value.length<8){
-                                      return 'Password must be atleast 8 character';
-                                    }else{
-                                      return null;
-                                    }
-                                  },
-                                ),
-                                isBusiness==false? const SizedBox(height: 230) : const SizedBox(height: 155),
+                                SizedBox(height: MediaQuery.of(context).size.height*0.3),
                                 CustomButton(name: 'Register', onTap: () {
                                   if(_formKey.currentState!.validate()){
-                                    if(_passswordController.text == _confirmPassController.text){
                                       context.read<AuthBloc>().add(
                                         AuthEvent.registerUser(
                                             User(
@@ -223,15 +174,11 @@ class _RegisterState extends State<Register> {
                                                 phoneNumber: _phoneController.text,
                                                 email: _emailController.text,
                                                 password: _passswordController.text,
-                                                confirmPass: _confirmPassController.text
+                                                businessName: _businessNameController.text
                                             ),
-                                            context),
+                                            context
+                                        ),
                                       );
-                                    }else{
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(content: Text('Password do not match'),backgroundColor: Colors.red,)
-                                      );
-                                    }
                                   }
                                 },),
                                 const SizedBox(height: 25,),

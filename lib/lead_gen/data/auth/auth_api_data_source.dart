@@ -21,7 +21,7 @@ class AuthApiDataSource{
     map['phone'] = userDto.phoneNumber;
     map['email'] = userDto.email;
     map['password'] = userDto.password;
-    map['confirm_password'] = userDto.confirmPass;
+    map['business_name'] = userDto.businessName;
 
     final response = await _apiMethods.post(
         url: 'register',
@@ -31,16 +31,14 @@ class AuthApiDataSource{
 
     final result = jsonDecode(response!.body);
 
-    // await _localDataSource.storeUserData(
-    //     userDto.name!, userDto.phoneNumber!,
-    //     userDto.email!, result['token']
-    // );
-    // Map<String,dynamic> result = {
-    //   'status':'true'
-    // };
+    if(result['status'] == true){
 
-    if(result['status'] == 'true'){
-      return Right(Success('User registered successfully!!'));
+      await _localDataSource.storeUserData(
+          userDto.name!, userDto.phoneNumber!,
+          userDto.email!, userDto.businessName!,result['user']['token']
+      );
+
+      return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage('Something went wrong'));
     }
@@ -60,8 +58,9 @@ class AuthApiDataSource{
 
     final result = jsonDecode(response!.body);
 
-    if(result['status'] == 'true'){
-      return Right(Success(''));
+    if(result['status'] == true){
+      await _localDataSource.setToken(result['user']['token']);
+      return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));
     }
@@ -73,11 +72,9 @@ class AuthApiDataSource{
         context: context
     );
 
-    print(response!.body);
-
     final result = jsonDecode(response!.body);
 
-    if(result['status'] == 'true'){
+    if(result['status'] == true){
       return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));

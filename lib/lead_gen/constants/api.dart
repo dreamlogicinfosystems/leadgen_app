@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:lead_gen/lead_gen/constants/jwt.dart';
 import 'package:lead_gen/lead_gen/constants/shared_preference.dart';
 import 'package:lead_gen/lead_gen/constants/url.dart';
 
@@ -11,14 +12,24 @@ class ApiMethods{
   final LocalDataSource _localDataSource;
   ApiMethods(this._localDataSource);
   static final String _ip = "${Url.baseUrl}/api/";
+  static final _jwtHelper = JWTHelper();
 
   Future<http.Response?> post({required String url,data,required BuildContext context}) async{
-    final String fullUrl = _ip + url;
-    final Map<String,String> headers = await header();
-
+    
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.ethernet
     || connectivityResult == ConnectivityResult.wifi) {
+      
+      final token = await _localDataSource.getToken();
+      if(_jwtHelper.isTokenExpired(token!, 0)){
+        final newToken = await refreshToken();
+
+        await _localDataSource.setToken(newToken);
+      }
+      
+      final String fullUrl = _ip + url;
+      final Map<String,String> headers = await header();
+      
       final http.Response response = await http.post(
           Uri.parse(fullUrl),
           body: data,
@@ -71,6 +82,25 @@ class ApiMethods{
       }
     }
     return null;
+  }
+  
+  Future<String> refreshToken() async{
+    final baseUrl = Url.baseUrl;
+    final headers = await header();
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/api/refresh'),
+      headers: headers,
+    );
+
+    final result = jsonDecode(response.body);
+
+    if(result['status'] == true){
+      final refreshToken = result['refresh_token'];
+      return refreshToken;
+    }else{
+      return result['message'];
+    }
   }
 
   Future<Map<String,String>> header() async{

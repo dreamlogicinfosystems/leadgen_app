@@ -28,6 +28,7 @@ class _LoginState extends State<Login> {
     _passwordController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,7 @@ class _LoginState extends State<Login> {
               child: Form(
               key: _formKey,
                 child: Column(
-                children: [
+                  children: [
                   const SizedBox(height: 190,),
                   const Text("Welcome Back!",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25),),
                   const SizedBox(height: 40,),
@@ -67,7 +68,7 @@ class _LoginState extends State<Login> {
                       isLogin: true,
                       icon: Icons.mail,
                       controller: _emailController,
-                      hintText: 'Email',
+                      labelText: 'Email',
                       keyBoardType: TextInputType.emailAddress,
                       validator: (value){
                         if(value=='' || value?.trim()==''){
@@ -86,7 +87,7 @@ class _LoginState extends State<Login> {
                       isLogin: true,
                       icon: Icons.lock,
                       controller: _passwordController,
-                      hintText: 'Password',
+                      labelText: 'Password',
                       keyBoardType: TextInputType.visiblePassword,
                       obscureText: true,
                       maxLines: 1,
@@ -106,13 +107,13 @@ class _LoginState extends State<Login> {
                   CustomButton(
                       name: 'Login',
                       onTap: (){
-                        // if(_formKey.currentState!.validate()){
-                        //   context.read<AuthBloc>().add(AuthEvent.tryLogin(
-                        //       _emailController.text, _passwordController.text, context
-                        //   ));
-                        // }
-                        Navigator.pushAndRemoveUntil(context,
-                            MaterialPageRoute(builder: (context) => const Home()),(route) => false);
+                        if(_formKey.currentState!.validate()){
+                          context.read<AuthBloc>().add(AuthEvent.tryLogin(
+                              _emailController.text,
+                              _passwordController.text,
+                              context
+                          ));
+                        }
                       },
                   ),
                   const SizedBox(height: 60,),
