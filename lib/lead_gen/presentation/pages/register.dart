@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/login.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
 
 import '../../constants/constant.dart';
 import '../../domain/auth/user.dart';
@@ -46,8 +46,8 @@ class _RegisterState extends State<Register> {
                   success: (message){
                     showToastMessage(message!);
                     Navigator.pop(context);
-                    Navigator.pushAndRemoveUntil(context, 
-                        MaterialPageRoute(builder: (context) => const Login()), (route) => false);
+                    Navigator.pushAndRemoveUntil(context,
+                        MaterialPageRoute(builder: (context) => const Profile()), (route) => false);
                   },
                   failed: (error){
                     showErrorToastMessage(error!);
@@ -167,18 +167,20 @@ class _RegisterState extends State<Register> {
                                 SizedBox(height: MediaQuery.of(context).size.height*0.3),
                                 CustomButton(name: 'Register', onTap: () {
                                   if(_formKey.currentState!.validate()){
-                                      context.read<AuthBloc>().add(
-                                        AuthEvent.registerUser(
-                                            User(
-                                                name: _nameController.text,
-                                                phoneNumber: _phoneController.text,
-                                                email: _emailController.text,
-                                                password: _passswordController.text,
-                                                businessName: _businessNameController.text
-                                            ),
-                                            context
-                                        ),
-                                      );
+                                    Navigator.pushAndRemoveUntil(context,
+                                        MaterialPageRoute(builder: (context) => const Profile()), (route) => false);
+                                      // context.read<AuthBloc>().add(
+                                      //   AuthEvent.registerUser(
+                                      //       User(
+                                      //           name: _nameController.text,
+                                      //           phoneNumber: _phoneController.text,
+                                      //           email: _emailController.text,
+                                      //           password: _passswordController.text,
+                                      //           businessName: _businessNameController.text
+                                      //       ),
+                                      //       context
+                                      //   ),
+                                      // );
                                   }
                                 },),
                                 const SizedBox(height: 25,),

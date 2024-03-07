@@ -13,23 +13,64 @@ abstract class UserDto implements _$UserDto{
     String? name,
     String? phoneNumber,
     String? email,
-    String? city,
     String? state,
     String? country,
+    String? pincode,
     String? businessName,
+    String? address,
+    String? website,
+    String? registeredAddress,
+    String? facebook,
+    String? instagram,
+    String? twitter,
+    String? linkedIn,
+    String? google,
     String? password,
-    String? confirmPass
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String,dynamic>json) => _$UserDtoFromJson(json);
 
   factory UserDto.fromDomain(User user){
     return UserDto(
+      userId: user.userId,
       name: user.name,
       phoneNumber: user.phoneNumber,
       email: user.email,
+      businessName: user.businessName,
+      state: user.state,
       password: user.password,
-      businessName: user.businessName
+      country: user.country,
+      pincode: user.pincode,
+      address: user.address,
+      website: user.website,
+      registeredAddress: user.registeredAddress,
+      facebook: user.facebook,
+      instagram: user.instagram,
+      twitter: user.twitter,
+      linkedIn: user.linkedIn,
+      google: user.google
+    );
+  }
+
+  User toDomain(UserDto user){
+    return User(
+        userId: user.userId,
+        name: user.name,
+        phoneNumber: user.phoneNumber,
+        email: user.email,
+        businessName: user.businessName,
+        state: user.state,
+        password: user.password,
+        country: user.country,
+        pincode: user.pincode,
+        address: user.address,
+        website: user.website,
+        registeredAddress: user.registeredAddress,
+        facebook: user.facebook,
+        instagram: user.instagram,
+        twitter: user.twitter,
+        linkedIn: user.linkedIn,
+        google: user.google
     );
   }
 }

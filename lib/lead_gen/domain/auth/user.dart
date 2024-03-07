@@ -9,11 +9,18 @@ class User with _$User{
     String? name,
     String? phoneNumber,
     String? email,
-    String? city,
     String? state,
     String? country,
+    String? pincode,
     String? businessName,
+    String? address,
+    String? website,
+    String? registeredAddress,
+    String? facebook,
+    String? instagram,
+    String? twitter,
+    String? linkedIn,
+    String? google,
     String? password,
-    String? confirmPass
   }) = _User;
 }

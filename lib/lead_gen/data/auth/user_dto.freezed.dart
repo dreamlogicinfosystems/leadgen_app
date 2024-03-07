@@ -24,12 +24,19 @@ mixin _$UserDto {
   String? get name => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String? get city => throw _privateConstructorUsedError;
   String? get state => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
+  String? get pincode => throw _privateConstructorUsedError;
   String? get businessName => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
+  String? get website => throw _privateConstructorUsedError;
+  String? get registeredAddress => throw _privateConstructorUsedError;
+  String? get facebook => throw _privateConstructorUsedError;
+  String? get instagram => throw _privateConstructorUsedError;
+  String? get twitter => throw _privateConstructorUsedError;
+  String? get linkedIn => throw _privateConstructorUsedError;
+  String? get google => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
-  String? get confirmPass => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,12 +53,19 @@ abstract class $UserDtoCopyWith<$Res> {
       String? name,
       String? phoneNumber,
       String? email,
-      String? city,
       String? state,
       String? country,
+      String? pincode,
       String? businessName,
-      String? password,
-      String? confirmPass});
+      String? address,
+      String? website,
+      String? registeredAddress,
+      String? facebook,
+      String? instagram,
+      String? twitter,
+      String? linkedIn,
+      String? google,
+      String? password});
 }
 
 /// @nodoc
@@ -71,12 +85,19 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? name = freezed,
     Object? phoneNumber = freezed,
     Object? email = freezed,
-    Object? city = freezed,
     Object? state = freezed,
     Object? country = freezed,
+    Object? pincode = freezed,
     Object? businessName = freezed,
+    Object? address = freezed,
+    Object? website = freezed,
+    Object? registeredAddress = freezed,
+    Object? facebook = freezed,
+    Object? instagram = freezed,
+    Object? twitter = freezed,
+    Object? linkedIn = freezed,
+    Object? google = freezed,
     Object? password = freezed,
-    Object? confirmPass = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -95,10 +116,6 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
       state: freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -107,17 +124,49 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
+      pincode: freezed == pincode
+          ? _value.pincode
+          : pincode // ignore: cast_nullable_to_non_nullable
+              as String?,
       businessName: freezed == businessName
           ? _value.businessName
           : businessName // ignore: cast_nullable_to_non_nullable
               as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      website: freezed == website
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String?,
+      registeredAddress: freezed == registeredAddress
+          ? _value.registeredAddress
+          : registeredAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      facebook: freezed == facebook
+          ? _value.facebook
+          : facebook // ignore: cast_nullable_to_non_nullable
+              as String?,
+      instagram: freezed == instagram
+          ? _value.instagram
+          : instagram // ignore: cast_nullable_to_non_nullable
+              as String?,
+      twitter: freezed == twitter
+          ? _value.twitter
+          : twitter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkedIn: freezed == linkedIn
+          ? _value.linkedIn
+          : linkedIn // ignore: cast_nullable_to_non_nullable
+              as String?,
+      google: freezed == google
+          ? _value.google
+          : google // ignore: cast_nullable_to_non_nullable
+              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      confirmPass: freezed == confirmPass
-          ? _value.confirmPass
-          : confirmPass // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -135,12 +184,19 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String? name,
       String? phoneNumber,
       String? email,
-      String? city,
       String? state,
       String? country,
+      String? pincode,
       String? businessName,
-      String? password,
-      String? confirmPass});
+      String? address,
+      String? website,
+      String? registeredAddress,
+      String? facebook,
+      String? instagram,
+      String? twitter,
+      String? linkedIn,
+      String? google,
+      String? password});
 }
 
 /// @nodoc
@@ -158,12 +214,19 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? phoneNumber = freezed,
     Object? email = freezed,
-    Object? city = freezed,
     Object? state = freezed,
     Object? country = freezed,
+    Object? pincode = freezed,
     Object? businessName = freezed,
+    Object? address = freezed,
+    Object? website = freezed,
+    Object? registeredAddress = freezed,
+    Object? facebook = freezed,
+    Object? instagram = freezed,
+    Object? twitter = freezed,
+    Object? linkedIn = freezed,
+    Object? google = freezed,
     Object? password = freezed,
-    Object? confirmPass = freezed,
   }) {
     return _then(_$UserDtoImpl(
       userId: freezed == userId
@@ -182,10 +245,6 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: freezed == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String?,
       state: freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -194,17 +253,49 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
+      pincode: freezed == pincode
+          ? _value.pincode
+          : pincode // ignore: cast_nullable_to_non_nullable
+              as String?,
       businessName: freezed == businessName
           ? _value.businessName
           : businessName // ignore: cast_nullable_to_non_nullable
               as String?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
+      website: freezed == website
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String?,
+      registeredAddress: freezed == registeredAddress
+          ? _value.registeredAddress
+          : registeredAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      facebook: freezed == facebook
+          ? _value.facebook
+          : facebook // ignore: cast_nullable_to_non_nullable
+              as String?,
+      instagram: freezed == instagram
+          ? _value.instagram
+          : instagram // ignore: cast_nullable_to_non_nullable
+              as String?,
+      twitter: freezed == twitter
+          ? _value.twitter
+          : twitter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkedIn: freezed == linkedIn
+          ? _value.linkedIn
+          : linkedIn // ignore: cast_nullable_to_non_nullable
+              as String?,
+      google: freezed == google
+          ? _value.google
+          : google // ignore: cast_nullable_to_non_nullable
+              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      confirmPass: freezed == confirmPass
-          ? _value.confirmPass
-          : confirmPass // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -218,12 +309,19 @@ class _$UserDtoImpl extends _UserDto {
       this.name,
       this.phoneNumber,
       this.email,
-      this.city,
       this.state,
       this.country,
+      this.pincode,
       this.businessName,
-      this.password,
-      this.confirmPass})
+      this.address,
+      this.website,
+      this.registeredAddress,
+      this.facebook,
+      this.instagram,
+      this.twitter,
+      this.linkedIn,
+      this.google,
+      this.password})
       : super._();
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -238,21 +336,35 @@ class _$UserDtoImpl extends _UserDto {
   @override
   final String? email;
   @override
-  final String? city;
-  @override
   final String? state;
   @override
   final String? country;
   @override
+  final String? pincode;
+  @override
   final String? businessName;
   @override
-  final String? password;
+  final String? address;
   @override
-  final String? confirmPass;
+  final String? website;
+  @override
+  final String? registeredAddress;
+  @override
+  final String? facebook;
+  @override
+  final String? instagram;
+  @override
+  final String? twitter;
+  @override
+  final String? linkedIn;
+  @override
+  final String? google;
+  @override
+  final String? password;
 
   @override
   String toString() {
-    return 'UserDto(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, city: $city, state: $state, country: $country, businessName: $businessName, password: $password, confirmPass: $confirmPass)';
+    return 'UserDto(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, password: $password)';
   }
 
   @override
@@ -265,21 +377,48 @@ class _$UserDtoImpl extends _UserDto {
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.city, city) || other.city == city) &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.country, country) || other.country == country) &&
+            (identical(other.pincode, pincode) || other.pincode == pincode) &&
             (identical(other.businessName, businessName) ||
                 other.businessName == businessName) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.website, website) || other.website == website) &&
+            (identical(other.registeredAddress, registeredAddress) ||
+                other.registeredAddress == registeredAddress) &&
+            (identical(other.facebook, facebook) ||
+                other.facebook == facebook) &&
+            (identical(other.instagram, instagram) ||
+                other.instagram == instagram) &&
+            (identical(other.twitter, twitter) || other.twitter == twitter) &&
+            (identical(other.linkedIn, linkedIn) ||
+                other.linkedIn == linkedIn) &&
+            (identical(other.google, google) || other.google == google) &&
             (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.confirmPass, confirmPass) ||
-                other.confirmPass == confirmPass));
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, name, phoneNumber, email,
-      city, state, country, businessName, password, confirmPass);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userId,
+      name,
+      phoneNumber,
+      email,
+      state,
+      country,
+      pincode,
+      businessName,
+      address,
+      website,
+      registeredAddress,
+      facebook,
+      instagram,
+      twitter,
+      linkedIn,
+      google,
+      password);
 
   @JsonKey(ignore: true)
   @override
@@ -301,12 +440,19 @@ abstract class _UserDto extends UserDto {
       final String? name,
       final String? phoneNumber,
       final String? email,
-      final String? city,
       final String? state,
       final String? country,
+      final String? pincode,
       final String? businessName,
-      final String? password,
-      final String? confirmPass}) = _$UserDtoImpl;
+      final String? address,
+      final String? website,
+      final String? registeredAddress,
+      final String? facebook,
+      final String? instagram,
+      final String? twitter,
+      final String? linkedIn,
+      final String? google,
+      final String? password}) = _$UserDtoImpl;
   const _UserDto._() : super._();
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
@@ -320,17 +466,31 @@ abstract class _UserDto extends UserDto {
   @override
   String? get email;
   @override
-  String? get city;
-  @override
   String? get state;
   @override
   String? get country;
   @override
+  String? get pincode;
+  @override
   String? get businessName;
   @override
-  String? get password;
+  String? get address;
   @override
-  String? get confirmPass;
+  String? get website;
+  @override
+  String? get registeredAddress;
+  @override
+  String? get facebook;
+  @override
+  String? get instagram;
+  @override
+  String? get twitter;
+  @override
+  String? get linkedIn;
+  @override
+  String? get google;
+  @override
+  String? get password;
   @override
   @JsonKey(ignore: true)
   _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>

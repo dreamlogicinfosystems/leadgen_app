@@ -56,12 +56,21 @@ class ApiMethods{
   }
 
   Future<http.Response?> get({required String url,required BuildContext context}) async{
-    final String fullUrl = _ip + url;
-    final Map<String,String> headers = await header();
 
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.ethernet
         || connectivityResult == ConnectivityResult.wifi) {
+
+      final token = await _localDataSource.getToken();
+      if(_jwtHelper.isTokenExpired(token!, 0)){
+        final newToken = await refreshToken();
+
+        await _localDataSource.setToken(newToken);
+      }
+
+      final String fullUrl = _ip + url;
+      final Map<String,String> headers = await header();
+
       final http.Response response = await http.get(
           Uri.parse(fullUrl),
           headers: headers

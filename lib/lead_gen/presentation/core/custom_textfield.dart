@@ -70,6 +70,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         filled: true,
         hintText: widget.hintText,
         labelText: widget.labelText,
+        labelStyle: const TextStyle(color: Colors.black),
         enabled: true,
         enabledBorder: widget.isChatPage==true? planBorder :border,
         focusedErrorBorder: widget.isChatPage==true? planBorder :border,
