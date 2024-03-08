@@ -21,6 +21,8 @@ class User with _$User{
     String? twitter,
     String? linkedIn,
     String? google,
+    String? fcmToken,
+    String? device,
     String? password,
   }) = _User;
 }

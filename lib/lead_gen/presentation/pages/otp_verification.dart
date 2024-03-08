@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
@@ -24,39 +27,62 @@ class _OtpVerificationState extends State<OtpVerification> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight*1),
-          child: CustomAppBar(
-              title: '',
-              centerTitle: true,
-              automaticallyImplyLeading: true,
-              iconColor: Colors.black
-          ),
+        preferredSize: Size.fromHeight(kToolbarHeight * 1),
+        child: CustomAppBar(
+            title: '',
+            centerTitle: true,
+            automaticallyImplyLeading: true,
+            iconColor: Colors.black
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-          child: Column(
-            children: [
-              const Text("Please enter OTP sent to your registered number",
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600
-                  )),
-              const SizedBox(height: 25),
-              CustomTextField(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                  loadingInProgress: (){
+                    showLoader(context);
+                  },
+                  failed: (error){
+                    showErrorToastMessage(error!);
+                    Navigator.pop(context);
+                  },
+                  success: (message){
+                    showToastMessage(message!);
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword()));
+                  },
+                  orElse: (){}
+              );
+            },
+            child: Column(
+              children: [
+                const Text("Please enter OTP sent to your registered number",
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600
+                    )),
+                const SizedBox(height: 25),
+                CustomTextField(
                   controller: _otpController,
                   hintText: 'OTP',
                   keyBoardType: TextInputType.number,
                   maxLength: 6,
-              ),
-              const SizedBox(height: 25),
-              CustomButton(
-                  name: 'Verify OTP',
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword()));
-                  }
-              )
-            ],
+                ),
+                const SizedBox(height: 25),
+                CustomButton(
+                    name: 'Verify OTP',
+                    onTap: () {
+                      if (_otpController.text.trim() == '' || _otpController.text == '') {
+                        showErrorToastMessage('Please enter otp');
+                      } else {
+                        context.read<AuthBloc>().add(AuthEvent.verifyOtp(_otpController.text, context));
+                      }
+                    }
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -10,4 +10,10 @@ abstract class AuthRepository{
   Future<Either<ErrorMessage,Success>> registerUser(User user,BuildContext context);
 
   Future<Either<ErrorMessage,Success>> doLogOut(BuildContext context);
+
+  Future<Either<ErrorMessage,Success>> verifyEmailAddress(String email,BuildContext context);
+
+  Future<Either<ErrorMessage,Success>> verifyOTP(String otp,BuildContext context);
+
+  Future<Either<ErrorMessage,Success>> forgotPassword(String password,BuildContext context);
 }

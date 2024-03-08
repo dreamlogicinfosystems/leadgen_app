@@ -5,6 +5,8 @@ import 'package:lead_gen/lead_gen/application/profile/profile_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_department.dart';
 
+import '../../../../injections.dart';
+import '../../../application/department/department_bloc.dart';
 import '../../../domain/auth/user.dart';
 import '../../core/custom_button.dart';
 import '../../core/custom_textfield.dart';
@@ -82,7 +84,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                   showToastMessage(message);
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) => const AddDepartment()), (route) => false);
+                      MaterialPageRoute(builder: (context) =>  BlocProvider(
+                          create: (context) => sl<DepartmentBloc>(),
+                          child: const AddDepartment(),
+                        )), (route) => false);
                 },
                 orElse:(){}
             );

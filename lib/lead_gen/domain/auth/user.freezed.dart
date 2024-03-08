@@ -32,6 +32,8 @@ mixin _$User {
   String? get twitter => throw _privateConstructorUsedError;
   String? get linkedIn => throw _privateConstructorUsedError;
   String? get google => throw _privateConstructorUsedError;
+  String? get fcmToken => throw _privateConstructorUsedError;
+  String? get device => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -60,6 +62,8 @@ abstract class $UserCopyWith<$Res> {
       String? twitter,
       String? linkedIn,
       String? google,
+      String? fcmToken,
+      String? device,
       String? password});
 }
 
@@ -92,6 +96,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? twitter = freezed,
     Object? linkedIn = freezed,
     Object? google = freezed,
+    Object? fcmToken = freezed,
+    Object? device = freezed,
     Object? password = freezed,
   }) {
     return _then(_value.copyWith(
@@ -159,6 +165,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.google
           : google // ignore: cast_nullable_to_non_nullable
               as String?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      device: freezed == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -191,6 +205,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? twitter,
       String? linkedIn,
       String? google,
+      String? fcmToken,
+      String? device,
       String? password});
 }
 
@@ -220,6 +236,8 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? twitter = freezed,
     Object? linkedIn = freezed,
     Object? google = freezed,
+    Object? fcmToken = freezed,
+    Object? device = freezed,
     Object? password = freezed,
   }) {
     return _then(_$UserImpl(
@@ -287,6 +305,14 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.google
           : google // ignore: cast_nullable_to_non_nullable
               as String?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      device: freezed == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -315,6 +341,8 @@ class _$UserImpl implements _User {
       this.twitter,
       this.linkedIn,
       this.google,
+      this.fcmToken,
+      this.device,
       this.password});
 
   @override
@@ -350,11 +378,15 @@ class _$UserImpl implements _User {
   @override
   final String? google;
   @override
+  final String? fcmToken;
+  @override
+  final String? device;
+  @override
   final String? password;
 
   @override
   String toString() {
-    return 'User(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, password: $password)';
+    return 'User(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, fcmToken: $fcmToken, device: $device, password: $password)';
   }
 
   @override
@@ -384,30 +416,36 @@ class _$UserImpl implements _User {
             (identical(other.linkedIn, linkedIn) ||
                 other.linkedIn == linkedIn) &&
             (identical(other.google, google) || other.google == google) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.device, device) || other.device == device) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      userId,
-      name,
-      phoneNumber,
-      email,
-      state,
-      country,
-      pincode,
-      businessName,
-      address,
-      website,
-      registeredAddress,
-      facebook,
-      instagram,
-      twitter,
-      linkedIn,
-      google,
-      password);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        userId,
+        name,
+        phoneNumber,
+        email,
+        state,
+        country,
+        pincode,
+        businessName,
+        address,
+        website,
+        registeredAddress,
+        facebook,
+        instagram,
+        twitter,
+        linkedIn,
+        google,
+        fcmToken,
+        device,
+        password
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -434,6 +472,8 @@ abstract class _User implements User {
       final String? twitter,
       final String? linkedIn,
       final String? google,
+      final String? fcmToken,
+      final String? device,
       final String? password}) = _$UserImpl;
 
   @override
@@ -468,6 +508,10 @@ abstract class _User implements User {
   String? get linkedIn;
   @override
   String? get google;
+  @override
+  String? get fcmToken;
+  @override
+  String? get device;
   @override
   String? get password;
   @override

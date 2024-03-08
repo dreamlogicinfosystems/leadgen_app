@@ -36,6 +36,8 @@ mixin _$UserDto {
   String? get twitter => throw _privateConstructorUsedError;
   String? get linkedIn => throw _privateConstructorUsedError;
   String? get google => throw _privateConstructorUsedError;
+  String? get fcmToken => throw _privateConstructorUsedError;
+  String? get device => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -65,6 +67,8 @@ abstract class $UserDtoCopyWith<$Res> {
       String? twitter,
       String? linkedIn,
       String? google,
+      String? fcmToken,
+      String? device,
       String? password});
 }
 
@@ -97,6 +101,8 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? twitter = freezed,
     Object? linkedIn = freezed,
     Object? google = freezed,
+    Object? fcmToken = freezed,
+    Object? device = freezed,
     Object? password = freezed,
   }) {
     return _then(_value.copyWith(
@@ -164,6 +170,14 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.google
           : google // ignore: cast_nullable_to_non_nullable
               as String?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      device: freezed == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -196,6 +210,8 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String? twitter,
       String? linkedIn,
       String? google,
+      String? fcmToken,
+      String? device,
       String? password});
 }
 
@@ -226,6 +242,8 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? twitter = freezed,
     Object? linkedIn = freezed,
     Object? google = freezed,
+    Object? fcmToken = freezed,
+    Object? device = freezed,
     Object? password = freezed,
   }) {
     return _then(_$UserDtoImpl(
@@ -293,6 +311,14 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.google
           : google // ignore: cast_nullable_to_non_nullable
               as String?,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      device: freezed == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as String?,
       password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -321,6 +347,8 @@ class _$UserDtoImpl extends _UserDto {
       this.twitter,
       this.linkedIn,
       this.google,
+      this.fcmToken,
+      this.device,
       this.password})
       : super._();
 
@@ -360,11 +388,15 @@ class _$UserDtoImpl extends _UserDto {
   @override
   final String? google;
   @override
+  final String? fcmToken;
+  @override
+  final String? device;
+  @override
   final String? password;
 
   @override
   String toString() {
-    return 'UserDto(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, password: $password)';
+    return 'UserDto(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, fcmToken: $fcmToken, device: $device, password: $password)';
   }
 
   @override
@@ -394,31 +426,37 @@ class _$UserDtoImpl extends _UserDto {
             (identical(other.linkedIn, linkedIn) ||
                 other.linkedIn == linkedIn) &&
             (identical(other.google, google) || other.google == google) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.device, device) || other.device == device) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      userId,
-      name,
-      phoneNumber,
-      email,
-      state,
-      country,
-      pincode,
-      businessName,
-      address,
-      website,
-      registeredAddress,
-      facebook,
-      instagram,
-      twitter,
-      linkedIn,
-      google,
-      password);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        userId,
+        name,
+        phoneNumber,
+        email,
+        state,
+        country,
+        pincode,
+        businessName,
+        address,
+        website,
+        registeredAddress,
+        facebook,
+        instagram,
+        twitter,
+        linkedIn,
+        google,
+        fcmToken,
+        device,
+        password
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -452,6 +490,8 @@ abstract class _UserDto extends UserDto {
       final String? twitter,
       final String? linkedIn,
       final String? google,
+      final String? fcmToken,
+      final String? device,
       final String? password}) = _$UserDtoImpl;
   const _UserDto._() : super._();
 
@@ -489,6 +529,10 @@ abstract class _UserDto extends UserDto {
   String? get linkedIn;
   @override
   String? get google;
+  @override
+  String? get fcmToken;
+  @override
+  String? get device;
   @override
   String? get password;
   @override

@@ -5,7 +5,6 @@ import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
-
 import '../../constants/constant.dart';
 import '../../domain/auth/user.dart';
 
@@ -22,7 +21,16 @@ class _RegisterState extends State<Register> {
   final _emailController = TextEditingController();
   final _passswordController = TextEditingController();
   final _businessNameController = TextEditingController();
+  String fcmToken = '';
+  String device = '';
   final _formKey = GlobalKey<FormState>();
+
+
+  @override
+  void initState() {
+    AuthBloc.getFcmTokenAndDevice();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -167,20 +175,18 @@ class _RegisterState extends State<Register> {
                                 SizedBox(height: MediaQuery.of(context).size.height*0.3),
                                 CustomButton(name: 'Register', onTap: () {
                                   if(_formKey.currentState!.validate()){
-                                    Navigator.pushAndRemoveUntil(context,
-                                        MaterialPageRoute(builder: (context) => const Profile()), (route) => false);
-                                      // context.read<AuthBloc>().add(
-                                      //   AuthEvent.registerUser(
-                                      //       User(
-                                      //           name: _nameController.text,
-                                      //           phoneNumber: _phoneController.text,
-                                      //           email: _emailController.text,
-                                      //           password: _passswordController.text,
-                                      //           businessName: _businessNameController.text
-                                      //       ),
-                                      //       context
-                                      //   ),
-                                      // );
+                                      context.read<AuthBloc>().add(
+                                        AuthEvent.registerUser(
+                                            User(
+                                                name: _nameController.text,
+                                                phoneNumber: _phoneController.text,
+                                                email: _emailController.text,
+                                                password: _passswordController.text,
+                                                businessName: _businessNameController.text,
+                                            ),
+                                            context
+                                        ),
+                                      );
                                   }
                                 },),
                                 const SizedBox(height: 25,),

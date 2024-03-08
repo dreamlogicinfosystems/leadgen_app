@@ -48,12 +48,43 @@ class AuthRepositoryImpl extends AuthRepository{
   Future<Either<ErrorMessage, Success>> doLogOut(BuildContext context) async{
     final doLogOut = await _apiDataSource.logOut(context);
 
-    return doLogOut.fold(
-            (error){
-              return Left(error);
-            },
-            (success){
-              return Right(success);
-            });
+    return doLogOut.fold((error){
+      return Left(error);
+      }, (success){
+      return Right(success);
+    });
     }
+
+  @override
+  Future<Either<ErrorMessage, Success>> forgotPassword(String password,BuildContext context) async{
+    final changePass = await _apiDataSource.changePassword(password, context);
+
+    return changePass.fold((error){
+      return Left(error);
+    },(success){
+      return Right(success);
+    });
+  }
+
+  @override
+  Future<Either<ErrorMessage, Success>> verifyEmailAddress(String email,BuildContext context) async{
+    final tryVerifyEmail = await _apiDataSource.verifyEmailAddress(email, context);
+
+    return tryVerifyEmail.fold((error){
+      return Left(error);
+    },(success){
+      return Right(success);
+    });
+  }
+
+  @override
+  Future<Either<ErrorMessage, Success>> verifyOTP(String otp,BuildContext context) async{
+    final tryVerifyOtp = await _apiDataSource.verifyOtp(otp, context);
+
+    return tryVerifyOtp.fold((error){
+      return Left(error);
+    },(success){
+      return Right(success);
+    });
+  }
 }

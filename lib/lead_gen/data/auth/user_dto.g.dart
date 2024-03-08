@@ -24,6 +24,8 @@ _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
       twitter: json['twitter'] as String?,
       linkedIn: json['linkedIn'] as String?,
       google: json['google'] as String?,
+      fcmToken: json['fcmToken'] as String?,
+      device: json['device'] as String?,
       password: json['password'] as String?,
     );
 
@@ -45,5 +47,7 @@ Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
       'twitter': instance.twitter,
       'linkedIn': instance.linkedIn,
       'google': instance.google,
+      'fcmToken': instance.fcmToken,
+      'device': instance.device,
       'password': instance.password,
     };

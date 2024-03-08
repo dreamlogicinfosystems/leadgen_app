@@ -24,6 +24,10 @@ mixin _$AuthEvent {
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
     required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +36,9 @@ mixin _$AuthEvent {
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
     TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +47,9 @@ mixin _$AuthEvent {
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
     TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +58,9 @@ mixin _$AuthEvent {
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
     required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +68,9 @@ mixin _$AuthEvent {
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
     TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +78,9 @@ mixin _$AuthEvent {
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
     TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -191,6 +210,10 @@ class _$tryLoginImpl implements _tryLogin {
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
     required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
   }) {
     return tryLogin(email, password, context);
   }
@@ -202,6 +225,9 @@ class _$tryLoginImpl implements _tryLogin {
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
     TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
   }) {
     return tryLogin?.call(email, password, context);
   }
@@ -213,6 +239,9 @@ class _$tryLoginImpl implements _tryLogin {
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
     TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
     required TResult orElse(),
   }) {
     if (tryLogin != null) {
@@ -227,6 +256,9 @@ class _$tryLoginImpl implements _tryLogin {
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
     required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
   }) {
     return tryLogin(this);
   }
@@ -237,6 +269,9 @@ class _$tryLoginImpl implements _tryLogin {
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
     TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
   }) {
     return tryLogin?.call(this);
   }
@@ -247,6 +282,9 @@ class _$tryLoginImpl implements _tryLogin {
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
     TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
     required TResult orElse(),
   }) {
     if (tryLogin != null) {
@@ -359,6 +397,10 @@ class _$registerUserImpl implements _registerUser {
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
     required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
   }) {
     return registerUser(user, context);
   }
@@ -370,6 +412,9 @@ class _$registerUserImpl implements _registerUser {
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
     TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
   }) {
     return registerUser?.call(user, context);
   }
@@ -381,6 +426,9 @@ class _$registerUserImpl implements _registerUser {
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
     TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -395,6 +443,9 @@ class _$registerUserImpl implements _registerUser {
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
     required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
   }) {
     return registerUser(this);
   }
@@ -405,6 +456,9 @@ class _$registerUserImpl implements _registerUser {
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
     TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
   }) {
     return registerUser?.call(this);
   }
@@ -415,6 +469,9 @@ class _$registerUserImpl implements _registerUser {
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
     TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -507,6 +564,10 @@ class _$logOutImpl implements _logOut {
         tryLogin,
     required TResult Function(User user, BuildContext context) registerUser,
     required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
   }) {
     return logOut(context);
   }
@@ -518,6 +579,9 @@ class _$logOutImpl implements _logOut {
         tryLogin,
     TResult? Function(User user, BuildContext context)? registerUser,
     TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
   }) {
     return logOut?.call(context);
   }
@@ -529,6 +593,9 @@ class _$logOutImpl implements _logOut {
         tryLogin,
     TResult Function(User user, BuildContext context)? registerUser,
     TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -543,6 +610,9 @@ class _$logOutImpl implements _logOut {
     required TResult Function(_tryLogin value) tryLogin,
     required TResult Function(_registerUser value) registerUser,
     required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
   }) {
     return logOut(this);
   }
@@ -553,6 +623,9 @@ class _$logOutImpl implements _logOut {
     TResult? Function(_tryLogin value)? tryLogin,
     TResult? Function(_registerUser value)? registerUser,
     TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
   }) {
     return logOut?.call(this);
   }
@@ -563,6 +636,9 @@ class _$logOutImpl implements _logOut {
     TResult Function(_tryLogin value)? tryLogin,
     TResult Function(_registerUser value)? registerUser,
     TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -580,6 +656,535 @@ abstract class _logOut implements AuthEvent {
   @override
   @JsonKey(ignore: true)
   _$$logOutImplCopyWith<_$logOutImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$verifyEmailImplCopyWith<$Res>
+    implements $AuthEventCopyWith<$Res> {
+  factory _$$verifyEmailImplCopyWith(
+          _$verifyEmailImpl value, $Res Function(_$verifyEmailImpl) then) =
+      __$$verifyEmailImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String email, BuildContext context});
+}
+
+/// @nodoc
+class __$$verifyEmailImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$verifyEmailImpl>
+    implements _$$verifyEmailImplCopyWith<$Res> {
+  __$$verifyEmailImplCopyWithImpl(
+      _$verifyEmailImpl _value, $Res Function(_$verifyEmailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? context = null,
+  }) {
+    return _then(_$verifyEmailImpl(
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$verifyEmailImpl implements _verifyEmail {
+  const _$verifyEmailImpl(this.email, this.context);
+
+  @override
+  final String email;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'AuthEvent.verifyEmail(email: $email, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$verifyEmailImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$verifyEmailImplCopyWith<_$verifyEmailImpl> get copyWith =>
+      __$$verifyEmailImplCopyWithImpl<_$verifyEmailImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String email, String password, BuildContext context)
+        tryLogin,
+    required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
+  }) {
+    return verifyEmail(email, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
+  }) {
+    return verifyEmail?.call(email, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (verifyEmail != null) {
+      return verifyEmail(email, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_tryLogin value) tryLogin,
+    required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
+  }) {
+    return verifyEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_tryLogin value)? tryLogin,
+    TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
+  }) {
+    return verifyEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_tryLogin value)? tryLogin,
+    TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (verifyEmail != null) {
+      return verifyEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _verifyEmail implements AuthEvent {
+  const factory _verifyEmail(final String email, final BuildContext context) =
+      _$verifyEmailImpl;
+
+  String get email;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$verifyEmailImplCopyWith<_$verifyEmailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$verifyOtpImplCopyWith<$Res>
+    implements $AuthEventCopyWith<$Res> {
+  factory _$$verifyOtpImplCopyWith(
+          _$verifyOtpImpl value, $Res Function(_$verifyOtpImpl) then) =
+      __$$verifyOtpImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String otp, BuildContext context});
+}
+
+/// @nodoc
+class __$$verifyOtpImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$verifyOtpImpl>
+    implements _$$verifyOtpImplCopyWith<$Res> {
+  __$$verifyOtpImplCopyWithImpl(
+      _$verifyOtpImpl _value, $Res Function(_$verifyOtpImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? otp = null,
+    Object? context = null,
+  }) {
+    return _then(_$verifyOtpImpl(
+      null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$verifyOtpImpl implements _verifyOtp {
+  const _$verifyOtpImpl(this.otp, this.context);
+
+  @override
+  final String otp;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'AuthEvent.verifyOtp(otp: $otp, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$verifyOtpImpl &&
+            (identical(other.otp, otp) || other.otp == otp) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, otp, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$verifyOtpImplCopyWith<_$verifyOtpImpl> get copyWith =>
+      __$$verifyOtpImplCopyWithImpl<_$verifyOtpImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String email, String password, BuildContext context)
+        tryLogin,
+    required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
+  }) {
+    return verifyOtp(otp, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
+  }) {
+    return verifyOtp?.call(otp, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (verifyOtp != null) {
+      return verifyOtp(otp, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_tryLogin value) tryLogin,
+    required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
+  }) {
+    return verifyOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_tryLogin value)? tryLogin,
+    TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
+  }) {
+    return verifyOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_tryLogin value)? tryLogin,
+    TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (verifyOtp != null) {
+      return verifyOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _verifyOtp implements AuthEvent {
+  const factory _verifyOtp(final String otp, final BuildContext context) =
+      _$verifyOtpImpl;
+
+  String get otp;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$verifyOtpImplCopyWith<_$verifyOtpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$resetPasswordImplCopyWith<$Res>
+    implements $AuthEventCopyWith<$Res> {
+  factory _$$resetPasswordImplCopyWith(
+          _$resetPasswordImpl value, $Res Function(_$resetPasswordImpl) then) =
+      __$$resetPasswordImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String password, BuildContext context});
+}
+
+/// @nodoc
+class __$$resetPasswordImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$resetPasswordImpl>
+    implements _$$resetPasswordImplCopyWith<$Res> {
+  __$$resetPasswordImplCopyWithImpl(
+      _$resetPasswordImpl _value, $Res Function(_$resetPasswordImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? password = null,
+    Object? context = null,
+  }) {
+    return _then(_$resetPasswordImpl(
+      null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$resetPasswordImpl implements _resetPassword {
+  const _$resetPasswordImpl(this.password, this.context);
+
+  @override
+  final String password;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'AuthEvent.resetPassword(password: $password, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$resetPasswordImpl &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, password, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$resetPasswordImplCopyWith<_$resetPasswordImpl> get copyWith =>
+      __$$resetPasswordImplCopyWithImpl<_$resetPasswordImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String email, String password, BuildContext context)
+        tryLogin,
+    required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
+  }) {
+    return resetPassword(password, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
+  }) {
+    return resetPassword?.call(password, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (resetPassword != null) {
+      return resetPassword(password, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_tryLogin value) tryLogin,
+    required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
+  }) {
+    return resetPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_tryLogin value)? tryLogin,
+    TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
+  }) {
+    return resetPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_tryLogin value)? tryLogin,
+    TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
+    required TResult orElse(),
+  }) {
+    if (resetPassword != null) {
+      return resetPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _resetPassword implements AuthEvent {
+  const factory _resetPassword(
+      final String password, final BuildContext context) = _$resetPasswordImpl;
+
+  String get password;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$resetPasswordImplCopyWith<_$resetPasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

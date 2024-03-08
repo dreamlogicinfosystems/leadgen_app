@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,6 +13,9 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  static String device = '';
+  static String fcmToken = '';
   AuthBloc(this._authRepository) : super(const AuthState.initial()) {
     on<AuthEvent>(mapEventToState);
   }
@@ -25,7 +31,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               phoneNumber: e.user.phoneNumber,
               email: e.user.email,
               password: e.user.password,
-              businessName: e.user.businessName
+              businessName: e.user.businessName,
+              fcmToken: fcmToken,
+              device: device
             ),
             e.context
           );
@@ -58,6 +66,52 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(AuthState.success(success.successMessage));
           });
         },
+        verifyEmail: (e) async{
+          emit(const AuthState.loadingInProgress());
+
+          final tryEmailVerify = await _authRepository.verifyEmailAddress(e.email,e.context);
+
+          tryEmailVerify.fold((error){
+            emit(AuthState.failed(error.message));
+          },(success){
+            emit(AuthState.success(success.successMessage));
+          });
+        },
+        verifyOtp: (e) async{
+          emit(const AuthState.loadingInProgress());
+
+          final tryVerifyOtp = await _authRepository.verifyOTP(e.otp,e.context);
+
+          tryVerifyOtp.fold((error){
+            emit(AuthState.failed(error.message));
+          },(success){
+            emit(AuthState.success(success.successMessage));
+          });
+        },
+        resetPassword: (e) async{
+          emit(const AuthState.loadingInProgress());
+
+          final tryPassChange = await _authRepository.forgotPassword(e.password,e.context);
+
+          tryPassChange.fold((error){
+            emit(AuthState.failed(error.message));
+          },(success){
+            emit(AuthState.success(success.successMessage));
+          });
+        },
     );
+  }
+
+  static Future<void>getFcmTokenAndDevice() async{
+    // final firebaseToken = await _firebaseMessaging.getToken();
+    // if(firebaseToken!=null){
+    //   fcmToken = firebaseToken;
+    // }
+
+    if(Platform.isAndroid){
+      device = 'android';
+    }else if(Platform.isIOS){
+      device = 'Ios';
+    }
   }
 }

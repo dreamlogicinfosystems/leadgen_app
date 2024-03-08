@@ -25,6 +25,8 @@ abstract class UserDto implements _$UserDto{
     String? twitter,
     String? linkedIn,
     String? google,
+    String? fcmToken,
+    String? device,
     String? password,
   }) = _UserDto;
 
@@ -48,7 +50,9 @@ abstract class UserDto implements _$UserDto{
       instagram: user.instagram,
       twitter: user.twitter,
       linkedIn: user.linkedIn,
-      google: user.google
+      google: user.google,
+      device:  user.device,
+      fcmToken: user.fcmToken
     );
   }
 
