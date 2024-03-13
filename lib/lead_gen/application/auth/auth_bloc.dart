@@ -15,7 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   static String device = '';
-  static String fcmToken = '';
+  static String fcmToken = 'abcd'; //TODO: FOR TEST
   AuthBloc(this._authRepository) : super(const AuthState.initial()) {
     on<AuthEvent>(mapEventToState);
   }

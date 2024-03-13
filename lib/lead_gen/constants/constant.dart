@@ -36,7 +36,8 @@ showLoader(BuildContext context){
         return const Center(
           child: CircularProgressIndicator(),
         );
-        });
+      }
+  );
 }
 
 showAlertDialog(BuildContext context){
@@ -71,6 +72,52 @@ showAlertDialog(BuildContext context){
                     ),
                 ),
               ],
+            ),
+          ],
+        );
+      }
+  );
+}
+
+simpleDialog(BuildContext context){
+  showDialog(
+      context: context,
+      builder: (context){
+        return SimpleDialog(
+          surfaceTintColor: Colors.white,
+          shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                  color: Colors.white
+              )
+          ),
+          children: [
+            SizedBox(
+                height: 125,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Center(
+                      child: Text("Please add department first!",style: TextStyle(
+                          fontSize: 17
+                      ),),
+                    ),
+                    const SizedBox(height: 25),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 70),
+                      child: SizedBox(
+                        height: 45,
+                        child: CustomButton(
+                            name: 'OK',
+                            onTap: (){
+                              Navigator.pop(context);
+                            }
+                        ),
+                      ),
+                    )
+                  ],
+                )
             ),
           ],
         );

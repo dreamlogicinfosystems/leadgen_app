@@ -1,7 +1,9 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/add_department.dart';
 
-import '../../../constants/no_internet_dialog.dart';
+import '../../../../injections.dart';
 
 class DepartmentsContainer extends StatefulWidget {
   const DepartmentsContainer({Key? key}) : super(key: key);
@@ -15,11 +17,19 @@ class _DepartmentsContainerState extends State<DepartmentsContainer> {
   bool appClicked = false;
   bool webClicked = false;
   bool marketingClicked = false;
+  bool isDepartmentsAdded = false;
+
+  @override
+  void initState() {
+    context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: MediaQuery.of(context).size.height*0.14,
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(7)),
@@ -27,117 +37,74 @@ class _DepartmentsContainerState extends State<DepartmentsContainer> {
             width: 0.1
         ),
       ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 17),
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: () async{
-                  setState(() {
-                    appClicked = !appClicked;
-                    webClicked = false;
-                    marketingClicked = false;
-                  });
-                },
-                child: Container(
-                  width: 144,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: appClicked==true? Colors.blue : Colors.green,
-                    borderRadius: const BorderRadius.all(Radius.circular(7)),
-                    border: Border.all(
-                      width: 0.5,
+      child: BlocBuilder<DepartmentBloc, DepartmentState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            departmentList: (departmentsList){
+              return departmentsList.isNotEmpty? ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: departmentsList.length,
+                itemBuilder: (context,index){
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 17,top: 25,bottom: 25),
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          // clicked[index] = !clicked[index];
+                        });
+                      },
+                      child: Container(
+                        width: departmentsList.length==1? MediaQuery.of(context).size.width*0.85 : 144,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: const BorderRadius.all(Radius.circular(7)),
+                          border: Border.all(
+                            width: 0.5,
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(departmentsList[index].departmentName!,style:
+                          const TextStyle(fontWeight: FontWeight.w600,fontSize: 16,color: Colors.white),),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(departments[0],style:
-                    const TextStyle(fontWeight: FontWeight.w600,fontSize: 16,color: Colors.white),),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 18),
-              GestureDetector(
-                onTap: (){
-                  setState(() {
-                    webClicked = !webClicked;
-                    appClicked = false;
-                    marketingClicked = false;
-                  });
+                  );
                 },
-                child: Container(
-                  width: 144,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: webClicked==true? Colors.blue : Colors.green,
-                    borderRadius: const BorderRadius.all(Radius.circular(7)),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(departments[1],style:
-                    const TextStyle(fontWeight: FontWeight.w600,fontSize: 16,color: Colors.white),),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 18),
-              GestureDetector(
-                onTap: (){
-                  setState(() {
-                    marketingClicked = !marketingClicked;
-                    appClicked = false;
-                    webClicked = false;
-                  });
-                },
-                child: Container(
-                  width: 144,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: marketingClicked==true? Colors.blue : Colors.green,
-                    borderRadius: const BorderRadius.all(Radius.circular(7)),
-                    border: Border.all(
-                      width: 0.5,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(departments[2],style:
-                    const TextStyle(fontWeight: FontWeight.w600,fontSize: 16,color: Colors.white),),
-                  ),
-                ),
-              ),
-              // ...List.generate(3, (index) {
-              //   return Padding(
-              //     padding: const EdgeInsets.symmetric(horizontal: 10),
-              //     child: GestureDetector(
-              //       onTap: (){
-              //         setState(() {
-              //           clicked[index] = !clicked[index];
-              //         });
-              //       },
-              //       child: Container(
-              //         width: 144,
-              //         height: 50,
-              //         decoration: BoxDecoration(
-              //           color: clicked[index]==true? Colors.blue : Colors.green,
-              //           borderRadius: const BorderRadius.all(Radius.circular(7)),
-              //           border: Border.all(
-              //             width: 0.5,
-              //           ),
-              //         ),
-              //         child: Center(
-              //           child: Text(departments[index],style:
-              //           const TextStyle(fontWeight: FontWeight.w600,fontSize: 16,color: Colors.white),),
-              //         ),
-              //       ),
-              //     ),
-              //   );
-              // }),
-            ],
-          ),
-        ),
-      ),
+              ): Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "You don't have any department added!",textAlign: TextAlign.center,style:
+                  TextStyle(fontSize: 15),),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(" Please add one ",textAlign: TextAlign.center,style:
+                      TextStyle(fontSize: 15),),
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => BlocProvider(
+                            create: (context) => sl<DepartmentBloc>(),
+                            child: const AddDepartment(),
+                          )));
+                        },
+                        child: const Text(" click here",textAlign: TextAlign.center,style:
+                        TextStyle(fontSize: 15,color: Colors.blue),),
+                      )
+                    ],
+                  )
+                ],
+              );
+            },
+            orElse: (){
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          );
+        },
+      )
     );
   }
 }

@@ -8,5 +8,7 @@ class DepartmentState with _$DepartmentState {
 
   const factory DepartmentState.success(String message) = _success;
 
+  const factory DepartmentState.departmentList(List<Department> departments) = _departmentList;
+
   const factory DepartmentState.failed(String error) = _failed;
 }

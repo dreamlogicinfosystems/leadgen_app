@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
+import '../../../injections.dart';
 import '../widgets/home/departments_container.dart';
 import '../widgets/home/home_body.dart';
 import '../widgets/home/main_drawer.dart';
@@ -21,17 +25,22 @@ class _HomeState extends State<Home> {
         height: 65,
         width: 65,
         child: FloatingActionButton(
-            shape:  const CircleBorder(
-              side: BorderSide(width: 0.2,color: Colors.white38)
+            shape: const CircleBorder(
+                side: BorderSide(width: 0.2, color: Colors.white38)
             ),
-            child: const Icon(Icons.add,size: 28,),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AddLead()));
+            child: const Icon(Icons.add, size: 28,),
+            onPressed: () {
+              if(DepartmentBloc.getDepartmentCount()==0){
+                simpleDialog(context);
+              }else{
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AddLead()));
+              }
             }
         ),
       ),
       appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight*1),
+        preferredSize: Size.fromHeight(kToolbarHeight * 1),
         child: CustomAppBar(
             iconColor: Colors.black,
             title: 'Home',
@@ -42,14 +51,19 @@ class _HomeState extends State<Home> {
       drawer: const Drawer(
         child: MainDrawer(),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              DepartmentsContainer(),
-              SizedBox(height: 10,),
-              HomePageBody(),
+              BlocProvider(
+                create: (context) => sl<DepartmentBloc>(),
+                child: const DepartmentsContainer(),
+              ),
+              const SizedBox(height: 10,),
+              const HomePageBody(),
             ],
           ),
         ),

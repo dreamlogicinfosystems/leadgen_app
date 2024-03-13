@@ -66,7 +66,7 @@ class ProfileDataSource{
         businessName: result['user']['business_name'],
         state: result['user']['state'] ?? '',
         country: result['user']['country'] ?? '',
-        pincode: result['user']['pincode'] ?? '',
+        pincode: result['user']['pincode'].toString() ?? '',
         address: result['user']['address'] ?? '',
         website: result['user']['website'] ?? '',
         registeredAddress: result['user']['registered_address'] ?? '',

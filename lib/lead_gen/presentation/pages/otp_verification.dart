@@ -75,8 +75,10 @@ class _OtpVerificationState extends State<OtpVerification> {
                     name: 'Verify OTP',
                     onTap: () {
                       if (_otpController.text.trim() == '' || _otpController.text == '') {
-                        showErrorToastMessage('Please enter otp');
-                      } else {
+                        showErrorToastMessage('Please enter OTP');
+                      }else if(_otpController.text.contains(RegExp(r'[-.,]'))){
+                        showErrorToastMessage('Invalid OTP');
+                      }else {
                         context.read<AuthBloc>().add(AuthEvent.verifyOtp(_otpController.text, context));
                       }
                     }

@@ -16,6 +16,7 @@ class HomePageBody extends StatefulWidget {
 }
 
 class _HomePageBodyState extends State<HomePageBody> {
+  List<String> leads = [];
 
   Future<void> callOrSms(String phoneNo,String scheme) async{
     if(scheme=='sms'){
@@ -34,7 +35,7 @@ class _HomePageBodyState extends State<HomePageBody> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height*0.69,
+      height: MediaQuery.of(context).size.height*0.70,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(12)),
@@ -42,7 +43,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             width: 0.1
         ),
       ),
-      child: Padding(
+      child: leads.isNotEmpty? Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: ListView.builder(
             shrinkWrap: true,
@@ -109,6 +110,10 @@ class _HomePageBodyState extends State<HomePageBody> {
                 ),
               );
             }
+        ),
+      ): const Center(
+        child: Text("No leads added!",style:
+         TextStyle(fontSize: 16),
         ),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_drop_down.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/add_user.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
 class AddDepartment extends StatefulWidget {
@@ -44,7 +45,7 @@ class _AddDepartmentState extends State<AddDepartment> {
                   showToastMessage(message);
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) => const Home()), (route) => false);
+                      MaterialPageRoute(builder: (context) => const AddUser()), (route) => false);
                 },
                 failed: (error){
                   showErrorToastMessage(error);
@@ -72,9 +73,12 @@ class _AddDepartmentState extends State<AddDepartment> {
                       if(selectedDepartment==''){
                         showToastMessage('Please select department');
                       }else{
-                        context.read<DepartmentBloc>().add(
-                          DepartmentEvent.createDepartment(selectedDepartment, context),
-                        );
+                        //TODO : REMIND TO CHANGE
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (context) => const AddUser()), (route) => false);
+                        // context.read<DepartmentBloc>().add(
+                        //   DepartmentEvent.createDepartment(selectedDepartment, context),
+                        // );
                       }
                     }),
               ),

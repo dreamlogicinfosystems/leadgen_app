@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'department_bloc.dart';
+part of 'department_user_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,82 +15,84 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$DepartmentEvent {
+mixin _$DepartmentUserEvent {
   BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String departName, BuildContext context)
-        createDepartment,
-    required TResult Function(BuildContext context) getDepartments,
-    required TResult Function(Department department, BuildContext context)
-        updateDepartment,
-    required TResult Function(int id, BuildContext context) deleteDepartment,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        addDepartmentUser,
+    required TResult Function(BuildContext context) getDepartmentUser,
+    required TResult Function(int userId, BuildContext context)
+        deleteDepartmentUser,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        updateDepartmentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String departName, BuildContext context)?
-        createDepartment,
-    TResult? Function(BuildContext context)? getDepartments,
-    TResult? Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult? Function(int id, BuildContext context)? deleteDepartment,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult? Function(BuildContext context)? getDepartmentUser,
+    TResult? Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String departName, BuildContext context)? createDepartment,
-    TResult Function(BuildContext context)? getDepartments,
-    TResult Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult Function(int id, BuildContext context)? deleteDepartment,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult Function(BuildContext context)? getDepartmentUser,
+    TResult Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_createDepartment value) createDepartment,
-    required TResult Function(_getDepartments value) getDepartments,
-    required TResult Function(_updateDepartment value) updateDepartment,
-    required TResult Function(_deleteDepartment value) deleteDepartment,
+    required TResult Function(_addDepartmentUser value) addDepartmentUser,
+    required TResult Function(_getDepartmentUser value) getDepartmentUser,
+    required TResult Function(_deleteDepartmentUser value) deleteDepartmentUser,
+    required TResult Function(_updateDepartmentUser value) updateDepartmentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_createDepartment value)? createDepartment,
-    TResult? Function(_getDepartments value)? getDepartments,
-    TResult? Function(_updateDepartment value)? updateDepartment,
-    TResult? Function(_deleteDepartment value)? deleteDepartment,
+    TResult? Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult? Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult? Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult? Function(_updateDepartmentUser value)? updateDepartmentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_createDepartment value)? createDepartment,
-    TResult Function(_getDepartments value)? getDepartments,
-    TResult Function(_updateDepartment value)? updateDepartment,
-    TResult Function(_deleteDepartment value)? deleteDepartment,
+    TResult Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult Function(_updateDepartmentUser value)? updateDepartmentUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $DepartmentEventCopyWith<DepartmentEvent> get copyWith =>
+  $DepartmentUserEventCopyWith<DepartmentUserEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DepartmentEventCopyWith<$Res> {
-  factory $DepartmentEventCopyWith(
-          DepartmentEvent value, $Res Function(DepartmentEvent) then) =
-      _$DepartmentEventCopyWithImpl<$Res, DepartmentEvent>;
+abstract class $DepartmentUserEventCopyWith<$Res> {
+  factory $DepartmentUserEventCopyWith(
+          DepartmentUserEvent value, $Res Function(DepartmentUserEvent) then) =
+      _$DepartmentUserEventCopyWithImpl<$Res, DepartmentUserEvent>;
   @useResult
   $Res call({BuildContext context});
 }
 
 /// @nodoc
-class _$DepartmentEventCopyWithImpl<$Res, $Val extends DepartmentEvent>
-    implements $DepartmentEventCopyWith<$Res> {
-  _$DepartmentEventCopyWithImpl(this._value, this._then);
+class _$DepartmentUserEventCopyWithImpl<$Res, $Val extends DepartmentUserEvent>
+    implements $DepartmentUserEventCopyWith<$Res> {
+  _$DepartmentUserEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -112,116 +114,127 @@ class _$DepartmentEventCopyWithImpl<$Res, $Val extends DepartmentEvent>
 }
 
 /// @nodoc
-abstract class _$$createDepartmentImplCopyWith<$Res>
-    implements $DepartmentEventCopyWith<$Res> {
-  factory _$$createDepartmentImplCopyWith(_$createDepartmentImpl value,
-          $Res Function(_$createDepartmentImpl) then) =
-      __$$createDepartmentImplCopyWithImpl<$Res>;
+abstract class _$$addDepartmentUserImplCopyWith<$Res>
+    implements $DepartmentUserEventCopyWith<$Res> {
+  factory _$$addDepartmentUserImplCopyWith(_$addDepartmentUserImpl value,
+          $Res Function(_$addDepartmentUserImpl) then) =
+      __$$addDepartmentUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String departName, BuildContext context});
+  $Res call({DepartmentUser user, BuildContext context});
+
+  $DepartmentUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class __$$createDepartmentImplCopyWithImpl<$Res>
-    extends _$DepartmentEventCopyWithImpl<$Res, _$createDepartmentImpl>
-    implements _$$createDepartmentImplCopyWith<$Res> {
-  __$$createDepartmentImplCopyWithImpl(_$createDepartmentImpl _value,
-      $Res Function(_$createDepartmentImpl) _then)
+class __$$addDepartmentUserImplCopyWithImpl<$Res>
+    extends _$DepartmentUserEventCopyWithImpl<$Res, _$addDepartmentUserImpl>
+    implements _$$addDepartmentUserImplCopyWith<$Res> {
+  __$$addDepartmentUserImplCopyWithImpl(_$addDepartmentUserImpl _value,
+      $Res Function(_$addDepartmentUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? departName = null,
+    Object? user = null,
     Object? context = null,
   }) {
-    return _then(_$createDepartmentImpl(
-      null == departName
-          ? _value.departName
-          : departName // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$addDepartmentUserImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as DepartmentUser,
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DepartmentUserCopyWith<$Res> get user {
+    return $DepartmentUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$createDepartmentImpl implements _createDepartment {
-  const _$createDepartmentImpl(this.departName, this.context);
+class _$addDepartmentUserImpl implements _addDepartmentUser {
+  const _$addDepartmentUserImpl(this.user, this.context);
 
   @override
-  final String departName;
+  final DepartmentUser user;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'DepartmentEvent.createDepartment(departName: $departName, context: $context)';
+    return 'DepartmentUserEvent.addDepartmentUser(user: $user, context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$createDepartmentImpl &&
-            (identical(other.departName, departName) ||
-                other.departName == departName) &&
+            other is _$addDepartmentUserImpl &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, departName, context);
+  int get hashCode => Object.hash(runtimeType, user, context);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$createDepartmentImplCopyWith<_$createDepartmentImpl> get copyWith =>
-      __$$createDepartmentImplCopyWithImpl<_$createDepartmentImpl>(
+  _$$addDepartmentUserImplCopyWith<_$addDepartmentUserImpl> get copyWith =>
+      __$$addDepartmentUserImplCopyWithImpl<_$addDepartmentUserImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String departName, BuildContext context)
-        createDepartment,
-    required TResult Function(BuildContext context) getDepartments,
-    required TResult Function(Department department, BuildContext context)
-        updateDepartment,
-    required TResult Function(int id, BuildContext context) deleteDepartment,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        addDepartmentUser,
+    required TResult Function(BuildContext context) getDepartmentUser,
+    required TResult Function(int userId, BuildContext context)
+        deleteDepartmentUser,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        updateDepartmentUser,
   }) {
-    return createDepartment(departName, context);
+    return addDepartmentUser(user, context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String departName, BuildContext context)?
-        createDepartment,
-    TResult? Function(BuildContext context)? getDepartments,
-    TResult? Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult? Function(int id, BuildContext context)? deleteDepartment,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult? Function(BuildContext context)? getDepartmentUser,
+    TResult? Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
   }) {
-    return createDepartment?.call(departName, context);
+    return addDepartmentUser?.call(user, context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String departName, BuildContext context)? createDepartment,
-    TResult Function(BuildContext context)? getDepartments,
-    TResult Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult Function(int id, BuildContext context)? deleteDepartment,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult Function(BuildContext context)? getDepartmentUser,
+    TResult Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
     required TResult orElse(),
   }) {
-    if (createDepartment != null) {
-      return createDepartment(departName, context);
+    if (addDepartmentUser != null) {
+      return addDepartmentUser(user, context);
     }
     return orElse();
   }
@@ -229,72 +242,72 @@ class _$createDepartmentImpl implements _createDepartment {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_createDepartment value) createDepartment,
-    required TResult Function(_getDepartments value) getDepartments,
-    required TResult Function(_updateDepartment value) updateDepartment,
-    required TResult Function(_deleteDepartment value) deleteDepartment,
+    required TResult Function(_addDepartmentUser value) addDepartmentUser,
+    required TResult Function(_getDepartmentUser value) getDepartmentUser,
+    required TResult Function(_deleteDepartmentUser value) deleteDepartmentUser,
+    required TResult Function(_updateDepartmentUser value) updateDepartmentUser,
   }) {
-    return createDepartment(this);
+    return addDepartmentUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_createDepartment value)? createDepartment,
-    TResult? Function(_getDepartments value)? getDepartments,
-    TResult? Function(_updateDepartment value)? updateDepartment,
-    TResult? Function(_deleteDepartment value)? deleteDepartment,
+    TResult? Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult? Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult? Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult? Function(_updateDepartmentUser value)? updateDepartmentUser,
   }) {
-    return createDepartment?.call(this);
+    return addDepartmentUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_createDepartment value)? createDepartment,
-    TResult Function(_getDepartments value)? getDepartments,
-    TResult Function(_updateDepartment value)? updateDepartment,
-    TResult Function(_deleteDepartment value)? deleteDepartment,
+    TResult Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult Function(_updateDepartmentUser value)? updateDepartmentUser,
     required TResult orElse(),
   }) {
-    if (createDepartment != null) {
-      return createDepartment(this);
+    if (addDepartmentUser != null) {
+      return addDepartmentUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _createDepartment implements DepartmentEvent {
-  const factory _createDepartment(
-          final String departName, final BuildContext context) =
-      _$createDepartmentImpl;
+abstract class _addDepartmentUser implements DepartmentUserEvent {
+  const factory _addDepartmentUser(
+          final DepartmentUser user, final BuildContext context) =
+      _$addDepartmentUserImpl;
 
-  String get departName;
+  DepartmentUser get user;
   @override
   BuildContext get context;
   @override
   @JsonKey(ignore: true)
-  _$$createDepartmentImplCopyWith<_$createDepartmentImpl> get copyWith =>
+  _$$addDepartmentUserImplCopyWith<_$addDepartmentUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$getDepartmentsImplCopyWith<$Res>
-    implements $DepartmentEventCopyWith<$Res> {
-  factory _$$getDepartmentsImplCopyWith(_$getDepartmentsImpl value,
-          $Res Function(_$getDepartmentsImpl) then) =
-      __$$getDepartmentsImplCopyWithImpl<$Res>;
+abstract class _$$getDepartmentUserImplCopyWith<$Res>
+    implements $DepartmentUserEventCopyWith<$Res> {
+  factory _$$getDepartmentUserImplCopyWith(_$getDepartmentUserImpl value,
+          $Res Function(_$getDepartmentUserImpl) then) =
+      __$$getDepartmentUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({BuildContext context});
 }
 
 /// @nodoc
-class __$$getDepartmentsImplCopyWithImpl<$Res>
-    extends _$DepartmentEventCopyWithImpl<$Res, _$getDepartmentsImpl>
-    implements _$$getDepartmentsImplCopyWith<$Res> {
-  __$$getDepartmentsImplCopyWithImpl(
-      _$getDepartmentsImpl _value, $Res Function(_$getDepartmentsImpl) _then)
+class __$$getDepartmentUserImplCopyWithImpl<$Res>
+    extends _$DepartmentUserEventCopyWithImpl<$Res, _$getDepartmentUserImpl>
+    implements _$$getDepartmentUserImplCopyWith<$Res> {
+  __$$getDepartmentUserImplCopyWithImpl(_$getDepartmentUserImpl _value,
+      $Res Function(_$getDepartmentUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -302,7 +315,7 @@ class __$$getDepartmentsImplCopyWithImpl<$Res>
   $Res call({
     Object? context = null,
   }) {
-    return _then(_$getDepartmentsImpl(
+    return _then(_$getDepartmentUserImpl(
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -313,22 +326,22 @@ class __$$getDepartmentsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$getDepartmentsImpl implements _getDepartments {
-  const _$getDepartmentsImpl(this.context);
+class _$getDepartmentUserImpl implements _getDepartmentUser {
+  const _$getDepartmentUserImpl(this.context);
 
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'DepartmentEvent.getDepartments(context: $context)';
+    return 'DepartmentUserEvent.getDepartmentUser(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$getDepartmentsImpl &&
+            other is _$getDepartmentUserImpl &&
             (identical(other.context, context) || other.context == context));
   }
 
@@ -338,48 +351,50 @@ class _$getDepartmentsImpl implements _getDepartments {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$getDepartmentsImplCopyWith<_$getDepartmentsImpl> get copyWith =>
-      __$$getDepartmentsImplCopyWithImpl<_$getDepartmentsImpl>(
+  _$$getDepartmentUserImplCopyWith<_$getDepartmentUserImpl> get copyWith =>
+      __$$getDepartmentUserImplCopyWithImpl<_$getDepartmentUserImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String departName, BuildContext context)
-        createDepartment,
-    required TResult Function(BuildContext context) getDepartments,
-    required TResult Function(Department department, BuildContext context)
-        updateDepartment,
-    required TResult Function(int id, BuildContext context) deleteDepartment,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        addDepartmentUser,
+    required TResult Function(BuildContext context) getDepartmentUser,
+    required TResult Function(int userId, BuildContext context)
+        deleteDepartmentUser,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        updateDepartmentUser,
   }) {
-    return getDepartments(context);
+    return getDepartmentUser(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String departName, BuildContext context)?
-        createDepartment,
-    TResult? Function(BuildContext context)? getDepartments,
-    TResult? Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult? Function(int id, BuildContext context)? deleteDepartment,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult? Function(BuildContext context)? getDepartmentUser,
+    TResult? Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
   }) {
-    return getDepartments?.call(context);
+    return getDepartmentUser?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String departName, BuildContext context)? createDepartment,
-    TResult Function(BuildContext context)? getDepartments,
-    TResult Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult Function(int id, BuildContext context)? deleteDepartment,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult Function(BuildContext context)? getDepartmentUser,
+    TResult Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
     required TResult orElse(),
   }) {
-    if (getDepartments != null) {
-      return getDepartments(context);
+    if (getDepartmentUser != null) {
+      return getDepartmentUser(context);
     }
     return orElse();
   }
@@ -387,259 +402,82 @@ class _$getDepartmentsImpl implements _getDepartments {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_createDepartment value) createDepartment,
-    required TResult Function(_getDepartments value) getDepartments,
-    required TResult Function(_updateDepartment value) updateDepartment,
-    required TResult Function(_deleteDepartment value) deleteDepartment,
+    required TResult Function(_addDepartmentUser value) addDepartmentUser,
+    required TResult Function(_getDepartmentUser value) getDepartmentUser,
+    required TResult Function(_deleteDepartmentUser value) deleteDepartmentUser,
+    required TResult Function(_updateDepartmentUser value) updateDepartmentUser,
   }) {
-    return getDepartments(this);
+    return getDepartmentUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_createDepartment value)? createDepartment,
-    TResult? Function(_getDepartments value)? getDepartments,
-    TResult? Function(_updateDepartment value)? updateDepartment,
-    TResult? Function(_deleteDepartment value)? deleteDepartment,
+    TResult? Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult? Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult? Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult? Function(_updateDepartmentUser value)? updateDepartmentUser,
   }) {
-    return getDepartments?.call(this);
+    return getDepartmentUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_createDepartment value)? createDepartment,
-    TResult Function(_getDepartments value)? getDepartments,
-    TResult Function(_updateDepartment value)? updateDepartment,
-    TResult Function(_deleteDepartment value)? deleteDepartment,
+    TResult Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult Function(_updateDepartmentUser value)? updateDepartmentUser,
     required TResult orElse(),
   }) {
-    if (getDepartments != null) {
-      return getDepartments(this);
+    if (getDepartmentUser != null) {
+      return getDepartmentUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _getDepartments implements DepartmentEvent {
-  const factory _getDepartments(final BuildContext context) =
-      _$getDepartmentsImpl;
+abstract class _getDepartmentUser implements DepartmentUserEvent {
+  const factory _getDepartmentUser(final BuildContext context) =
+      _$getDepartmentUserImpl;
 
   @override
   BuildContext get context;
   @override
   @JsonKey(ignore: true)
-  _$$getDepartmentsImplCopyWith<_$getDepartmentsImpl> get copyWith =>
+  _$$getDepartmentUserImplCopyWith<_$getDepartmentUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$updateDepartmentImplCopyWith<$Res>
-    implements $DepartmentEventCopyWith<$Res> {
-  factory _$$updateDepartmentImplCopyWith(_$updateDepartmentImpl value,
-          $Res Function(_$updateDepartmentImpl) then) =
-      __$$updateDepartmentImplCopyWithImpl<$Res>;
+abstract class _$$deleteDepartmentUserImplCopyWith<$Res>
+    implements $DepartmentUserEventCopyWith<$Res> {
+  factory _$$deleteDepartmentUserImplCopyWith(_$deleteDepartmentUserImpl value,
+          $Res Function(_$deleteDepartmentUserImpl) then) =
+      __$$deleteDepartmentUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Department department, BuildContext context});
-
-  $DepartmentCopyWith<$Res> get department;
+  $Res call({int userId, BuildContext context});
 }
 
 /// @nodoc
-class __$$updateDepartmentImplCopyWithImpl<$Res>
-    extends _$DepartmentEventCopyWithImpl<$Res, _$updateDepartmentImpl>
-    implements _$$updateDepartmentImplCopyWith<$Res> {
-  __$$updateDepartmentImplCopyWithImpl(_$updateDepartmentImpl _value,
-      $Res Function(_$updateDepartmentImpl) _then)
+class __$$deleteDepartmentUserImplCopyWithImpl<$Res>
+    extends _$DepartmentUserEventCopyWithImpl<$Res, _$deleteDepartmentUserImpl>
+    implements _$$deleteDepartmentUserImplCopyWith<$Res> {
+  __$$deleteDepartmentUserImplCopyWithImpl(_$deleteDepartmentUserImpl _value,
+      $Res Function(_$deleteDepartmentUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? department = null,
+    Object? userId = null,
     Object? context = null,
   }) {
-    return _then(_$updateDepartmentImpl(
-      null == department
-          ? _value.department
-          : department // ignore: cast_nullable_to_non_nullable
-              as Department,
-      null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DepartmentCopyWith<$Res> get department {
-    return $DepartmentCopyWith<$Res>(_value.department, (value) {
-      return _then(_value.copyWith(department: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$updateDepartmentImpl implements _updateDepartment {
-  const _$updateDepartmentImpl(this.department, this.context);
-
-  @override
-  final Department department;
-  @override
-  final BuildContext context;
-
-  @override
-  String toString() {
-    return 'DepartmentEvent.updateDepartment(department: $department, context: $context)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$updateDepartmentImpl &&
-            (identical(other.department, department) ||
-                other.department == department) &&
-            (identical(other.context, context) || other.context == context));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, department, context);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$updateDepartmentImplCopyWith<_$updateDepartmentImpl> get copyWith =>
-      __$$updateDepartmentImplCopyWithImpl<_$updateDepartmentImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String departName, BuildContext context)
-        createDepartment,
-    required TResult Function(BuildContext context) getDepartments,
-    required TResult Function(Department department, BuildContext context)
-        updateDepartment,
-    required TResult Function(int id, BuildContext context) deleteDepartment,
-  }) {
-    return updateDepartment(department, context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String departName, BuildContext context)?
-        createDepartment,
-    TResult? Function(BuildContext context)? getDepartments,
-    TResult? Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult? Function(int id, BuildContext context)? deleteDepartment,
-  }) {
-    return updateDepartment?.call(department, context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String departName, BuildContext context)? createDepartment,
-    TResult Function(BuildContext context)? getDepartments,
-    TResult Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult Function(int id, BuildContext context)? deleteDepartment,
-    required TResult orElse(),
-  }) {
-    if (updateDepartment != null) {
-      return updateDepartment(department, context);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_createDepartment value) createDepartment,
-    required TResult Function(_getDepartments value) getDepartments,
-    required TResult Function(_updateDepartment value) updateDepartment,
-    required TResult Function(_deleteDepartment value) deleteDepartment,
-  }) {
-    return updateDepartment(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_createDepartment value)? createDepartment,
-    TResult? Function(_getDepartments value)? getDepartments,
-    TResult? Function(_updateDepartment value)? updateDepartment,
-    TResult? Function(_deleteDepartment value)? deleteDepartment,
-  }) {
-    return updateDepartment?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_createDepartment value)? createDepartment,
-    TResult Function(_getDepartments value)? getDepartments,
-    TResult Function(_updateDepartment value)? updateDepartment,
-    TResult Function(_deleteDepartment value)? deleteDepartment,
-    required TResult orElse(),
-  }) {
-    if (updateDepartment != null) {
-      return updateDepartment(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _updateDepartment implements DepartmentEvent {
-  const factory _updateDepartment(
-          final Department department, final BuildContext context) =
-      _$updateDepartmentImpl;
-
-  Department get department;
-  @override
-  BuildContext get context;
-  @override
-  @JsonKey(ignore: true)
-  _$$updateDepartmentImplCopyWith<_$updateDepartmentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$deleteDepartmentImplCopyWith<$Res>
-    implements $DepartmentEventCopyWith<$Res> {
-  factory _$$deleteDepartmentImplCopyWith(_$deleteDepartmentImpl value,
-          $Res Function(_$deleteDepartmentImpl) then) =
-      __$$deleteDepartmentImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, BuildContext context});
-}
-
-/// @nodoc
-class __$$deleteDepartmentImplCopyWithImpl<$Res>
-    extends _$DepartmentEventCopyWithImpl<$Res, _$deleteDepartmentImpl>
-    implements _$$deleteDepartmentImplCopyWith<$Res> {
-  __$$deleteDepartmentImplCopyWithImpl(_$deleteDepartmentImpl _value,
-      $Res Function(_$deleteDepartmentImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? context = null,
-  }) {
-    return _then(_$deleteDepartmentImpl(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+    return _then(_$deleteDepartmentUserImpl(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       null == context
           ? _value.context
@@ -651,76 +489,79 @@ class __$$deleteDepartmentImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$deleteDepartmentImpl implements _deleteDepartment {
-  const _$deleteDepartmentImpl(this.id, this.context);
+class _$deleteDepartmentUserImpl implements _deleteDepartmentUser {
+  const _$deleteDepartmentUserImpl(this.userId, this.context);
 
   @override
-  final int id;
+  final int userId;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'DepartmentEvent.deleteDepartment(id: $id, context: $context)';
+    return 'DepartmentUserEvent.deleteDepartmentUser(userId: $userId, context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$deleteDepartmentImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            other is _$deleteDepartmentUserImpl &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, context);
+  int get hashCode => Object.hash(runtimeType, userId, context);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$deleteDepartmentImplCopyWith<_$deleteDepartmentImpl> get copyWith =>
-      __$$deleteDepartmentImplCopyWithImpl<_$deleteDepartmentImpl>(
-          this, _$identity);
+  _$$deleteDepartmentUserImplCopyWith<_$deleteDepartmentUserImpl>
+      get copyWith =>
+          __$$deleteDepartmentUserImplCopyWithImpl<_$deleteDepartmentUserImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String departName, BuildContext context)
-        createDepartment,
-    required TResult Function(BuildContext context) getDepartments,
-    required TResult Function(Department department, BuildContext context)
-        updateDepartment,
-    required TResult Function(int id, BuildContext context) deleteDepartment,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        addDepartmentUser,
+    required TResult Function(BuildContext context) getDepartmentUser,
+    required TResult Function(int userId, BuildContext context)
+        deleteDepartmentUser,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        updateDepartmentUser,
   }) {
-    return deleteDepartment(id, context);
+    return deleteDepartmentUser(userId, context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String departName, BuildContext context)?
-        createDepartment,
-    TResult? Function(BuildContext context)? getDepartments,
-    TResult? Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult? Function(int id, BuildContext context)? deleteDepartment,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult? Function(BuildContext context)? getDepartmentUser,
+    TResult? Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
   }) {
-    return deleteDepartment?.call(id, context);
+    return deleteDepartmentUser?.call(userId, context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String departName, BuildContext context)? createDepartment,
-    TResult Function(BuildContext context)? getDepartments,
-    TResult Function(Department department, BuildContext context)?
-        updateDepartment,
-    TResult Function(int id, BuildContext context)? deleteDepartment,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult Function(BuildContext context)? getDepartmentUser,
+    TResult Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
     required TResult orElse(),
   }) {
-    if (deleteDepartment != null) {
-      return deleteDepartment(id, context);
+    if (deleteDepartmentUser != null) {
+      return deleteDepartmentUser(userId, context);
     }
     return orElse();
   }
@@ -728,62 +569,242 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_createDepartment value) createDepartment,
-    required TResult Function(_getDepartments value) getDepartments,
-    required TResult Function(_updateDepartment value) updateDepartment,
-    required TResult Function(_deleteDepartment value) deleteDepartment,
+    required TResult Function(_addDepartmentUser value) addDepartmentUser,
+    required TResult Function(_getDepartmentUser value) getDepartmentUser,
+    required TResult Function(_deleteDepartmentUser value) deleteDepartmentUser,
+    required TResult Function(_updateDepartmentUser value) updateDepartmentUser,
   }) {
-    return deleteDepartment(this);
+    return deleteDepartmentUser(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_createDepartment value)? createDepartment,
-    TResult? Function(_getDepartments value)? getDepartments,
-    TResult? Function(_updateDepartment value)? updateDepartment,
-    TResult? Function(_deleteDepartment value)? deleteDepartment,
+    TResult? Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult? Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult? Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult? Function(_updateDepartmentUser value)? updateDepartmentUser,
   }) {
-    return deleteDepartment?.call(this);
+    return deleteDepartmentUser?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_createDepartment value)? createDepartment,
-    TResult Function(_getDepartments value)? getDepartments,
-    TResult Function(_updateDepartment value)? updateDepartment,
-    TResult Function(_deleteDepartment value)? deleteDepartment,
+    TResult Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult Function(_updateDepartmentUser value)? updateDepartmentUser,
     required TResult orElse(),
   }) {
-    if (deleteDepartment != null) {
-      return deleteDepartment(this);
+    if (deleteDepartmentUser != null) {
+      return deleteDepartmentUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _deleteDepartment implements DepartmentEvent {
-  const factory _deleteDepartment(final int id, final BuildContext context) =
-      _$deleteDepartmentImpl;
+abstract class _deleteDepartmentUser implements DepartmentUserEvent {
+  const factory _deleteDepartmentUser(
+          final int userId, final BuildContext context) =
+      _$deleteDepartmentUserImpl;
 
-  int get id;
+  int get userId;
   @override
   BuildContext get context;
   @override
   @JsonKey(ignore: true)
-  _$$deleteDepartmentImplCopyWith<_$deleteDepartmentImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$deleteDepartmentUserImplCopyWith<_$deleteDepartmentUserImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$DepartmentState {
+abstract class _$$updateDepartmentUserImplCopyWith<$Res>
+    implements $DepartmentUserEventCopyWith<$Res> {
+  factory _$$updateDepartmentUserImplCopyWith(_$updateDepartmentUserImpl value,
+          $Res Function(_$updateDepartmentUserImpl) then) =
+      __$$updateDepartmentUserImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DepartmentUser user, BuildContext context});
+
+  $DepartmentUserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$updateDepartmentUserImplCopyWithImpl<$Res>
+    extends _$DepartmentUserEventCopyWithImpl<$Res, _$updateDepartmentUserImpl>
+    implements _$$updateDepartmentUserImplCopyWith<$Res> {
+  __$$updateDepartmentUserImplCopyWithImpl(_$updateDepartmentUserImpl _value,
+      $Res Function(_$updateDepartmentUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+    Object? context = null,
+  }) {
+    return _then(_$updateDepartmentUserImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as DepartmentUser,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DepartmentUserCopyWith<$Res> get user {
+    return $DepartmentUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$updateDepartmentUserImpl implements _updateDepartmentUser {
+  const _$updateDepartmentUserImpl(this.user, this.context);
+
+  @override
+  final DepartmentUser user;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'DepartmentUserEvent.updateDepartmentUser(user: $user, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$updateDepartmentUserImpl &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$updateDepartmentUserImplCopyWith<_$updateDepartmentUserImpl>
+      get copyWith =>
+          __$$updateDepartmentUserImplCopyWithImpl<_$updateDepartmentUserImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DepartmentUser user, BuildContext context)
+        addDepartmentUser,
+    required TResult Function(BuildContext context) getDepartmentUser,
+    required TResult Function(int userId, BuildContext context)
+        deleteDepartmentUser,
+    required TResult Function(DepartmentUser user, BuildContext context)
+        updateDepartmentUser,
+  }) {
+    return updateDepartmentUser(user, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult? Function(BuildContext context)? getDepartmentUser,
+    TResult? Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult? Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
+  }) {
+    return updateDepartmentUser?.call(user, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DepartmentUser user, BuildContext context)?
+        addDepartmentUser,
+    TResult Function(BuildContext context)? getDepartmentUser,
+    TResult Function(int userId, BuildContext context)? deleteDepartmentUser,
+    TResult Function(DepartmentUser user, BuildContext context)?
+        updateDepartmentUser,
+    required TResult orElse(),
+  }) {
+    if (updateDepartmentUser != null) {
+      return updateDepartmentUser(user, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_addDepartmentUser value) addDepartmentUser,
+    required TResult Function(_getDepartmentUser value) getDepartmentUser,
+    required TResult Function(_deleteDepartmentUser value) deleteDepartmentUser,
+    required TResult Function(_updateDepartmentUser value) updateDepartmentUser,
+  }) {
+    return updateDepartmentUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult? Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult? Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult? Function(_updateDepartmentUser value)? updateDepartmentUser,
+  }) {
+    return updateDepartmentUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_addDepartmentUser value)? addDepartmentUser,
+    TResult Function(_getDepartmentUser value)? getDepartmentUser,
+    TResult Function(_deleteDepartmentUser value)? deleteDepartmentUser,
+    TResult Function(_updateDepartmentUser value)? updateDepartmentUser,
+    required TResult orElse(),
+  }) {
+    if (updateDepartmentUser != null) {
+      return updateDepartmentUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _updateDepartmentUser implements DepartmentUserEvent {
+  const factory _updateDepartmentUser(
+          final DepartmentUser user, final BuildContext context) =
+      _$updateDepartmentUserImpl;
+
+  DepartmentUser get user;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$updateDepartmentUserImplCopyWith<_$updateDepartmentUserImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$DepartmentUserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
-    required TResult Function(List<Department> departments) departmentList,
+    required TResult Function(List<DepartmentUser> users) departmentUser,
     required TResult Function(String error) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -792,7 +813,7 @@ mixin _$DepartmentState {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
-    TResult? Function(List<Department> departments)? departmentList,
+    TResult? Function(List<DepartmentUser> users)? departmentUser,
     TResult? Function(String error)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -801,7 +822,7 @@ mixin _$DepartmentState {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
-    TResult Function(List<Department> departments)? departmentList,
+    TResult Function(List<DepartmentUser> users)? departmentUser,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) =>
@@ -811,7 +832,7 @@ mixin _$DepartmentState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
-    required TResult Function(_departmentList value) departmentList,
+    required TResult Function(_departmentUser value) departmentUser,
     required TResult Function(_failed value) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -820,7 +841,7 @@ mixin _$DepartmentState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
-    TResult? Function(_departmentList value)? departmentList,
+    TResult? Function(_departmentUser value)? departmentUser,
     TResult? Function(_failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -829,7 +850,7 @@ mixin _$DepartmentState {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
-    TResult Function(_departmentList value)? departmentList,
+    TResult Function(_departmentUser value)? departmentUser,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
   }) =>
@@ -837,16 +858,16 @@ mixin _$DepartmentState {
 }
 
 /// @nodoc
-abstract class $DepartmentStateCopyWith<$Res> {
-  factory $DepartmentStateCopyWith(
-          DepartmentState value, $Res Function(DepartmentState) then) =
-      _$DepartmentStateCopyWithImpl<$Res, DepartmentState>;
+abstract class $DepartmentUserStateCopyWith<$Res> {
+  factory $DepartmentUserStateCopyWith(
+          DepartmentUserState value, $Res Function(DepartmentUserState) then) =
+      _$DepartmentUserStateCopyWithImpl<$Res, DepartmentUserState>;
 }
 
 /// @nodoc
-class _$DepartmentStateCopyWithImpl<$Res, $Val extends DepartmentState>
-    implements $DepartmentStateCopyWith<$Res> {
-  _$DepartmentStateCopyWithImpl(this._value, this._then);
+class _$DepartmentUserStateCopyWithImpl<$Res, $Val extends DepartmentUserState>
+    implements $DepartmentUserStateCopyWith<$Res> {
+  _$DepartmentUserStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -863,7 +884,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DepartmentStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$DepartmentUserStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -877,7 +898,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'DepartmentState.initial()';
+    return 'DepartmentUserState.initial()';
   }
 
   @override
@@ -895,7 +916,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
-    required TResult Function(List<Department> departments) departmentList,
+    required TResult Function(List<DepartmentUser> users) departmentUser,
     required TResult Function(String error) failed,
   }) {
     return initial();
@@ -907,7 +928,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
-    TResult? Function(List<Department> departments)? departmentList,
+    TResult? Function(List<DepartmentUser> users)? departmentUser,
     TResult? Function(String error)? failed,
   }) {
     return initial?.call();
@@ -919,7 +940,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
-    TResult Function(List<Department> departments)? departmentList,
+    TResult Function(List<DepartmentUser> users)? departmentUser,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -935,7 +956,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
-    required TResult Function(_departmentList value) departmentList,
+    required TResult Function(_departmentUser value) departmentUser,
     required TResult Function(_failed value) failed,
   }) {
     return initial(this);
@@ -947,7 +968,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
-    TResult? Function(_departmentList value)? departmentList,
+    TResult? Function(_departmentUser value)? departmentUser,
     TResult? Function(_failed value)? failed,
   }) {
     return initial?.call(this);
@@ -959,7 +980,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
-    TResult Function(_departmentList value)? departmentList,
+    TResult Function(_departmentUser value)? departmentUser,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
   }) {
@@ -970,7 +991,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements DepartmentState {
+abstract class _Initial implements DepartmentUserState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -983,7 +1004,7 @@ abstract class _$$loadingInProgressImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$loadingInProgressImplCopyWithImpl<$Res>
-    extends _$DepartmentStateCopyWithImpl<$Res, _$loadingInProgressImpl>
+    extends _$DepartmentUserStateCopyWithImpl<$Res, _$loadingInProgressImpl>
     implements _$$loadingInProgressImplCopyWith<$Res> {
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
@@ -997,7 +1018,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
 
   @override
   String toString() {
-    return 'DepartmentState.loadingInProgress()';
+    return 'DepartmentUserState.loadingInProgress()';
   }
 
   @override
@@ -1015,7 +1036,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
-    required TResult Function(List<Department> departments) departmentList,
+    required TResult Function(List<DepartmentUser> users) departmentUser,
     required TResult Function(String error) failed,
   }) {
     return loadingInProgress();
@@ -1027,7 +1048,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
-    TResult? Function(List<Department> departments)? departmentList,
+    TResult? Function(List<DepartmentUser> users)? departmentUser,
     TResult? Function(String error)? failed,
   }) {
     return loadingInProgress?.call();
@@ -1039,7 +1060,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
-    TResult Function(List<Department> departments)? departmentList,
+    TResult Function(List<DepartmentUser> users)? departmentUser,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -1055,7 +1076,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
-    required TResult Function(_departmentList value) departmentList,
+    required TResult Function(_departmentUser value) departmentUser,
     required TResult Function(_failed value) failed,
   }) {
     return loadingInProgress(this);
@@ -1067,7 +1088,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
-    TResult? Function(_departmentList value)? departmentList,
+    TResult? Function(_departmentUser value)? departmentUser,
     TResult? Function(_failed value)? failed,
   }) {
     return loadingInProgress?.call(this);
@@ -1079,7 +1100,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
-    TResult Function(_departmentList value)? departmentList,
+    TResult Function(_departmentUser value)? departmentUser,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
   }) {
@@ -1090,7 +1111,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
   }
 }
 
-abstract class _loadingInProgress implements DepartmentState {
+abstract class _loadingInProgress implements DepartmentUserState {
   const factory _loadingInProgress() = _$loadingInProgressImpl;
 }
 
@@ -1105,7 +1126,7 @@ abstract class _$$successImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$successImplCopyWithImpl<$Res>
-    extends _$DepartmentStateCopyWithImpl<$Res, _$successImpl>
+    extends _$DepartmentUserStateCopyWithImpl<$Res, _$successImpl>
     implements _$$successImplCopyWith<$Res> {
   __$$successImplCopyWithImpl(
       _$successImpl _value, $Res Function(_$successImpl) _then)
@@ -1135,7 +1156,7 @@ class _$successImpl implements _success {
 
   @override
   String toString() {
-    return 'DepartmentState.success(message: $message)';
+    return 'DepartmentUserState.success(message: $message)';
   }
 
   @override
@@ -1161,7 +1182,7 @@ class _$successImpl implements _success {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
-    required TResult Function(List<Department> departments) departmentList,
+    required TResult Function(List<DepartmentUser> users) departmentUser,
     required TResult Function(String error) failed,
   }) {
     return success(message);
@@ -1173,7 +1194,7 @@ class _$successImpl implements _success {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
-    TResult? Function(List<Department> departments)? departmentList,
+    TResult? Function(List<DepartmentUser> users)? departmentUser,
     TResult? Function(String error)? failed,
   }) {
     return success?.call(message);
@@ -1185,7 +1206,7 @@ class _$successImpl implements _success {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
-    TResult Function(List<Department> departments)? departmentList,
+    TResult Function(List<DepartmentUser> users)? departmentUser,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -1201,7 +1222,7 @@ class _$successImpl implements _success {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
-    required TResult Function(_departmentList value) departmentList,
+    required TResult Function(_departmentUser value) departmentUser,
     required TResult Function(_failed value) failed,
   }) {
     return success(this);
@@ -1213,7 +1234,7 @@ class _$successImpl implements _success {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
-    TResult? Function(_departmentList value)? departmentList,
+    TResult? Function(_departmentUser value)? departmentUser,
     TResult? Function(_failed value)? failed,
   }) {
     return success?.call(this);
@@ -1225,7 +1246,7 @@ class _$successImpl implements _success {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
-    TResult Function(_departmentList value)? departmentList,
+    TResult Function(_departmentUser value)? departmentUser,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
   }) {
@@ -1236,7 +1257,7 @@ class _$successImpl implements _success {
   }
 }
 
-abstract class _success implements DepartmentState {
+abstract class _success implements DepartmentUserState {
   const factory _success(final String message) = _$successImpl;
 
   String get message;
@@ -1246,73 +1267,71 @@ abstract class _success implements DepartmentState {
 }
 
 /// @nodoc
-abstract class _$$departmentListImplCopyWith<$Res> {
-  factory _$$departmentListImplCopyWith(_$departmentListImpl value,
-          $Res Function(_$departmentListImpl) then) =
-      __$$departmentListImplCopyWithImpl<$Res>;
+abstract class _$$departmentUserImplCopyWith<$Res> {
+  factory _$$departmentUserImplCopyWith(_$departmentUserImpl value,
+          $Res Function(_$departmentUserImpl) then) =
+      __$$departmentUserImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Department> departments});
+  $Res call({List<DepartmentUser> users});
 }
 
 /// @nodoc
-class __$$departmentListImplCopyWithImpl<$Res>
-    extends _$DepartmentStateCopyWithImpl<$Res, _$departmentListImpl>
-    implements _$$departmentListImplCopyWith<$Res> {
-  __$$departmentListImplCopyWithImpl(
-      _$departmentListImpl _value, $Res Function(_$departmentListImpl) _then)
+class __$$departmentUserImplCopyWithImpl<$Res>
+    extends _$DepartmentUserStateCopyWithImpl<$Res, _$departmentUserImpl>
+    implements _$$departmentUserImplCopyWith<$Res> {
+  __$$departmentUserImplCopyWithImpl(
+      _$departmentUserImpl _value, $Res Function(_$departmentUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? departments = null,
+    Object? users = null,
   }) {
-    return _then(_$departmentListImpl(
-      null == departments
-          ? _value._departments
-          : departments // ignore: cast_nullable_to_non_nullable
-              as List<Department>,
+    return _then(_$departmentUserImpl(
+      null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<DepartmentUser>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$departmentListImpl implements _departmentList {
-  const _$departmentListImpl(final List<Department> departments)
-      : _departments = departments;
+class _$departmentUserImpl implements _departmentUser {
+  const _$departmentUserImpl(final List<DepartmentUser> users) : _users = users;
 
-  final List<Department> _departments;
+  final List<DepartmentUser> _users;
   @override
-  List<Department> get departments {
-    if (_departments is EqualUnmodifiableListView) return _departments;
+  List<DepartmentUser> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_departments);
+    return EqualUnmodifiableListView(_users);
   }
 
   @override
   String toString() {
-    return 'DepartmentState.departmentList(departments: $departments)';
+    return 'DepartmentUserState.departmentUser(users: $users)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$departmentListImpl &&
-            const DeepCollectionEquality()
-                .equals(other._departments, _departments));
+            other is _$departmentUserImpl &&
+            const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_departments));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$departmentListImplCopyWith<_$departmentListImpl> get copyWith =>
-      __$$departmentListImplCopyWithImpl<_$departmentListImpl>(
+  _$$departmentUserImplCopyWith<_$departmentUserImpl> get copyWith =>
+      __$$departmentUserImplCopyWithImpl<_$departmentUserImpl>(
           this, _$identity);
 
   @override
@@ -1321,10 +1340,10 @@ class _$departmentListImpl implements _departmentList {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
-    required TResult Function(List<Department> departments) departmentList,
+    required TResult Function(List<DepartmentUser> users) departmentUser,
     required TResult Function(String error) failed,
   }) {
-    return departmentList(departments);
+    return departmentUser(users);
   }
 
   @override
@@ -1333,10 +1352,10 @@ class _$departmentListImpl implements _departmentList {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
-    TResult? Function(List<Department> departments)? departmentList,
+    TResult? Function(List<DepartmentUser> users)? departmentUser,
     TResult? Function(String error)? failed,
   }) {
-    return departmentList?.call(departments);
+    return departmentUser?.call(users);
   }
 
   @override
@@ -1345,12 +1364,12 @@ class _$departmentListImpl implements _departmentList {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
-    TResult Function(List<Department> departments)? departmentList,
+    TResult Function(List<DepartmentUser> users)? departmentUser,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
-    if (departmentList != null) {
-      return departmentList(departments);
+    if (departmentUser != null) {
+      return departmentUser(users);
     }
     return orElse();
   }
@@ -1361,10 +1380,10 @@ class _$departmentListImpl implements _departmentList {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
-    required TResult Function(_departmentList value) departmentList,
+    required TResult Function(_departmentUser value) departmentUser,
     required TResult Function(_failed value) failed,
   }) {
-    return departmentList(this);
+    return departmentUser(this);
   }
 
   @override
@@ -1373,10 +1392,10 @@ class _$departmentListImpl implements _departmentList {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
-    TResult? Function(_departmentList value)? departmentList,
+    TResult? Function(_departmentUser value)? departmentUser,
     TResult? Function(_failed value)? failed,
   }) {
-    return departmentList?.call(this);
+    return departmentUser?.call(this);
   }
 
   @override
@@ -1385,24 +1404,24 @@ class _$departmentListImpl implements _departmentList {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
-    TResult Function(_departmentList value)? departmentList,
+    TResult Function(_departmentUser value)? departmentUser,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
   }) {
-    if (departmentList != null) {
-      return departmentList(this);
+    if (departmentUser != null) {
+      return departmentUser(this);
     }
     return orElse();
   }
 }
 
-abstract class _departmentList implements DepartmentState {
-  const factory _departmentList(final List<Department> departments) =
-      _$departmentListImpl;
+abstract class _departmentUser implements DepartmentUserState {
+  const factory _departmentUser(final List<DepartmentUser> users) =
+      _$departmentUserImpl;
 
-  List<Department> get departments;
+  List<DepartmentUser> get users;
   @JsonKey(ignore: true)
-  _$$departmentListImplCopyWith<_$departmentListImpl> get copyWith =>
+  _$$departmentUserImplCopyWith<_$departmentUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1417,7 +1436,7 @@ abstract class _$$failedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$failedImplCopyWithImpl<$Res>
-    extends _$DepartmentStateCopyWithImpl<$Res, _$failedImpl>
+    extends _$DepartmentUserStateCopyWithImpl<$Res, _$failedImpl>
     implements _$$failedImplCopyWith<$Res> {
   __$$failedImplCopyWithImpl(
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
@@ -1447,7 +1466,7 @@ class _$failedImpl implements _failed {
 
   @override
   String toString() {
-    return 'DepartmentState.failed(error: $error)';
+    return 'DepartmentUserState.failed(error: $error)';
   }
 
   @override
@@ -1473,7 +1492,7 @@ class _$failedImpl implements _failed {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
-    required TResult Function(List<Department> departments) departmentList,
+    required TResult Function(List<DepartmentUser> users) departmentUser,
     required TResult Function(String error) failed,
   }) {
     return failed(error);
@@ -1485,7 +1504,7 @@ class _$failedImpl implements _failed {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
-    TResult? Function(List<Department> departments)? departmentList,
+    TResult? Function(List<DepartmentUser> users)? departmentUser,
     TResult? Function(String error)? failed,
   }) {
     return failed?.call(error);
@@ -1497,7 +1516,7 @@ class _$failedImpl implements _failed {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
-    TResult Function(List<Department> departments)? departmentList,
+    TResult Function(List<DepartmentUser> users)? departmentUser,
     TResult Function(String error)? failed,
     required TResult orElse(),
   }) {
@@ -1513,7 +1532,7 @@ class _$failedImpl implements _failed {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
-    required TResult Function(_departmentList value) departmentList,
+    required TResult Function(_departmentUser value) departmentUser,
     required TResult Function(_failed value) failed,
   }) {
     return failed(this);
@@ -1525,7 +1544,7 @@ class _$failedImpl implements _failed {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
-    TResult? Function(_departmentList value)? departmentList,
+    TResult? Function(_departmentUser value)? departmentUser,
     TResult? Function(_failed value)? failed,
   }) {
     return failed?.call(this);
@@ -1537,7 +1556,7 @@ class _$failedImpl implements _failed {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
-    TResult Function(_departmentList value)? departmentList,
+    TResult Function(_departmentUser value)? departmentUser,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
   }) {
@@ -1548,7 +1567,7 @@ class _$failedImpl implements _failed {
   }
 }
 
-abstract class _failed implements DepartmentState {
+abstract class _failed implements DepartmentUserState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;

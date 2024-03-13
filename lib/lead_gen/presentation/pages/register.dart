@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
 import '../../constants/constant.dart';
 import '../../domain/auth/user.dart';
@@ -174,6 +175,7 @@ class _RegisterState extends State<Register> {
                                 ),
                                 SizedBox(height: MediaQuery.of(context).size.height*0.3),
                                 CustomButton(name: 'Register', onTap: () {
+                                  //TODO : REMIND TO CHANGE
                                   if(_formKey.currentState!.validate()){
                                       context.read<AuthBloc>().add(
                                         AuthEvent.registerUser(

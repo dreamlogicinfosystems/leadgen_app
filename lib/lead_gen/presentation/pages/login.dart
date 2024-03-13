@@ -58,13 +58,13 @@ class _LoginState extends State<Login> {
                 );
               },
               child: Form(
-              key: _formKey,
-                child: Column(
-                  children: [
-                  const SizedBox(height: 190,),
-                  const Text("Welcome Back!",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25),),
-                  const SizedBox(height: 40,),
-                  CustomTextField(
+               key: _formKey,
+                 child: Column(
+                   children: [
+                   const SizedBox(height: 190,),
+                   const Text("Welcome Back!",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25),),
+                   const SizedBox(height: 40,),
+                   CustomTextField(
                       isLogin: true,
                       icon: Icons.mail,
                       controller: _emailController,
@@ -82,8 +82,8 @@ class _LoginState extends State<Login> {
                         }
                       },
                   ),
-                  const SizedBox(height: 30,),
-                  CustomTextField(
+                   const SizedBox(height: 30,),
+                   CustomTextField(
                       isLogin: true,
                       icon: Icons.lock,
                       controller: _passwordController,
@@ -103,8 +103,8 @@ class _LoginState extends State<Login> {
                         }
                       },
                   ),
-                  const SizedBox(height: 40,),
-                  CustomButton(
+                   const SizedBox(height: 40,),
+                   CustomButton(
                       name: 'Login',
                       onTap: (){
                         if(_formKey.currentState!.validate()){

@@ -666,28 +666,34 @@ class _ProfileBodyState extends State<ProfileBody> {
                             CustomButton(
                                 name: 'Next',
                                 onTap: (){
-                                  if(_formKey.currentState!.validate()){
-                                    context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
-                                        User(
-                                          name: _nameController.text,
-                                          email: _emailController.text,
-                                          phoneNumber: _phoneController.text,
-                                          businessName: _businessNameControll.text,
-                                          address: _addressController.text,
-                                          state: _stateController.text,
-                                          country: _countryController.text,
-                                          pincode: _pincodeController.text,
-                                          website: _companyWebsiteControll.text,
-                                          registeredAddress: _registeredAddressContr.text,
-                                          facebook: _facebook.text,
-                                          instagram: _instagram.text,
-                                          twitter: _twitter.text,
-                                          linkedIn: _linkedin.text,
-                                          google: _google.text,
-                                        ),
-                                        context)
-                                    );
-                                  }
+                                  //TODO : REMIND TO CHANGE
+                                  Navigator.pushAndRemoveUntil(context,
+                                      MaterialPageRoute(builder: (context) =>  BlocProvider(
+                                        create: (context) => sl<DepartmentBloc>(),
+                                        child: const AddDepartment(),
+                                      )), (route) => false);
+                                  // if(_formKey.currentState!.validate()){
+                                  //   context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
+                                  //       User(
+                                  //         name: _nameController.text,
+                                  //         email: _emailController.text,
+                                  //         phoneNumber: _phoneController.text,
+                                  //         businessName: _businessNameControll.text,
+                                  //         address: _addressController.text,
+                                  //         state: _stateController.text,
+                                  //         country: _countryController.text,
+                                  //         pincode: _pincodeController.text,
+                                  //         website: _companyWebsiteControll.text,
+                                  //         registeredAddress: _registeredAddressContr.text,
+                                  //         facebook: _facebook.text,
+                                  //         instagram: _instagram.text,
+                                  //         twitter: _twitter.text,
+                                  //         linkedIn: _linkedin.text,
+                                  //         google: _google.text,
+                                  //       ),
+                                  //       context)
+                                  //   );
+                                  // }
                                 }
                             )
                           ],
