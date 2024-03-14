@@ -25,6 +25,7 @@ mixin _$LeadDto {
   String? get phone => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
   List<int>? get departmentIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $LeadDtoCopyWith<$Res> {
       String? phone,
       String? email,
       String? message,
+      String? createdAt,
       List<int>? departmentIds});
 }
 
@@ -64,6 +66,7 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
     Object? phone = freezed,
     Object? email = freezed,
     Object? message = freezed,
+    Object? createdAt = freezed,
     Object? departmentIds = freezed,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +90,10 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
       departmentIds: freezed == departmentIds
           ? _value.departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
@@ -108,6 +115,7 @@ abstract class _$$LeadDtoImplCopyWith<$Res> implements $LeadDtoCopyWith<$Res> {
       String? phone,
       String? email,
       String? message,
+      String? createdAt,
       List<int>? departmentIds});
 }
 
@@ -127,6 +135,7 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? email = freezed,
     Object? message = freezed,
+    Object? createdAt = freezed,
     Object? departmentIds = freezed,
   }) {
     return _then(_$LeadDtoImpl(
@@ -150,6 +159,10 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
       departmentIds: freezed == departmentIds
           ? _value._departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
@@ -167,6 +180,7 @@ class _$LeadDtoImpl extends _LeadDto {
       this.phone,
       this.email,
       this.message,
+      this.createdAt,
       final List<int>? departmentIds})
       : _departmentIds = departmentIds,
         super._();
@@ -184,6 +198,8 @@ class _$LeadDtoImpl extends _LeadDto {
   final String? email;
   @override
   final String? message;
+  @override
+  final String? createdAt;
   final List<int>? _departmentIds;
   @override
   List<int>? get departmentIds {
@@ -196,7 +212,7 @@ class _$LeadDtoImpl extends _LeadDto {
 
   @override
   String toString() {
-    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, message: $message, departmentIds: $departmentIds)';
+    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, message: $message, createdAt: $createdAt, departmentIds: $departmentIds)';
   }
 
   @override
@@ -209,6 +225,8 @@ class _$LeadDtoImpl extends _LeadDto {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             const DeepCollectionEquality()
                 .equals(other._departmentIds, _departmentIds));
   }
@@ -216,7 +234,7 @@ class _$LeadDtoImpl extends _LeadDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, phone, email, message,
-      const DeepCollectionEquality().hash(_departmentIds));
+      createdAt, const DeepCollectionEquality().hash(_departmentIds));
 
   @JsonKey(ignore: true)
   @override
@@ -239,6 +257,7 @@ abstract class _LeadDto extends LeadDto {
       final String? phone,
       final String? email,
       final String? message,
+      final String? createdAt,
       final List<int>? departmentIds}) = _$LeadDtoImpl;
   const _LeadDto._() : super._();
 
@@ -254,6 +273,8 @@ abstract class _LeadDto extends LeadDto {
   String? get email;
   @override
   String? get message;
+  @override
+  String? get createdAt;
   @override
   List<int>? get departmentIds;
   @override

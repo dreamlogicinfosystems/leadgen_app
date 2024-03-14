@@ -10,6 +10,7 @@ class Lead with _$Lead{
     String? phone,
     String? email,
     String? message,
+    String? createdAt,
     List<int>? departmentIds
   }) = _Lead;
 }

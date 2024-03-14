@@ -85,6 +85,7 @@ class LeadDataSource{
             name: result['leads'][i]['name'],
             phone: result['leads'][i]['phone'],
             email: result['leads'][i]['email'],
+            createdAt: result['leads'][i]['created_at'],
           );
 
           leadsList.add(leadDto);

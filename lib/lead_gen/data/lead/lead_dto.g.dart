@@ -13,6 +13,7 @@ _$LeadDtoImpl _$$LeadDtoImplFromJson(Map<String, dynamic> json) =>
       phone: json['phone'] as String?,
       email: json['email'] as String?,
       message: json['message'] as String?,
+      createdAt: json['createdAt'] as String?,
       departmentIds: (json['departmentIds'] as List<dynamic>?)
           ?.map((e) => e as int)
           .toList(),
@@ -25,5 +26,6 @@ Map<String, dynamic> _$$LeadDtoImplToJson(_$LeadDtoImpl instance) =>
       'phone': instance.phone,
       'email': instance.email,
       'message': instance.message,
+      'createdAt': instance.createdAt,
       'departmentIds': instance.departmentIds,
     };
