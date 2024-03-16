@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:lead_gen/lead_gen/domain/reminder/reminder_repository.dart';
 
+import '../../domain/reminder/reminder.dart';
+
 part 'reminder_event.dart';
 part 'reminder_state.dart';
 part 'reminder_bloc.freezed.dart';
@@ -16,15 +18,59 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   }
 
   Future<void> mapEventToState(ReminderEvent event,Emitter<ReminderState>emit) async{
-    emit(const ReminderState.loadingInProgress());
+    await event.map(
+        addReminder: (e) async{
+          emit(const ReminderState.loadingInProgress());
 
-    final result = await _reminderRepository.setRemainder(event.message, event.reminderDate, pickedTime!);
+          final tryAddReminder = await _reminderRepository.addReminder(
+              Reminder(
+                message: e.reminder.message,
+                date: e.reminder.date,
+                time: e.reminder.time
+              ),
+              e.context
+          );
 
-    result.fold((error){
-      emit(const ReminderState.failed());
-    },(success){
-      emit(ReminderState.saved(success));
-    });
+          tryAddReminder.fold((error){
+            emit(ReminderState.failed(error.message));
+          },(success){
+            emit(ReminderState.saved(success.successMessage));
+          });
+        },
+        getReminders: (e) async{
+          emit(const ReminderState.loadingInProgress());
+
+          final tryGetReminders = await _reminderRepository.getReminders(e.context);
+
+          tryGetReminders.fold((error){
+            emit(ReminderState.failed(error.message));
+          },(remindersList){
+            emit(ReminderState.successRemindersList(remindersList));
+          });
+        },
+        deleteReminder: (e) async{
+          emit(const ReminderState.loadingInProgress());
+
+          final tryDeleteReminder = await _reminderRepository.deleteReminder(e.reminderId, e.context);
+
+          tryDeleteReminder.fold((error){
+            emit(ReminderState.failed(error.message));
+          },(success){
+            emit(ReminderState.saved(success.successMessage));
+          });
+        },
+        setRemainder: (e) async{
+          emit(const ReminderState.loadingInProgress());
+
+          final result = await _reminderRepository.setRemainder(e.message, e.reminderDate, pickedTime!);
+
+          result.fold((error){
+            emit(ReminderState.failed(error));
+          },(success){
+            emit(ReminderState.saved(success));
+          });
+        }
+    );
   }
 
   static Future<DateTime?> selectReminderDate(BuildContext context) async{

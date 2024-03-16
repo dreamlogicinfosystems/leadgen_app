@@ -4,6 +4,7 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
+import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
 import 'package:lead_gen/lead_gen/data/auth/user_dto.dart';
 
 import '../../constants/api.dart';
@@ -12,7 +13,8 @@ import '../../constants/shared_preference.dart';
 class AuthApiDataSource{
   final ApiMethods _apiMethods;
   final LocalDataSource _localDataSource;
-  AuthApiDataSource(this._apiMethods, this._localDataSource);
+  final UserDBHelper _userDBHelper;
+  AuthApiDataSource(this._apiMethods, this._localDataSource, this._userDBHelper);
 
   String emailAddress = '';
   String saveOtp = '';
@@ -48,7 +50,8 @@ class AuthApiDataSource{
     }
   }
 
-  Future<Either<ErrorMessage,Success>> login(String email,String password,BuildContext context) async{
+  Future<Either<ErrorMessage,Success>> login(String email,String password,String fcmToken,String device,
+      BuildContext context) async{
     Map<String,dynamic> map = {};
 
     map['email'] = email;
@@ -64,6 +67,13 @@ class AuthApiDataSource{
 
     if(result['status'] == true){
       await _localDataSource.setToken(result['user']['token']);
+
+      await _userDBHelper.saveUserData(result['user']);
+
+      if(context.mounted){
+        await updateFcmToken(result['user']['id'],fcmToken, device, context);
+      }
+
       return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));
@@ -79,6 +89,7 @@ class AuthApiDataSource{
     final result = jsonDecode(response!.body);
 
     if(result['status'] == true){
+      await _userDBHelper.deleteUser();
       return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));
@@ -152,6 +163,52 @@ class AuthApiDataSource{
       return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));
+    }
+  }
+
+  Future<Either<ErrorMessage,Success>> updateFcmToken(int id,String fcmToken,String device,BuildContext context) async{
+    Map<String, dynamic> map = {};
+
+    map['id'] = id.toString();
+    map['fcm_token'] = fcmToken;
+    map['device'] = device;
+
+    final response = await _apiMethods.post(
+        url: 'update_fcm_token',
+        data: map,
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
+    if(result['status'] == true){
+      return Right(Success(result['message']));
+    }else{
+      return Left(ErrorMessage(result['message']));
+    }
+  }
+
+  Future<Either<ErrorMessage,Success>>deleteAccountRequest(int id,BuildContext context) async{
+    try{
+      Map<String,dynamic> map = {};
+
+      map['id'] = id.toString();
+
+      final response = await _apiMethods.post(
+          url: 'delete_account_request',
+          data: map,
+          context: context
+      );
+
+      final result = jsonDecode(response!.body);
+
+      if(result['status'] == true){
+        return Right(Success(result['message']));
+      }else{
+        return Left(ErrorMessage(result['message']));
+      }
+    }catch(e){
+      return Left(ErrorMessage(e.toString()));
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
@@ -21,6 +22,12 @@ class _LoginState extends State<Login> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    AuthBloc.getFcmTokenAndDevice();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -106,7 +113,7 @@ class _LoginState extends State<Login> {
                    const SizedBox(height: 40,),
                    CustomButton(
                       name: 'Login',
-                      onTap: (){
+                      onTap: () async{
                         if(_formKey.currentState!.validate()){
                           context.read<AuthBloc>().add(AuthEvent.tryLogin(
                               _emailController.text,

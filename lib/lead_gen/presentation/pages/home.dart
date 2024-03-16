@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import '../../../injections.dart';
@@ -30,9 +31,9 @@ class _HomeState extends State<Home> {
             ),
             child: const Icon(Icons.add, size: 28,),
             onPressed: () {
-              if(DepartmentBloc.getDepartmentCount()==0){
+              if (DepartmentBloc.getDepartmentCount() == 0) {
                 simpleDialog(context);
-              }else{
+              } else {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const AddLead()));
               }
@@ -63,7 +64,10 @@ class _HomeState extends State<Home> {
                 child: const DepartmentsContainer(),
               ),
               const SizedBox(height: 10,),
-              const HomePageBody(),
+              BlocProvider(
+                create: (context) => sl<LeadBloc>(),
+                child: const HomePageBody(),
+              ),
             ],
           ),
         ),

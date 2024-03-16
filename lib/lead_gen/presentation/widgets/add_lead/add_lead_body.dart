@@ -1,4 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
 import '../../core/custom_button.dart';
 import '../../core/custom_textfield.dart';
@@ -20,6 +25,15 @@ class _AddLeadBodyState extends State<AddLeadBody> {
   bool isApp = false;
   bool isWeb = false;
   bool isMarketing = false;
+  List<int> deptIdList = [];
+  List<bool> isSelected = List.filled(10, false);
+  List<String> dept = ['APP','WEB','MARKETING'];
+
+  @override
+  void initState() {
+    context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -106,55 +120,130 @@ class _AddLeadBodyState extends State<AddLeadBody> {
                 padding: EdgeInsets.only(left: 5),
                 child: Text("Departments",style: TextStyle(fontWeight: FontWeight.w600,fontSize: 16),),
               ),
-              Row(
-                children: [
-                  Checkbox(
-                      value: isApp,
-                      onChanged: (value){
-                        setState(() {
-                          isApp = value!;
-                        });
+              BlocBuilder<DepartmentBloc, DepartmentState>(
+                builder: (context, state) {
+                    return state.maybeWhen(
+                      departmentList: (departmentsList){
+                        return ListView.builder(
+                            itemCount: departmentsList.length,
+                            shrinkWrap: true,
+                            itemBuilder: (context,index){
+                              return Row(
+                                children: [
+                                  Checkbox(
+                                      value: isSelected[index],
+                                      onChanged: (value){
+                                        setState(() {
+                                          isSelected[index] = value!;
+                                        });
+                                        if(isSelected[index]==true){
+                                          deptIdList.add(departmentsList[index].id!);
+                                        }else{
+                                          deptIdList.removeAt(index);
+                                        }
+
+                                        if (kDebugMode) {
+                                          print(deptIdList);
+                                          print(isSelected);
+                                        }
+
+                                      }
+                                  ),
+                                  Text(departmentsList[index].departmentName!,style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+                                ],
+                              );
+                            }
+                        );
+                      },
+                      orElse: (){
+                        return const SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
                       }
-                  ),
-                  const Text("App",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
-                ],
+                    );
+                },
               ),
-              Row(
-                children: [
-                  Checkbox(
-                      value: isWeb,
-                      onChanged: (value){
-                        setState(() {
-                          isWeb = value!;
-                        });
-                      }
-                  ),
-                  const Text("Web",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
-                ],
-              ),
-              Row(
-                children: [
-                  Checkbox(
-                      value: isMarketing,
-                      onChanged: (value){
-                        setState(() {
-                          isMarketing = value!;
-                        });
-                      }
-                  ),
-                  const Text("Marketing",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
-                ],
-              ),
-              const SizedBox(height: 20,),
+              // ListView.builder(
+              //     itemCount: dept.length,
+              //     shrinkWrap: true,
+              //     itemBuilder: (context,index){
+              //
+              //       return Row(
+              //         children: [
+              //           Checkbox(
+              //               value: isSelected[index],
+              //               onChanged: (value){
+              //                 setState(() {
+              //                   isSelected[index] = value!;
+              //                 });
+              //               }
+              //           ),
+              //           Text(dept[index],style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+              //         ],
+              //       );
+              //     }
+              // ),
+              // Row(
+              //   children: [
+              //     Checkbox(
+              //         value: isApp,
+              //         onChanged: (value){
+              //           setState(() {
+              //             isApp = value!;
+              //           });
+              //         }
+              //     ),
+              //     const Text("App",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+              //   ],
+              // ),
+              // Row(
+              //   children: [
+              //     Checkbox(
+              //         value: isWeb,
+              //         onChanged: (value){
+              //           setState(() {
+              //             isWeb = value!;
+              //           });
+              //         }
+              //     ),
+              //     const Text("Web",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+              //   ],
+              // ),
+              // Row(
+              //   children: [
+              //     Checkbox(
+              //         value: isMarketing,
+              //         onChanged: (value){
+              //           setState(() {
+              //             isMarketing = value!;
+              //           });
+              //         }
+              //     ),
+              //     const Text("Marketing",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),)
+              //   ],
+              // ),
+              const SizedBox(height: 60,),
               CustomButton(name: 'Add',onTap: (){
                 if(_formKey.currentState!.validate()){
-                  debugPrint("$isApp    $isWeb   $isMarketing");
-                  if(isApp==false && isWeb==false && isMarketing==false){
+                  if(deptIdList.isEmpty){
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Select atleast one department!")),
                     );
                   }else{
-                    Navigator.pop(context);
+                    context.read<LeadBloc>().add(LeadEvent.addLead(
+                      Lead(
+                        name: _nameController.text.trim(),
+                        phone: _phoneController.text,
+                        email: _emailController.text.trim(),
+                        message: _messageController.text,
+                        departmentIds: deptIdList
+                      ),
+                      context)
+                    );
                   }
                 }else{
                   debugPrint("not validate");

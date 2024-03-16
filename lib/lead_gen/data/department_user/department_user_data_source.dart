@@ -36,7 +36,7 @@ class DepartmentUserDataSource{
       return Left(ErrorMessage(result['message']));
     }
   }
-  //TODO : REMAINING
+
   Future<Either<ErrorMessage,Success>> deleteDeptUser(int userId,BuildContext context) async{
     try{
       Map<String,dynamic> map = {};

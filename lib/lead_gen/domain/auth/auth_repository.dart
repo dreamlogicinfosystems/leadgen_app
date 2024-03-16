@@ -5,7 +5,7 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/domain/auth/user.dart';
 
 abstract class AuthRepository{
-  Future<Either<ErrorMessage,Success>> tryLogin(String email,String password,BuildContext context);
+  Future<Either<ErrorMessage,Success>> tryLogin(String email,String password,String fcmToken,String device, BuildContext context);
 
   Future<Either<ErrorMessage,Success>> registerUser(User user,BuildContext context);
 
@@ -16,4 +16,6 @@ abstract class AuthRepository{
   Future<Either<ErrorMessage,Success>> verifyOTP(String otp,BuildContext context);
 
   Future<Either<ErrorMessage,Success>> forgotPassword(String password,BuildContext context);
+
+  Future<Either<ErrorMessage,Success>> deleteAccountRequest(int id,BuildContext context);
 }

@@ -30,11 +30,12 @@ class AuthRepositoryImpl extends AuthRepository{
   }
 
   @override
-  Future<Either<ErrorMessage, Success>> tryLogin(String email,String password,BuildContext context) async{
+  Future<Either<ErrorMessage, Success>> tryLogin(String email,String password, String fcmToken,String device
+      ,BuildContext context) async{
     if(email.isEmpty || password.isEmpty){
       return Left(ErrorMessage('Something went wrong!'));
     }else{
-      final tryLogin = await _apiDataSource.login(email, password,context);
+      final tryLogin = await _apiDataSource.login(email, password,fcmToken,device,context);
 
       return tryLogin.fold((error){
         return Left(error);
@@ -86,5 +87,20 @@ class AuthRepositoryImpl extends AuthRepository{
     },(success){
       return Right(success);
     });
+  }
+
+  @override
+  Future<Either<ErrorMessage, Success>> deleteAccountRequest(int id, BuildContext context) async{
+    if(id.toString().isEmpty){
+      return Left(ErrorMessage('Something went wrong!'));
+    }else{
+      final tryDeleteAcc = await _apiDataSource.deleteAccountRequest(id, context);
+
+      return tryDeleteAcc.fold((error){
+        return Left(error);
+      },(success){
+        return Right(success);
+      });
+    }
   }
 }

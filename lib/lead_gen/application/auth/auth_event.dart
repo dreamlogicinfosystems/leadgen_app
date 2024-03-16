@@ -13,4 +13,6 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.verifyOtp(String otp,BuildContext context) = _verifyOtp;
 
   const factory AuthEvent.resetPassword(String password,BuildContext context) = _resetPassword;
+
+  const factory AuthEvent.deleteAccount(int id,BuildContext context) = _deleteAccount;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 
@@ -123,4 +124,12 @@ simpleDialog(BuildContext context){
         );
       }
   );
+}
+
+simplifyDate(String date){
+  DateTime dateTime = DateTime.parse(date);
+
+  final formattedDate = DateFormat('dd-MM-yyyy').format(dateTime);
+
+  return formattedDate;
 }

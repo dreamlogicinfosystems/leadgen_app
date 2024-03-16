@@ -12,6 +12,7 @@ part 'lead_bloc.freezed.dart';
 
 class LeadBloc extends Bloc<LeadEvent, LeadState> {
   final LeadRepository _leadRepository;
+  static List<String> departmentIds = [];
   LeadBloc(this._leadRepository) : super(const LeadState.initial()) {
     on<LeadEvent>(mapEventToState);
   }

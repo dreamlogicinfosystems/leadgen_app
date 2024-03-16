@@ -46,7 +46,6 @@ class ProfileDataSource{
     }
   }
 
-  //TODO : INCOMPLETE
   Future<Either<ErrorMessage,UserDto>> getUserDetails(BuildContext context) async{
 
     final response = await _apiMethod.get(

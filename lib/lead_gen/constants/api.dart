@@ -21,10 +21,12 @@ class ApiMethods{
     || connectivityResult == ConnectivityResult.wifi) {
       
       final token = await _localDataSource.getToken();
-      if(_jwtHelper.isTokenExpired(token!, 0)){
-        final newToken = await refreshToken();
+      if(token!=null){
+        if(_jwtHelper.isTokenExpired(token, 0)){
+          final newToken = await refreshToken();
 
-        await _localDataSource.setToken(newToken);
+          await _localDataSource.setToken(newToken);
+        }
       }
       
       final String fullUrl = _ip + url;

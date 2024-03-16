@@ -46,7 +46,7 @@ class _DepartmentsContainerState extends State<DepartmentsContainer> {
                 itemCount: departmentsList.length,
                 itemBuilder: (context,index){
                   return Padding(
-                    padding: const EdgeInsets.only(left: 17,top: 25,bottom: 25),
+                    padding: const EdgeInsets.only(left: 17,top: 28,bottom: 28),
                     child: GestureDetector(
                       onTap: (){
                         setState(() {

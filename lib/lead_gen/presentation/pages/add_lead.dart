@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
+import '../../../injections.dart';
+import '../../application/lead/lead_bloc.dart';
 import '../widgets/add_lead/add_lead_body.dart';
 
 class AddLead extends StatefulWidget {
@@ -13,9 +17,9 @@ class _AddLeadState extends State<AddLead> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xffEFEFF0),
-      appBar: PreferredSize(
+    return Scaffold(
+      backgroundColor: const Color(0xffEFEFF0),
+      appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight*1),
           child: CustomAppBar(
               title: 'Add Lead',
@@ -24,7 +28,17 @@ class _AddLeadState extends State<AddLead> {
               iconColor: Colors.black
           )
       ),
-      body: AddLeadBody(),
+      body: MultiBlocProvider(
+          providers: [
+            BlocProvider (
+              create: (BuildContext context) => sl<DepartmentBloc>(),
+            ),
+            BlocProvider (
+              create: (BuildContext context) => sl<LeadBloc>(),
+            )
+          ],
+          child: const AddLeadBody(),
+      ),
     );
   }
 }

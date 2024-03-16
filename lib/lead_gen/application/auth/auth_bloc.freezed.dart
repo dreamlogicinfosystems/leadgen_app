@@ -28,6 +28,7 @@ mixin _$AuthEvent {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +40,7 @@ mixin _$AuthEvent {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$AuthEvent {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +64,7 @@ mixin _$AuthEvent {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +75,7 @@ mixin _$AuthEvent {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$AuthEvent {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -214,6 +220,7 @@ class _$tryLoginImpl implements _tryLogin {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) {
     return tryLogin(email, password, context);
   }
@@ -228,6 +235,7 @@ class _$tryLoginImpl implements _tryLogin {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) {
     return tryLogin?.call(email, password, context);
   }
@@ -242,6 +250,7 @@ class _$tryLoginImpl implements _tryLogin {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) {
     if (tryLogin != null) {
@@ -259,6 +268,7 @@ class _$tryLoginImpl implements _tryLogin {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) {
     return tryLogin(this);
   }
@@ -272,6 +282,7 @@ class _$tryLoginImpl implements _tryLogin {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) {
     return tryLogin?.call(this);
   }
@@ -285,6 +296,7 @@ class _$tryLoginImpl implements _tryLogin {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (tryLogin != null) {
@@ -401,6 +413,7 @@ class _$registerUserImpl implements _registerUser {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) {
     return registerUser(user, context);
   }
@@ -415,6 +428,7 @@ class _$registerUserImpl implements _registerUser {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) {
     return registerUser?.call(user, context);
   }
@@ -429,6 +443,7 @@ class _$registerUserImpl implements _registerUser {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -446,6 +461,7 @@ class _$registerUserImpl implements _registerUser {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) {
     return registerUser(this);
   }
@@ -459,6 +475,7 @@ class _$registerUserImpl implements _registerUser {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) {
     return registerUser?.call(this);
   }
@@ -472,6 +489,7 @@ class _$registerUserImpl implements _registerUser {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -568,6 +586,7 @@ class _$logOutImpl implements _logOut {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) {
     return logOut(context);
   }
@@ -582,6 +601,7 @@ class _$logOutImpl implements _logOut {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) {
     return logOut?.call(context);
   }
@@ -596,6 +616,7 @@ class _$logOutImpl implements _logOut {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -613,6 +634,7 @@ class _$logOutImpl implements _logOut {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) {
     return logOut(this);
   }
@@ -626,6 +648,7 @@ class _$logOutImpl implements _logOut {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) {
     return logOut?.call(this);
   }
@@ -639,6 +662,7 @@ class _$logOutImpl implements _logOut {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -742,6 +766,7 @@ class _$verifyEmailImpl implements _verifyEmail {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) {
     return verifyEmail(email, context);
   }
@@ -756,6 +781,7 @@ class _$verifyEmailImpl implements _verifyEmail {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) {
     return verifyEmail?.call(email, context);
   }
@@ -770,6 +796,7 @@ class _$verifyEmailImpl implements _verifyEmail {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) {
     if (verifyEmail != null) {
@@ -787,6 +814,7 @@ class _$verifyEmailImpl implements _verifyEmail {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) {
     return verifyEmail(this);
   }
@@ -800,6 +828,7 @@ class _$verifyEmailImpl implements _verifyEmail {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) {
     return verifyEmail?.call(this);
   }
@@ -813,6 +842,7 @@ class _$verifyEmailImpl implements _verifyEmail {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (verifyEmail != null) {
@@ -918,6 +948,7 @@ class _$verifyOtpImpl implements _verifyOtp {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) {
     return verifyOtp(otp, context);
   }
@@ -932,6 +963,7 @@ class _$verifyOtpImpl implements _verifyOtp {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) {
     return verifyOtp?.call(otp, context);
   }
@@ -946,6 +978,7 @@ class _$verifyOtpImpl implements _verifyOtp {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -963,6 +996,7 @@ class _$verifyOtpImpl implements _verifyOtp {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) {
     return verifyOtp(this);
   }
@@ -976,6 +1010,7 @@ class _$verifyOtpImpl implements _verifyOtp {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) {
     return verifyOtp?.call(this);
   }
@@ -989,6 +1024,7 @@ class _$verifyOtpImpl implements _verifyOtp {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (verifyOtp != null) {
@@ -1095,6 +1131,7 @@ class _$resetPasswordImpl implements _resetPassword {
     required TResult Function(String otp, BuildContext context) verifyOtp,
     required TResult Function(String password, BuildContext context)
         resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
   }) {
     return resetPassword(password, context);
   }
@@ -1109,6 +1146,7 @@ class _$resetPasswordImpl implements _resetPassword {
     TResult? Function(String email, BuildContext context)? verifyEmail,
     TResult? Function(String otp, BuildContext context)? verifyOtp,
     TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
   }) {
     return resetPassword?.call(password, context);
   }
@@ -1123,6 +1161,7 @@ class _$resetPasswordImpl implements _resetPassword {
     TResult Function(String email, BuildContext context)? verifyEmail,
     TResult Function(String otp, BuildContext context)? verifyOtp,
     TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
     required TResult orElse(),
   }) {
     if (resetPassword != null) {
@@ -1140,6 +1179,7 @@ class _$resetPasswordImpl implements _resetPassword {
     required TResult Function(_verifyEmail value) verifyEmail,
     required TResult Function(_verifyOtp value) verifyOtp,
     required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
   }) {
     return resetPassword(this);
   }
@@ -1153,6 +1193,7 @@ class _$resetPasswordImpl implements _resetPassword {
     TResult? Function(_verifyEmail value)? verifyEmail,
     TResult? Function(_verifyOtp value)? verifyOtp,
     TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
   }) {
     return resetPassword?.call(this);
   }
@@ -1166,6 +1207,7 @@ class _$resetPasswordImpl implements _resetPassword {
     TResult Function(_verifyEmail value)? verifyEmail,
     TResult Function(_verifyOtp value)? verifyOtp,
     TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (resetPassword != null) {
@@ -1185,6 +1227,188 @@ abstract class _resetPassword implements AuthEvent {
   @override
   @JsonKey(ignore: true)
   _$$resetPasswordImplCopyWith<_$resetPasswordImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$deleteAccountImplCopyWith<$Res>
+    implements $AuthEventCopyWith<$Res> {
+  factory _$$deleteAccountImplCopyWith(
+          _$deleteAccountImpl value, $Res Function(_$deleteAccountImpl) then) =
+      __$$deleteAccountImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, BuildContext context});
+}
+
+/// @nodoc
+class __$$deleteAccountImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$deleteAccountImpl>
+    implements _$$deleteAccountImplCopyWith<$Res> {
+  __$$deleteAccountImplCopyWithImpl(
+      _$deleteAccountImpl _value, $Res Function(_$deleteAccountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$deleteAccountImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$deleteAccountImpl implements _deleteAccount {
+  const _$deleteAccountImpl(this.id, this.context);
+
+  @override
+  final int id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'AuthEvent.deleteAccount(id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$deleteAccountImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$deleteAccountImplCopyWith<_$deleteAccountImpl> get copyWith =>
+      __$$deleteAccountImplCopyWithImpl<_$deleteAccountImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String email, String password, BuildContext context)
+        tryLogin,
+    required TResult Function(User user, BuildContext context) registerUser,
+    required TResult Function(BuildContext context) logOut,
+    required TResult Function(String email, BuildContext context) verifyEmail,
+    required TResult Function(String otp, BuildContext context) verifyOtp,
+    required TResult Function(String password, BuildContext context)
+        resetPassword,
+    required TResult Function(int id, BuildContext context) deleteAccount,
+  }) {
+    return deleteAccount(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult? Function(User user, BuildContext context)? registerUser,
+    TResult? Function(BuildContext context)? logOut,
+    TResult? Function(String email, BuildContext context)? verifyEmail,
+    TResult? Function(String otp, BuildContext context)? verifyOtp,
+    TResult? Function(String password, BuildContext context)? resetPassword,
+    TResult? Function(int id, BuildContext context)? deleteAccount,
+  }) {
+    return deleteAccount?.call(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email, String password, BuildContext context)?
+        tryLogin,
+    TResult Function(User user, BuildContext context)? registerUser,
+    TResult Function(BuildContext context)? logOut,
+    TResult Function(String email, BuildContext context)? verifyEmail,
+    TResult Function(String otp, BuildContext context)? verifyOtp,
+    TResult Function(String password, BuildContext context)? resetPassword,
+    TResult Function(int id, BuildContext context)? deleteAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount(id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_tryLogin value) tryLogin,
+    required TResult Function(_registerUser value) registerUser,
+    required TResult Function(_logOut value) logOut,
+    required TResult Function(_verifyEmail value) verifyEmail,
+    required TResult Function(_verifyOtp value) verifyOtp,
+    required TResult Function(_resetPassword value) resetPassword,
+    required TResult Function(_deleteAccount value) deleteAccount,
+  }) {
+    return deleteAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_tryLogin value)? tryLogin,
+    TResult? Function(_registerUser value)? registerUser,
+    TResult? Function(_logOut value)? logOut,
+    TResult? Function(_verifyEmail value)? verifyEmail,
+    TResult? Function(_verifyOtp value)? verifyOtp,
+    TResult? Function(_resetPassword value)? resetPassword,
+    TResult? Function(_deleteAccount value)? deleteAccount,
+  }) {
+    return deleteAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_tryLogin value)? tryLogin,
+    TResult Function(_registerUser value)? registerUser,
+    TResult Function(_logOut value)? logOut,
+    TResult Function(_verifyEmail value)? verifyEmail,
+    TResult Function(_verifyOtp value)? verifyOtp,
+    TResult Function(_resetPassword value)? resetPassword,
+    TResult Function(_deleteAccount value)? deleteAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _deleteAccount implements AuthEvent {
+  const factory _deleteAccount(final int id, final BuildContext context) =
+      _$deleteAccountImpl;
+
+  int get id;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$deleteAccountImplCopyWith<_$deleteAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

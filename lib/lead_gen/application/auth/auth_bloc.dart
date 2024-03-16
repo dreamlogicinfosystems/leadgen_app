@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../data/auth/user_db.dart';
 import '../../domain/auth/auth_repository.dart';
 import '../../domain/auth/user.dart';
 
@@ -47,7 +48,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         tryLogin: (e) async{
           emit(const AuthState.loadingInProgress());
 
-          final tryLogin = await _authRepository.tryLogin(e.email,e.password,e.context);
+          final tryLogin = await _authRepository.tryLogin(e.email,e.password,fcmToken,device,e.context);
 
           tryLogin.fold((error){
             emit(AuthState.failed(error.message));
@@ -99,10 +100,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(AuthState.success(success.successMessage));
           });
         },
+        deleteAccount: (e) async{
+          emit(const AuthState.loadingInProgress());
+
+          final tryDeletingAcc = await _authRepository.deleteAccountRequest(e.id, e.context);
+
+          tryDeletingAcc.fold((error){
+            emit(AuthState.failed(error.message));
+          },(success){
+            emit(AuthState.success(success.successMessage));
+          });
+        },
     );
   }
 
   static Future<void>getFcmTokenAndDevice() async{
+    //TODO: REMIND TO UNCOMMENT
     // final firebaseToken = await _firebaseMessaging.getToken();
     // if(firebaseToken!=null){
     //   fcmToken = firebaseToken;
@@ -112,6 +125,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       device = 'android';
     }else if(Platform.isIOS){
       device = 'Ios';
+    }
+  }
+
+  static Future<int>checkIfUserExist() async{
+    UserDBHelper userDBHelper = UserDBHelper();
+
+    final data = await userDBHelper.getUserData();
+
+    if(data!.isEmpty){
+      return 0;
+    }else{
+      return data.length;
     }
   }
 }

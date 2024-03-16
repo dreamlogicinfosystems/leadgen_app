@@ -5,6 +5,7 @@ import 'package:lead_gen/lead_gen/application/department_user/department_user_bl
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/data/auth/auth_repo_impl.dart';
+import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
 import 'package:lead_gen/lead_gen/data/customer/customer_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/department/department_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/department_user/department_user_repo_impl.dart';
@@ -73,11 +74,11 @@ void serviceLocator() async{
 
   sl.registerLazySingleton<DepartmentUserDataSource>(() => DepartmentUserDataSource(sl()));
 
-  sl.registerLazySingleton<ReminderApiDataSource>(() => ReminderApiDataSource(sl()));
+  sl.registerLazySingleton<ReminderApiDataSource>(() => ReminderApiDataSource(sl(),sl()));
 
   sl.registerLazySingleton<LocalNotificationHandler>(() => LocalNotificationHandler());
 
-  sl.registerLazySingleton<AuthApiDataSource>(() => AuthApiDataSource(sl(),sl()));
+  sl.registerLazySingleton<AuthApiDataSource>(() => AuthApiDataSource(sl(),sl(),sl()));
 
   sl.registerLazySingleton<ProfileDataSource>(() => ProfileDataSource(sl()));
 
@@ -87,6 +88,8 @@ void serviceLocator() async{
   sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 
   sl.registerLazySingleton<LocalDataSource>(() => LocalDataSource(sl()));
+
+  sl.registerLazySingleton<UserDBHelper>(() => UserDBHelper());
 
   sl.registerLazySingleton<ApiMethods>(() => ApiMethods(sl()));
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
 import 'login.dart';
 
@@ -17,10 +19,19 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-  navigator(){
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Login()),(route) => false,);
-    });
+  navigator() async{
+    final checkIfUserExist = await AuthBloc.checkIfUserExist();
+
+    if(checkIfUserExist==0){
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Login()),(route) => false,);
+      });
+    }else{
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false,);
+      });
+    }
+
   }
 
   @override
