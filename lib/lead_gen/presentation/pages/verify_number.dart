@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
@@ -28,68 +29,88 @@ class _VerifyNumberState extends State<VerifyNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight*1),
-          child: CustomAppBar(
-              title: 'Forgot Password',
-              centerTitle: false,
-              automaticallyImplyLeading: true,
-              iconColor: Colors.black
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height*0.68,
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset('assets/images/Union.png',fit: BoxFit.fill),
+            ),
           ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
-        child: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.maybeWhen(
-              loadingInProgress: (){
-                showLoader(context);
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: BlocListener<AuthBloc, AuthState>(
+              listener: (context, state) {
+                state.maybeWhen(
+                    loadingInProgress: (){
+                      showLoader(context);
+                    },
+                    failed: (error){
+                      showErrorToastMessage(error!);
+                      Navigator.pop(context);
+                    },
+                    success: (message){
+                      showToastMessage(message!);
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const OtpVerification()));
+                    },
+                    orElse: (){}
+                );
               },
-              failed: (error){
-                showErrorToastMessage(error!);
-                Navigator.pop(context);
-              },
-              success: (message){
-                showToastMessage(message!);
-                Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const OtpVerification()));
-              },
-              orElse: (){}
-          );
-        },
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("Enter your Registered Email Address",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
-              const SizedBox(height: 20,),
-              CustomTextField(
-                controller: _emailController,
-                labelText: 'Email',
-                keyBoardType: TextInputType.emailAddress,
-                validator: (value){
-                  if(value=='' || value?.trim()==''){
-                    return 'Enter Email Address';
-                  }else if(!EmailValidator.validate(value!)){
-                    return "Invalid Email";
-                  }else if(value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
-                    return 'Invalid Email';
-                  }else{
-                    return null;
-                  }},
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 122),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width*0.7,
+                        height: 100,
+                        child: Text("Forgot your password?",style:
+                        GoogleFonts.poppins(fontSize: 35,fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 45,
+                      child: Text("No worries, you just need to enter your email address and we will send you a reset link.",style:
+                      GoogleFonts.poppins(fontSize: 13,fontWeight: FontWeight.w500,color: const Color(0xFF727373)),),
+                    ),
+                    const SizedBox(height: 20,),
+                    CustomTextField(
+                      controller: _emailController,
+                      labelText: 'Enter your email address',
+                      keyBoardType: TextInputType.emailAddress,
+                      validator: (value){
+                        if(value=='' || value?.trim()==''){
+                          return 'Enter Email Address';
+                        }else if(!EmailValidator.validate(value!)){
+                          return "Invalid Email";
+                        }else if(value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                          return 'Invalid Email';
+                        }else{
+                          return null;
+                        }},
+                    ),
+                    const SizedBox(height: 30),
+                    CustomButton(name: 'Send reset link', onTap: (){
+                      if(_formKey.currentState!.validate()){
+                        context.read<AuthBloc>().add(AuthEvent.verifyEmail(_emailController.text, context));
+                      }
+                    })
+                  ],
+                ),
               ),
-              const SizedBox(height: 45,),
-              CustomButton(name: 'Send OTP', onTap: (){
-                if(_formKey.currentState!.validate()){
-                  context.read<AuthBloc>().add(AuthEvent.verifyEmail(_emailController.text, context));
-                }
-              })
-            ],
+            ),
           ),
-        ),
-      ),
-      ),
+        ],
+      )
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -13,6 +14,8 @@ class CustomTextField extends StatefulWidget {
   final Function()? onTap;
   final IconData? icon;
   final bool? isLogin;
+  final bool? isLoginPass;
+  final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
 
@@ -25,7 +28,12 @@ class CustomTextField extends StatefulWidget {
         this.maxLines,
         this.readOnly,
         this.isChatPage,
-        this.maxLength, this.onTap, this.validator, this.onChanged, this.icon, this.isLogin, this.labelText})
+        this.maxLength,
+        this.onTap, this.validator,
+        this.onChanged, this.icon,
+        this.isLogin, this.labelText,
+        this.isLoginPass, this.suffixIcon
+      })
       : super(key: key);
 
   @override
@@ -36,13 +44,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
   final InputBorder border =  OutlineInputBorder(
     borderRadius: BorderRadius.circular(10),
     borderSide: const BorderSide(
-        color: Colors.grey
+        color: Colors.grey,
+        width: 1
     ),
   );
 
   final InputBorder planBorder =  const OutlineInputBorder(
     borderSide: BorderSide(
-        color: Colors.grey
+        color: Colors.grey,
+        width: 1
     ),
   );
 
@@ -66,11 +76,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLength: widget.maxLength,
       decoration: InputDecoration(
         prefixIcon: widget.isLogin==true? Icon(widget.icon) : null,
-        fillColor: Colors.grey[100],
+        fillColor: Colors.transparent,
         filled: true,
         hintText: widget.hintText,
         labelText: widget.labelText,
-        labelStyle: const TextStyle(color: Colors.black),
+        suffixIcon: widget.isLogin==true? widget.suffixIcon : null,
+        labelStyle: GoogleFonts.poppins(color: const Color(0xFF727373),fontSize: 14),
         enabled: true,
         enabledBorder: widget.isChatPage==true? planBorder :border,
         focusedErrorBorder: widget.isChatPage==true? planBorder :border,

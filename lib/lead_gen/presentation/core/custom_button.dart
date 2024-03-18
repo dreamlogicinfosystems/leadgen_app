@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatefulWidget {
   final String name;
@@ -21,11 +22,11 @@ class _CustomButtonState extends State<CustomButton> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height*0.065,
         decoration: BoxDecoration(
-          color: const Color.fromRGBO(7, 144, 64, 1),
+          color: Colors.black,
           borderRadius: BorderRadius.circular(10)
         ),
-        child: Center(child: Text(widget.name,style: const TextStyle(
-            fontWeight: FontWeight.w500,fontSize: 18,color: Colors.white
+        child: Center(child: Text(widget.name,style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white
           ),
         )),
       ),

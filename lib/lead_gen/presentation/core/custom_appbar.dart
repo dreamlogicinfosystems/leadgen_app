@@ -26,7 +26,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
       iconTheme:  IconThemeData(
         color: widget.iconColor,
       ),
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
       title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.w500)),
       centerTitle: widget.centerTitle,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
