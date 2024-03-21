@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_department.dart';
@@ -9,6 +10,8 @@ import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/login.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/view_reminders.dart';
+
+import '../../../../injections.dart';
 
 class MainDrawer extends StatefulWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -140,7 +143,10 @@ class _MainDrawerState extends State<MainDrawer> {
           const SizedBox(height: 20,),
           GestureDetector(
             onTap: (){
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const AddDepartment()),(route) => route.isFirst);
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BlocProvider(
+                create: (context) => sl<DepartmentBloc>(),
+                child: const AddDepartment(),
+              )),(route) => route.isFirst);
             },
             child: Container(
               width: MediaQuery.of(context).size.width*0.78,

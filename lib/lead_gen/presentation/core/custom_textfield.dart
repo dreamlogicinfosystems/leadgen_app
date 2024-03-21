@@ -49,10 +49,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     ),
   );
 
-  final InputBorder planBorder =  const OutlineInputBorder(
-    borderSide: BorderSide(
+  final InputBorder planBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(25),
+    borderSide: const BorderSide(
         color: Colors.grey,
-        width: 1
+        width: 0.5
     ),
   );
 
@@ -87,7 +88,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         focusedErrorBorder: widget.isChatPage==true? planBorder :border,
         focusedBorder: widget.isChatPage==true? planBorder :border,
         errorBorder: widget.isChatPage==true? planBorder :border,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15)
+        contentPadding: widget.isChatPage==true? const EdgeInsets.symmetric(horizontal: 10,vertical: 0) : const EdgeInsets.symmetric(horizontal: 15,vertical: 15)
       ),
     );
   }

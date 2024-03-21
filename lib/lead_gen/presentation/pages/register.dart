@@ -123,6 +123,40 @@ class _RegisterState extends State<Register> {
                               ),
                               const SizedBox(height: 20,),
                               CustomTextField(
+                                controller: _businessNameController,
+                                labelText: 'Business Name',
+                                keyBoardType: TextInputType.text,
+                                maxLines: 1,
+                                validator: (value){
+                                  if(value=='' || value?.trim()==''){
+                                    return 'Enter Business Name';
+                                  }else if(value!.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                                    return 'Invalid Business Name';
+                                  }else{
+                                    return null;
+                                  }
+                                },
+                              ),
+                              const SizedBox(height: 20,),
+                              CustomTextField(
+                                controller: _phoneController,
+                                labelText: 'Phone Number',
+                                keyBoardType: TextInputType.number,
+                                maxLines: 1,
+                                validator: (value){
+                                  if(value=='' || value?.trim()==''){
+                                    return 'Enter Phone Number';
+                                  }else if(value!.contains(RegExp(r'[-.,]')) || value.contains(' ')){
+                                    return 'Invalid Phone Number';
+                                  }else if(value.length>10 || value.length<10){
+                                    return 'Phone number should be of 10 digit';
+                                  }else{
+                                    return null;
+                                  }
+                                },
+                              ),
+                              const SizedBox(height: 20,),
+                              CustomTextField(
                                 controller: _emailController,
                                 labelText: 'Email',
                                 keyBoardType: TextInputType.emailAddress,
@@ -133,46 +167,6 @@ class _RegisterState extends State<Register> {
                                     return "Invalid Email";
                                   }else if(value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
                                     return 'Invalid Email';
-                                  }else{
-                                    return null;
-                                  }
-                                },
-                              ),
-                              const SizedBox(height: 20,),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: CustomTextField(
-                                      controller: _phoneController,
-                                      labelText: 'Phone Number',
-                                      keyBoardType: TextInputType.number,
-                                      maxLines: 1,
-                                      validator: (value){
-                                        if(value=='' || value?.trim()==''){
-                                          return 'Enter Phone Number';
-                                        }else if(value!.contains(RegExp(r'[-.,]')) || value.contains(' ')){
-                                          return 'Invalid Phone Number';
-                                        }else if(value.length>10 || value.length<10){
-                                          return 'Phone number should be of 10 digit';
-                                        }else{
-                                          return null;
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20,),
-                              CustomTextField(
-                                controller: _businessNameController,
-                                labelText: 'Business Name',
-                                keyBoardType: TextInputType.text,
-                                maxLines: 1,
-                                validator: (value){
-                                  if(value=='' || value?.trim()==''){
-                                    return 'Enter Business Name';
-                                  }else if(value!.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
-                                    return 'Invalid Business Name';
                                   }else{
                                     return null;
                                   }

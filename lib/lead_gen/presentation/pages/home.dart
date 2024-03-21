@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
-import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
+import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/add_lead.dart';
 import '../../../injections.dart';
 import '../widgets/home/departments_container.dart';
 import '../widgets/home/home_body.dart';
+import '../widgets/home/leads_count_container.dart';
 import '../widgets/home/main_drawer.dart';
-import 'add_lead.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,58 +19,73 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  VoidCallback? refreshPage;
+
+  @override
+  void initState() {
+    refreshPage=(){
+      setState(() {});
+    };
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffEFEFF0),
-      floatingActionButton: SizedBox(
-        height: 65,
-        width: 65,
-        child: FloatingActionButton(
-            shape: const CircleBorder(
-                side: BorderSide(width: 0.2, color: Colors.white38)
-            ),
-            child: const Icon(Icons.add, size: 28,),
-            onPressed: () {
-              if (DepartmentBloc.getDepartmentCount() == 0) {
-                simpleDialog(context);
-              } else {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const AddLead()));
-              }
-            }
-        ),
-      ),
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight * 1),
         child: CustomAppBar(
             iconColor: Colors.black,
-            title: 'Home',
+            title: 'Dashboard',
             centerTitle: true,
             automaticallyImplyLeading: true
+        ),
+      ),
+      bottomNavigationBar: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height*0.08,
+        decoration: BoxDecoration(
+          color: const Color(0xFFF6F6F6),
+          border: Border.all(
+            color: const Color(0xFF8E8E93),
+            width: 0.5
+          )
+        ),
+        child: Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width*0.5,
+            height: 45,
+            child: CustomButton(
+              isHomePage: true,
+              name: 'Add Lead',
+              onTap: () { 
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddLead()));
+              },
+            ),
+          ),
         ),
       ),
       drawer: const Drawer(
         child: MainDrawer(),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              BlocProvider(
-                create: (context) => sl<DepartmentBloc>(),
-                child: const DepartmentsContainer(),
-              ),
-              const SizedBox(height: 10,),
-              BlocProvider(
-                create: (context) => sl<LeadBloc>(),
-                child: const HomePageBody(),
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocProvider(
+              create: (context) => sl<DepartmentBloc>(),
+              child: DepartmentsContainer(refresh: refreshPage),
+            ),
+            const SizedBox(height: 10,),
+            const LeadsCountContainer(),
+            const SizedBox(height: 10,),
+            BlocProvider(
+              create: (context) => sl<LeadBloc>(),
+              child: const HomePageBody(),
+            ),
+          ],
         ),
       ),
     );

@@ -20,9 +20,8 @@ ChatDto _$ChatDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ChatDto {
-  String? get name => throw _privateConstructorUsedError;
-  String? get message => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
+  List<ChatDetailsDto>? get chatData => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +33,7 @@ abstract class $ChatDtoCopyWith<$Res> {
   factory $ChatDtoCopyWith(ChatDto value, $Res Function(ChatDto) then) =
       _$ChatDtoCopyWithImpl<$Res, ChatDto>;
   @useResult
-  $Res call({String? name, String? message, String? date});
+  $Res call({String? date, List<ChatDetailsDto>? chatData});
 }
 
 /// @nodoc
@@ -50,23 +49,18 @@ class _$ChatDtoCopyWithImpl<$Res, $Val extends ChatDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? message = freezed,
     Object? date = freezed,
+    Object? chatData = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
+      chatData: freezed == chatData
+          ? _value.chatData
+          : chatData // ignore: cast_nullable_to_non_nullable
+              as List<ChatDetailsDto>?,
     ) as $Val);
   }
 }
@@ -78,7 +72,7 @@ abstract class _$$ChatDtoImplCopyWith<$Res> implements $ChatDtoCopyWith<$Res> {
       __$$ChatDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, String? message, String? date});
+  $Res call({String? date, List<ChatDetailsDto>? chatData});
 }
 
 /// @nodoc
@@ -92,23 +86,18 @@ class __$$ChatDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? message = freezed,
     Object? date = freezed,
+    Object? chatData = freezed,
   }) {
     return _then(_$ChatDtoImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
+      chatData: freezed == chatData
+          ? _value._chatData
+          : chatData // ignore: cast_nullable_to_non_nullable
+              as List<ChatDetailsDto>?,
     ));
   }
 }
@@ -116,21 +105,28 @@ class __$$ChatDtoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ChatDtoImpl extends _ChatDto {
-  const _$ChatDtoImpl({this.name, this.message, this.date}) : super._();
+  const _$ChatDtoImpl({this.date, final List<ChatDetailsDto>? chatData})
+      : _chatData = chatData,
+        super._();
 
   factory _$ChatDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChatDtoImplFromJson(json);
 
   @override
-  final String? name;
-  @override
-  final String? message;
-  @override
   final String? date;
+  final List<ChatDetailsDto>? _chatData;
+  @override
+  List<ChatDetailsDto>? get chatData {
+    final value = _chatData;
+    if (value == null) return null;
+    if (_chatData is EqualUnmodifiableListView) return _chatData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ChatDto(name: $name, message: $message, date: $date)';
+    return 'ChatDto(date: $date, chatData: $chatData)';
   }
 
   @override
@@ -138,14 +134,14 @@ class _$ChatDtoImpl extends _ChatDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChatDtoImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other._chatData, _chatData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, message, date);
+  int get hashCode => Object.hash(
+      runtimeType, date, const DeepCollectionEquality().hash(_chatData));
 
   @JsonKey(ignore: true)
   @override
@@ -163,19 +159,16 @@ class _$ChatDtoImpl extends _ChatDto {
 
 abstract class _ChatDto extends ChatDto {
   const factory _ChatDto(
-      {final String? name,
-      final String? message,
-      final String? date}) = _$ChatDtoImpl;
+      {final String? date,
+      final List<ChatDetailsDto>? chatData}) = _$ChatDtoImpl;
   const _ChatDto._() : super._();
 
   factory _ChatDto.fromJson(Map<String, dynamic> json) = _$ChatDtoImpl.fromJson;
 
   @override
-  String? get name;
-  @override
-  String? get message;
-  @override
   String? get date;
+  @override
+  List<ChatDetailsDto>? get chatData;
   @override
   @JsonKey(ignore: true)
   _$$ChatDtoImplCopyWith<_$ChatDtoImpl> get copyWith =>

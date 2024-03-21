@@ -12,6 +12,7 @@ part 'department_bloc.freezed.dart';
 class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
   final DepartmentRepository _departmentRepository;
   static List<Department> departmentsList = [];
+  static int departmentId = 0;
   DepartmentBloc(this._departmentRepository) : super(const DepartmentState.initial()) {
     on<DepartmentEvent>(mapEventToState);
   }
@@ -42,10 +43,37 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
           });
         },
         updateDepartment: (e) async{
+          emit(const DepartmentState.loadingInProgress());
 
+          final tryUpdateDept = await _departmentRepository.updateDepartment(
+              Department(
+                id: e.department.id,
+                departmentName: e.department.departmentName
+              ),
+              e.context
+          );
+
+          tryUpdateDept.fold((error){
+            emit(DepartmentState.failed(error.message));
+          },(message){
+            emit(DepartmentState.success(message.successMessage));
+          });
         },
         deleteDepartment: (e) async{
+          emit(const DepartmentState.loadingInProgress());
 
+          final tryDelDet = await _departmentRepository.deleteDepartment(e.id,e.context);
+
+          tryDelDet.fold((error){
+            emit(DepartmentState.failed(error.message));
+          },(message){
+            emit(DepartmentState.success(message.successMessage));
+          });
+        },
+        setDeptId: (e) async{
+          if(e.id.toString().isNotEmpty){
+            departmentId = e.id;
+          }
         }
     );
   }
@@ -55,4 +83,6 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
 
     return count;
   }
+
+
 }

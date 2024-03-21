@@ -6,7 +6,6 @@ import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_drop_down.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_user.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
 class AddDepartment extends StatefulWidget {
   const AddDepartment({Key? key}) : super(key: key);
@@ -27,6 +26,7 @@ class _AddDepartmentState extends State<AddDepartment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight*1),
           child: CustomAppBar(
@@ -57,32 +57,34 @@ class _AddDepartmentState extends State<AddDepartment> {
                 orElse: (){}
             );
           },
-          child: Column(
-            children: [
-              CustomDropDown(
-                  items: const ['App','Web','Marketing'],
-                  getSelectedValue: getSelectedDepartment,
-                  hintText: 'Select Department'
-              ),
-              const SizedBox(height: 30),
-              SizedBox(
-                width: MediaQuery.of(context).size.width*0.75,
-                child: CustomButton(
-                    name: 'Add',
-                    onTap: (){
-                      if(selectedDepartment==''){
-                        showToastMessage('Please select department');
-                      }else{
-                        //TODO : REMIND TO CHANGE
-                        Navigator.pushAndRemoveUntil(context,
-                            MaterialPageRoute(builder: (context) => const AddUser()), (route) => false);
-                        // context.read<DepartmentBloc>().add(
-                        //   DepartmentEvent.createDepartment(selectedDepartment, context),
-                        // );
-                      }
-                    }),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                CustomDropDown(
+                    items: const ['App','Web','Marketing'],
+                    getSelectedValue: getSelectedDepartment,
+                    hintText: 'Select Department'
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width*0.75,
+                  child: CustomButton(
+                      name: 'Add',
+                      onTap: (){
+                        if(selectedDepartment==''){
+                          showToastMessage('Please select department');
+                        }else{
+                          //TODO : REMIND TO CHANGE
+                          // Navigator.pushAndRemoveUntil(context,
+                          //     MaterialPageRoute(builder: (context) => const AddUser()), (route) => false);
+                          context.read<DepartmentBloc>().add(
+                            DepartmentEvent.createDepartment(selectedDepartment, context),
+                          );
+                        }
+                      }),
+                ),
+              ],
+            ),
           ),
         ),
       ),

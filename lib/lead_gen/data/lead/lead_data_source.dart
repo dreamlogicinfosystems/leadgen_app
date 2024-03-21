@@ -4,7 +4,10 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/api.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
+import 'package:lead_gen/lead_gen/data/lead/chat_details_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
+import 'package:lead_gen/lead_gen/domain/lead/chat_details.dart';
+import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
 import '../../constants/error.dart';
 import 'lead_dto.dart';
@@ -92,7 +95,9 @@ class LeadDataSource{
             name: result['leads'][i]['name'],
             phone: result['leads'][i]['phone'],
             email: result['leads'][i]['email'],
+            message: result['leads'][i]['note'],
             createdAt: result['leads'][i]['created_at'],
+            lastChatDate: result['leads'][i]['last_chat_date']
           );
 
           leadsList.add(leadDto);
@@ -110,6 +115,8 @@ class LeadDataSource{
     try{
       List<ChatDto> chatList = [];
 
+      List<ChatDetailsDto> chatDetails = [];
+
       final response = await _apiMethods.get(
           url: 'get_lead_details?id=$leadId',
           context: context
@@ -119,15 +126,30 @@ class LeadDataSource{
 
       if(result['status'] == true){
 
-        for(int i = 0; i<result['lead'].length; i++){
+        for(var chatData in result['lead'].entries){
+
+          chatDetails.clear();
+
+          for(int i=0; i<chatData.value.length; i++){
+
+            ChatDetailsDto chat = ChatDetailsDto(
+                createdAt: chatData.value[i]['created_at'],
+                message: chatData.value[i]['note'],
+                name: chatData.value[i]['name']
+            );
+
+            chatDetails.add(chat);
+          }
+
           ChatDto chatDto = ChatDto(
-            name: result['lead'][i]['name'],
-            message: result['lead'][i]['note'],
-            date: result['lead'][i]['created_at']
+            date: chatData.key,
+            chatData: List.from(chatDetails)
           );
 
           chatList.add(chatDto);
         }
+
+        print(chatList);
 
         return Right(chatList);
       }else{

@@ -16,9 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Chat {
-  String? get name => throw _privateConstructorUsedError;
-  String? get message => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
+  List<ChatDetails>? get chatData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatCopyWith<Chat> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +28,7 @@ abstract class $ChatCopyWith<$Res> {
   factory $ChatCopyWith(Chat value, $Res Function(Chat) then) =
       _$ChatCopyWithImpl<$Res, Chat>;
   @useResult
-  $Res call({String? name, String? message, String? date});
+  $Res call({String? date, List<ChatDetails>? chatData});
 }
 
 /// @nodoc
@@ -45,23 +44,18 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? message = freezed,
     Object? date = freezed,
+    Object? chatData = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
+      chatData: freezed == chatData
+          ? _value.chatData
+          : chatData // ignore: cast_nullable_to_non_nullable
+              as List<ChatDetails>?,
     ) as $Val);
   }
 }
@@ -73,7 +67,7 @@ abstract class _$$ChatImplCopyWith<$Res> implements $ChatCopyWith<$Res> {
       __$$ChatImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, String? message, String? date});
+  $Res call({String? date, List<ChatDetails>? chatData});
 }
 
 /// @nodoc
@@ -86,23 +80,18 @@ class __$$ChatImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? message = freezed,
     Object? date = freezed,
+    Object? chatData = freezed,
   }) {
     return _then(_$ChatImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
+      chatData: freezed == chatData
+          ? _value._chatData
+          : chatData // ignore: cast_nullable_to_non_nullable
+              as List<ChatDetails>?,
     ));
   }
 }
@@ -110,18 +99,24 @@ class __$$ChatImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChatImpl implements _Chat {
-  const _$ChatImpl({this.name, this.message, this.date});
+  const _$ChatImpl({this.date, final List<ChatDetails>? chatData})
+      : _chatData = chatData;
 
   @override
-  final String? name;
-  @override
-  final String? message;
-  @override
   final String? date;
+  final List<ChatDetails>? _chatData;
+  @override
+  List<ChatDetails>? get chatData {
+    final value = _chatData;
+    if (value == null) return null;
+    if (_chatData is EqualUnmodifiableListView) return _chatData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Chat(name: $name, message: $message, date: $date)';
+    return 'Chat(date: $date, chatData: $chatData)';
   }
 
   @override
@@ -129,13 +124,13 @@ class _$ChatImpl implements _Chat {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChatImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other._chatData, _chatData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, message, date);
+  int get hashCode => Object.hash(
+      runtimeType, date, const DeepCollectionEquality().hash(_chatData));
 
   @JsonKey(ignore: true)
   @override
@@ -145,17 +140,13 @@ class _$ChatImpl implements _Chat {
 }
 
 abstract class _Chat implements Chat {
-  const factory _Chat(
-      {final String? name,
-      final String? message,
-      final String? date}) = _$ChatImpl;
+  const factory _Chat({final String? date, final List<ChatDetails>? chatData}) =
+      _$ChatImpl;
 
   @override
-  String? get name;
-  @override
-  String? get message;
-  @override
   String? get date;
+  @override
+  List<ChatDetails>? get chatData;
   @override
   @JsonKey(ignore: true)
   _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>

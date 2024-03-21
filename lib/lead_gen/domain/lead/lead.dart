@@ -11,6 +11,7 @@ class Lead with _$Lead{
     String? email,
     String? message,
     String? createdAt,
+    String? lastChatDate,
     List<int>? departmentIds
   }) = _Lead;
 }

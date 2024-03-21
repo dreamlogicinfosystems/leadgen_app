@@ -133,3 +133,36 @@ simplifyDate(String date){
 
   return formattedDate;
 }
+
+
+String getDaySuffix(int day){
+  if(day>=11 && day<=13){
+    return 'th';
+  }
+  switch(day%10){
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    case 4: return 'th';
+    default: return 'th';
+  }
+}
+
+modifyDate(String stringDate){
+  final date = DateTime.parse(stringDate);
+
+  final formattedDate = DateFormat("d'${getDaySuffix(date.day)}' MMM yy").format(date);
+
+  return formattedDate;
+}
+
+
+convertUTCtoLocalTime(String utcDateTime){
+  final utcDate = DateTime.parse(utcDateTime);
+
+  final localDateTime = utcDate.toLocal();
+
+  final localTime = DateFormat.Hm().format(localDateTime);
+
+  return localTime;
+}

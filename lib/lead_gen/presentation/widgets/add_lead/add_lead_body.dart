@@ -234,16 +234,16 @@ class _AddLeadBodyState extends State<AddLeadBody> {
                       const SnackBar(content: Text("Select atleast one department!")),
                     );
                   }else{
-                    context.read<LeadBloc>().add(LeadEvent.addLead(
-                      Lead(
-                        name: _nameController.text.trim(),
-                        phone: _phoneController.text,
-                        email: _emailController.text.trim(),
-                        message: _messageController.text,
-                        departmentIds: deptIdList
-                      ),
-                      context)
-                    );
+                    context.read<LeadBloc>().add(LeadEvent.getLeadChat(1, context));
+                    // context.read<LeadBloc>().add(LeadEvent.addLead(
+                    //   Lead(
+                    //     name: _nameController.text.trim(),
+                    //     phone: _phoneController.text,
+                    //     email: _emailController.text.trim(),
+                    //     message: _messageController.text,
+                    //     departmentIds: deptIdList
+                    //   ),
+                    //   context));
                   }
                 }else{
                   debugPrint("not validate");

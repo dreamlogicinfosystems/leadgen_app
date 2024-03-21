@@ -32,15 +32,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
       centerTitle: widget.centerTitle,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       actions: [
-        widget.isChatPage==true?  Padding(
-          padding: const EdgeInsets.only(right: 15,top: 5),
+        Padding(
+          padding: const EdgeInsets.only(right: 10,top: 5),
           child: GestureDetector(
                onTap: (){
-                 showDialog(context: context, builder: (context) => const CloseLeadDialog());
+                 // showDialog(context: context, builder: (context) => const CloseLeadDialog());
                },
-              child: const Icon(Icons.exit_to_app),
+              child: const SizedBox(
+                width: 50,
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.notifications,size: 27,color: Colors.black),  //Color(0xFFC2E90B)
+                    Text("2",style: TextStyle(fontSize: 11),)
+                  ],
+                )
+              ),
           ),
-        ): const Text('')
+        )
       ],
     );
   }

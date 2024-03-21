@@ -19,7 +19,7 @@ class ApiMethods{
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.ethernet
     || connectivityResult == ConnectivityResult.wifi) {
-      
+
       final token = await _localDataSource.getToken();
       if(token!=null){
         if(_jwtHelper.isTokenExpired(token, 0)){

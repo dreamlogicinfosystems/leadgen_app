@@ -9,4 +9,6 @@ class DepartmentEvent with _$DepartmentEvent {
   const factory DepartmentEvent.updateDepartment(Department department,BuildContext context) = _updateDepartment;
 
   const factory DepartmentEvent.deleteDepartment(int id,BuildContext context) = _deleteDepartment;
+
+  const factory DepartmentEvent.setDeptId(int id) = _setDeptId;
 }

@@ -8,14 +8,14 @@ part of 'chat_dto.dart';
 
 _$ChatDtoImpl _$$ChatDtoImplFromJson(Map<String, dynamic> json) =>
     _$ChatDtoImpl(
-      name: json['name'] as String?,
-      message: json['message'] as String?,
       date: json['date'] as String?,
+      chatData: (json['chatData'] as List<dynamic>?)
+          ?.map((e) => ChatDetailsDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$ChatDtoImplToJson(_$ChatDtoImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'message': instance.message,
       'date': instance.date,
+      'chatData': instance.chatData,
     };
