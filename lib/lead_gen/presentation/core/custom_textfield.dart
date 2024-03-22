@@ -16,6 +16,7 @@ class CustomTextField extends StatefulWidget {
   final bool? isLogin;
   final bool? isLoginPass;
   final Widget? suffixIcon;
+  final Function()? onEditingComplete;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
 
@@ -32,7 +33,8 @@ class CustomTextField extends StatefulWidget {
         this.onTap, this.validator,
         this.onChanged, this.icon,
         this.isLogin, this.labelText,
-        this.isLoginPass, this.suffixIcon
+        this.isLoginPass, this.suffixIcon,
+        this.onEditingComplete
       })
       : super(key: key);
 
@@ -67,6 +69,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
         }
       },
       onChanged: widget.onChanged,
+      onEditingComplete: (){
+        if(widget.onEditingComplete!=null){
+          widget.onEditingComplete!();
+        }
+      },
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
       enabled: true,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/add_lead.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/bottom_sheet.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/chat_header.dart';
 import '../../constants/constant.dart';
@@ -47,7 +48,7 @@ class _ChatState extends State<Chat> {
 
   @override
   void initState() {
-    context.read<LeadBloc>().add(LeadEvent.getLeadChat(1, context));
+    context.read<LeadBloc>().add(LeadEvent.getLeadChat(widget.lead.id!, context));
     super.initState();
   }
 
@@ -73,7 +74,12 @@ class _ChatState extends State<Chat> {
           children: [
             ChatHeaderCard(lead: widget.lead),
             const SizedBox(height: 10),
-            BlocBuilder<LeadBloc, LeadState>(
+            BlocConsumer<LeadBloc, LeadState>(
+              listener: (context, state){
+                state.maybeWhen(
+                  orElse: (){}
+                );
+              },
               builder: (context, state) {
                 return state.maybeWhen(
                   successChatList: (chatList){
@@ -103,7 +109,7 @@ class _ChatState extends State<Chat> {
                                         color: const Color(0xFFDDDDE9),
                                         borderRadius: BorderRadius.circular(5)
                                     ),
-                                    child: Center(child: Text(chatList[index].date!,style:
+                                    child: Center(child: Text(convertDateToReadableDate(chatList[index].date!),style:
                                     GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w600,color: const Color(0xFF3C3C43)),)),
                                   ),
                                   const SizedBox(height: 10),
@@ -171,6 +177,19 @@ class _ChatState extends State<Chat> {
                         hintText: '',
                         maxLines: 1,
                         keyBoardType: TextInputType.text,
+                        onEditingComplete: (){
+                          debugPrint(_messageController.text);
+                          context.read<LeadBloc>().add(LeadEvent.addLeadChat(
+                              Lead(
+                                id: widget.lead.id,
+                                message: _messageController.text.trim()
+                              ),
+                              context
+                            ),
+                          );
+
+                          _messageController.clear();
+                        },
                         isChatPage: true,
                         onChanged: (value){
                           if(value!='' || value.trim()!=''){
@@ -254,7 +273,7 @@ class _ChatDetailsDisplayerState extends State<ChatDetailsDisplayer> {
                   children: [
                     Text(widget.chatDetails[index].message!,style:
                     GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
-                    Text("${convertUTCtoLocalTime(widget.chatDetails[index].createdAt!)} by You",style:
+                    Text("${convertUTCtoLocalTime(widget.chatDetails[index].createdAt!)} by ${widget.chatDetails[index].name}",style:
                     GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
                   ],
                 ),

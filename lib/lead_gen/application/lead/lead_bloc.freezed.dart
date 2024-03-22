@@ -1025,6 +1025,7 @@ mixin _$LeadState {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) =>
@@ -1035,6 +1036,7 @@ mixin _$LeadState {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) =>
@@ -1045,6 +1047,7 @@ mixin _$LeadState {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1056,6 +1059,7 @@ mixin _$LeadState {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) =>
@@ -1066,6 +1070,7 @@ mixin _$LeadState {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) =>
@@ -1076,6 +1081,7 @@ mixin _$LeadState {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),
@@ -1142,6 +1148,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) {
@@ -1155,6 +1162,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) {
@@ -1168,6 +1176,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1185,6 +1194,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) {
@@ -1198,6 +1208,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) {
@@ -1211,6 +1222,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),
@@ -1268,6 +1280,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) {
@@ -1281,6 +1294,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) {
@@ -1294,6 +1308,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1311,6 +1326,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) {
@@ -1324,6 +1340,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) {
@@ -1337,6 +1354,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),
@@ -1420,6 +1438,7 @@ class _$successImpl implements _success {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) {
@@ -1433,6 +1452,7 @@ class _$successImpl implements _success {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) {
@@ -1446,6 +1466,7 @@ class _$successImpl implements _success {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1463,6 +1484,7 @@ class _$successImpl implements _success {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) {
@@ -1476,6 +1498,7 @@ class _$successImpl implements _success {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) {
@@ -1489,6 +1512,7 @@ class _$successImpl implements _success {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),
@@ -1577,6 +1601,7 @@ class _$failedImpl implements _failed {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) {
@@ -1590,6 +1615,7 @@ class _$failedImpl implements _failed {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) {
@@ -1603,6 +1629,7 @@ class _$failedImpl implements _failed {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1620,6 +1647,7 @@ class _$failedImpl implements _failed {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) {
@@ -1633,6 +1661,7 @@ class _$failedImpl implements _failed {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) {
@@ -1646,6 +1675,7 @@ class _$failedImpl implements _failed {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),
@@ -1663,6 +1693,175 @@ abstract class _failed implements LeadState {
   String get error;
   @JsonKey(ignore: true)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$emptyLeadListImplCopyWith<$Res> {
+  factory _$$emptyLeadListImplCopyWith(
+          _$emptyLeadListImpl value, $Res Function(_$emptyLeadListImpl) then) =
+      __$$emptyLeadListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Lead> empty});
+}
+
+/// @nodoc
+class __$$emptyLeadListImplCopyWithImpl<$Res>
+    extends _$LeadStateCopyWithImpl<$Res, _$emptyLeadListImpl>
+    implements _$$emptyLeadListImplCopyWith<$Res> {
+  __$$emptyLeadListImplCopyWithImpl(
+      _$emptyLeadListImpl _value, $Res Function(_$emptyLeadListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? empty = null,
+  }) {
+    return _then(_$emptyLeadListImpl(
+      null == empty
+          ? _value._empty
+          : empty // ignore: cast_nullable_to_non_nullable
+              as List<Lead>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$emptyLeadListImpl implements _emptyLeadList {
+  const _$emptyLeadListImpl(final List<Lead> empty) : _empty = empty;
+
+  final List<Lead> _empty;
+  @override
+  List<Lead> get empty {
+    if (_empty is EqualUnmodifiableListView) return _empty;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_empty);
+  }
+
+  @override
+  String toString() {
+    return 'LeadState.emptyLeadList(empty: $empty)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$emptyLeadListImpl &&
+            const DeepCollectionEquality().equals(other._empty, _empty));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_empty));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$emptyLeadListImplCopyWith<_$emptyLeadListImpl> get copyWith =>
+      __$$emptyLeadListImplCopyWithImpl<_$emptyLeadListImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingInProgress,
+    required TResult Function(String message) success,
+    required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
+    required TResult Function(List<Lead> leads) successLeadsList,
+    required TResult Function(List<Chat> leadChat) successChatList,
+  }) {
+    return emptyLeadList(empty);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingInProgress,
+    TResult? Function(String message)? success,
+    TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
+    TResult? Function(List<Lead> leads)? successLeadsList,
+    TResult? Function(List<Chat> leadChat)? successChatList,
+  }) {
+    return emptyLeadList?.call(empty);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingInProgress,
+    TResult Function(String message)? success,
+    TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
+    TResult Function(List<Lead> leads)? successLeadsList,
+    TResult Function(List<Chat> leadChat)? successChatList,
+    required TResult orElse(),
+  }) {
+    if (emptyLeadList != null) {
+      return emptyLeadList(empty);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_loadingInProgress value) loadingInProgress,
+    required TResult Function(_success value) success,
+    required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
+    required TResult Function(_successLeadsList value) successLeadsList,
+    required TResult Function(_successChatList value) successChatList,
+  }) {
+    return emptyLeadList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loadingInProgress value)? loadingInProgress,
+    TResult? Function(_success value)? success,
+    TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
+    TResult? Function(_successLeadsList value)? successLeadsList,
+    TResult? Function(_successChatList value)? successChatList,
+  }) {
+    return emptyLeadList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_loadingInProgress value)? loadingInProgress,
+    TResult Function(_success value)? success,
+    TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
+    TResult Function(_successLeadsList value)? successLeadsList,
+    TResult Function(_successChatList value)? successChatList,
+    required TResult orElse(),
+  }) {
+    if (emptyLeadList != null) {
+      return emptyLeadList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _emptyLeadList implements LeadState {
+  const factory _emptyLeadList(final List<Lead> empty) = _$emptyLeadListImpl;
+
+  List<Lead> get empty;
+  @JsonKey(ignore: true)
+  _$$emptyLeadListImplCopyWith<_$emptyLeadListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1741,6 +1940,7 @@ class _$successLeadsListImpl implements _successLeadsList {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) {
@@ -1754,6 +1954,7 @@ class _$successLeadsListImpl implements _successLeadsList {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) {
@@ -1767,6 +1968,7 @@ class _$successLeadsListImpl implements _successLeadsList {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1784,6 +1986,7 @@ class _$successLeadsListImpl implements _successLeadsList {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) {
@@ -1797,6 +2000,7 @@ class _$successLeadsListImpl implements _successLeadsList {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) {
@@ -1810,6 +2014,7 @@ class _$successLeadsListImpl implements _successLeadsList {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),
@@ -1906,6 +2111,7 @@ class _$successChatListImpl implements _successChatList {
     required TResult Function() loadingInProgress,
     required TResult Function(String message) success,
     required TResult Function(String error) failed,
+    required TResult Function(List<Lead> empty) emptyLeadList,
     required TResult Function(List<Lead> leads) successLeadsList,
     required TResult Function(List<Chat> leadChat) successChatList,
   }) {
@@ -1919,6 +2125,7 @@ class _$successChatListImpl implements _successChatList {
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? success,
     TResult? Function(String error)? failed,
+    TResult? Function(List<Lead> empty)? emptyLeadList,
     TResult? Function(List<Lead> leads)? successLeadsList,
     TResult? Function(List<Chat> leadChat)? successChatList,
   }) {
@@ -1932,6 +2139,7 @@ class _$successChatListImpl implements _successChatList {
     TResult Function()? loadingInProgress,
     TResult Function(String message)? success,
     TResult Function(String error)? failed,
+    TResult Function(List<Lead> empty)? emptyLeadList,
     TResult Function(List<Lead> leads)? successLeadsList,
     TResult Function(List<Chat> leadChat)? successChatList,
     required TResult orElse(),
@@ -1949,6 +2157,7 @@ class _$successChatListImpl implements _successChatList {
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_success value) success,
     required TResult Function(_failed value) failed,
+    required TResult Function(_emptyLeadList value) emptyLeadList,
     required TResult Function(_successLeadsList value) successLeadsList,
     required TResult Function(_successChatList value) successChatList,
   }) {
@@ -1962,6 +2171,7 @@ class _$successChatListImpl implements _successChatList {
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_success value)? success,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_emptyLeadList value)? emptyLeadList,
     TResult? Function(_successLeadsList value)? successLeadsList,
     TResult? Function(_successChatList value)? successChatList,
   }) {
@@ -1975,6 +2185,7 @@ class _$successChatListImpl implements _successChatList {
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_success value)? success,
     TResult Function(_failed value)? failed,
+    TResult Function(_emptyLeadList value)? emptyLeadList,
     TResult Function(_successLeadsList value)? successLeadsList,
     TResult Function(_successChatList value)? successChatList,
     required TResult orElse(),

@@ -50,6 +50,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
             emit(LeadState.failed(error.message));
           },(message){
             emit(LeadState.success(message.successMessage));
+            add(LeadEvent.getLeadChat(e.lead.id!, e.context));
           });
         },
         getLeads: (e) async{
@@ -57,8 +58,8 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
 
           final tryGetLeads = await _leadRepository.getLeadsList(e.type,e.context);
 
-          tryGetLeads.fold((error){
-            emit(LeadState.failed(error.message));
+          tryGetLeads.fold((emptyList){
+            emit(LeadState.emptyLeadList(emptyList));
           },(leadList){
             emit(LeadState.successLeadsList(leadList));
           });

@@ -19,7 +19,7 @@ class _HomePageBodyState extends State<HomePageBody> {
 
   @override
   void initState() {
-    context.read<LeadBloc>().add(LeadEvent.getLeads('new', context));
+    context.read<LeadBloc>().add(LeadEvent.getLeads('all', context));
     super.initState();
   }
 
@@ -109,8 +109,81 @@ class _HomePageBodyState extends State<HomePageBody> {
                     ),
                   );
                 },
+                emptyLeadList: (emptyList){
+                  return SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height*0.6,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height*0.07,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFF87168)
+                                  ),
+                                  height: 22,
+                                  width: 22,
+                                ),
+                                const SizedBox(width: 5),
+                                Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                const SizedBox(width: 10),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFF5CD47)
+                                  ),
+                                  height: 22,
+                                  width: 22,
+                                ),
+                                const SizedBox(width: 5),
+                                Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                const SizedBox(width: 10),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFF579DFF)
+                                  ),
+                                  height: 22,
+                                  width: 22,
+                                ),
+                                const SizedBox(width: 5),
+                                Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                const Spacer(),
+                                Row(
+                                  children: [
+                                    Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                                    const SizedBox(width: 5),
+                                    SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: Image.asset('assets/images/Slider.png'),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height*0.45,
+                          child: const Center(
+                            child: Text("No leads added!",style:
+                            TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
                 successLeadsList: (leadsList){
-                  return leadsList.isNotEmpty? SizedBox(
+                  return SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height*0.70,
                     child: SingleChildScrollView(
@@ -171,7 +244,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                               ),
                             ),
                           ),
-                          leadsList.isNotEmpty? ListView.builder(
+                          ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: leadsList.length,
@@ -245,17 +318,9 @@ class _HomePageBodyState extends State<HomePageBody> {
                                   ),
                                 );
                               }
-                          ): const Center(
-                            child: Text("No leads added!",style:
-                            TextStyle(fontSize: 16),
-                            ),
-                          ),
+                          )
                         ],
                       ),
-                    ),
-                  ): const Center(
-                    child: Text("No leads added!",style:
-                    TextStyle(fontSize: 16),
                     ),
                   );
                 },

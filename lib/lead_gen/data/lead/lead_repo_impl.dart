@@ -51,7 +51,7 @@ class LeadRepositoryImpl extends LeadRepository{
   }
 
   @override
-  Future<Either<ErrorMessage, List<Lead>>> getLeadsList(String type,BuildContext context) async{
+  Future<Either<List<Lead>, List<Lead>>> getLeadsList(String type,BuildContext context) async{
     final getLeadsList = await _leadDataSource.getLeads(type,context);
 
     return getLeadsList.fold((error){

@@ -9,6 +9,7 @@ import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
 import 'package:lead_gen/lead_gen/domain/lead/chat_details.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
+import '../../constants/constant.dart';
 import '../../constants/error.dart';
 import 'lead_dto.dart';
 
@@ -25,7 +26,7 @@ class LeadDataSource{
         departmentIds.add(leadDto.departmentIds![i].toString());
       }
 
-      final stringDeptId = departmentIds.join(' ');
+      final stringDeptId = departmentIds.join(' ,');
 
       map['name'] = leadDto.name;
       map['phone'] = leadDto.phone;
@@ -55,7 +56,7 @@ class LeadDataSource{
     try{
       Map<String,dynamic> map = {};
 
-      map['id'] = leadDto.id;
+      map['id'] = leadDto.id.toString();
       map['message'] = leadDto.message;
 
       final response = await _apiMethods.post(
@@ -76,7 +77,7 @@ class LeadDataSource{
     }
   }
   
-  Future<Either<ErrorMessage,List<LeadDto>>>getLeads(String type,BuildContext context) async{
+  Future<Either<List<Lead>,List<LeadDto>>>getLeads(String type,BuildContext context) async{
     try{
       List<LeadDto> leadsList = [];
       
@@ -104,10 +105,10 @@ class LeadDataSource{
         }
         return Right(leadsList);
       }else{
-        return Left(ErrorMessage(result['message']));
+        return Left(result['leads']);
       }
     }catch(e){
-      return Left(ErrorMessage(e.toString()));
+      return const Left([]);
     }
   }
 

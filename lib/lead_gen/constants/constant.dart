@@ -166,3 +166,12 @@ convertUTCtoLocalTime(String utcDateTime){
 
   return localTime;
 }
+
+
+convertDateToReadableDate(String stringDate){
+  final date = DateTime.parse(stringDate);
+
+  final formattedDate = DateFormat('EEE, MMM yy').format(date);
+
+  return formattedDate;
+}

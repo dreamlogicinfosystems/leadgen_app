@@ -25,6 +25,7 @@ abstract class LeadDto implements _$LeadDto{
 
   factory LeadDto.fromDomain(Lead lead){
     return LeadDto(
+      id: lead.id,
       name: lead.name,
       phone: lead.phone,
       email: lead.email,
