@@ -6,8 +6,14 @@ class CustomButton extends StatefulWidget {
   final Function() onTap;
   final bool? isHomePage;
   final bool? isChatPage;
+  final bool? isBoardPage;
+
   const CustomButton({Key? key,
-    required this.name, required this.onTap, this.isHomePage, this.isChatPage}) : super(key: key);
+    required this.name,
+    required this.onTap,
+    this.isHomePage,
+    this.isChatPage,
+    this.isBoardPage}) : super(key: key);
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -25,11 +31,12 @@ class _CustomButtonState extends State<CustomButton> {
         height: MediaQuery.of(context).size.height*0.065,
         decoration: BoxDecoration(
           color: widget.isHomePage==true? const Color(0xFFC2E90B) : Colors.black,
-          borderRadius: widget.isChatPage==true? BorderRadius.circular(5) : BorderRadius.circular(10)
+          borderRadius: widget.isChatPage==true || widget.isBoardPage==true? BorderRadius.circular(5) : BorderRadius.circular(10)
         ),
         child: Center(child: Text(widget.name,style: GoogleFonts.poppins(
-            fontWeight: widget.isChatPage==true? FontWeight.w400: FontWeight.w500,fontSize: widget.isChatPage==true? 14: 16,color: widget.isHomePage==true? Colors.black :
-        widget.isChatPage==true? const Color(0xFFC2E90B) :Colors.white
+            fontWeight: widget.isChatPage==true? FontWeight.w400: widget.isBoardPage==true? FontWeight.w600: FontWeight.w500,
+            fontSize: widget.isChatPage==true? 14: widget.isBoardPage==true? 10: 16,color: widget.isHomePage==true? Colors.black :
+            widget.isChatPage==true? const Color(0xFFC2E90B) :Colors.white
           ),
         )),
       ),

@@ -38,6 +38,7 @@ class _HomeState extends State<Home> {
         child: CustomAppBar(
             iconColor: Colors.black,
             title: 'Dashboard',
+            isMainPage: true,
             centerTitle: true,
             automaticallyImplyLeading: true
         ),
@@ -66,8 +67,12 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      drawer: const Drawer(
-        child: MainDrawer(),
+      drawer: Drawer(
+        width: MediaQuery.of(context).size.width*0.92,
+        shape: const RoundedRectangleBorder(),
+        shadowColor: Colors.white,
+        backgroundColor: Colors.white,
+        child: const MainDrawer(),
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/chat/close_lead_dialog.dart';
 
@@ -8,11 +9,17 @@ class CustomAppBar extends StatefulWidget {
   final bool automaticallyImplyLeading;
   final Color iconColor;
   final bool? isChatPage;
+  final bool? isBoardPage;
+  final bool? isMainPage;
 
   const CustomAppBar({Key? key,
     required this.title,
     required this.centerTitle,
-    required this.automaticallyImplyLeading, required this.iconColor, this.isChatPage
+    required this.automaticallyImplyLeading,
+    required this.iconColor,
+    this.isChatPage,
+    this.isBoardPage,
+    this.isMainPage
   }) : super(key: key);
 
   @override
@@ -28,11 +35,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
       ),
       backgroundColor: Colors.white,
       surfaceTintColor: Colors.white,
-      title: Text(widget.title,style: const TextStyle(fontWeight: FontWeight.w500)),
+      title: Text(widget.title,style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 22)),
       centerTitle: widget.centerTitle,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       actions: [
-        Padding(
+        widget.isChatPage==true || widget.isMainPage==true? Padding(
           padding: const EdgeInsets.only(right: 10,top: 5),
           child: GestureDetector(
                onTap: (){
@@ -50,7 +57,17 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 )
               ),
           ),
-        )
+        ): widget.isBoardPage==true?
+          Padding(
+            padding: const EdgeInsets.only(right: 20,top: 5),
+            child: SizedBox(
+              width: 25,
+              height: 25,
+              child: Center(
+                child: Image.asset("assets/images/add.png"),
+              ),
+            ),
+          ) : const SizedBox()
       ],
     );
   }

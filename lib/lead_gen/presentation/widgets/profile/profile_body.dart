@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/profile/profile_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/add_department.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/add_board.dart';
 
 import '../../../../injections.dart';
 import '../../../application/department/department_bloc.dart';
@@ -86,7 +86,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   Navigator.pushAndRemoveUntil(context,
                       MaterialPageRoute(builder: (context) =>  BlocProvider(
                           create: (context) => sl<DepartmentBloc>(),
-                          child: const AddDepartment(),
+                          child: const AddBoard(),
                         )), (route) => false);
                 },
                 orElse:(){}
@@ -670,7 +670,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                                   Navigator.pushAndRemoveUntil(context,
                                       MaterialPageRoute(builder: (context) =>  BlocProvider(
                                         create: (context) => sl<DepartmentBloc>(),
-                                        child: const AddDepartment(),
+                                        child: const AddBoard(),
                                       )), (route) => false);
                                   // if(_formKey.currentState!.validate()){
                                   //   context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
