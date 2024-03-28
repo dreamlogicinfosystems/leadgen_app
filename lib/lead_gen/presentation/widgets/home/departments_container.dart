@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/add_board.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/board.dart';
 
 import '../../../../injections.dart';
 
@@ -88,7 +88,7 @@ class _DepartmentsContainerState extends State<DepartmentsContainer> {
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => BlocProvider(
                               create: (context) => sl<DepartmentBloc>(),
-                              child: const AddBoard(),
+                              child: const Board(),
                             )));
                           },
                           child: const Text(" click here",textAlign: TextAlign.center,style:

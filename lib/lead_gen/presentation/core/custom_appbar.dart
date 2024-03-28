@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/presentation/widgets/add_board/add_board.dart';
 
-import '../widgets/chat/close_lead_dialog.dart';
+import '../../../injections.dart';
+import '../widgets/add_user/add_user.dart';
 
 class CustomAppBar extends StatefulWidget {
   final String title;
@@ -11,6 +15,7 @@ class CustomAppBar extends StatefulWidget {
   final bool? isChatPage;
   final bool? isBoardPage;
   final bool? isMainPage;
+  final bool? isUserPage;
 
   const CustomAppBar({Key? key,
     required this.title,
@@ -19,7 +24,8 @@ class CustomAppBar extends StatefulWidget {
     required this.iconColor,
     this.isChatPage,
     this.isBoardPage,
-    this.isMainPage
+    this.isMainPage,
+    this.isUserPage
   }) : super(key: key);
 
   @override
@@ -57,14 +63,26 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 )
               ),
           ),
-        ): widget.isBoardPage==true?
-          Padding(
-            padding: const EdgeInsets.only(right: 20,top: 5),
-            child: SizedBox(
-              width: 25,
-              height: 25,
-              child: Center(
-                child: Image.asset("assets/images/add.png"),
+        ): widget.isBoardPage==true || widget.isUserPage==true?
+          GestureDetector(
+            onTap: (){
+              widget.isBoardPage==true?
+              showDialog(context: context, builder: (context) => const AddBoard()) :
+              widget.isUserPage==true?
+              showDialog(context: context, builder: (context) => BlocProvider(
+                create: (context) => sl<DepartmentBloc>(),
+                child: const AddUser(),
+              ))
+              : ();
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20,top: 5),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width*0.0695, //25
+                height: MediaQuery.of(context).size.height*0.04, //25
+                child: Center(
+                  child: Image.asset("assets/images/add.png"),
+                ),
               ),
             ),
           ) : const SizedBox()

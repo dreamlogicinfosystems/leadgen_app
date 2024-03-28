@@ -11,6 +11,7 @@ class CustomTextField extends StatefulWidget {
   final bool? readOnly;
   final bool? isChatPage;
   final int? maxLength;
+  final bool? isBoardAddPage;
   final Function()? onTap;
   final IconData? icon;
   final bool? isLogin;
@@ -34,7 +35,8 @@ class CustomTextField extends StatefulWidget {
         this.onChanged, this.icon,
         this.isLogin, this.labelText,
         this.isLoginPass, this.suffixIcon,
-        this.onEditingComplete
+        this.onEditingComplete,
+        this.isBoardAddPage
       })
       : super(key: key);
 
@@ -89,7 +91,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         hintText: widget.hintText,
         labelText: widget.labelText,
         suffixIcon: widget.isLogin==true? widget.suffixIcon : null,
-        labelStyle: GoogleFonts.poppins(color: const Color(0xFF727373),fontSize: 14),
+        labelStyle: GoogleFonts.poppins(color: const Color(0xFF727373),
+            fontSize: widget.isBoardAddPage==true? 13: 14,fontWeight: FontWeight.w400),
         enabled: true,
         enabledBorder: widget.isChatPage==true? planBorder :border,
         focusedErrorBorder: widget.isChatPage==true? planBorder :border,

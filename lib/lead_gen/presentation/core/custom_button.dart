@@ -7,13 +7,14 @@ class CustomButton extends StatefulWidget {
   final bool? isHomePage;
   final bool? isChatPage;
   final bool? isBoardPage;
+  final bool? isBoardAddPage;
 
   const CustomButton({Key? key,
     required this.name,
     required this.onTap,
     this.isHomePage,
     this.isChatPage,
-    this.isBoardPage}) : super(key: key);
+    this.isBoardPage, this.isBoardAddPage}) : super(key: key);
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -35,7 +36,7 @@ class _CustomButtonState extends State<CustomButton> {
         ),
         child: Center(child: Text(widget.name,style: GoogleFonts.poppins(
             fontWeight: widget.isChatPage==true? FontWeight.w400: widget.isBoardPage==true? FontWeight.w600: FontWeight.w500,
-            fontSize: widget.isChatPage==true? 14: widget.isBoardPage==true? 10: 16,color: widget.isHomePage==true? Colors.black :
+            fontSize: widget.isChatPage==true? 14: widget.isBoardPage==true? 10: widget.isBoardAddPage==true? 14 : 16,color: widget.isHomePage==true? Colors.black :
             widget.isChatPage==true? const Color(0xFFC2E90B) :Colors.white
           ),
         )),

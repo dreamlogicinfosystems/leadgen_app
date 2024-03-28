@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
@@ -46,7 +47,11 @@ showAlertDialog(BuildContext context){
       context: context, 
       builder: (context){
         return AlertDialog(
-          title: const Text("Are you sure?"),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15)
+          ),
+          surfaceTintColor: const Color(0xFFECECED),
+          title: Text("Are you sure?",style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 20),),
           actions: [
             Row(
               children: [
@@ -66,7 +71,7 @@ showAlertDialog(BuildContext context){
                     child: SizedBox(
                         height: 45,
                         child: CustomButton(
-                            name: 'Cancel',
+                            name: 'No',
                             onTap: (){
                               Navigator.pop(context);
                             })
