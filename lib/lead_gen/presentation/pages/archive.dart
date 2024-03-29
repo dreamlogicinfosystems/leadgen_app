@@ -19,6 +19,7 @@ class _ArchivePageState extends State<ArchivePage> {
           preferredSize: Size.fromHeight(kToolbarHeight * 1),
           child: CustomAppBar(
               title: 'Archive',
+              isArchivePage: true,
               centerTitle: true,
               automaticallyImplyLeading: true,
               iconColor: Colors.black
@@ -28,7 +29,7 @@ class _ArchivePageState extends State<ArchivePage> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: 5,
@@ -38,7 +39,7 @@ class _ArchivePageState extends State<ArchivePage> {
                 },
                 child: Card(
                   shadowColor: Colors.black,
-                  elevation: 5,
+                  elevation: 7,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height*0.1,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
 
 class DrawerHead extends StatefulWidget {
   const DrawerHead({super.key});
@@ -57,9 +58,14 @@ class _DrawerHeadState extends State<DrawerHead> {
             Text("kunal@dreamlogic.in",style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400, fontSize: 11,color: const Color(0xFF434445)
             )),
-            Text("Edit Profile",style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w400, fontSize: 11,color: const Color(0xFFB9B9B9)
-            )),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+              },
+              child: Text("Edit Profile",style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w400, fontSize: 11,color: const Color(0xFFB9B9B9)
+              )),
+            ),
           ],
         ),
       ),

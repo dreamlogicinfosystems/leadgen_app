@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 
+import '../../domain/department/department.dart';
+import '../widgets/add_board/add_board.dart';
+
 class Board extends StatefulWidget {
   const Board({Key? key}) : super(key: key);
 
@@ -12,7 +15,13 @@ class Board extends StatefulWidget {
 
 class _BoardState extends State<Board> {
   String selectedDepartment = '';
-  List<String> boards = ['Software Development','Marketing','Design','App Development','Cloud Infrastructure'];
+  List<Department> boards = [
+    const Department(id: 1, departmentName: 'Software Development'),
+    const Department(id: 2, departmentName: 'Marketing'),
+    const Department(id: 3, departmentName: 'Design'),
+    const Department(id: 4, departmentName: 'App Development'),
+    const Department(id: 5, departmentName: 'Cloud Infrastructure'),
+  ];
 
   getSelectedDepartment(String value){
     setState(() {
@@ -50,14 +59,16 @@ class _BoardState extends State<Board> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(boards[ind],style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
+                        Text(boards[ind].departmentName!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
                         SizedBox(
                           height: MediaQuery.of(context).size.height*0.025, //20
                           width: MediaQuery.of(context).size.width*0.0889, //32
                           child: CustomButton(
                               name: 'Edit',
                               isBoardPage: true,
-                              onTap: (){}
+                              onTap: (){
+                                showDialog(context: context, builder: (context) => AddBoard(department: boards[ind],));
+                              }
                           ),
                         )
                       ],

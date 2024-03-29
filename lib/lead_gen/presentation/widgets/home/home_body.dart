@@ -65,7 +65,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                 Container(
                                   decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Color(0xFFF5CD47)
+                                      color: Color(0xFFC2E90B)
                                   ),
                                   height: 22,
                                   width: 22,
@@ -136,7 +136,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                 Container(
                                   decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Color(0xFFF5CD47)
+                                      color: Color(0xFFC2E90B)
                                   ),
                                   height: 22,
                                   width: 22,
@@ -210,7 +210,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                   Container(
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Color(0xFFF5CD47)
+                                        color: Color(0xFFC2E90B)
                                     ),
                                     height: 22,
                                     width: 22,
@@ -263,6 +263,14 @@ class _HomePageBodyState extends State<HomePageBody> {
                                       height: MediaQuery.of(context).size.height*0.1,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 2,
+                                            blurRadius: 5,
+                                            offset: const Offset(0, 4)
+                                          ),
+                                        ],
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Row(

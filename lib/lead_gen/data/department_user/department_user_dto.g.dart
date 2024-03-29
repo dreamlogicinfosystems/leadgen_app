@@ -17,10 +17,9 @@ _$DepartmentUserDtoImpl _$$DepartmentUserDtoImplFromJson(
       departmentId: (json['departmentId'] as List<dynamic>?)
           ?.map((e) => e as int)
           .toList(),
-      departmentDto: json['departmentDto'] == null
-          ? null
-          : DepartmentDto.fromJson(
-              json['departmentDto'] as Map<String, dynamic>),
+      departmentDtos: (json['departmentDtos'] as List<dynamic>?)
+          ?.map((e) => DepartmentDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$DepartmentUserDtoImplToJson(
@@ -32,5 +31,5 @@ Map<String, dynamic> _$$DepartmentUserDtoImplToJson(
       'email': instance.email,
       'password': instance.password,
       'departmentId': instance.departmentId,
-      'departmentDto': instance.departmentDto,
+      'departmentDtos': instance.departmentDtos,
     };

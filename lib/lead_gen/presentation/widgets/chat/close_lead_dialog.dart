@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
+
+import '../../pages/home.dart';
 
 class CloseLeadDialog extends StatefulWidget {
   const CloseLeadDialog({Key? key}) : super(key: key);
@@ -10,36 +13,52 @@ class CloseLeadDialog extends StatefulWidget {
 }
 
 class _CloseLeadDialogState extends State<CloseLeadDialog> {
-  final _closureTextController = TextEditingController();
+  final _reasonController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return SimpleDialog(
-      // surfaceTintColor: Colors.redAccent,
-      title: const Center(child: Text('Close Lead')),
-      children: [
-        const SizedBox(height: 10,),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: CustomTextField(
-              controller: _closureTextController,
-              hintText: 'Reason',
-              keyBoardType: TextInputType.text
+    return Center(
+      child: Card(
+        child: Container(
+          width: MediaQuery.of(context).size.width*0.9,
+          height: MediaQuery.of(context).size.height*0.269,
+          decoration: BoxDecoration(
+              color: const Color(0xFFECECED),
+              borderRadius: BorderRadius.circular(15)
           ),
-        ),
-        const SizedBox(height: 15,),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35,vertical: 10),
-          child: SizedBox(
-            height: 45,
-            child: CustomButton(
-                name: 'Submit',
-                onTap: (){
-                  Navigator.pop(context);
-                }
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Close Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
+                const SizedBox(height: 10),
+                CustomTextField(
+                    isBoardAddPage: true,
+                    labelText: 'Enter reason for closure',
+                    maxLines: 1,
+                    controller: _reasonController,
+                    keyBoardType: TextInputType.text
+                ),
+                const SizedBox(height: 25),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width*0.48,
+                    child: CustomButton(
+                        isBoardAddPage: true,
+                        name: 'Submit',
+                        onTap: (){
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(builder: (context) => const Home()), (route) => false);
+                        }
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

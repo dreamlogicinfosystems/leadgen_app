@@ -84,10 +84,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   showToastMessage(message);
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) =>  BlocProvider(
-                          create: (context) => sl<DepartmentBloc>(),
-                          child: const Board(),
-                        )), (route) => false);
+                      MaterialPageRoute(builder: (context) =>  const Board()), (route) => false);
                 },
                 orElse:(){}
             );
@@ -115,9 +112,9 @@ class _ProfileBodyState extends State<ProfileBody> {
                           children: [
                             Container(
                               height: 110,
-                              decoration:  BoxDecoration(
+                              decoration:  const BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.grey.shade300
+                                  color: Color(0xFFFFD88D)
                               ),
                               child: ClipRRect(
                                 clipBehavior: Clip.antiAlias,
@@ -407,9 +404,9 @@ class _ProfileBodyState extends State<ProfileBody> {
                           children: [
                             Container(
                               height: 110,
-                              decoration:  BoxDecoration(
+                              decoration:  const BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.grey.shade300
+                                  color: Color(0xFFFFD88D)
                               ),
                               child: ClipRRect(
                                 clipBehavior: Clip.antiAlias,
@@ -668,10 +665,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                                 onTap: (){
                                   //TODO : REMIND TO CHANGE
                                   Navigator.pushAndRemoveUntil(context,
-                                      MaterialPageRoute(builder: (context) =>  BlocProvider(
-                                        create: (context) => sl<DepartmentBloc>(),
-                                        child: const Board(),
-                                      )), (route) => false);
+                                      MaterialPageRoute(builder: (context) =>  const Board()), (route) => false);
                                   // if(_formKey.currentState!.validate()){
                                   //   context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
                                   //       User(

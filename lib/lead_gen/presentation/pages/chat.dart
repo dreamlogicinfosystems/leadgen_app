@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/add_lead.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/bottom_sheet.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/chat_header.dart';
 import '../../constants/constant.dart';
@@ -10,7 +9,6 @@ import '../../domain/lead/chat_details.dart';
 import '../../domain/lead/lead.dart';
 import '../core/custom_appbar.dart';
 import '../core/custom_textfield.dart';
-import '../widgets/chat/chat_drawer.dart';
 
 class Chat extends StatefulWidget {
   final Lead lead;
@@ -24,20 +22,6 @@ class _ChatState extends State<Chat> {
   final _scroll = ScrollController(initialScrollOffset: 0.0,keepScrollOffset: true);
   final _messageController = TextEditingController();
   bool isMessage = false;
-  List<String> messages = [
-    'Requires  a software',
-    'Requires  a software by tomorrow',
-    'Requires  a software',
-    'Requires  a software by tomorrow',
-    'Requires  a software',
-    'Requires  a software by tomorrow',
-    'Requires  a software',
-    'Requires  a software by tomorrow',
-    'Requires  a software',
-    'Requires  a software by tomorrow',
-    'Requires  a software',
-    'Requires  a software by tomorrow',
-  ];
 
   @override
   void dispose() {
@@ -66,9 +50,6 @@ class _ChatState extends State<Chat> {
               iconColor: Colors.black
           ),
       ),
-      drawer: const Drawer(
-        child: ChatDrawer(),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -77,47 +58,49 @@ class _ChatState extends State<Chat> {
             BlocConsumer<LeadBloc, LeadState>(
               listener: (context, state){
                 state.maybeWhen(
-                  orElse: (){}
+                  orElse: (){},
                 );
               },
               builder: (context, state) {
                 return state.maybeWhen(
                   successChatList: (chatList){
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border(
-                              top: BorderSide(
-                                  color: Colors.grey.shade300,
-                                  width: 1
-                              )
-                          )
-                      ),
-                      height: MediaQuery.of(context).size.height*0.62,
-                      child: ListView.builder(
-                          itemCount: chatList.length,
-                          shrinkWrap: true,
-                          itemBuilder: (BuildContext context,int index){
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: 105,
-                                    height: 22,
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFFDDDDE9),
-                                        borderRadius: BorderRadius.circular(5)
+                    return SingleChildScrollView(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border(
+                                top: BorderSide(
+                                    color: Colors.grey.shade300,
+                                    width: 1
+                                )
+                            )
+                        ),
+                        height: MediaQuery.of(context).size.height*0.62,
+                        child: ListView.builder(
+                            itemCount: chatList.length,
+                            shrinkWrap: true,
+                            itemBuilder: (BuildContext context,int index){
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: 105,
+                                      height: 22,
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFFDDDDE9),
+                                          borderRadius: BorderRadius.circular(5)
+                                      ),
+                                      child: Center(child: Text(convertDateToReadableDate(chatList[index].date!),style:
+                                      GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w600,color: const Color(0xFF3C3C43)),)),
                                     ),
-                                    child: Center(child: Text(convertDateToReadableDate(chatList[index].date!),style:
-                                    GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w600,color: const Color(0xFF3C3C43)),)),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  ChatDetailsDisplayer(chatDetails: chatList[index].chatData!,)
-                                ],
-                              ),
-                            );
-                          }
+                                    const SizedBox(height: 10),
+                                    ChatDetailsDisplayer(chatDetails: chatList[index].chatData!,)
+                                  ],
+                                ),
+                              );
+                            }
+                        ),
                       ),
                     );
                   },

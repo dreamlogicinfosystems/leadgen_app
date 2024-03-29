@@ -5,12 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/domain/department/department.dart';
+import 'package:lead_gen/lead_gen/domain/department_user/department_user.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_drop_down.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 
 class AddUser extends StatefulWidget {
-  const AddUser({super.key});
+  final String title;
+  final DepartmentUser? departmentUser;
+  const AddUser({super.key, required this.title, this.departmentUser});
 
   @override
   State<AddUser> createState() => _AddUserState();
@@ -35,9 +38,23 @@ class _AddUserState extends State<AddUser> {
       selectedBoards.add(board);
     }
   }
+
+  displayUserDataInForm(){
+    _nameController.text = widget.departmentUser!.name!;
+    _emailController.text = widget.departmentUser!.email!;
+    _phoneController.text = widget.departmentUser!.phone!;
+    _passwordController.text = widget.departmentUser!.password!;
+
+    for(int i=0; i<widget.departmentUser!.departments!.length; i++){
+      selectedBoards.add(widget.departmentUser!.departments![i]);
+    }
+  }
   
   @override
   void initState() {
+    if(widget.departmentUser!=null){
+      displayUserDataInForm();
+    }
     context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
     super.initState();
   }
@@ -60,7 +77,7 @@ class _AddUserState extends State<AddUser> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
-                  child: Text("Add User",style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 20),),
+                  child: Text("${widget.title} User",style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 20),),
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(

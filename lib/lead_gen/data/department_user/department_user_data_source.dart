@@ -89,6 +89,7 @@ class DepartmentUserDataSource{
   Future<Either<ErrorMessage,List<DepartmentUserDto>>> getDepartmentUsers(BuildContext context) async{
     try{
       List<DepartmentUserDto> departmentUsers = [];
+      List<DepartmentDto> departmentDtoList = [];
 
       final response = await _apiMethods.get(
           url: 'get_department_users',
@@ -101,20 +102,26 @@ class DepartmentUserDataSource{
 
         for(int i=0;i<result['department_users'].length; i++){
 
-          DepartmentDto departmentDto = DepartmentDto(
-            id: result['department_users'][i]['departments']['id'],
-            departmentName: result['department_users'][i]['departments']['name'],
-          );
+          for(int i=0; i<result['department_users'][i]['departments'].length; i++){
+            DepartmentDto departmentDto = DepartmentDto(
+              id: result['department_users'][i]['departments']['id'],
+              departmentName: result['department_users'][i]['departments']['name'],
+            );
+
+            departmentDtoList.add(departmentDto);
+          }
 
           DepartmentUserDto departmentUserDto = DepartmentUserDto(
             id: result['department_users'][i]['id'],
             name: result['department_users'][i]['name'],
             phone: result['department_users'][i]['phone'],
             email: result['department_users'][i]['email'],
-            departmentDto: departmentDto
+            departmentDtos: List.from(departmentDtoList)
           );
 
           departmentUsers.add(departmentUserDto);
+
+          departmentDtoList.clear();
         }
 
         return Right(departmentUsers);

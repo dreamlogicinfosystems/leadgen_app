@@ -15,11 +15,6 @@ class DepartmentsContainer extends StatefulWidget {
 }
 
 class _DepartmentsContainerState extends State<DepartmentsContainer> {
-  final List<String> departments = ['App','Web','Marketing'];
-  bool appClicked = false;
-  bool webClicked = false;
-  bool marketingClicked = false;
-  bool isDepartmentsAdded = false;
 
   @override
   void initState() {
@@ -63,7 +58,7 @@ class _DepartmentsContainerState extends State<DepartmentsContainer> {
                           ),
                           child: Center(
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 25,right: 25),
+                              padding: const EdgeInsets.only(left: 15,right: 15),
                               child: Text(departmentsList[index].departmentName!,style:
                               GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 14,color: DepartmentBloc.departmentId== departmentsList[index].id? Colors.white : Colors.black),),
                             ),
@@ -86,10 +81,7 @@ class _DepartmentsContainerState extends State<DepartmentsContainer> {
                         TextStyle(fontSize: 15),),
                         InkWell(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => BlocProvider(
-                              create: (context) => sl<DepartmentBloc>(),
-                              child: const Board(),
-                            )));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const Board()));
                           },
                           child: const Text(" click here",textAlign: TextAlign.center,style:
                           TextStyle(fontSize: 15,color: Colors.blue),),

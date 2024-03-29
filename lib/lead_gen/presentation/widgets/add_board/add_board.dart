@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
+
+import '../../../domain/department/department.dart';
 
 class AddBoard extends StatefulWidget {
-  const AddBoard({super.key});
+  final Department? department;
+  const AddBoard({super.key, this.department});
 
   @override
   State<AddBoard> createState() => _AddBoardState();
@@ -12,6 +16,13 @@ class AddBoard extends StatefulWidget {
 
 class _AddBoardState extends State<AddBoard> {
   final _boardController = TextEditingController();
+
+  @override
+  void initState() {
+    _boardController.text = (widget.department==null? '' : widget.department!.departmentName)!;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -34,6 +45,7 @@ class _AddBoardState extends State<AddBoard> {
                 CustomTextField(
                   isBoardAddPage: true,
                   labelText: 'Enter new Board Title',
+                  maxLines: 1,
                   controller: _boardController,
                   keyBoardType: TextInputType.text
                 ),
@@ -44,7 +56,10 @@ class _AddBoardState extends State<AddBoard> {
                     child: CustomButton(
                         isBoardAddPage: true,
                         name: 'Add board',
-                        onTap: (){}
+                        onTap: (){
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(builder: (context) => const Home()), (route) => false);
+                        }
                     ),
                   ),
                 ),

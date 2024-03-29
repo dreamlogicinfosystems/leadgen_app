@@ -64,6 +64,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: GoogleFonts.poppins(fontSize: 14),
       controller: widget.controller,
       onTap: (){
         if(widget.onTap!=null){

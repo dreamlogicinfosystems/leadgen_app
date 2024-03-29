@@ -59,7 +59,7 @@ class _LeadsCountContainerState extends State<LeadsCountContainer> {
                     Text("Upcoming",style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w500,fontSize: 12,color: Colors.white),),
                     Text("8",style: GoogleFonts.poppins(
-                        fontSize: 32,fontWeight: FontWeight.w600,color: Colors.yellowAccent
+                        fontSize: 32,fontWeight: FontWeight.w600,color: const Color(0xFFC2E90B)
                     ))
                   ],
                 ),

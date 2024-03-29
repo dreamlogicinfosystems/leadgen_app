@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/add_board/add_board.dart';
-
-import '../../../injections.dart';
 import '../widgets/add_user/add_user.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -13,6 +9,7 @@ class CustomAppBar extends StatefulWidget {
   final bool automaticallyImplyLeading;
   final Color iconColor;
   final bool? isChatPage;
+  final bool? isArchivePage;
   final bool? isBoardPage;
   final bool? isMainPage;
   final bool? isUserPage;
@@ -25,7 +22,7 @@ class CustomAppBar extends StatefulWidget {
     this.isChatPage,
     this.isBoardPage,
     this.isMainPage,
-    this.isUserPage
+    this.isUserPage, this.isArchivePage
   }) : super(key: key);
 
   @override
@@ -45,8 +42,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
       centerTitle: widget.centerTitle,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       actions: [
-        widget.isChatPage==true || widget.isMainPage==true? Padding(
-          padding: const EdgeInsets.only(right: 10,top: 5),
+        widget.isChatPage==true || widget.isMainPage==true || widget.isArchivePage==true? Padding(
+          padding: const EdgeInsets.only(right: 11,top: 5),
           child: GestureDetector(
                onTap: (){
                  // showDialog(context: context, builder: (context) => const CloseLeadDialog());
@@ -69,10 +66,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               widget.isBoardPage==true?
               showDialog(context: context, builder: (context) => const AddBoard()) :
               widget.isUserPage==true?
-              showDialog(context: context, builder: (context) => BlocProvider(
-                create: (context) => sl<DepartmentBloc>(),
-                child: const AddUser(),
-              ))
+              showDialog(context: context, builder: (context) => const AddUser(title: 'Add',))
               : ();
             },
             child: Padding(

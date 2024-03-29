@@ -22,7 +22,7 @@ mixin _$DepartmentUser {
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   List<int>? get departmentId => throw _privateConstructorUsedError;
-  Department? get department => throw _privateConstructorUsedError;
+  List<Department>? get departments => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DepartmentUserCopyWith<DepartmentUser> get copyWith =>
@@ -42,9 +42,7 @@ abstract class $DepartmentUserCopyWith<$Res> {
       String? email,
       String? password,
       List<int>? departmentId,
-      Department? department});
-
-  $DepartmentCopyWith<$Res>? get department;
+      List<Department>? departments});
 }
 
 /// @nodoc
@@ -66,7 +64,7 @@ class _$DepartmentUserCopyWithImpl<$Res, $Val extends DepartmentUser>
     Object? email = freezed,
     Object? password = freezed,
     Object? departmentId = freezed,
-    Object? department = freezed,
+    Object? departments = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -93,23 +91,11 @@ class _$DepartmentUserCopyWithImpl<$Res, $Val extends DepartmentUser>
           ? _value.departmentId
           : departmentId // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      department: freezed == department
-          ? _value.department
-          : department // ignore: cast_nullable_to_non_nullable
-              as Department?,
+      departments: freezed == departments
+          ? _value.departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<Department>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DepartmentCopyWith<$Res>? get department {
-    if (_value.department == null) {
-      return null;
-    }
-
-    return $DepartmentCopyWith<$Res>(_value.department!, (value) {
-      return _then(_value.copyWith(department: value) as $Val);
-    });
   }
 }
 
@@ -128,10 +114,7 @@ abstract class _$$DepartmentUserImplCopyWith<$Res>
       String? email,
       String? password,
       List<int>? departmentId,
-      Department? department});
-
-  @override
-  $DepartmentCopyWith<$Res>? get department;
+      List<Department>? departments});
 }
 
 /// @nodoc
@@ -151,7 +134,7 @@ class __$$DepartmentUserImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? departmentId = freezed,
-    Object? department = freezed,
+    Object? departments = freezed,
   }) {
     return _then(_$DepartmentUserImpl(
       id: freezed == id
@@ -178,10 +161,10 @@ class __$$DepartmentUserImplCopyWithImpl<$Res>
           ? _value._departmentId
           : departmentId // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      department: freezed == department
-          ? _value.department
-          : department // ignore: cast_nullable_to_non_nullable
-              as Department?,
+      departments: freezed == departments
+          ? _value._departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<Department>?,
     ));
   }
 }
@@ -196,8 +179,9 @@ class _$DepartmentUserImpl implements _DepartmentUser {
       this.email,
       this.password,
       final List<int>? departmentId,
-      this.department})
-      : _departmentId = departmentId;
+      final List<Department>? departments})
+      : _departmentId = departmentId,
+        _departments = departments;
 
   @override
   final int? id;
@@ -219,12 +203,19 @@ class _$DepartmentUserImpl implements _DepartmentUser {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Department>? _departments;
   @override
-  final Department? department;
+  List<Department>? get departments {
+    final value = _departments;
+    if (value == null) return null;
+    if (_departments is EqualUnmodifiableListView) return _departments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'DepartmentUser(id: $id, name: $name, phone: $phone, email: $email, password: $password, departmentId: $departmentId, department: $department)';
+    return 'DepartmentUser(id: $id, name: $name, phone: $phone, email: $email, password: $password, departmentId: $departmentId, departments: $departments)';
   }
 
   @override
@@ -240,13 +231,20 @@ class _$DepartmentUserImpl implements _DepartmentUser {
                 other.password == password) &&
             const DeepCollectionEquality()
                 .equals(other._departmentId, _departmentId) &&
-            (identical(other.department, department) ||
-                other.department == department));
+            const DeepCollectionEquality()
+                .equals(other._departments, _departments));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, phone, email, password,
-      const DeepCollectionEquality().hash(_departmentId), department);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      phone,
+      email,
+      password,
+      const DeepCollectionEquality().hash(_departmentId),
+      const DeepCollectionEquality().hash(_departments));
 
   @JsonKey(ignore: true)
   @override
@@ -264,7 +262,7 @@ abstract class _DepartmentUser implements DepartmentUser {
       final String? email,
       final String? password,
       final List<int>? departmentId,
-      final Department? department}) = _$DepartmentUserImpl;
+      final List<Department>? departments}) = _$DepartmentUserImpl;
 
   @override
   int? get id;
@@ -279,7 +277,7 @@ abstract class _DepartmentUser implements DepartmentUser {
   @override
   List<int>? get departmentId;
   @override
-  Department? get department;
+  List<Department>? get departments;
   @override
   @JsonKey(ignore: true)
   _$$DepartmentUserImplCopyWith<_$DepartmentUserImpl> get copyWith =>

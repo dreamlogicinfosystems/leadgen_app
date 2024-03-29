@@ -26,7 +26,7 @@ mixin _$DepartmentUserDto {
   String? get email => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   List<int>? get departmentId => throw _privateConstructorUsedError;
-  DepartmentDto? get departmentDto => throw _privateConstructorUsedError;
+  List<DepartmentDto>? get departmentDtos => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,9 +47,7 @@ abstract class $DepartmentUserDtoCopyWith<$Res> {
       String? email,
       String? password,
       List<int>? departmentId,
-      DepartmentDto? departmentDto});
-
-  $DepartmentDtoCopyWith<$Res>? get departmentDto;
+      List<DepartmentDto>? departmentDtos});
 }
 
 /// @nodoc
@@ -71,7 +69,7 @@ class _$DepartmentUserDtoCopyWithImpl<$Res, $Val extends DepartmentUserDto>
     Object? email = freezed,
     Object? password = freezed,
     Object? departmentId = freezed,
-    Object? departmentDto = freezed,
+    Object? departmentDtos = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -98,23 +96,11 @@ class _$DepartmentUserDtoCopyWithImpl<$Res, $Val extends DepartmentUserDto>
           ? _value.departmentId
           : departmentId // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      departmentDto: freezed == departmentDto
-          ? _value.departmentDto
-          : departmentDto // ignore: cast_nullable_to_non_nullable
-              as DepartmentDto?,
+      departmentDtos: freezed == departmentDtos
+          ? _value.departmentDtos
+          : departmentDtos // ignore: cast_nullable_to_non_nullable
+              as List<DepartmentDto>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DepartmentDtoCopyWith<$Res>? get departmentDto {
-    if (_value.departmentDto == null) {
-      return null;
-    }
-
-    return $DepartmentDtoCopyWith<$Res>(_value.departmentDto!, (value) {
-      return _then(_value.copyWith(departmentDto: value) as $Val);
-    });
   }
 }
 
@@ -133,10 +119,7 @@ abstract class _$$DepartmentUserDtoImplCopyWith<$Res>
       String? email,
       String? password,
       List<int>? departmentId,
-      DepartmentDto? departmentDto});
-
-  @override
-  $DepartmentDtoCopyWith<$Res>? get departmentDto;
+      List<DepartmentDto>? departmentDtos});
 }
 
 /// @nodoc
@@ -156,7 +139,7 @@ class __$$DepartmentUserDtoImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? departmentId = freezed,
-    Object? departmentDto = freezed,
+    Object? departmentDtos = freezed,
   }) {
     return _then(_$DepartmentUserDtoImpl(
       id: freezed == id
@@ -183,10 +166,10 @@ class __$$DepartmentUserDtoImplCopyWithImpl<$Res>
           ? _value._departmentId
           : departmentId // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      departmentDto: freezed == departmentDto
-          ? _value.departmentDto
-          : departmentDto // ignore: cast_nullable_to_non_nullable
-              as DepartmentDto?,
+      departmentDtos: freezed == departmentDtos
+          ? _value._departmentDtos
+          : departmentDtos // ignore: cast_nullable_to_non_nullable
+              as List<DepartmentDto>?,
     ));
   }
 }
@@ -201,8 +184,9 @@ class _$DepartmentUserDtoImpl extends _DepartmentUserDto {
       this.email,
       this.password,
       final List<int>? departmentId,
-      this.departmentDto})
+      final List<DepartmentDto>? departmentDtos})
       : _departmentId = departmentId,
+        _departmentDtos = departmentDtos,
         super._();
 
   factory _$DepartmentUserDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -228,12 +212,19 @@ class _$DepartmentUserDtoImpl extends _DepartmentUserDto {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<DepartmentDto>? _departmentDtos;
   @override
-  final DepartmentDto? departmentDto;
+  List<DepartmentDto>? get departmentDtos {
+    final value = _departmentDtos;
+    if (value == null) return null;
+    if (_departmentDtos is EqualUnmodifiableListView) return _departmentDtos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'DepartmentUserDto(id: $id, name: $name, phone: $phone, email: $email, password: $password, departmentId: $departmentId, departmentDto: $departmentDto)';
+    return 'DepartmentUserDto(id: $id, name: $name, phone: $phone, email: $email, password: $password, departmentId: $departmentId, departmentDtos: $departmentDtos)';
   }
 
   @override
@@ -249,14 +240,21 @@ class _$DepartmentUserDtoImpl extends _DepartmentUserDto {
                 other.password == password) &&
             const DeepCollectionEquality()
                 .equals(other._departmentId, _departmentId) &&
-            (identical(other.departmentDto, departmentDto) ||
-                other.departmentDto == departmentDto));
+            const DeepCollectionEquality()
+                .equals(other._departmentDtos, _departmentDtos));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, phone, email, password,
-      const DeepCollectionEquality().hash(_departmentId), departmentDto);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      phone,
+      email,
+      password,
+      const DeepCollectionEquality().hash(_departmentId),
+      const DeepCollectionEquality().hash(_departmentDtos));
 
   @JsonKey(ignore: true)
   @override
@@ -281,7 +279,7 @@ abstract class _DepartmentUserDto extends DepartmentUserDto {
       final String? email,
       final String? password,
       final List<int>? departmentId,
-      final DepartmentDto? departmentDto}) = _$DepartmentUserDtoImpl;
+      final List<DepartmentDto>? departmentDtos}) = _$DepartmentUserDtoImpl;
   const _DepartmentUserDto._() : super._();
 
   factory _DepartmentUserDto.fromJson(Map<String, dynamic> json) =
@@ -300,7 +298,7 @@ abstract class _DepartmentUserDto extends DepartmentUserDto {
   @override
   List<int>? get departmentId;
   @override
-  DepartmentDto? get departmentDto;
+  List<DepartmentDto>? get departmentDtos;
   @override
   @JsonKey(ignore: true)
   _$$DepartmentUserDtoImplCopyWith<_$DepartmentUserDtoImpl> get copyWith =>

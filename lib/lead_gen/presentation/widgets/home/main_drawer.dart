@@ -10,6 +10,7 @@ import '../../../constants/constant.dart';
 import '../../pages/all_users.dart';
 import '../../pages/board.dart';
 import '../../pages/login.dart';
+import '../../pages/view_reminders.dart';
 import 'drawer_head.dart';
 
 class MainDrawer extends StatefulWidget {
@@ -58,6 +59,8 @@ class _MainDrawerState extends State<MainDrawer> {
                       isUsers = false;
                       isLogin = false;
                     });
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewReminders()));
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.8,
@@ -138,10 +141,7 @@ class _MainDrawerState extends State<MainDrawer> {
                       isLogin = false;
                       isArchivedLeads = false;
                     });
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BlocProvider(
-                      create: (context) => sl<DepartmentBloc>(),
-                      child: const Board(),
-                    )),(route) => route.isFirst);
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Board()),(route) => route.isFirst);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.8,

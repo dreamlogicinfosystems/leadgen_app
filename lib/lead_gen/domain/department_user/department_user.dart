@@ -13,6 +13,6 @@ class DepartmentUser with _$DepartmentUser{
     String? email,
     String? password,
     List<int>? departmentId,
-    Department? department,
+    List<Department>? departments,
   }) = _DepartmentUser;
 }

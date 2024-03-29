@@ -17,7 +17,7 @@ abstract class DepartmentUserDto implements _$DepartmentUserDto{
     String? email,
     String? password,
     List<int>? departmentId,
-    DepartmentDto? departmentDto,
+    List<DepartmentDto>? departmentDtos,
   }) = _DepartmentUserDto;
 
   factory DepartmentUserDto.fromJson(Map<String,dynamic>json) => _$DepartmentUserDtoFromJson(json);
@@ -39,7 +39,7 @@ abstract class DepartmentUserDto implements _$DepartmentUserDto{
       name: departmentUserDto.name,
       phone: departmentUserDto.phone,
       email: departmentUserDto.email,
-      department: departmentUserDto.departmentDto?.toDomain(),
+      departments: departmentUserDto.departmentDtos?.map((e) => const DepartmentDto().toDomain()).toList(),
     );
   }
 }
