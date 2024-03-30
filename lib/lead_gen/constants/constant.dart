@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 
 showToastMessage(String message){
@@ -42,7 +43,7 @@ showLoader(BuildContext context){
   );
 }
 
-showAlertDialog(BuildContext context){
+showAlertDialog(BuildContext context,String page,int? id){
   showDialog(
       context: context, 
       builder: (context){
@@ -60,8 +61,14 @@ showAlertDialog(BuildContext context){
                         height: 45,
                         child: CustomButton(
                             name: 'Yes',
+                            isDeletePage: page!='logout'? true : false,
                             onTap: (){
-                              context.read<AuthBloc>().add(AuthEvent.logOut(context));
+                              if(page=="logout"){
+                                context.read<AuthBloc>().add(AuthEvent.logOut(context));
+                              }else if(page=="board"){
+                                debugPrint("deletion id: $id");
+                                context.read<DepartmentBloc>().add(DepartmentEvent.deleteDepartment(id!, context));
+                              }
                             }
                         ),
                     ),

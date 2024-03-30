@@ -65,6 +65,19 @@ class _HomeState extends State<Home> {
                   child: BlocBuilder<DepartmentBloc, DepartmentState>(
                     builder: (context, state) {
                       return state.maybeWhen(
+                          loadingInProgress: (){
+                            return SizedBox(
+                              height: MediaQuery.of(context).size.height*0.055,
+                              width: MediaQuery.of(context).size.width,
+                              child: const Center(
+                                child: SizedBox(
+                                    height: 30,
+                                    width: 30,
+                                    child: CircularProgressIndicator()
+                                ),
+                              ),
+                            );
+                          },
                           departmentList: (departmentsList){
                             return departmentsList.isNotEmpty? ListView.builder(
                               scrollDirection: Axis.horizontal,

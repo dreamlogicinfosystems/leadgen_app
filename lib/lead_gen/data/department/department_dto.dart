@@ -23,10 +23,10 @@ abstract class DepartmentDto implements _$DepartmentDto{
     );
   }
 
-  Department toDomain(){
+  Department toDomain(DepartmentDto departmentDto){
     return Department(
-      id: id,
-      departmentName: departmentName
+      id: departmentDto.id,
+      departmentName: departmentDto.departmentName
     );
   }
 }

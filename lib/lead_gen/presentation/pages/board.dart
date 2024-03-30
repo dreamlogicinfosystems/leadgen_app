@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
-
-import '../../domain/department/department.dart';
+import '../../constants/delete_dialog.dart';
 import '../widgets/add_board/add_board.dart';
 
 class Board extends StatefulWidget {
@@ -14,19 +16,10 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  String selectedDepartment = '';
-  List<Department> boards = [
-    const Department(id: 1, departmentName: 'Software Development'),
-    const Department(id: 2, departmentName: 'Marketing'),
-    const Department(id: 3, departmentName: 'Design'),
-    const Department(id: 4, departmentName: 'App Development'),
-    const Department(id: 5, departmentName: 'Cloud Infrastructure'),
-  ];
-
-  getSelectedDepartment(String value){
-    setState(() {
-      selectedDepartment = value;
-    });
+  @override
+  void initState() {
+    context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
+    super.initState();
   }
 
   @override
@@ -43,41 +36,90 @@ class _BoardState extends State<Board> {
               iconColor: Colors.black
           )
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top:10),
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: ListView.builder(
-              itemCount: boards.length,
-              itemBuilder: (context, ind){
+      body: BlocConsumer<DepartmentBloc, DepartmentState>(
+        listener: (context, state){
+          state.maybeWhen(
+            success: (message){
+              showToastMessage(message);
+              Navigator.pop(context);
+            },
+            orElse: (){}
+          );
+        },
+        builder: (context, state) {
+          return state.maybeWhen(
+              loadingInProgress: (){
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*0.85,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              },
+              departmentList: (departments){
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 2,left: 25,right: 20),
+                  padding: const EdgeInsets.only(top:10),
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width*0.9,
-                    height: MediaQuery.of(context).size.height*0.07,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(boards[ind].departmentName!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height*0.025, //20
-                          width: MediaQuery.of(context).size.width*0.0889, //32
-                          child: CustomButton(
-                              name: 'Edit',
-                              isBoardPage: true,
-                              onTap: (){
-                                showDialog(context: context, builder: (context) => AddBoard(department: boards[ind],));
-                              }
-                          ),
-                        )
-                      ],
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: ListView.builder(
+                        itemCount: departments.length,
+                        itemBuilder: (context, ind){
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 2,left: 25,right: 17),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width*0.9,
+                              height: MediaQuery.of(context).size.height*0.07,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(departments[ind].departmentName!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        height: MediaQuery.of(context).size.height*0.025, //20
+                                        width: MediaQuery.of(context).size.width*0.0889, //32
+                                        child: CustomButton(
+                                            name: 'Edit',
+                                            isBoardPage: true,
+                                            onTap: (){
+                                              showDialog(context: context, builder: (context) => AddBoard(
+                                                department: departments[ind],buttonName: 'Update'));
+                                            }
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      GestureDetector(
+                                        onTap: (){
+                                          showDialog(context: context, builder: (context) =>
+                                              DeleteDialog(source: 'board',deletionId: departments[ind].id!,));
+                                          // showAlertDialog(context,'board',departments[ind].id);
+                                        },
+                                        child: Icon(Icons.delete_forever,color: Colors.redAccent,size: MediaQuery.of(context).size.height*0.034),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        }
                     ),
                   ),
                 );
+              },
+              orElse: (){
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*0.85,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
               }
-          ),
-        ),
+          );
+        },
       )
     );
   }

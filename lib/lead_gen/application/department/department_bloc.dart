@@ -68,6 +68,7 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
             emit(DepartmentState.failed(error.message));
           },(message){
             emit(DepartmentState.success(message.successMessage));
+            add(DepartmentEvent.getDepartments(e.context));
           });
         },
         setDeptId: (e) async{

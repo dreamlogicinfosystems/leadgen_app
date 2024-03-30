@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/profile/profile_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/board.dart';
-
-import '../../../../injections.dart';
-import '../../../application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../domain/auth/user.dart';
 import '../../core/custom_button.dart';
 import '../../core/custom_textfield.dart';
@@ -84,7 +81,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                   showToastMessage(message);
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) =>  const Board()), (route) => false);
+                      MaterialPageRoute(builder: (context) =>  const Home()), (route) => false);
                 },
                 orElse:(){}
             );
@@ -663,33 +660,30 @@ class _ProfileBodyState extends State<ProfileBody> {
                             CustomButton(
                                 name: 'Next',
                                 onTap: (){
-                                  //TODO : REMIND TO CHANGE
-                                  Navigator.pushAndRemoveUntil(context,
-                                      MaterialPageRoute(builder: (context) =>  const Board()), (route) => false);
-                                  // if(_formKey.currentState!.validate()){
-                                  //   context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
-                                  //       User(
-                                  //         name: _nameController.text,
-                                  //         email: _emailController.text,
-                                  //         phoneNumber: _phoneController.text,
-                                  //         businessName: _businessNameControll.text,
-                                  //         address: _addressController.text,
-                                  //         state: _stateController.text,
-                                  //         country: _countryController.text,
-                                  //         pincode: _pincodeController.text,
-                                  //         website: _companyWebsiteControll.text,
-                                  //         registeredAddress: _registeredAddressContr.text,
-                                  //         facebook: _facebook.text,
-                                  //         instagram: _instagram.text,
-                                  //         twitter: _twitter.text,
-                                  //         linkedIn: _linkedin.text,
-                                  //         google: _google.text,
-                                  //       ),
-                                  //       context)
-                                  //   );
-                                  // }
+                                  if(_formKey.currentState!.validate()){
+                                    context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
+                                        User(
+                                          name: _nameController.text,
+                                          email: _emailController.text,
+                                          phoneNumber: _phoneController.text,
+                                          businessName: _businessNameControll.text,
+                                          address: _addressController.text,
+                                          state: _stateController.text,
+                                          country: _countryController.text,
+                                          pincode: _pincodeController.text,
+                                          website: _companyWebsiteControll.text,
+                                          registeredAddress: _registeredAddressContr.text,
+                                          facebook: _facebook.text,
+                                          instagram: _instagram.text,
+                                          twitter: _twitter.text,
+                                          linkedIn: _linkedin.text,
+                                          google: _google.text,
+                                        ),
+                                        context)
+                                    );
+                                  }
                                 }
-                            )
+                            ),
                           ],
                         );
                       }

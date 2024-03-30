@@ -223,7 +223,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 isReminders = false;
                 isArchivedLeads = false;
               });
-              showAlertDialog(context);
+              showAlertDialog(context,"logout",0);
             },
             child: BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {

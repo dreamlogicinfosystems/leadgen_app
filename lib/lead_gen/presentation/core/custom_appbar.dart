@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department_user/department_user_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/add_board/add_board.dart';
+import '../../../injections.dart';
 import '../widgets/add_user/add_user.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -64,9 +67,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
           GestureDetector(
             onTap: (){
               widget.isBoardPage==true?
-              showDialog(context: context, builder: (context) => const AddBoard()) :
+              showDialog(context: context, builder: (context) => const AddBoard(buttonName: 'Add',)) :
               widget.isUserPage==true?
-              showDialog(context: context, builder: (context) => const AddUser(title: 'Add',))
+              showDialog(context: context, builder: (context) => BlocProvider(
+                create: (context) => sl<DepartmentUserBloc>(),
+                child: const AddUser(title: 'Add',),
+              ))
               : ();
             },
             child: Padding(

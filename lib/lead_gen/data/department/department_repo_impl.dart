@@ -37,7 +37,7 @@ class DepartmentRepositoryImpl extends DepartmentRepository{
     return getDepartments.fold((error){
       return Left(error);
     },(departmentList){
-      final departments = departmentList.map((e) => e.toDomain()).toList();
+      final departments = departmentList.map((e) => e.toDomain(e)).toList();
       return Right(departments);
     });
   }

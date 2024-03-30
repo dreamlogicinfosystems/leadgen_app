@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/department_user/department_user_dto.dart';
-
 import '../../constants/api.dart';
 import '../../constants/error.dart';
 import '../department/department_dto.dart';
@@ -20,7 +18,7 @@ class DepartmentUserDataSource{
     map['phone'] = departmentUserDto.phone;
     map['email'] = departmentUserDto.email;
     map['password'] = departmentUserDto.password;
-    map['department_ids'] = departmentUserDto.departmentId.toString();
+    map['department_ids[0]'] = departmentUserDto.departmentId!.join(", ");
 
     final response = await _apiMethods.post(
         url: 'add_department_user',
@@ -65,6 +63,7 @@ class DepartmentUserDataSource{
     try{
       Map<String,dynamic> map = {};
 
+      //TODO: REMAINING
       map['id'] = departmentUserDto.id;
       map['department_ids'] = departmentUserDto.departmentId.toString();
       
@@ -102,10 +101,12 @@ class DepartmentUserDataSource{
 
         for(int i=0;i<result['department_users'].length; i++){
 
-          for(int i=0; i<result['department_users'][i]['departments'].length; i++){
+          final depts = result['department_users'][i]['departments'];
+
+          for(int i=0; i<depts.length; i++){
             DepartmentDto departmentDto = DepartmentDto(
-              id: result['department_users'][i]['departments']['id'],
-              departmentName: result['department_users'][i]['departments']['name'],
+              id: depts[i]['id'],
+              departmentName: depts[i]['name'],
             );
 
             departmentDtoList.add(departmentDto);

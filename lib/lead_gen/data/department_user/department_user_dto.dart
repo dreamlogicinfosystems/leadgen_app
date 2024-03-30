@@ -39,7 +39,7 @@ abstract class DepartmentUserDto implements _$DepartmentUserDto{
       name: departmentUserDto.name,
       phone: departmentUserDto.phone,
       email: departmentUserDto.email,
-      departments: departmentUserDto.departmentDtos?.map((e) => const DepartmentDto().toDomain()).toList(),
+      departments: departmentUserDto.departmentDtos?.map((e) => const DepartmentDto().toDomain(e)).toList(),
     );
   }
 }

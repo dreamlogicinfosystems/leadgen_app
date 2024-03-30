@@ -70,7 +70,15 @@ class DepartmentUserBloc extends Bloc<DepartmentUserEvent, DepartmentUserState> 
           });
         },
         deleteDepartmentUser: (e) async{
+          emit(const DepartmentUserState.loadingInProgress());
 
+          final tryDeletingDeptUser = await _departmentUserRepository.deleteDepartmentUser(e.userId, e.context);
+
+          tryDeletingDeptUser.fold((error){
+            emit(DepartmentUserState.failed(error.message));
+          },(success){
+            emit(DepartmentUserState.success(success.successMessage));
+          });
         }
     );
   }
