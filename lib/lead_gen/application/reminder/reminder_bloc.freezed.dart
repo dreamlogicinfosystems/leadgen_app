@@ -20,9 +20,7 @@ mixin _$ReminderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Reminder reminder, BuildContext context)
         addReminder,
-    required TResult Function(
-            List<Reminder> remindersList, BuildContext context)
-        getReminders,
+    required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
     required TResult Function(
@@ -33,8 +31,7 @@ mixin _$ReminderEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult? Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -44,8 +41,7 @@ mixin _$ReminderEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -183,9 +179,7 @@ class _$addReminderImpl implements _addReminder {
   TResult when<TResult extends Object?>({
     required TResult Function(Reminder reminder, BuildContext context)
         addReminder,
-    required TResult Function(
-            List<Reminder> remindersList, BuildContext context)
-        getReminders,
+    required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
     required TResult Function(
@@ -199,8 +193,7 @@ class _$addReminderImpl implements _addReminder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult? Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -213,8 +206,7 @@ class _$addReminderImpl implements _addReminder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -282,7 +274,7 @@ abstract class _$$getRemindersImplCopyWith<$Res> {
           _$getRemindersImpl value, $Res Function(_$getRemindersImpl) then) =
       __$$getRemindersImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Reminder> remindersList, BuildContext context});
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -296,14 +288,9 @@ class __$$getRemindersImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? remindersList = null,
     Object? context = null,
   }) {
     return _then(_$getRemindersImpl(
-      null == remindersList
-          ? _value._remindersList
-          : remindersList // ignore: cast_nullable_to_non_nullable
-              as List<Reminder>,
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -315,23 +302,14 @@ class __$$getRemindersImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$getRemindersImpl implements _getReminders {
-  const _$getRemindersImpl(final List<Reminder> remindersList, this.context)
-      : _remindersList = remindersList;
-
-  final List<Reminder> _remindersList;
-  @override
-  List<Reminder> get remindersList {
-    if (_remindersList is EqualUnmodifiableListView) return _remindersList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_remindersList);
-  }
+  const _$getRemindersImpl(this.context);
 
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'ReminderEvent.getReminders(remindersList: $remindersList, context: $context)';
+    return 'ReminderEvent.getReminders(context: $context)';
   }
 
   @override
@@ -339,14 +317,11 @@ class _$getRemindersImpl implements _getReminders {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$getRemindersImpl &&
-            const DeepCollectionEquality()
-                .equals(other._remindersList, _remindersList) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_remindersList), context);
+  int get hashCode => Object.hash(runtimeType, context);
 
   @JsonKey(ignore: true)
   @override
@@ -359,38 +334,34 @@ class _$getRemindersImpl implements _getReminders {
   TResult when<TResult extends Object?>({
     required TResult Function(Reminder reminder, BuildContext context)
         addReminder,
-    required TResult Function(
-            List<Reminder> remindersList, BuildContext context)
-        getReminders,
+    required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
     required TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)
         setRemainder,
   }) {
-    return getReminders(remindersList, context);
+    return getReminders(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult? Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
   }) {
-    return getReminders?.call(remindersList, context);
+    return getReminders?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -398,7 +369,7 @@ class _$getRemindersImpl implements _getReminders {
     required TResult orElse(),
   }) {
     if (getReminders != null) {
-      return getReminders(remindersList, context);
+      return getReminders(context);
     }
     return orElse();
   }
@@ -442,11 +413,8 @@ class _$getRemindersImpl implements _getReminders {
 }
 
 abstract class _getReminders implements ReminderEvent {
-  const factory _getReminders(
-          final List<Reminder> remindersList, final BuildContext context) =
-      _$getRemindersImpl;
+  const factory _getReminders(final BuildContext context) = _$getRemindersImpl;
 
-  List<Reminder> get remindersList;
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$getRemindersImplCopyWith<_$getRemindersImpl> get copyWith =>
@@ -529,9 +497,7 @@ class _$deleteReminderImpl implements _deleteReminder {
   TResult when<TResult extends Object?>({
     required TResult Function(Reminder reminder, BuildContext context)
         addReminder,
-    required TResult Function(
-            List<Reminder> remindersList, BuildContext context)
-        getReminders,
+    required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
     required TResult Function(
@@ -545,8 +511,7 @@ class _$deleteReminderImpl implements _deleteReminder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult? Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -559,8 +524,7 @@ class _$deleteReminderImpl implements _deleteReminder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -707,9 +671,7 @@ class _$setRemainderImpl implements _setRemainder {
   TResult when<TResult extends Object?>({
     required TResult Function(Reminder reminder, BuildContext context)
         addReminder,
-    required TResult Function(
-            List<Reminder> remindersList, BuildContext context)
-        getReminders,
+    required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
     required TResult Function(
@@ -723,8 +685,7 @@ class _$setRemainderImpl implements _setRemainder {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult? Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
@@ -737,8 +698,7 @@ class _$setRemainderImpl implements _setRemainder {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
-    TResult Function(List<Reminder> remindersList, BuildContext context)?
-        getReminders,
+    TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?

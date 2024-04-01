@@ -44,7 +44,10 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: true
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavBar(title: 'Add Lead',isHomePage: true),
+      bottomNavigationBar: const CustomBottomNavBar(
+        title: 'Add Lead',
+        isHomePage: true
+      ),
       drawer: Drawer(
         width: MediaQuery.of(context).size.width*0.92,
         shape: const RoundedRectangleBorder(),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
 
+import '../../../injections.dart';
+import '../../application/department/department_bloc.dart';
+import '../../application/lead/lead_bloc.dart';
 import '../pages/add_lead.dart';
 import 'custom_button.dart';
 
@@ -36,7 +40,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             name: widget.title,
             onTap: () {
               widget.isHomePage==true? 
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AddLead())):
+              showDialog(context: context, builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider (
+                      create: (BuildContext context) => sl<DepartmentBloc>(),
+                    ),
+                    BlocProvider (
+                      create: (BuildContext context) => sl<LeadBloc>(),
+                    )
+                  ],
+                  child: const AddLead())):
               Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder()));
             },
           ),

@@ -4,7 +4,7 @@ part of 'reminder_bloc.dart';
 class ReminderEvent with _$ReminderEvent {
   const factory ReminderEvent.addReminder(Reminder reminder,BuildContext context) = _addReminder;
 
-  const factory ReminderEvent.getReminders(List<Reminder> remindersList,BuildContext context) = _getReminders;
+  const factory ReminderEvent.getReminders(BuildContext context) = _getReminders;
 
   const factory ReminderEvent.deleteReminder(int reminderId,BuildContext context) = _deleteReminder;
 

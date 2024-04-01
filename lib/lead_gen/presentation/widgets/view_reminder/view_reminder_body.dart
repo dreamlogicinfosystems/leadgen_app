@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class ViewReminderBody extends StatefulWidget {
@@ -14,6 +16,12 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
     'Call Brian followup with design','Call Sparsh Salcete followup','Call Chetan Brian Design',
     'Call Martin Payment Reminder','Social team briefing'
   ];
+
+  @override
+  void initState() {
+    context.read<ReminderBloc>().add(ReminderEvent.getReminders(context));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

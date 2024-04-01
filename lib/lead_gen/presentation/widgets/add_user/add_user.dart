@@ -46,6 +46,7 @@ class _AddUserState extends State<AddUser> {
     _nameController.text = widget.departmentUser!.name!;
     _emailController.text = widget.departmentUser!.email!;
     _phoneController.text = widget.departmentUser!.phone!;
+    //TODO: REMIND TO UNDO
     // _passwordController.text = widget.departmentUser!.password!;
 
     for(int i=0; i<widget.departmentUser!.departments!.length; i++){
@@ -73,7 +74,7 @@ class _AddUserState extends State<AddUser> {
           success: (message){
             showToastMessage(message);
             Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) => const AllUsers()), (route) => false);
+                MaterialPageRoute(builder: (context) => const AllUsers()), (route) => route.isFirst);
           },
           orElse: (){}
         );
@@ -247,18 +248,34 @@ class _AddUserState extends State<AddUser> {
 
                                     debugPrint("selected department ids: $selectedBoardsIds");
 
-                                    context.read<DepartmentUserBloc>().add(
+                                    if(widget.title=="Add"){
+                                      context.read<DepartmentUserBloc>().add(
                                         DepartmentUserEvent.addDepartmentUser(
                                             DepartmentUser(
-                                              name: _nameController.text,
-                                              email: _emailController.text,
-                                              phone: _phoneController.text,
-                                              password: _passwordController.text,
-                                              departmentId: selectedBoardsIds
+                                                name: _nameController.text,
+                                                email: _emailController.text,
+                                                phone: _phoneController.text,
+                                                password: _passwordController.text,
+                                                departmentId: selectedBoardsIds
                                             ),
                                             context
                                         ),
-                                    );
+                                      );
+                                    }else{
+                                      context.read<DepartmentUserBloc>().add(
+                                          DepartmentUserEvent.updateDepartmentUser(
+                                              DepartmentUser(
+                                                id: widget.departmentUser!.id,
+                                                name: _nameController.text,
+                                                email: _emailController.text,
+                                                phone: _phoneController.text,
+                                                password: _passwordController.text,
+                                                departmentId: selectedBoardsIds
+                                              ),
+                                              context
+                                          ),
+                                      );
+                                    }
                                   }
                                 }
                             ),

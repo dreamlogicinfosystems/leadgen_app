@@ -24,10 +24,7 @@ class _UsersPageBodyState extends State<UsersPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DepartmentUserBloc, DepartmentUserState>(
-      listener: (context, state) {
-
-      },
+    return BlocBuilder<DepartmentUserBloc, DepartmentUserState>(
       builder: (context, state) {
         return state.maybeWhen(
           loadingInProgress: (){
@@ -76,7 +73,7 @@ class _UsersPageBodyState extends State<UsersPageBody> {
                                   const SizedBox(width: 10),
                                   GestureDetector(
                                     onTap: (){
-                                      showDialog(context: context, builder: (context) => 
+                                      showDialog(context: context, builder: (context) =>
                                           BlocProvider(
                                             create: (context) => sl<DepartmentUserBloc>(),
                                             child: DeleteDialog(deletionId: departmentUsers[ind].id!, source: 'users'),

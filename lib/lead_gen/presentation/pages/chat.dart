@@ -65,7 +65,9 @@ class _ChatState extends State<Chat> {
                 return state.maybeWhen(
                   successChatList: (chatList){
                     return SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
                       child: Container(
+                        height: MediaQuery.of(context).size.height*0.62,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border(
@@ -75,7 +77,6 @@ class _ChatState extends State<Chat> {
                                 )
                             )
                         ),
-                        height: MediaQuery.of(context).size.height*0.62,
                         child: ListView.builder(
                             itemCount: chatList.length,
                             shrinkWrap: true,
@@ -95,7 +96,7 @@ class _ChatState extends State<Chat> {
                                       GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w600,color: const Color(0xFF3C3C43)),)),
                                     ),
                                     const SizedBox(height: 10),
-                                    ChatDetailsDisplayer(chatDetails: chatList[index].chatData!,)
+                                    ChatDetailsDisplayer(chatDetails: chatList[index].chatData!)
                                   ],
                                 ),
                               );

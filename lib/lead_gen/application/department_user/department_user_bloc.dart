@@ -25,7 +25,7 @@ class DepartmentUserBloc extends Bloc<DepartmentUserEvent, DepartmentUserState> 
                 name: e.user.name,
                 phone: e.user.phone,
                 email: e.user.email,
-                password: e.user.email,
+                password: e.user.password,
                 departmentId: e.user.departmentId
               ),
               e.context
@@ -51,13 +51,13 @@ class DepartmentUserBloc extends Bloc<DepartmentUserEvent, DepartmentUserState> 
         updateDepartmentUser: (e) async{
           emit(const DepartmentUserState.loadingInProgress());
 
-          final tryUpdateDepartUser = await _departmentUserRepository.saveDepartmentUser(
+          final tryUpdateDepartUser = await _departmentUserRepository.updateDepartmentUser(
               DepartmentUser(
                   id: e.user.id,
                   name: e.user.name,
                   phone: e.user.phone,
                   email: e.user.email,
-                  password: e.user.email,
+                  password: e.user.password,
                   departmentId: e.user.departmentId
               ),
               e.context

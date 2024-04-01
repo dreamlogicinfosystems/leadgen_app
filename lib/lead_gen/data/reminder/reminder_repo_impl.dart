@@ -17,10 +17,10 @@ class ReminderRepositoryImpl extends ReminderRepository{
     final result = await _reminderApiDataSource.setReminderLocally(message, reminderDate, reminderTime);
 
     return result.fold((error){
-              return Left(error);
-            },(success){
-              return Right(success);
-            }
+        return Left(error);
+      },(success){
+        return Right(success);
+      }
     );
   }
 
