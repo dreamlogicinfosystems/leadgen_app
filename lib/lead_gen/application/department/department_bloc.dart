@@ -75,6 +75,9 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
           if(e.id.toString().isNotEmpty){
             departmentId = e.id;
           }
+        },
+        resetDeptId: (e) async{
+          departmentId = 0;
         }
     );
   }

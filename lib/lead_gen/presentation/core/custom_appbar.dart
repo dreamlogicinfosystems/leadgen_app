@@ -46,19 +46,24 @@ class _CustomAppBarState extends State<CustomAppBar> {
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       actions: [
         widget.isChatPage==true || widget.isMainPage==true || widget.isArchivePage==true? Padding(
-          padding: const EdgeInsets.only(right: 11,top: 5),
+          padding: const EdgeInsets.only(right: 8,top: 5),
           child: GestureDetector(
                onTap: (){
                  // showDialog(context: context, builder: (context) => const CloseLeadDialog());
                },
-              child: const SizedBox(
+              child: SizedBox(
                 width: 50,
                 height: 40,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.notifications,size: 27,color: Colors.black),  //Color(0xFFC2E90B)
-                    Text("2",style: TextStyle(fontSize: 11),)
+                    // Icon(Icons.notifications,size: 27,color: Colors.black),  //Color(0xFFC2E90B)
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height*0.03,
+                      child: Image.asset('assets/images/notification.png')
+                    ),
+                    const SizedBox(width: 2),
+                    const Text("2",style: TextStyle(fontSize: 11),)
                   ],
                 )
               ),

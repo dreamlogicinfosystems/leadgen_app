@@ -94,20 +94,29 @@ class _AddBoardState extends State<AddBoard> {
                                   isBoardAddPage: true,
                                   name: '${widget.buttonName} board',
                                   onTap: (){
-                                    if(widget.buttonName=="Add"){
-                                      context.read<DepartmentBloc>().add(
-                                          DepartmentEvent.createDepartment(_boardController.text, context)
-                                      );
+                                    if(_boardController.text.trim()==''){
+                                      showErrorToastMessage('Enter board title');
+                                    }else if(_boardController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
+                                      showErrorToastMessage('Invalid board title');
                                     }else{
-                                      context.read<DepartmentBloc>().add(
-                                          DepartmentEvent.updateDepartment(
-                                              Department(
-                                                  id: widget.department!.id,
-                                                  departmentName: _boardController.text
-                                              ),
+                                      if(widget.buttonName=="Add"){
+                                        context.read<DepartmentBloc>().add(
+                                          DepartmentEvent.createDepartment(
+                                              _boardController.text.trim(),
                                               context
-                                          )
-                                      );
+                                          ),
+                                        );
+                                      }else{
+                                        context.read<DepartmentBloc>().add(
+                                          DepartmentEvent.updateDepartment(
+                                            Department(
+                                                id: widget.department!.id,
+                                                departmentName: _boardController.text.trim()
+                                            ),
+                                            context
+                                          ),
+                                        );
+                                      }
                                     }
                                   }
                               ),

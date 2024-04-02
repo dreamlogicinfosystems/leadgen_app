@@ -18,6 +18,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight * 1),
           child: CustomAppBar(

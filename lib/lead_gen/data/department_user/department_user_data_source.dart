@@ -14,11 +14,14 @@ class DepartmentUserDataSource{
   Future<Either<ErrorMessage,Success>> addDepartUser(DepartmentUserDto departmentUserDto,BuildContext context) async{
     Map<String,dynamic> map = {};
 
+    for(int i=0; i<departmentUserDto.departmentId!.length; i++){
+      map['department_ids[$i]'] = departmentUserDto.departmentId![i].toString();
+    }
+
     map['name'] = departmentUserDto.name;
     map['phone'] = departmentUserDto.phone;
     map['email'] = departmentUserDto.email;
     map['password'] = departmentUserDto.password;
-    map['department_ids[0]'] = departmentUserDto.departmentId!.join(", ");
 
     final response = await _apiMethods.post(
         url: 'add_department_user',
@@ -63,9 +66,15 @@ class DepartmentUserDataSource{
     try{
       Map<String,dynamic> map = {};
 
-      //TODO: REMAINING
-      map['id'] = departmentUserDto.id;
-      map['department_ids'] = departmentUserDto.departmentId.toString();
+      for(int i=0; i<departmentUserDto.departmentId!.length; i++){
+        map['department_ids[$i]'] = departmentUserDto.departmentId![i].toString();
+      }
+
+      map['id'] = departmentUserDto.id.toString();
+      map['name'] = departmentUserDto.name;
+      map['phone'] = departmentUserDto.phone;
+      map['email'] = departmentUserDto.email;
+      map['password'] = departmentUserDto.password;
       
       final response = await _apiMethods.post(
           url: 'update_department_user',

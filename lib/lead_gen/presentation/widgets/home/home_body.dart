@@ -8,7 +8,8 @@ import '../../../constants/constant.dart';
 import '../../pages/chat.dart';
 
 class HomePageBody extends StatefulWidget {
-  const HomePageBody({Key? key}) : super(key: key);
+  final String type;
+  const HomePageBody({Key? key, required this.type}) : super(key: key);
 
   @override
   State<HomePageBody> createState() => _HomePageBodyState();
@@ -16,12 +17,6 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> {
   List<String> leadsList = ["added"];
-
-  @override
-  void initState() {
-    context.read<LeadBloc>().add(LeadEvent.getLeads('all', context));
-    super.initState();
-  }
 
   simplifyDate(String createdDate){
     final date = DateTime.parse(createdDate);
@@ -31,8 +26,11 @@ class _HomePageBodyState extends State<HomePageBody> {
     return simpleDate;
   }
 
+
   @override
   Widget build(BuildContext context) {
+    context.read<LeadBloc>().add(LeadEvent.getLeads(widget.type, context));
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: BlocBuilder<LeadBloc, LeadState>(
@@ -172,9 +170,9 @@ class _HomePageBodyState extends State<HomePageBody> {
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height*0.45,
-                          child: const Center(
-                            child: Text("No leads added!",style:
-                            TextStyle(fontSize: 16),
+                          child: Center(
+                            child: Text("No leads found!",style:
+                            GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w400),
                             ),
                           ),
                         ),

@@ -25,6 +25,7 @@ mixin _$DepartmentEvent {
         updateDepartment,
     required TResult Function(int id, BuildContext context) deleteDepartment,
     required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$DepartmentEvent {
         updateDepartment,
     TResult? Function(int id, BuildContext context)? deleteDepartment,
     TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +48,7 @@ mixin _$DepartmentEvent {
         updateDepartment,
     TResult Function(int id, BuildContext context)? deleteDepartment,
     TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +59,7 @@ mixin _$DepartmentEvent {
     required TResult Function(_updateDepartment value) updateDepartment,
     required TResult Function(_deleteDepartment value) deleteDepartment,
     required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$DepartmentEvent {
     TResult? Function(_updateDepartment value)? updateDepartment,
     TResult? Function(_deleteDepartment value)? deleteDepartment,
     TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +79,7 @@ mixin _$DepartmentEvent {
     TResult Function(_updateDepartment value)? updateDepartment,
     TResult Function(_deleteDepartment value)? deleteDepartment,
     TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -178,6 +184,7 @@ class _$createDepartmentImpl implements _createDepartment {
         updateDepartment,
     required TResult Function(int id, BuildContext context) deleteDepartment,
     required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
   }) {
     return createDepartment(departName, context);
   }
@@ -192,6 +199,7 @@ class _$createDepartmentImpl implements _createDepartment {
         updateDepartment,
     TResult? Function(int id, BuildContext context)? deleteDepartment,
     TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
   }) {
     return createDepartment?.call(departName, context);
   }
@@ -205,6 +213,7 @@ class _$createDepartmentImpl implements _createDepartment {
         updateDepartment,
     TResult Function(int id, BuildContext context)? deleteDepartment,
     TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
     required TResult orElse(),
   }) {
     if (createDepartment != null) {
@@ -221,6 +230,7 @@ class _$createDepartmentImpl implements _createDepartment {
     required TResult Function(_updateDepartment value) updateDepartment,
     required TResult Function(_deleteDepartment value) deleteDepartment,
     required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
   }) {
     return createDepartment(this);
   }
@@ -233,6 +243,7 @@ class _$createDepartmentImpl implements _createDepartment {
     TResult? Function(_updateDepartment value)? updateDepartment,
     TResult? Function(_deleteDepartment value)? deleteDepartment,
     TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
   }) {
     return createDepartment?.call(this);
   }
@@ -245,6 +256,7 @@ class _$createDepartmentImpl implements _createDepartment {
     TResult Function(_updateDepartment value)? updateDepartment,
     TResult Function(_deleteDepartment value)? deleteDepartment,
     TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
     required TResult orElse(),
   }) {
     if (createDepartment != null) {
@@ -338,6 +350,7 @@ class _$getDepartmentsImpl implements _getDepartments {
         updateDepartment,
     required TResult Function(int id, BuildContext context) deleteDepartment,
     required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
   }) {
     return getDepartments(context);
   }
@@ -352,6 +365,7 @@ class _$getDepartmentsImpl implements _getDepartments {
         updateDepartment,
     TResult? Function(int id, BuildContext context)? deleteDepartment,
     TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
   }) {
     return getDepartments?.call(context);
   }
@@ -365,6 +379,7 @@ class _$getDepartmentsImpl implements _getDepartments {
         updateDepartment,
     TResult Function(int id, BuildContext context)? deleteDepartment,
     TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
     required TResult orElse(),
   }) {
     if (getDepartments != null) {
@@ -381,6 +396,7 @@ class _$getDepartmentsImpl implements _getDepartments {
     required TResult Function(_updateDepartment value) updateDepartment,
     required TResult Function(_deleteDepartment value) deleteDepartment,
     required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
   }) {
     return getDepartments(this);
   }
@@ -393,6 +409,7 @@ class _$getDepartmentsImpl implements _getDepartments {
     TResult? Function(_updateDepartment value)? updateDepartment,
     TResult? Function(_deleteDepartment value)? deleteDepartment,
     TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
   }) {
     return getDepartments?.call(this);
   }
@@ -405,6 +422,7 @@ class _$getDepartmentsImpl implements _getDepartments {
     TResult Function(_updateDepartment value)? updateDepartment,
     TResult Function(_deleteDepartment value)? deleteDepartment,
     TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
     required TResult orElse(),
   }) {
     if (getDepartments != null) {
@@ -515,6 +533,7 @@ class _$updateDepartmentImpl implements _updateDepartment {
         updateDepartment,
     required TResult Function(int id, BuildContext context) deleteDepartment,
     required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
   }) {
     return updateDepartment(department, context);
   }
@@ -529,6 +548,7 @@ class _$updateDepartmentImpl implements _updateDepartment {
         updateDepartment,
     TResult? Function(int id, BuildContext context)? deleteDepartment,
     TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
   }) {
     return updateDepartment?.call(department, context);
   }
@@ -542,6 +562,7 @@ class _$updateDepartmentImpl implements _updateDepartment {
         updateDepartment,
     TResult Function(int id, BuildContext context)? deleteDepartment,
     TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
     required TResult orElse(),
   }) {
     if (updateDepartment != null) {
@@ -558,6 +579,7 @@ class _$updateDepartmentImpl implements _updateDepartment {
     required TResult Function(_updateDepartment value) updateDepartment,
     required TResult Function(_deleteDepartment value) deleteDepartment,
     required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
   }) {
     return updateDepartment(this);
   }
@@ -570,6 +592,7 @@ class _$updateDepartmentImpl implements _updateDepartment {
     TResult? Function(_updateDepartment value)? updateDepartment,
     TResult? Function(_deleteDepartment value)? deleteDepartment,
     TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
   }) {
     return updateDepartment?.call(this);
   }
@@ -582,6 +605,7 @@ class _$updateDepartmentImpl implements _updateDepartment {
     TResult Function(_updateDepartment value)? updateDepartment,
     TResult Function(_deleteDepartment value)? deleteDepartment,
     TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
     required TResult orElse(),
   }) {
     if (updateDepartment != null) {
@@ -683,6 +707,7 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
         updateDepartment,
     required TResult Function(int id, BuildContext context) deleteDepartment,
     required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
   }) {
     return deleteDepartment(id, context);
   }
@@ -697,6 +722,7 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
         updateDepartment,
     TResult? Function(int id, BuildContext context)? deleteDepartment,
     TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
   }) {
     return deleteDepartment?.call(id, context);
   }
@@ -710,6 +736,7 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
         updateDepartment,
     TResult Function(int id, BuildContext context)? deleteDepartment,
     TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
     required TResult orElse(),
   }) {
     if (deleteDepartment != null) {
@@ -726,6 +753,7 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
     required TResult Function(_updateDepartment value) updateDepartment,
     required TResult Function(_deleteDepartment value) deleteDepartment,
     required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
   }) {
     return deleteDepartment(this);
   }
@@ -738,6 +766,7 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
     TResult? Function(_updateDepartment value)? updateDepartment,
     TResult? Function(_deleteDepartment value)? deleteDepartment,
     TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
   }) {
     return deleteDepartment?.call(this);
   }
@@ -750,6 +779,7 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
     TResult Function(_updateDepartment value)? updateDepartment,
     TResult Function(_deleteDepartment value)? deleteDepartment,
     TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
     required TResult orElse(),
   }) {
     if (deleteDepartment != null) {
@@ -841,6 +871,7 @@ class _$setDeptIdImpl implements _setDeptId {
         updateDepartment,
     required TResult Function(int id, BuildContext context) deleteDepartment,
     required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
   }) {
     return setDeptId(id);
   }
@@ -855,6 +886,7 @@ class _$setDeptIdImpl implements _setDeptId {
         updateDepartment,
     TResult? Function(int id, BuildContext context)? deleteDepartment,
     TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
   }) {
     return setDeptId?.call(id);
   }
@@ -868,6 +900,7 @@ class _$setDeptIdImpl implements _setDeptId {
         updateDepartment,
     TResult Function(int id, BuildContext context)? deleteDepartment,
     TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
     required TResult orElse(),
   }) {
     if (setDeptId != null) {
@@ -884,6 +917,7 @@ class _$setDeptIdImpl implements _setDeptId {
     required TResult Function(_updateDepartment value) updateDepartment,
     required TResult Function(_deleteDepartment value) deleteDepartment,
     required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
   }) {
     return setDeptId(this);
   }
@@ -896,6 +930,7 @@ class _$setDeptIdImpl implements _setDeptId {
     TResult? Function(_updateDepartment value)? updateDepartment,
     TResult? Function(_deleteDepartment value)? deleteDepartment,
     TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
   }) {
     return setDeptId?.call(this);
   }
@@ -908,6 +943,7 @@ class _$setDeptIdImpl implements _setDeptId {
     TResult Function(_updateDepartment value)? updateDepartment,
     TResult Function(_deleteDepartment value)? deleteDepartment,
     TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
     required TResult orElse(),
   }) {
     if (setDeptId != null) {
@@ -924,6 +960,137 @@ abstract class _setDeptId implements DepartmentEvent {
   @JsonKey(ignore: true)
   _$$setDeptIdImplCopyWith<_$setDeptIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$resetDeptIdImplCopyWith<$Res> {
+  factory _$$resetDeptIdImplCopyWith(
+          _$resetDeptIdImpl value, $Res Function(_$resetDeptIdImpl) then) =
+      __$$resetDeptIdImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$resetDeptIdImplCopyWithImpl<$Res>
+    extends _$DepartmentEventCopyWithImpl<$Res, _$resetDeptIdImpl>
+    implements _$$resetDeptIdImplCopyWith<$Res> {
+  __$$resetDeptIdImplCopyWithImpl(
+      _$resetDeptIdImpl _value, $Res Function(_$resetDeptIdImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$resetDeptIdImpl implements _resetDeptId {
+  const _$resetDeptIdImpl();
+
+  @override
+  String toString() {
+    return 'DepartmentEvent.resetDeptId()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$resetDeptIdImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String departName, BuildContext context)
+        createDepartment,
+    required TResult Function(BuildContext context) getDepartments,
+    required TResult Function(Department department, BuildContext context)
+        updateDepartment,
+    required TResult Function(int id, BuildContext context) deleteDepartment,
+    required TResult Function(int id) setDeptId,
+    required TResult Function() resetDeptId,
+  }) {
+    return resetDeptId();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String departName, BuildContext context)?
+        createDepartment,
+    TResult? Function(BuildContext context)? getDepartments,
+    TResult? Function(Department department, BuildContext context)?
+        updateDepartment,
+    TResult? Function(int id, BuildContext context)? deleteDepartment,
+    TResult? Function(int id)? setDeptId,
+    TResult? Function()? resetDeptId,
+  }) {
+    return resetDeptId?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String departName, BuildContext context)? createDepartment,
+    TResult Function(BuildContext context)? getDepartments,
+    TResult Function(Department department, BuildContext context)?
+        updateDepartment,
+    TResult Function(int id, BuildContext context)? deleteDepartment,
+    TResult Function(int id)? setDeptId,
+    TResult Function()? resetDeptId,
+    required TResult orElse(),
+  }) {
+    if (resetDeptId != null) {
+      return resetDeptId();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_createDepartment value) createDepartment,
+    required TResult Function(_getDepartments value) getDepartments,
+    required TResult Function(_updateDepartment value) updateDepartment,
+    required TResult Function(_deleteDepartment value) deleteDepartment,
+    required TResult Function(_setDeptId value) setDeptId,
+    required TResult Function(_resetDeptId value) resetDeptId,
+  }) {
+    return resetDeptId(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_createDepartment value)? createDepartment,
+    TResult? Function(_getDepartments value)? getDepartments,
+    TResult? Function(_updateDepartment value)? updateDepartment,
+    TResult? Function(_deleteDepartment value)? deleteDepartment,
+    TResult? Function(_setDeptId value)? setDeptId,
+    TResult? Function(_resetDeptId value)? resetDeptId,
+  }) {
+    return resetDeptId?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_createDepartment value)? createDepartment,
+    TResult Function(_getDepartments value)? getDepartments,
+    TResult Function(_updateDepartment value)? updateDepartment,
+    TResult Function(_deleteDepartment value)? deleteDepartment,
+    TResult Function(_setDeptId value)? setDeptId,
+    TResult Function(_resetDeptId value)? resetDeptId,
+    required TResult orElse(),
+  }) {
+    if (resetDeptId != null) {
+      return resetDeptId(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _resetDeptId implements DepartmentEvent {
+  const factory _resetDeptId() = _$resetDeptIdImpl;
 }
 
 /// @nodoc

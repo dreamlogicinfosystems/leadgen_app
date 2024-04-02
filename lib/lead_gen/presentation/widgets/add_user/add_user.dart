@@ -46,11 +46,43 @@ class _AddUserState extends State<AddUser> {
     _nameController.text = widget.departmentUser!.name!;
     _emailController.text = widget.departmentUser!.email!;
     _phoneController.text = widget.departmentUser!.phone!;
-    //TODO: REMIND TO UNDO
-    // _passwordController.text = widget.departmentUser!.password!;
 
     for(int i=0; i<widget.departmentUser!.departments!.length; i++){
       selectedBoards.add(widget.departmentUser!.departments![i]);
+    }
+  }
+
+  bool validate(){
+    if(_nameController.text.trim()=='' || _emailController.text.trim()==''
+        || widget.title=="Add"? _passwordController.text.trim()=='' || _phoneController.text.trim()=='' : _phoneController.text.trim()==''){
+      showErrorToastMessage("Please enter all details");
+      return false;
+    }else if(selectedBoards.isEmpty){
+      showErrorToastMessage("Atleast select one board");
+      return false;
+    }else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
+      showErrorToastMessage("Invalid Full Name");
+      return false;
+    }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+      showErrorToastMessage("Invalid Email");
+      return false;
+    }else if(_phoneController.text.contains(RegExp(r'[-.,]')) || _phoneController.text.contains(' ')){
+      showErrorToastMessage('Invalid Phone Number');
+      return false;
+    }else if(_phoneController.text.length>10 || _phoneController.text.length<10){
+      showErrorToastMessage("Phone number should be of 10 digit");
+      return false;
+    }else if(_passwordController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+      showErrorToastMessage('Invalid Password');
+      return false;
+    }else if(widget.title=="add"){
+      if(_passwordController.text.length<8){
+        showErrorToastMessage('Password must be atleast 8 character');
+        return false;
+      }
+      return false;
+    }else{
+      return true;
     }
   }
   
@@ -221,26 +253,9 @@ class _AddUserState extends State<AddUser> {
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width*0.48,
                             child: CustomButton(
-                                name: 'Add User',
+                                name: widget.title=="Add"? 'Add User' : 'Update user',
                                 onTap: (){
-                                  if(_nameController.text.trim()=='' || _emailController.text.trim()==''
-                                      || _passwordController.text.trim()=='' || _phoneController.text.trim()==''){
-                                    showErrorToastMessage("Please enter all details");
-                                  }else if(selectedBoards.isEmpty){
-                                    showErrorToastMessage("Atleast select one board");
-                                  }else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
-                                    showErrorToastMessage("Invalid Full Name");
-                                  }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
-                                    showErrorToastMessage("Invalid Email");
-                                  }else if(_phoneController.text.contains(RegExp(r'[-.,]')) || _phoneController.text.contains(' ')){
-                                    showErrorToastMessage('Invalid Phone Number');
-                                  }else if(_phoneController.text.length>10 || _phoneController.text.length<10){
-                                    showErrorToastMessage("Phone number should be of 10 digit");
-                                  }else if(_passwordController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
-                                    showErrorToastMessage('Invalid Password');
-                                  }else if(_passwordController.text.length<8){
-                                    showErrorToastMessage('Password must be atleast 8 character');
-                                  }else{
+                                  if(validate()==true){
                                     //retrieving department ids from department lis
                                     for(int i=0; i<selectedBoards.length; i++){
                                       selectedBoardsIds.add(selectedBoards[i].id!);
@@ -263,17 +278,17 @@ class _AddUserState extends State<AddUser> {
                                       );
                                     }else{
                                       context.read<DepartmentUserBloc>().add(
-                                          DepartmentUserEvent.updateDepartmentUser(
-                                              DepartmentUser(
+                                        DepartmentUserEvent.updateDepartmentUser(
+                                            DepartmentUser(
                                                 id: widget.departmentUser!.id,
                                                 name: _nameController.text,
                                                 email: _emailController.text,
                                                 phone: _phoneController.text,
                                                 password: _passwordController.text,
                                                 departmentId: selectedBoardsIds
-                                              ),
-                                              context
-                                          ),
+                                            ),
+                                            context
+                                        ),
                                       );
                                     }
                                   }

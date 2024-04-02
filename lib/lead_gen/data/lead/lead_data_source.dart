@@ -6,10 +6,8 @@ import 'package:lead_gen/lead_gen/constants/api.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_details_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
-import 'package:lead_gen/lead_gen/domain/lead/chat_details.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
-import '../../constants/constant.dart';
 import '../../constants/error.dart';
 import 'lead_dto.dart';
 
@@ -20,19 +18,15 @@ class LeadDataSource{
   Future<Either<ErrorMessage,Success>> addLeadToServer(LeadDto leadDto,BuildContext context) async{
     try{
       Map<String,dynamic> map = {};
-      List<String> departmentIds = [];
 
       for(int i=0; i<leadDto.departmentIds!.length; i++){
-        departmentIds.add(leadDto.departmentIds![i].toString());
+        map['department_ids[$i]'] = leadDto.departmentIds![i].toString();
       }
-
-      final stringDeptId = departmentIds.join(' ,');
 
       map['name'] = leadDto.name;
       map['phone'] = leadDto.phone;
       map['email'] = leadDto.email;
       map['message'] = leadDto.message;
-      map['department_ids[0]'] = stringDeptId;
 
       final response = await _apiMethods.post(
           url: 'add_lead',
@@ -149,8 +143,6 @@ class LeadDataSource{
 
           chatList.add(chatDto);
         }
-
-        print(chatList);
 
         return Right(chatList);
       }else{

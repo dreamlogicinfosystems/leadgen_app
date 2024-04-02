@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/profile/profile_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
@@ -369,6 +370,9 @@ class _ProfileBodyState extends State<ProfileBody> {
                                 name: 'Next',
                                 onTap: (){
                                   if(_formKey.currentState!.validate()){
+                                    //reset dept id
+                                    context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
+
                                     context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
                                         User(
                                           userId: userData.userId,
@@ -661,26 +665,8 @@ class _ProfileBodyState extends State<ProfileBody> {
                                 name: 'Next',
                                 onTap: (){
                                   if(_formKey.currentState!.validate()){
-                                    context.read<ProfileBloc>().add(ProfileEvent.updateUserData(
-                                        User(
-                                          name: _nameController.text,
-                                          email: _emailController.text,
-                                          phoneNumber: _phoneController.text,
-                                          businessName: _businessNameControll.text,
-                                          address: _addressController.text,
-                                          state: _stateController.text,
-                                          country: _countryController.text,
-                                          pincode: _pincodeController.text,
-                                          website: _companyWebsiteControll.text,
-                                          registeredAddress: _registeredAddressContr.text,
-                                          facebook: _facebook.text,
-                                          instagram: _instagram.text,
-                                          twitter: _twitter.text,
-                                          linkedIn: _linkedin.text,
-                                          google: _google.text,
-                                        ),
-                                        context)
-                                    );
+                                    //reset dept id
+                                    context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
                                   }
                                 }
                             ),
