@@ -64,6 +64,9 @@ class CustomerDataSource{
             name: result['leads'][i]['name'],
             phone: result['leads'][i]['phone'],
             email: result['leads'][i]['email'],
+            //TODO: REMAINED TO UNCOMMENT
+            // message: result['leads'][i]['note'],
+            // lastChatDate: result['leads'][i]['last_chat_date'],
             createdAt: result['leads'][i]['created_at']
           );
 

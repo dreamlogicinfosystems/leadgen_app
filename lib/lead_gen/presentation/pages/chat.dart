@@ -58,6 +58,11 @@ class _ChatState extends State<Chat> {
             BlocConsumer<LeadBloc, LeadState>(
               listener: (context, state){
                 state.maybeWhen(
+                  successChatList: (chat){
+                    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                      _scroll.jumpTo(_scroll.position.maxScrollExtent);
+                    });
+                  },
                   orElse: (){},
                 );
               },
@@ -78,6 +83,7 @@ class _ChatState extends State<Chat> {
                             )
                         ),
                         child: ListView.builder(
+                            controller: _scroll,
                             itemCount: chatList.length,
                             shrinkWrap: true,
                             itemBuilder: (BuildContext context,int index){
@@ -162,7 +168,9 @@ class _ChatState extends State<Chat> {
                         maxLines: 1,
                         keyBoardType: TextInputType.text,
                         onEditingComplete: (){
-                          debugPrint(_messageController.text);
+                          //To close the keyboard
+                          FocusScope.of(context).requestFocus(FocusNode());
+
                           context.read<LeadBloc>().add(LeadEvent.addLeadChat(
                               Lead(
                                 id: widget.lead.id,
@@ -175,17 +183,6 @@ class _ChatState extends State<Chat> {
                           _messageController.clear();
                         },
                         isChatPage: true,
-                        onChanged: (value){
-                          if(value!='' || value.trim()!=''){
-                            setState(() {
-                              isMessage = true;
-                            });
-                          }else{
-                            setState(() {
-                              isMessage = false;
-                            });
-                          }
-                        },
                       ),
                     ),
                     SizedBox(
@@ -198,20 +195,6 @@ class _ChatState extends State<Chat> {
                       width: 25,
                       child: Image.asset("assets/images/Record Audio.png"),
                     ),
-                    // isMessage==false? const Icon(Icons.send,size: 35,color: Colors.grey) :
-                    // GestureDetector(
-                    //     onTap: (){
-                    //       setState(() {});
-                    //       messages.add(_messageController.text);
-                    //       _messageController.clear();
-                    //             _scroll.animateTo(
-                    //                 _scroll.position.maxScrollExtent+500.0,
-                    //                 duration: const Duration(milliseconds: 100),
-                    //                 curve: Curves.easeIn
-                    //             );
-                    //     },
-                    //     child: const Icon(Icons.send,size: 35),
-                    // ),
                   ],
                 ),
               ),
@@ -239,6 +222,7 @@ class _ChatDetailsDisplayerState extends State<ChatDetailsDisplayer> {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: widget.chatDetails.length,
       itemBuilder: (BuildContext context, int index) {
         return Align(

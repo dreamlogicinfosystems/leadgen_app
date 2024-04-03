@@ -39,7 +39,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                 loadingInProgress: (){
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.6,
+                    height: MediaQuery.of(context).size.height*0.58,
                     child: Column(
                       children: [
                         SizedBox(
@@ -110,7 +110,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                 emptyLeadList: (emptyList){
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.6,
+                    height: MediaQuery.of(context).size.height*0.58,
                     child: Column(
                       children: [
                         SizedBox(
@@ -183,7 +183,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                 successLeadsList: (leadsList){
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.70,
+                    height: MediaQuery.of(context).size.height*0.58,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [

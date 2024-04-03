@@ -20,6 +20,38 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   VoidCallback? refreshPage;
   String type = 'all';
+  Widget loading = ListView.builder(
+      itemCount: 3,
+      scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
+      itemBuilder: (context,index){
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 6),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              border: Border.all(
+                  width: 1,
+                  color: const Color(0xFFE8E8E8)
+              ),
+            ),
+            child: const Center(
+              child: Padding(
+                  padding: EdgeInsets.only(left: 47,right: 47),
+                  child: Center(
+                    child: SizedBox(
+                      height: 10,
+                      width: 10,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  )
+              ),
+            ),
+          ),
+        );
+      }
+  );
 
   @override
   void initState() {
@@ -66,38 +98,7 @@ class _HomeState extends State<Home> {
                   builder: (context, state) {
                     return state.maybeWhen(
                         loadingInProgress: (){
-                          return ListView.builder(
-                            itemCount: 3,
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemBuilder: (context,index){
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 3,vertical: 6),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                                    border: Border.all(
-                                        width: 1,
-                                        color: const Color(0xFFE8E8E8)
-                                    ),
-                                  ),
-                                  child: const Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(left: 47,right: 47),
-                                      child: Center(
-                                          child: SizedBox(
-                                            height: 10,
-                                            width: 10,
-                                            child: CircularProgressIndicator(strokeWidth: 2),
-                                          ),
-                                      )
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                          );
+                          return loading;
                         },
                         departmentList: (departmentsList){
                           return ListView.builder(
@@ -138,17 +139,7 @@ class _HomeState extends State<Home> {
                           );
                         },
                         orElse: (){
-                          return SizedBox(
-                            height: MediaQuery.of(context).size.height*0.055,
-                            width: MediaQuery.of(context).size.width,
-                            child: const Center(
-                              child: SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: CircularProgressIndicator()
-                              ),
-                            ),
-                          );
+                          return loading;
                         }
                     );
                   },

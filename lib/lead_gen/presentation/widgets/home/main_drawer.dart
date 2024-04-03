@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/archive.dart';
-
-import '../../../../injections.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/customers.dart';
 import '../../../application/auth/auth_bloc.dart';
-import '../../../application/department/department_bloc.dart';
 import '../../../constants/constant.dart';
 import '../../pages/all_users.dart';
 import '../../pages/board.dart';
@@ -26,6 +24,7 @@ class _MainDrawerState extends State<MainDrawer> {
   bool isBoards = false;
   bool isUsers = false;
   bool isLogin = false;
+  bool isCustomers = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +57,7 @@ class _MainDrawerState extends State<MainDrawer> {
                       isBoards = false;
                       isUsers = false;
                       isLogin = false;
+                      isCustomers = false;
                     });
 
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewReminders()));
@@ -105,6 +105,7 @@ class _MainDrawerState extends State<MainDrawer> {
                       isBoards = false;
                       isUsers = false;
                       isLogin = false;
+                      isCustomers = false;
                     });
                     
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const ArchivePage()));
@@ -140,6 +141,7 @@ class _MainDrawerState extends State<MainDrawer> {
                       isUsers = false;
                       isLogin = false;
                       isArchivedLeads = false;
+                      isCustomers = false;
                     });
                     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Board()),(route) => route.isFirst);
                   },
@@ -174,6 +176,7 @@ class _MainDrawerState extends State<MainDrawer> {
                       isReminders = false;
                       isLogin = false;
                       isArchivedLeads = false;
+                      isCustomers = false;
                     });
 
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const AllUsers()));
@@ -194,6 +197,42 @@ class _MainDrawerState extends State<MainDrawer> {
                           const SizedBox(width: 10),
                           Text("Users",style: GoogleFonts.poppins(
                               fontSize: 14,fontWeight: FontWeight.w400,color: isUsers==true? Colors.white :Colors.black
+                          ),)
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 5),
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      isArchivedLeads = false;
+                      isReminders = false;
+                      isBoards = false;
+                      isUsers = false;
+                      isLogin = false;
+                      isCustomers = !isCustomers;
+                    });
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AllCustomers()));
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.8,
+                    height: MediaQuery.of(context).size.height*0.068,
+                    decoration: BoxDecoration(
+                        color: isCustomers==true? Colors.black :Colors.transparent,
+                        borderRadius: BorderRadius.circular(8)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Row(
+                        children: [
+                          Image.asset("assets/images/user.png",height: MediaQuery.of(context).size.height*0.035,
+                            color: isCustomers==true? Colors.white :Colors.black,),
+                          const SizedBox(width: 10),
+                          Text("Customers",style: GoogleFonts.poppins(
+                              fontSize: 14,fontWeight: FontWeight.w400,color: isCustomers==true? Colors.white :Colors.black
                           ),)
                         ],
                       ),
@@ -222,6 +261,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 isBoards = false;
                 isReminders = false;
                 isArchivedLeads = false;
+                isCustomers = false;
               });
               showAlertDialog(context,"logout",0);
             },

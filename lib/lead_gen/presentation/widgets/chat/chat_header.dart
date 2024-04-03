@@ -77,7 +77,7 @@ class _ChatHeaderCardState extends State<ChatHeaderCard> {
               SizedBox(
                 width: MediaQuery.of(context).size.width*0.85,
                 height: 50,
-                child: Text(widget.lead.message!,style:
+                child: Text(widget.lead.message==null? '': widget.lead.message!,style:
                 GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 13),),
               )
             ],
