@@ -13,7 +13,7 @@ showToastMessage(String message){
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.white,
       textColor: Colors.black,
       fontSize: 17.0
   );
@@ -35,6 +35,7 @@ showErrorToastMessage(String message){
 showLoader(BuildContext context){
   showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context){
         return const Center(
           child: CircularProgressIndicator(),

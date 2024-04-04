@@ -7,10 +7,12 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/auth/user_dto.dart';
 
 import '../../constants/api.dart';
+import '../../constants/shared_preference.dart';
 
 class ProfileDataSource{
   final ApiMethods _apiMethod;
-  ProfileDataSource(this._apiMethod);
+  final LocalDataSource _localDataSource;
+  ProfileDataSource(this._apiMethod, this._localDataSource);
 
   Future<Either<ErrorMessage,Success>> updateUserData(UserDto userDto,BuildContext context) async{
     Map<String,dynamic> userDetails = {};
@@ -40,6 +42,11 @@ class ProfileDataSource{
     final result = jsonDecode(response!.body);
 
     if(result['status'] == true){
+
+      await _localDataSource.storeUserData(
+        userDto.name!, userDto.email!,
+      );
+
       return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage('Something went wrong!'));
@@ -65,7 +72,7 @@ class ProfileDataSource{
         businessName: result['user']['business_name'],
         state: result['user']['state'] ?? '',
         country: result['user']['country'] ?? '',
-        pincode: result['user']['pincode'].toString() ?? '',
+        pincode: result['user']['pincode']==null? '' : result['user']['pincode'].toString(),
         address: result['user']['address'] ?? '',
         website: result['user']['website'] ?? '',
         registeredAddress: result['user']['registered_address'] ?? '',

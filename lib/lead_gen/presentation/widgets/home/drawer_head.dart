@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
 
 class DrawerHead extends StatefulWidget {
@@ -10,6 +11,19 @@ class DrawerHead extends StatefulWidget {
 }
 
 class _DrawerHeadState extends State<DrawerHead> {
+  List<String> userData = ['',''];
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  getData() async{
+    userData = await DepartmentBloc.getUserData();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,10 +66,10 @@ class _DrawerHeadState extends State<DrawerHead> {
               ],
             ),
             const SizedBox(height: 10),
-            Text("Kunal Dhopavkar",style: GoogleFonts.poppins(
+            Text(userData[0],style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w500, fontSize: 15
             )),
-            Text("kunal@dreamlogic.in",style: GoogleFonts.poppins(
+            Text(userData[1],style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400, fontSize: 11,color: const Color(0xFF434445)
             )),
             GestureDetector(

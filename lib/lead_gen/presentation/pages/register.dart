@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/profile.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../constants/constant.dart';
 import '../../domain/auth/user.dart';
 import '../core/custom_appbar.dart';
@@ -77,7 +77,7 @@ class _RegisterState extends State<Register> {
                         showToastMessage(message!);
                         Navigator.pop(context);
                         Navigator.pushAndRemoveUntil(context,
-                            MaterialPageRoute(builder: (context) => const Profile()), (route) => false);
+                            MaterialPageRoute(builder: (context) => const Home()), (route) => false);
                       },
                       failed: (error){
                         showErrorToastMessage(error!);
@@ -193,7 +193,6 @@ class _RegisterState extends State<Register> {
                               ),
                               const SizedBox(height: 25),
                               CustomButton(name: 'Register', onTap: () {
-                                //TODO : REMIND TO CHANGE
                                 if(_formKey.currentState!.validate()){
                                   context.read<AuthBloc>().add(
                                     AuthEvent.registerUser(

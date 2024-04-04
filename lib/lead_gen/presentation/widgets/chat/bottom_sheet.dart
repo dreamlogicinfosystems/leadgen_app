@@ -8,7 +8,7 @@ BoxDecoration decoration = BoxDecoration(
     borderRadius: BorderRadius.circular(12)
 );
 
-displayBottomSheet(BuildContext context){
+displayBottomSheet(BuildContext context,String username){
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -28,7 +28,7 @@ displayBottomSheet(BuildContext context){
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder()));
+                        showDialog(context: context, builder: (context) => AddReminder(userName: username));
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.070,

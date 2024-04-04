@@ -220,7 +220,7 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                       ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 2,
+                          itemCount: leadsList.length,
                           itemBuilder: (context,index){
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 10),

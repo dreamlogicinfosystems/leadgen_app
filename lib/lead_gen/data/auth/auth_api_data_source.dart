@@ -39,13 +39,26 @@ class AuthApiDataSource{
 
     if(result['status'] == true){
 
+      await _userDBHelper.saveUserData(result['user']);
+
       await _localDataSource.storeUserData(
-          userDto.name!, userDto.phoneNumber!,
-          userDto.email!, userDto.businessName!,result['user']['token']
+          userDto.name!, userDto.email!
       );
 
       return Right(Success(result['message']));
     }else{
+      // print(result['error']);
+      // result['error'].forEach((key,value){
+      //   print("$key");
+      //
+      //   if(value is List){
+      //     for(var item in value){
+      //       return Left(ErrorMessage(item));
+      //     }
+      //   }else{
+      //     return Left(ErrorMessage(value));
+      //   }
+      // });
       return Left(ErrorMessage('Something went wrong'));
     }
   }
@@ -69,6 +82,10 @@ class AuthApiDataSource{
       await _localDataSource.setToken(result['user']['token']);
 
       await _userDBHelper.saveUserData(result['user']);
+
+      await _localDataSource.storeUserData(
+        result['user']['name'], email,
+      );
 
       if(context.mounted){
         await updateFcmToken(result['user']['id'],fcmToken, device, context);

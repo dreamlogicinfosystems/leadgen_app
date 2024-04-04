@@ -32,7 +32,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
               showToastMessage(message);
               Navigator.pop(context);
               Navigator.pushAndRemoveUntil(context,
-                  MaterialPageRoute(builder: (context) => const Board()), (route) => false);
+                  MaterialPageRoute(builder: (context) => const Board()), (route) => route.isFirst);
             },
             orElse: (){}
         );

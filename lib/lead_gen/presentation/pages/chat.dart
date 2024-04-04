@@ -59,6 +59,7 @@ class _ChatState extends State<Chat> {
               listener: (context, state){
                 state.maybeWhen(
                   successChatList: (chat){
+                    //To point last element is list
                     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                       _scroll.jumpTo(_scroll.position.maxScrollExtent);
                     });
@@ -151,7 +152,7 @@ class _ChatState extends State<Chat> {
                   children: [
                     GestureDetector(
                       onTap:(){
-                        displayBottomSheet(context);
+                        displayBottomSheet(context,widget.lead.name!);
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.04,

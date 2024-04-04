@@ -48,10 +48,19 @@ class _BoardState extends State<Board> {
         },
         builder: (context, state) {
           return state.maybeWhen(
+              failed: (error){
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*0.8,
+                  child: Center(
+                    child: Text(error,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
+                  ),
+                );
+              },
               loadingInProgress: (){
                 return SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.85,
+                  height: MediaQuery.of(context).size.height*0.8,
                   child: const Center(
                     child: CircularProgressIndicator(),
                   ),
@@ -112,7 +121,7 @@ class _BoardState extends State<Board> {
               orElse: (){
                 return SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.85,
+                  height: MediaQuery.of(context).size.height*0.8,
                   child: const Center(
                     child: CircularProgressIndicator(),
                   ),

@@ -36,7 +36,7 @@ class _ChatDrawerState extends State<ChatDrawer> {
           const SizedBox(height: 20,),
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder(userName: '',)));
             },
             child: Container(
               width: MediaQuery.of(context).size.width*0.75,

@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../constants/shared_preference.dart';
 import '../../domain/department/department.dart';
 import '../../domain/department/department_repository.dart';
 
@@ -80,6 +82,14 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
           departmentId = 0;
         }
     );
+  }
+
+  static getUserData()async{
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final pref = LocalDataSource(sharedPreferences);
+    final userData = await pref.getUserData();
+
+    return userData;
   }
 
   static int getDepartmentCount(){

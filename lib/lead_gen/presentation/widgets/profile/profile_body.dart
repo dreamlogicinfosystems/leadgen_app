@@ -367,7 +367,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                             ),
                             const SizedBox(height: 40),
                             CustomButton(
-                                name: 'Next',
+                                name: 'Save',
                                 onTap: (){
                                   if(_formKey.currentState!.validate()){
                                     //reset dept id
@@ -662,7 +662,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                             ),
                             const SizedBox(height: 40),
                             CustomButton(
-                                name: 'Next',
+                                name: 'Save',
                                 onTap: (){
                                   if(_formKey.currentState!.validate()){
                                     //reset dept id

@@ -3,6 +3,7 @@ import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department_user/department_user_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/data/auth/auth_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
@@ -23,6 +24,8 @@ import 'lead_gen/data/department/department_data_source.dart';
 import 'lead_gen/data/department_user/department_user_data_source.dart';
 import 'lead_gen/data/lead/lead_data_source.dart';
 import 'lead_gen/data/lead/lead_repo_impl.dart';
+import 'lead_gen/data/lead_count/lead_count_data_source.dart';
+import 'lead_gen/data/lead_count/lead_count_repo_impl.dart';
 import 'lead_gen/data/profile/profile_data_source.dart';
 import 'lead_gen/data/reminder/local_notification_handler.dart';
 import 'lead_gen/data/reminder/reminder_api_data_source.dart';
@@ -31,6 +34,7 @@ import 'lead_gen/domain/customer/customer_repository.dart';
 import 'lead_gen/domain/department/department_repository.dart';
 import 'lead_gen/domain/department_user/department_user_repo.dart';
 import 'lead_gen/domain/lead/lead_repository.dart';
+import 'lead_gen/domain/lead_count/lead_count_repository.dart';
 import 'lead_gen/domain/profile/profile_repository.dart';
 import 'lead_gen/domain/reminder/reminder_repository.dart';
 
@@ -52,7 +56,11 @@ void serviceLocator() async{
 
   sl.registerFactory<CustomerBloc>(() => CustomerBloc(sl()));
 
+  sl.registerFactory<LeadCountBloc>(() => LeadCountBloc(sl()));
+
   //repo
+  sl.registerLazySingleton<LeadCountRepository>(() => LeadCountRepositoryImpl(sl()));
+
   sl.registerLazySingleton<CustomerRepository>(() => CustomerRepositoryImpl(sl()));
 
   sl.registerLazySingleton<LeadRepository>(() => LeadRepositoryImpl(sl()));
@@ -68,6 +76,8 @@ void serviceLocator() async{
   sl.registerLazySingleton<DepartmentRepository>(() => DepartmentRepositoryImpl(sl()));
 
   //data source
+  sl.registerLazySingleton<LeadCountDataSource>(() => LeadCountDataSource(sl()));
+
   sl.registerLazySingleton<CustomerDataSource>(() => CustomerDataSource(sl()));
 
   sl.registerLazySingleton<LeadDataSource>(() => LeadDataSource(sl()));
@@ -80,7 +90,7 @@ void serviceLocator() async{
 
   sl.registerLazySingleton<AuthApiDataSource>(() => AuthApiDataSource(sl(),sl(),sl()));
 
-  sl.registerLazySingleton<ProfileDataSource>(() => ProfileDataSource(sl()));
+  sl.registerLazySingleton<ProfileDataSource>(() => ProfileDataSource(sl(),sl()));
 
   sl.registerLazySingleton<DepartmentDataSource>(() => DepartmentDataSource(sl()));
 
