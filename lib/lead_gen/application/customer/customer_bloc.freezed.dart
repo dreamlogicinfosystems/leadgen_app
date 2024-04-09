@@ -22,18 +22,22 @@ mixin _$CustomerEvent {
     required TResult Function(BuildContext context) getCustomers,
     required TResult Function(int custId, BuildContext context)
         getCustomersLead,
+    required TResult Function(String custDetail, BuildContext context)
+        searchCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
+    TResult? Function(String custDetail, BuildContext context)? searchCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
+    TResult Function(String custDetail, BuildContext context)? searchCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,18 +45,21 @@ mixin _$CustomerEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
+    required TResult Function(_searchCustomer value) searchCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
+    TResult? Function(_searchCustomer value)? searchCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
+    TResult Function(_searchCustomer value)? searchCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -164,6 +171,8 @@ class _$getCustomersImpl implements _getCustomers {
     required TResult Function(BuildContext context) getCustomers,
     required TResult Function(int custId, BuildContext context)
         getCustomersLead,
+    required TResult Function(String custDetail, BuildContext context)
+        searchCustomer,
   }) {
     return getCustomers(context);
   }
@@ -173,6 +182,7 @@ class _$getCustomersImpl implements _getCustomers {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
+    TResult? Function(String custDetail, BuildContext context)? searchCustomer,
   }) {
     return getCustomers?.call(context);
   }
@@ -182,6 +192,7 @@ class _$getCustomersImpl implements _getCustomers {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
+    TResult Function(String custDetail, BuildContext context)? searchCustomer,
     required TResult orElse(),
   }) {
     if (getCustomers != null) {
@@ -195,6 +206,7 @@ class _$getCustomersImpl implements _getCustomers {
   TResult map<TResult extends Object?>({
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
+    required TResult Function(_searchCustomer value) searchCustomer,
   }) {
     return getCustomers(this);
   }
@@ -204,6 +216,7 @@ class _$getCustomersImpl implements _getCustomers {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
+    TResult? Function(_searchCustomer value)? searchCustomer,
   }) {
     return getCustomers?.call(this);
   }
@@ -213,6 +226,7 @@ class _$getCustomersImpl implements _getCustomers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
+    TResult Function(_searchCustomer value)? searchCustomer,
     required TResult orElse(),
   }) {
     if (getCustomers != null) {
@@ -311,6 +325,8 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
     required TResult Function(BuildContext context) getCustomers,
     required TResult Function(int custId, BuildContext context)
         getCustomersLead,
+    required TResult Function(String custDetail, BuildContext context)
+        searchCustomer,
   }) {
     return getCustomersLead(custId, context);
   }
@@ -320,6 +336,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
+    TResult? Function(String custDetail, BuildContext context)? searchCustomer,
   }) {
     return getCustomersLead?.call(custId, context);
   }
@@ -329,6 +346,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
+    TResult Function(String custDetail, BuildContext context)? searchCustomer,
     required TResult orElse(),
   }) {
     if (getCustomersLead != null) {
@@ -342,6 +360,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
   TResult map<TResult extends Object?>({
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
+    required TResult Function(_searchCustomer value) searchCustomer,
   }) {
     return getCustomersLead(this);
   }
@@ -351,6 +370,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
+    TResult? Function(_searchCustomer value)? searchCustomer,
   }) {
     return getCustomersLead?.call(this);
   }
@@ -360,6 +380,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
+    TResult Function(_searchCustomer value)? searchCustomer,
     required TResult orElse(),
   }) {
     if (getCustomersLead != null) {
@@ -379,6 +400,164 @@ abstract class _getCustomersLead implements CustomerEvent {
   @override
   @JsonKey(ignore: true)
   _$$getCustomersLeadImplCopyWith<_$getCustomersLeadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$searchCustomerImplCopyWith<$Res>
+    implements $CustomerEventCopyWith<$Res> {
+  factory _$$searchCustomerImplCopyWith(_$searchCustomerImpl value,
+          $Res Function(_$searchCustomerImpl) then) =
+      __$$searchCustomerImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String custDetail, BuildContext context});
+}
+
+/// @nodoc
+class __$$searchCustomerImplCopyWithImpl<$Res>
+    extends _$CustomerEventCopyWithImpl<$Res, _$searchCustomerImpl>
+    implements _$$searchCustomerImplCopyWith<$Res> {
+  __$$searchCustomerImplCopyWithImpl(
+      _$searchCustomerImpl _value, $Res Function(_$searchCustomerImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? custDetail = null,
+    Object? context = null,
+  }) {
+    return _then(_$searchCustomerImpl(
+      null == custDetail
+          ? _value.custDetail
+          : custDetail // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$searchCustomerImpl implements _searchCustomer {
+  const _$searchCustomerImpl(this.custDetail, this.context);
+
+  @override
+  final String custDetail;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'CustomerEvent.searchCustomer(custDetail: $custDetail, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$searchCustomerImpl &&
+            (identical(other.custDetail, custDetail) ||
+                other.custDetail == custDetail) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, custDetail, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$searchCustomerImplCopyWith<_$searchCustomerImpl> get copyWith =>
+      __$$searchCustomerImplCopyWithImpl<_$searchCustomerImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildContext context) getCustomers,
+    required TResult Function(int custId, BuildContext context)
+        getCustomersLead,
+    required TResult Function(String custDetail, BuildContext context)
+        searchCustomer,
+  }) {
+    return searchCustomer(custDetail, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildContext context)? getCustomers,
+    TResult? Function(int custId, BuildContext context)? getCustomersLead,
+    TResult? Function(String custDetail, BuildContext context)? searchCustomer,
+  }) {
+    return searchCustomer?.call(custDetail, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildContext context)? getCustomers,
+    TResult Function(int custId, BuildContext context)? getCustomersLead,
+    TResult Function(String custDetail, BuildContext context)? searchCustomer,
+    required TResult orElse(),
+  }) {
+    if (searchCustomer != null) {
+      return searchCustomer(custDetail, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_getCustomers value) getCustomers,
+    required TResult Function(_getCustomersLead value) getCustomersLead,
+    required TResult Function(_searchCustomer value) searchCustomer,
+  }) {
+    return searchCustomer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_getCustomers value)? getCustomers,
+    TResult? Function(_getCustomersLead value)? getCustomersLead,
+    TResult? Function(_searchCustomer value)? searchCustomer,
+  }) {
+    return searchCustomer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_getCustomers value)? getCustomers,
+    TResult Function(_getCustomersLead value)? getCustomersLead,
+    TResult Function(_searchCustomer value)? searchCustomer,
+    required TResult orElse(),
+  }) {
+    if (searchCustomer != null) {
+      return searchCustomer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _searchCustomer implements CustomerEvent {
+  const factory _searchCustomer(
+          final String custDetail, final BuildContext context) =
+      _$searchCustomerImpl;
+
+  String get custDetail;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$searchCustomerImplCopyWith<_$searchCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

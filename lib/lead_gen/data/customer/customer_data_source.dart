@@ -64,9 +64,9 @@ class CustomerDataSource{
             name: result['leads'][i]['name'],
             phone: result['leads'][i]['phone'],
             email: result['leads'][i]['email'],
-            //TODO: REMAINED TO UNCOMMENT
-            // message: result['leads'][i]['note'],
-            // lastChatDate: result['leads'][i]['last_chat_date'],
+            message: result['leads'][i]['note'],
+            showStatus: result['leads'][i]['show_status'],
+            lastChatDate: result['leads'][i]['last_chat_date'],
             createdAt: result['leads'][i]['created_at']
           );
 
@@ -79,6 +79,36 @@ class CustomerDataSource{
       }
     }catch(e){
       return Left(ErrorMessage(e.toString()));
+    }
+  }
+
+  Future<Either<ErrorMessage,List<CustomerDto>>>getSearchedCustomer(String custDetail,BuildContext context) async{
+    List<CustomerDto> customersList = [];
+
+    final response = await _apiMethods.get(
+        url: 'get_customers?search=$custDetail',
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
+    if(result['status'] == true){
+
+      for(int i=0; i<result['customers'].length; i++){
+        CustomerDto customerDto = CustomerDto(
+          custId: result['customers'][i]['id'],
+          custName: result['customers'][i]['name'],
+          custPhone: result['customers'][i]['phone'],
+          custEmail: result['customers'][i]['email'],
+          date: result['customers'][i]['created_at'],
+        );
+
+        customersList.add(customerDto);
+      }
+
+      return Right(customersList);
+    }else{
+      return Left(ErrorMessage(result['message']));
     }
   }
 }

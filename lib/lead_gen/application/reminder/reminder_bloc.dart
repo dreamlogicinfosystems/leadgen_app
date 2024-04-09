@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/domain/reminder/reminder_repository.dart';
 
 import '../../domain/reminder/reminder.dart';
@@ -73,7 +74,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     );
   }
 
-  static Future<DateTime?> selectReminderDate(BuildContext context) async{
+  static Future<String?> selectReminderDate(BuildContext context) async{
     pickedDate = await showDatePicker(
         builder: (context,child){
           return Theme(
@@ -92,9 +93,50 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
         lastDate: DateTime(2030)
     );
 
+    String time = '';
+
     if(pickedDate!=null){
-      return pickedDate;
+      if(context.mounted){
+        final pickedTime = await showTimePicker(
+            context: context,
+            initialTime: TimeOfDay.fromDateTime(DateTime.now())
+        );
+
+        debugPrint("Time: $pickedTime");
+
+        if(pickedTime!=null){
+          if(pickedTime.hour>=12){
+            if(pickedTime.hour==12){
+              time = "${pickedTime.hour}:${pickedTime.minute} PM";
+            }else{
+              final hour = pickedTime.hour - 12;
+              debugPrint(hour.toString());
+              time = "$hour:${pickedTime.minute} PM";
+            }
+          }else{
+            if(pickedTime.hour==00){
+              final hour = pickedTime.hour + 12;
+              debugPrint(hour.toString());
+              time = "$hour:${pickedTime.minute} AM";
+            }else{
+              time = "${pickedTime.hour}:${pickedTime.minute} AM";
+            }
+          }
+
+          debugPrint("Time: $time");
+
+          final simpleDateTime = "${pickedDate!.day}-${pickedDate!.month}-${pickedDate!.year}  $time";
+
+          return simpleDateTime;
+
+        }else{
+          showErrorToastMessage("Please select time");
+        }
+      }
+    }else{
+      showErrorToastMessage('Please select date!');
     }
+
     return null;
   }
 

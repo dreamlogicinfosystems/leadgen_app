@@ -26,6 +26,7 @@ mixin _$LeadDto {
   String? get email => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
+  String? get showStatus => throw _privateConstructorUsedError;
   String? get lastChatDate => throw _privateConstructorUsedError;
   List<int>? get departmentIds => throw _privateConstructorUsedError;
 
@@ -46,6 +47,7 @@ abstract class $LeadDtoCopyWith<$Res> {
       String? email,
       String? message,
       String? createdAt,
+      String? showStatus,
       String? lastChatDate,
       List<int>? departmentIds});
 }
@@ -69,6 +71,7 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
     Object? email = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
+    Object? showStatus = freezed,
     Object? lastChatDate = freezed,
     Object? departmentIds = freezed,
   }) {
@@ -97,6 +100,10 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      showStatus: freezed == showStatus
+          ? _value.showStatus
+          : showStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastChatDate: freezed == lastChatDate
           ? _value.lastChatDate
           : lastChatDate // ignore: cast_nullable_to_non_nullable
@@ -123,6 +130,7 @@ abstract class _$$LeadDtoImplCopyWith<$Res> implements $LeadDtoCopyWith<$Res> {
       String? email,
       String? message,
       String? createdAt,
+      String? showStatus,
       String? lastChatDate,
       List<int>? departmentIds});
 }
@@ -144,6 +152,7 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
+    Object? showStatus = freezed,
     Object? lastChatDate = freezed,
     Object? departmentIds = freezed,
   }) {
@@ -172,6 +181,10 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      showStatus: freezed == showStatus
+          ? _value.showStatus
+          : showStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastChatDate: freezed == lastChatDate
           ? _value.lastChatDate
           : lastChatDate // ignore: cast_nullable_to_non_nullable
@@ -194,6 +207,7 @@ class _$LeadDtoImpl extends _LeadDto {
       this.email,
       this.message,
       this.createdAt,
+      this.showStatus,
       this.lastChatDate,
       final List<int>? departmentIds})
       : _departmentIds = departmentIds,
@@ -215,6 +229,8 @@ class _$LeadDtoImpl extends _LeadDto {
   @override
   final String? createdAt;
   @override
+  final String? showStatus;
+  @override
   final String? lastChatDate;
   final List<int>? _departmentIds;
   @override
@@ -228,7 +244,7 @@ class _$LeadDtoImpl extends _LeadDto {
 
   @override
   String toString() {
-    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, message: $message, createdAt: $createdAt, lastChatDate: $lastChatDate, departmentIds: $departmentIds)';
+    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, message: $message, createdAt: $createdAt, showStatus: $showStatus, lastChatDate: $lastChatDate, departmentIds: $departmentIds)';
   }
 
   @override
@@ -243,6 +259,8 @@ class _$LeadDtoImpl extends _LeadDto {
             (identical(other.message, message) || other.message == message) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.showStatus, showStatus) ||
+                other.showStatus == showStatus) &&
             (identical(other.lastChatDate, lastChatDate) ||
                 other.lastChatDate == lastChatDate) &&
             const DeepCollectionEquality()
@@ -259,6 +277,7 @@ class _$LeadDtoImpl extends _LeadDto {
       email,
       message,
       createdAt,
+      showStatus,
       lastChatDate,
       const DeepCollectionEquality().hash(_departmentIds));
 
@@ -284,6 +303,7 @@ abstract class _LeadDto extends LeadDto {
       final String? email,
       final String? message,
       final String? createdAt,
+      final String? showStatus,
       final String? lastChatDate,
       final List<int>? departmentIds}) = _$LeadDtoImpl;
   const _LeadDto._() : super._();
@@ -302,6 +322,8 @@ abstract class _LeadDto extends LeadDto {
   String? get message;
   @override
   String? get createdAt;
+  @override
+  String? get showStatus;
   @override
   String? get lastChatDate;
   @override

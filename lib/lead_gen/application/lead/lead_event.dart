@@ -6,7 +6,7 @@ class LeadEvent with _$LeadEvent {
 
   const factory LeadEvent.addLeadChat(Lead lead,BuildContext context) = _addLeadChat;
 
-  const factory LeadEvent.getLeads(String type,BuildContext context) = _getLeads;
+  const factory LeadEvent.getLeads(String type,int deptId,BuildContext context) = _getLeads;
 
   const factory LeadEvent.getLeadChat(int leadId,BuildContext context) = _getLeadChat;
 

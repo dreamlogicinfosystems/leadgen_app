@@ -250,9 +250,10 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                                   child: Row(
                                     children: [
                                       Container(
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFFF87168),
-                                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12),topLeft: Radius.circular(12))
+                                        decoration: BoxDecoration(
+                                            color: leadsList[index].showStatus=='due'? const Color(0xFFF87168) :
+                                            leadsList[index].showStatus=='upcoming'? const Color(0xFFC2E90B): const Color(0xFF579DFF),
+                                            borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(12),topLeft: Radius.circular(12))
                                         ),
                                         height: MediaQuery.of(context).size.height*0.1,
                                         width: 10,
@@ -269,7 +270,7 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                                             SizedBox(
                                               width: MediaQuery.of(context).size.width*0.65,
                                               height: MediaQuery.of(context).size.height*0.061,
-                                              child: Text("Required a app for my pharmacy store to handle online orders",style:
+                                              child: Text(leadsList[index].message!,style:
                                               GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
                                             )
                                           ],
@@ -282,7 +283,7 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(top:5,right: 0),
-                                                child: Text(modifyDate("2024-03-21"),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
+                                                child: Text(modifyDate(leadsList[index].lastChatDate!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(top:35,right: 10),

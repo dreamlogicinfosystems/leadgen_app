@@ -11,7 +11,7 @@ abstract class LeadRepository{
 
   Future<Either<ErrorMessage,Success>> addLeadChat(Lead lead,BuildContext context);
 
-  Future<Either<List<Lead>,List<Lead>>> getLeadsList(String type,BuildContext context);
+  Future<Either<List<Lead>,List<Lead>>> getLeadsList(String type,int deptId,BuildContext context);
 
   Future<Either<ErrorMessage,List<Chat>>> getLeadChat(int leadId,BuildContext context);
 

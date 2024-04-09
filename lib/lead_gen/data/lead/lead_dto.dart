@@ -17,6 +17,7 @@ abstract class LeadDto implements _$LeadDto{
     String? email,
     String? message,
     String? createdAt,
+    String? showStatus,
     String? lastChatDate,
     List<int>? departmentIds
   }) = _LeadDto;
@@ -42,6 +43,7 @@ abstract class LeadDto implements _$LeadDto{
       email: leadDto.email,
       message: leadDto.message,
       createdAt: leadDto.createdAt,
+      showStatus: leadDto.showStatus,
       lastChatDate: leadDto.lastChatDate
     );
   }

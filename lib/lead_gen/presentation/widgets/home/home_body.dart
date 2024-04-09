@@ -8,8 +8,8 @@ import '../../../constants/constant.dart';
 import '../../pages/chat.dart';
 
 class HomePageBody extends StatefulWidget {
-  final String type;
-  const HomePageBody({Key? key, required this.type}) : super(key: key);
+  final int departmentId;
+  const HomePageBody({Key? key,required this.departmentId}) : super(key: key);
 
   @override
   State<HomePageBody> createState() => _HomePageBodyState();
@@ -29,7 +29,7 @@ class _HomePageBodyState extends State<HomePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<LeadBloc>().add(LeadEvent.getLeads(widget.type, context));
+    context.read<LeadBloc>().add(LeadEvent.getLeads('all',widget.departmentId, context));
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -253,7 +253,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                     onTap: (){
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => BlocProvider(
                                         create: (context) => sl<LeadBloc>(),
-                                        child: Chat(lead: leadsList[index],),
+                                        child: Chat(lead: leadsList[index]),
                                       )));
                                     },
                                     child: Container(
@@ -264,7 +264,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                         boxShadow: [
                                           BoxShadow(
                                             color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 2,
+                                            spreadRadius: 1.5,
                                             blurRadius: 5,
                                             offset: const Offset(0, 4)
                                           ),
@@ -274,9 +274,10 @@ class _HomePageBodyState extends State<HomePageBody> {
                                       child: Row(
                                         children: [
                                           Container(
-                                            decoration: const BoxDecoration(
-                                                color: Color(0xFFF87168),
-                                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12),topLeft: Radius.circular(12))
+                                            decoration: BoxDecoration(
+                                                color: leadsList[index].showStatus=='due'? const Color(0xFFF87168) :
+                                                leadsList[index].showStatus=='upcoming'? const Color(0xFFC2E90B): const Color(0xFF579DFF),
+                                                borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(12),topLeft: Radius.circular(12))
                                             ),
                                             height: MediaQuery.of(context).size.height*0.1,
                                             width: 10,

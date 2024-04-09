@@ -20,6 +20,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   VoidCallback? refreshPage;
   String type = 'all';
+  int deptId = 0;
   Widget loading = ListView.builder(
       itemCount: 3,
       scrollDirection: Axis.horizontal,
@@ -110,8 +111,7 @@ class _HomeState extends State<Home> {
                                 onTap: (){
                                   setState(() {
                                     context.read<DepartmentBloc>().add(DepartmentEvent.setDeptId(departmentsList[index].id!));
-                                    type = 'new';
-                                    // widget.refresh!();
+                                    deptId = departmentsList[index].id!;
                                   });
                                 },
                                 child: Padding(
@@ -152,7 +152,7 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 10),
             BlocProvider(
               create: (context) => sl<LeadBloc>(),
-              child: HomePageBody(type: type),
+              child: HomePageBody(departmentId: deptId),
             ),
           ],
         ),

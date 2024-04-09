@@ -14,6 +14,7 @@ _$LeadDtoImpl _$$LeadDtoImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       message: json['message'] as String?,
       createdAt: json['createdAt'] as String?,
+      showStatus: json['showStatus'] as String?,
       lastChatDate: json['lastChatDate'] as String?,
       departmentIds: (json['departmentIds'] as List<dynamic>?)
           ?.map((e) => e as int)
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$LeadDtoImplToJson(_$LeadDtoImpl instance) =>
       'email': instance.email,
       'message': instance.message,
       'createdAt': instance.createdAt,
+      'showStatus': instance.showStatus,
       'lastChatDate': instance.lastChatDate,
       'departmentIds': instance.departmentIds,
     };

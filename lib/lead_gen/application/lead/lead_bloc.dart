@@ -56,7 +56,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
         getLeads: (e) async{
           emit(const LeadState.loadingInProgress());
 
-          final tryGetLeads = await _leadRepository.getLeadsList(e.type,e.context);
+          final tryGetLeads = await _leadRepository.getLeadsList(e.type,e.deptId,e.context);
 
           tryGetLeads.fold((emptyList){
             emit(LeadState.emptyLeadList(emptyList));

@@ -23,6 +23,7 @@ mixin _$Lead {
   String? get message => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   String? get lastChatDate => throw _privateConstructorUsedError;
+  String? get showStatus => throw _privateConstructorUsedError;
   List<int>? get departmentIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,6 +43,7 @@ abstract class $LeadCopyWith<$Res> {
       String? message,
       String? createdAt,
       String? lastChatDate,
+      String? showStatus,
       List<int>? departmentIds});
 }
 
@@ -65,6 +67,7 @@ class _$LeadCopyWithImpl<$Res, $Val extends Lead>
     Object? message = freezed,
     Object? createdAt = freezed,
     Object? lastChatDate = freezed,
+    Object? showStatus = freezed,
     Object? departmentIds = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,6 +99,10 @@ class _$LeadCopyWithImpl<$Res, $Val extends Lead>
           ? _value.lastChatDate
           : lastChatDate // ignore: cast_nullable_to_non_nullable
               as String?,
+      showStatus: freezed == showStatus
+          ? _value.showStatus
+          : showStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
       departmentIds: freezed == departmentIds
           ? _value.departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
@@ -119,6 +126,7 @@ abstract class _$$LeadImplCopyWith<$Res> implements $LeadCopyWith<$Res> {
       String? message,
       String? createdAt,
       String? lastChatDate,
+      String? showStatus,
       List<int>? departmentIds});
 }
 
@@ -139,6 +147,7 @@ class __$$LeadImplCopyWithImpl<$Res>
     Object? message = freezed,
     Object? createdAt = freezed,
     Object? lastChatDate = freezed,
+    Object? showStatus = freezed,
     Object? departmentIds = freezed,
   }) {
     return _then(_$LeadImpl(
@@ -170,6 +179,10 @@ class __$$LeadImplCopyWithImpl<$Res>
           ? _value.lastChatDate
           : lastChatDate // ignore: cast_nullable_to_non_nullable
               as String?,
+      showStatus: freezed == showStatus
+          ? _value.showStatus
+          : showStatus // ignore: cast_nullable_to_non_nullable
+              as String?,
       departmentIds: freezed == departmentIds
           ? _value._departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
@@ -189,6 +202,7 @@ class _$LeadImpl implements _Lead {
       this.message,
       this.createdAt,
       this.lastChatDate,
+      this.showStatus,
       final List<int>? departmentIds})
       : _departmentIds = departmentIds;
 
@@ -206,6 +220,8 @@ class _$LeadImpl implements _Lead {
   final String? createdAt;
   @override
   final String? lastChatDate;
+  @override
+  final String? showStatus;
   final List<int>? _departmentIds;
   @override
   List<int>? get departmentIds {
@@ -218,7 +234,7 @@ class _$LeadImpl implements _Lead {
 
   @override
   String toString() {
-    return 'Lead(id: $id, name: $name, phone: $phone, email: $email, message: $message, createdAt: $createdAt, lastChatDate: $lastChatDate, departmentIds: $departmentIds)';
+    return 'Lead(id: $id, name: $name, phone: $phone, email: $email, message: $message, createdAt: $createdAt, lastChatDate: $lastChatDate, showStatus: $showStatus, departmentIds: $departmentIds)';
   }
 
   @override
@@ -235,6 +251,8 @@ class _$LeadImpl implements _Lead {
                 other.createdAt == createdAt) &&
             (identical(other.lastChatDate, lastChatDate) ||
                 other.lastChatDate == lastChatDate) &&
+            (identical(other.showStatus, showStatus) ||
+                other.showStatus == showStatus) &&
             const DeepCollectionEquality()
                 .equals(other._departmentIds, _departmentIds));
   }
@@ -249,6 +267,7 @@ class _$LeadImpl implements _Lead {
       message,
       createdAt,
       lastChatDate,
+      showStatus,
       const DeepCollectionEquality().hash(_departmentIds));
 
   @JsonKey(ignore: true)
@@ -267,6 +286,7 @@ abstract class _Lead implements Lead {
       final String? message,
       final String? createdAt,
       final String? lastChatDate,
+      final String? showStatus,
       final List<int>? departmentIds}) = _$LeadImpl;
 
   @override
@@ -283,6 +303,8 @@ abstract class _Lead implements Lead {
   String? get createdAt;
   @override
   String? get lastChatDate;
+  @override
+  String? get showStatus;
   @override
   List<int>? get departmentIds;
   @override

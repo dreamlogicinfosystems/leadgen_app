@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
@@ -10,7 +12,25 @@ class LeadCountDataSource{
   LeadCountDataSource(this._apiMethods);
 
   Future<Either<ErrorMessage,LeadCountDto>> getLeadsCount(BuildContext context) async{
-    //TODO: REMAINING
-    return const Right(LeadCountDto());
+
+    final response = await _apiMethods.get(
+        url: 'get_dashboard_data',
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
+    if(result['status'] == true){
+
+      LeadCountDto leadCountDto = LeadCountDto(
+        totalLeads: result['total'],
+        dueLeads: result['due'],
+        upcomingLeads: result['upcoming']
+      );
+
+      return Right(leadCountDto);
+    }else{
+      return Left(ErrorMessage(result['message']));
+    }
   }
 }

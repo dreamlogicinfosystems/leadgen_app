@@ -10,4 +10,6 @@ abstract class CustomerRepository{
   Future<Either<ErrorMessage,List<Customer>>> getCustomersList(BuildContext context);
 
   Future<Either<ErrorMessage,List<Lead>>> getCustomerLeads(int custId,BuildContext context);
+
+  Future<Either<ErrorMessage,List<Customer>>> getSearchedCustomer(String custDetail,BuildContext context);
 }

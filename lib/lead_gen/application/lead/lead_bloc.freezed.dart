@@ -21,7 +21,8 @@ mixin _$LeadEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
-    required TResult Function(String type, BuildContext context) getLeads,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
@@ -32,7 +33,7 @@ mixin _$LeadEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult? Function(String type, BuildContext context)? getLeads,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -43,7 +44,7 @@ mixin _$LeadEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult Function(String type, BuildContext context)? getLeads,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -203,7 +204,8 @@ class _$addLeadImpl implements _addLead {
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
-    required TResult Function(String type, BuildContext context) getLeads,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
@@ -217,7 +219,7 @@ class _$addLeadImpl implements _addLead {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult? Function(String type, BuildContext context)? getLeads,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -231,7 +233,7 @@ class _$addLeadImpl implements _addLead {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult Function(String type, BuildContext context)? getLeads,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -384,7 +386,8 @@ class _$addLeadChatImpl implements _addLeadChat {
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
-    required TResult Function(String type, BuildContext context) getLeads,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
@@ -398,7 +401,7 @@ class _$addLeadChatImpl implements _addLeadChat {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult? Function(String type, BuildContext context)? getLeads,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -412,7 +415,7 @@ class _$addLeadChatImpl implements _addLeadChat {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult Function(String type, BuildContext context)? getLeads,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -487,7 +490,7 @@ abstract class _$$getLeadsImplCopyWith<$Res>
       __$$getLeadsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String type, BuildContext context});
+  $Res call({String type, int deptId, BuildContext context});
 }
 
 /// @nodoc
@@ -502,6 +505,7 @@ class __$$getLeadsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = null,
+    Object? deptId = null,
     Object? context = null,
   }) {
     return _then(_$getLeadsImpl(
@@ -509,6 +513,10 @@ class __$$getLeadsImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      null == deptId
+          ? _value.deptId
+          : deptId // ignore: cast_nullable_to_non_nullable
+              as int,
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -520,16 +528,18 @@ class __$$getLeadsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$getLeadsImpl implements _getLeads {
-  const _$getLeadsImpl(this.type, this.context);
+  const _$getLeadsImpl(this.type, this.deptId, this.context);
 
   @override
   final String type;
+  @override
+  final int deptId;
   @override
   final BuildContext context;
 
   @override
   String toString() {
-    return 'LeadEvent.getLeads(type: $type, context: $context)';
+    return 'LeadEvent.getLeads(type: $type, deptId: $deptId, context: $context)';
   }
 
   @override
@@ -538,11 +548,12 @@ class _$getLeadsImpl implements _getLeads {
         (other.runtimeType == runtimeType &&
             other is _$getLeadsImpl &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.deptId, deptId) || other.deptId == deptId) &&
             (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, type, context);
+  int get hashCode => Object.hash(runtimeType, type, deptId, context);
 
   @JsonKey(ignore: true)
   @override
@@ -555,13 +566,14 @@ class _$getLeadsImpl implements _getLeads {
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
-    required TResult Function(String type, BuildContext context) getLeads,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
-    return getLeads(type, context);
+    return getLeads(type, deptId, context);
   }
 
   @override
@@ -569,13 +581,13 @@ class _$getLeadsImpl implements _getLeads {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult? Function(String type, BuildContext context)? getLeads,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
-    return getLeads?.call(type, context);
+    return getLeads?.call(type, deptId, context);
   }
 
   @override
@@ -583,7 +595,7 @@ class _$getLeadsImpl implements _getLeads {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult Function(String type, BuildContext context)? getLeads,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -591,7 +603,7 @@ class _$getLeadsImpl implements _getLeads {
     required TResult orElse(),
   }) {
     if (getLeads != null) {
-      return getLeads(type, context);
+      return getLeads(type, deptId, context);
     }
     return orElse();
   }
@@ -638,10 +650,12 @@ class _$getLeadsImpl implements _getLeads {
 }
 
 abstract class _getLeads implements LeadEvent {
-  const factory _getLeads(final String type, final BuildContext context) =
+  const factory _getLeads(
+          final String type, final int deptId, final BuildContext context) =
       _$getLeadsImpl;
 
   String get type;
+  int get deptId;
   @override
   BuildContext get context;
   @override
@@ -726,7 +740,8 @@ class _$getLeadChatImpl implements _getLeadChat {
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
-    required TResult Function(String type, BuildContext context) getLeads,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
@@ -740,7 +755,7 @@ class _$getLeadChatImpl implements _getLeadChat {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult? Function(String type, BuildContext context)? getLeads,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -754,7 +769,7 @@ class _$getLeadChatImpl implements _getLeadChat {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult Function(String type, BuildContext context)? getLeads,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -917,7 +932,8 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
-    required TResult Function(String type, BuildContext context) getLeads,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
@@ -931,7 +947,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult? Function(String type, BuildContext context)? getLeads,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
@@ -945,7 +961,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
-    TResult Function(String type, BuildContext context)? getLeads,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?

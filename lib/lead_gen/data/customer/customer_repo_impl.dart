@@ -41,4 +41,18 @@ class CustomerRepositoryImpl extends CustomerRepository{
     });
   }
 
+  @override
+  Future<Either<ErrorMessage, List<Customer>>> getSearchedCustomer(String custDetail,BuildContext context) async{
+    if(custDetail.isEmpty){
+      return Left(ErrorMessage('Something went wrong'));
+    }else{
+      final getCustomer = await _customerDataSource.getSearchedCustomer(custDetail, context);
+
+      return getCustomer.fold((error){
+        return Left(error);
+      },(customerList){
+        return Right(customerList.map((e) => const CustomerDto().toDomain(e)).toList());
+      });
+    }
+  }
 }

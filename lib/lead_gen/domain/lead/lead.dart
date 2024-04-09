@@ -12,6 +12,7 @@ class Lead with _$Lead{
     String? message,
     String? createdAt,
     String? lastChatDate,
+    String? showStatus,
     List<int>? departmentIds
   }) = _Lead;
 }

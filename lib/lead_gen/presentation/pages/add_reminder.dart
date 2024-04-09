@@ -31,22 +31,13 @@ class _AddReminderState extends State<AddReminder> {
   }
 
   Future<void> selectReminderDate() async{
-    pickedDate = await ReminderBloc.selectReminderDate(context);
+    final pickedDate = await ReminderBloc.selectReminderDate(context);
 
     debugPrint("data from bloc:$pickedDate");
 
     if(pickedDate!=null){
-      _reminderDateTimeContr.text = "${pickedDate!.day}-${pickedDate!.month}-${pickedDate!.year}";
-    }
-  }
 
-  Future<void> selectReminderTime() async{
-    final pickedTime = await ReminderBloc.selectReminderTime(context);
-
-    debugPrint("time from bloc:$pickedTime");
-
-    if(pickedTime!=''){
-      _repeatController.text = pickedTime!;
+      _reminderDateTimeContr.text = pickedDate;
     }
   }
 
@@ -94,9 +85,12 @@ class _AddReminderState extends State<AddReminder> {
                 ),
                 const SizedBox(height: 12),
                 CustomTextField(
-                  controller: _titleController,
+                  controller: _reminderDateTimeContr,
                   labelText: 'Reminder Date / Time',
                   keyBoardType: TextInputType.text,
+                  onTap: (){
+                    selectReminderDate();
+                  },
                   validator: (value){
                     if(value=='' || value!.trim()==''){
                       return 'Select Reminder Date / Time';
@@ -121,7 +115,6 @@ class _AddReminderState extends State<AddReminder> {
                         onTap: (){
                           showToastMessage("Reminder has been set!");
                           Future.delayed(const Duration(seconds: 1),(){
-                            Navigator.pop(context);
                             Navigator.pop(context);
                           });
                         }

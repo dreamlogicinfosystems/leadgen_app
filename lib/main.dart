@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
 import 'package:lead_gen/lead_gen/helper/firebase_notifications.dart';
 
 import 'injections.dart';
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => sl<DepartmentBloc>(),
+        ),
+        BlocProvider(
+            create: (context) => sl<LeadCountBloc>(),
         )
       ],
       child: MaterialApp(

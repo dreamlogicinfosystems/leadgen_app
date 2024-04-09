@@ -71,12 +71,12 @@ class LeadDataSource{
     }
   }
   
-  Future<Either<List<Lead>,List<LeadDto>>>getLeads(String type,BuildContext context) async{
+  Future<Either<List<Lead>,List<LeadDto>>>getLeads(String type,int deptId,BuildContext context) async{
     try{
       List<LeadDto> leadsList = [];
       
       final response = await _apiMethods.get(
-          url: 'get_leads?type=$type',
+          url: 'get_leads?type=$type&department_id=$deptId',
           context: context
       );
 
@@ -92,6 +92,7 @@ class LeadDataSource{
             email: result['leads'][i]['email'],
             message: result['leads'][i]['note'],
             createdAt: result['leads'][i]['created_at'],
+            showStatus: result['leads'][i]['show_status'],
             lastChatDate: result['leads'][i]['last_chat_date']
           );
 

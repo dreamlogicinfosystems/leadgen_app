@@ -5,4 +5,6 @@ class CustomerEvent with _$CustomerEvent {
   const factory CustomerEvent.getCustomers(BuildContext context) = _getCustomers;
 
   const factory CustomerEvent.getCustomersLead(int custId,BuildContext context) = _getCustomersLead;
+
+  const factory CustomerEvent.searchCustomer(String custDetail,BuildContext context) = _searchCustomer;
 }

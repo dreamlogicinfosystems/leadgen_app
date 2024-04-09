@@ -57,14 +57,23 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                   ),
                   const SizedBox(width: 10),
                   Expanded(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height*0.067,
-                      decoration: BoxDecoration(
-                        color: Colors.green.shade400,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                        child: Icon(Icons.navigate_next,size: 35,),
+                    child: GestureDetector(
+                      onTap: (){
+                        if(_searchController.text.trim()==""){
+                          showErrorToastMessage('Enter name or email to search!');
+                        }else{
+                          context.read<CustomerBloc>().add(CustomerEvent.searchCustomer(_searchController.text.trim(),context));
+                        }
+                      },
+                      child: Container(
+                        height: MediaQuery.of(context).size.height*0.067,
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade400,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(
+                          child: Icon(Icons.navigate_next,size: 35,),
+                        ),
                       ),
                     ),
                   )
