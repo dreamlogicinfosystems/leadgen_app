@@ -135,7 +135,6 @@ class _AddUserState extends State<AddUser> {
               child: Card(
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.9,
-                  height: MediaQuery.of(context).size.height*0.8,
                   decoration: BoxDecoration(
                       color: const Color(0xFFECECED),
                       borderRadius: BorderRadius.circular(15)
@@ -143,6 +142,7 @@ class _AddUserState extends State<AddUser> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
@@ -295,7 +295,8 @@ class _AddUserState extends State<AddUser> {
                                 }
                             ),
                           ),
-                        )
+                        ),
+                        const SizedBox(height: 30,)
                       ],
                     ),
                   ),

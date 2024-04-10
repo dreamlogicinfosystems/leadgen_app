@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/close_lead_dialog.dart';
+
+import '../../../../injections.dart';
 
 BoxDecoration decoration = BoxDecoration(
     color: Colors.white,
@@ -28,7 +32,10 @@ displayBottomSheet(BuildContext context,String username){
                   children: [
                     GestureDetector(
                       onTap: (){
-                        showDialog(context: context, builder: (context) => AddReminder(userName: username));
+                        showDialog(context: context, builder: (context) => BlocProvider(
+                          create: (context) => sl<ReminderBloc>(),
+                          child: AddReminder(userName: username),
+                        ));
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.070,

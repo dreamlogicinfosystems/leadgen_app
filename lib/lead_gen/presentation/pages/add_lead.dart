@@ -138,7 +138,7 @@ class _AddLeadState extends State<AddLead> {
               child: Card(
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.9,
-                  height: MediaQuery.of(context).size.height*0.9,
+
                   decoration: BoxDecoration(
                       color: const Color(0xFFECECED),
                       borderRadius: BorderRadius.circular(15)
@@ -298,7 +298,8 @@ class _AddLeadState extends State<AddLead> {
                                   }
                                 },),
                             ),
-                          )
+                          ),
+                          const SizedBox(height: 10),
                         ],
                       ),
                     ),

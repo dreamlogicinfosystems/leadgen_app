@@ -50,7 +50,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                     )
                   ],
                   child: const AddLead())):
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder(userName: '',)));
+                  showDialog(context: context, builder: (context) => const AddReminder(userName: '',));
             },
           ),
         ),

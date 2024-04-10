@@ -33,6 +33,8 @@ class ReminderApiDataSource{
       map['message'] = reminderDto.message;
       map['date'] = reminderDto.date;
       map['time'] = reminderDto.time;
+      map['type'] = reminderDto.repeatInterval;
+      map['repeat'] = reminderDto.repeatCount;
 
       final response = await _apiMethods.post(
           url: 'add_reminder',
@@ -78,6 +80,9 @@ class ReminderApiDataSource{
 
   Future<Either<ErrorMessage,List<ReminderDto>>> getReminderFromServer(BuildContext context) async{
     try{
+      //To store reminder data list of a date
+      List<ReminderDataDto> reminderDataList = [];
+      //To store each reminder
       List<ReminderDto> reminders = [];
       
       final response = await _apiMethods.get(
@@ -89,17 +94,27 @@ class ReminderApiDataSource{
 
       if(result['status'] == true){
 
-        for(int i=0; i<result['reminders'].length; i++){
+        for(var reminderData in result['reminders'].entries){
+
+          reminderDataList.clear();
+
+          for(int i=0; i<reminderData.value.length; i++){
+            ReminderDataDto reminderDataDto = ReminderDataDto(
+              id: reminderData.value[i]['id'],
+              note: reminderData.value[i]['note'],
+              inviteSendOn: reminderData.value[i]['send_invite_on']
+            );
+
+            reminderDataList.add(reminderDataDto);
+          }
 
           ReminderDto reminderDto = ReminderDto(
-            id: result['reminders'][i]['id'],
-            message: result['reminders'][i]['note'],
-            dateTime: result['reminders'][i]['send_invite_on']
+            date: reminderData.key,
+            reminderData: List.from(reminderDataList),
           );
 
           reminders.add(reminderDto);
         }
-
         return Right(reminders);
       }else{
         return Left(ErrorMessage(result['message']));

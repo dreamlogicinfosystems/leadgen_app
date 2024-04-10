@@ -66,7 +66,6 @@ class _AddBoardState extends State<AddBoard> {
                 child: Card(
                   child: Container(
                     width: MediaQuery.of(context).size.width*0.9,
-                    height: MediaQuery.of(context).size.height*0.269,
                     decoration: BoxDecoration(
                         color: const Color(0xFFECECED),
                         borderRadius: BorderRadius.circular(15)
@@ -122,6 +121,7 @@ class _AddBoardState extends State<AddBoard> {
                               ),
                             ),
                           ),
+                          const SizedBox(height: 10),
                         ],
                       ),
                     ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/department_user/department_user_bloc.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/notification.dart';
+
 import 'package:lead_gen/lead_gen/presentation/widgets/add_board/add_board.dart';
 import '../../../injections.dart';
 import '../widgets/add_user/add_user.dart';
@@ -49,7 +51,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           padding: const EdgeInsets.only(right: 8,top: 5),
           child: GestureDetector(
                onTap: (){
-                 // showDialog(context: context, builder: (context) => const CloseLeadDialog());
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationPage()));
                },
               child: SizedBox(
                 width: 50,
@@ -57,7 +59,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Icon(Icons.notifications,size: 27,color: Colors.black),  //Color(0xFFC2E90B)
                     SizedBox(
                       height: MediaQuery.of(context).size.height*0.03,
                       child: Image.asset('assets/images/notification.png')

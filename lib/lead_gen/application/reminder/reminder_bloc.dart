@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/domain/reminder/reminder_repository.dart';
 
@@ -23,11 +24,15 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
         addReminder: (e) async{
           emit(const ReminderState.loadingInProgress());
 
+          final date = DateFormat('yyyy-MM-dd').format(pickedDate!);
+
           final tryAddReminder = await _reminderRepository.addReminder(
               Reminder(
                 message: e.reminder.message,
-                date: e.reminder.date,
-                time: e.reminder.time
+                date: date,
+                time: e.reminder.time,
+                repeatInterval: e.reminder.repeatInterval,
+                repeatCount: e.reminder.repeatCount
               ),
               e.context
           );
@@ -125,7 +130,9 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
 
           debugPrint("Time: $time");
 
-          final simpleDateTime = "${pickedDate!.day}-${pickedDate!.month}-${pickedDate!.year}  $time";
+          final formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate!);
+
+          final simpleDateTime = "$formattedDate  $time";
 
           return simpleDateTime;
 

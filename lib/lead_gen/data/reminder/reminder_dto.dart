@@ -14,7 +14,10 @@ abstract class ReminderDto implements _$ReminderDto{
     String? message,
     String? date,
     String? time,
-    String? dateTime
+    String? dateTime,
+    String? repeatInterval,
+    String? repeatCount,
+    List<ReminderDataDto>? reminderData,
   }) = _ReminderDto;
 
   factory ReminderDto.fromJson(Map<String,dynamic>json) => _$ReminderDtoFromJson(json);
@@ -23,15 +26,38 @@ abstract class ReminderDto implements _$ReminderDto{
     return ReminderDto(
       message: reminder.message,
       date: reminder.date,
-      time: reminder.time
+      time: reminder.time,
+      repeatInterval: reminder.repeatInterval,
+      repeatCount: reminder.repeatCount
     );
   }
 
   Reminder toDomain(ReminderDto reminderDto){
     return Reminder(
-      id: reminderDto.id,
-      message: reminderDto.message,
-      dateTime: reminderDto.dateTime
+      date: reminderDto.date,
+      reminderData: reminderDto.reminderData?.map((e) => const ReminderDataDto().toDomain(e)).toList(),
+    );
+  }
+}
+
+
+@freezed
+abstract class ReminderDataDto implements _$ReminderDataDto{
+  const ReminderDataDto._();
+
+  const factory ReminderDataDto({
+    int? id,
+    String? note,
+    String? inviteSendOn,
+  }) = _ReminderDataDto;
+
+  factory ReminderDataDto.fromJson(Map<String,dynamic>json) => _$ReminderDataDtoFromJson(json);
+
+  ReminderDetails toDomain(ReminderDataDto reminderDataDto){
+    return ReminderDetails(
+      id: reminderDataDto.id,
+      note: reminderDataDto.note,
+      inviteSendOn: reminderDataDto.inviteSendOn
     );
   }
 }
