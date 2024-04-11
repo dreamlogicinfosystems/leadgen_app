@@ -51,6 +51,25 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
             emit(CustomerState.successCustomerList(customerList));
           });
 
+        },
+        updateCustomer: (e) async{
+          emit(const CustomerState.loadingInProgress());
+
+          final tryUpdateCustomer = await _customerRepository.updateCustomer(
+              Customer(
+                custId: e.customer.custId,
+                custPhone: e.customer.custPhone,
+                custEmail: e.customer.custEmail,
+                custName: e.customer.custName
+              ),
+              e.context
+          );
+
+          tryUpdateCustomer.fold((error){
+            emit(CustomerState.failed(error.message));
+          },(success){
+            emit(CustomerState.success(success.successMessage));
+          });
         }
     );
   }

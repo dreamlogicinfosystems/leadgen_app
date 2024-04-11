@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:lead_gen/lead_gen/constants/jwt.dart';
 import 'package:lead_gen/lead_gen/constants/shared_preference.dart';
 import 'package:lead_gen/lead_gen/constants/url.dart';
-
 import 'no_internet_dialog.dart';
 
 class ApiMethods{
@@ -21,11 +20,9 @@ class ApiMethods{
     || connectivityResult == ConnectivityResult.wifi) {
 
       final token = await _localDataSource.getToken();
-      if(token!=null){
-        if(_jwtHelper.isTokenExpired(token, 0)){
-          final newToken = await refreshToken();
-
-          await _localDataSource.setToken(newToken);
+      if(token!=null || token==''){
+        if(_jwtHelper.isTokenExpired(token!, 0)){
+          await refreshToken();
         }
       }
       
@@ -64,10 +61,8 @@ class ApiMethods{
         || connectivityResult == ConnectivityResult.wifi) {
 
       final token = await _localDataSource.getToken();
-      if(_jwtHelper.isTokenExpired(token!, 0)){
-        final newToken = await refreshToken();
-
-        await _localDataSource.setToken(newToken);
+      if(_jwtHelper.isTokenExpired(token!, 0)) {
+        await refreshToken();
       }
 
       final String fullUrl = _ip + url;
@@ -108,6 +103,7 @@ class ApiMethods{
 
     if(result['status'] == true){
       final refreshToken = result['refresh_token'];
+      await _localDataSource.setToken(refreshToken);
       return refreshToken;
     }else{
       return result['message'];

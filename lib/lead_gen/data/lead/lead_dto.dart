@@ -15,6 +15,9 @@ abstract class LeadDto implements _$LeadDto{
     String? name,
     String? phone,
     String? email,
+    String? title,
+    String? date,
+    String? time,
     String? message,
     String? createdAt,
     String? showStatus,
@@ -30,6 +33,9 @@ abstract class LeadDto implements _$LeadDto{
       name: lead.name,
       phone: lead.phone,
       email: lead.email,
+      title: lead.title,
+      date: lead.date,
+      time: lead.time,
       message: lead.message,
       departmentIds: lead.departmentIds
     );
@@ -41,6 +47,7 @@ abstract class LeadDto implements _$LeadDto{
       name: leadDto.name,
       phone: leadDto.phone,
       email: leadDto.email,
+      title: leadDto.title,
       message: leadDto.message,
       createdAt: leadDto.createdAt,
       showStatus: leadDto.showStatus,

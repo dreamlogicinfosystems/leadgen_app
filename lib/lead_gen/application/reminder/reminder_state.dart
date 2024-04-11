@@ -8,6 +8,8 @@ class ReminderState with _$ReminderState {
 
   const factory ReminderState.saved(String message) = _saved;
 
+  const factory ReminderState.successRemCount(int count) = _successRemCount;
+
   const factory ReminderState.successRemindersList(List<Reminder> remindersList) = _successRemindersList;
 
   const factory ReminderState.failed(String error) = _failed;

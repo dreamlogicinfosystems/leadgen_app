@@ -4,6 +4,7 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/api.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
+import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/customer/customer_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/lead_dto.dart';
 
@@ -107,6 +108,29 @@ class CustomerDataSource{
       }
 
       return Right(customersList);
+    }else{
+      return Left(ErrorMessage(result['message']));
+    }
+  }
+
+  Future<Either<ErrorMessage,Success>> updateCustomerData(CustomerDto customer,BuildContext context) async{
+    Map<String,dynamic> map = {};
+
+    map['id'] = customer.custId.toString();
+    map['name'] = customer.custName;
+    map['phone'] = customer.custPhone;
+    map['email'] = customer.custEmail;
+
+    final response = await _apiMethods.post(
+        url: 'update_customer',
+        data: map,
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
+    if(result['status'] == true){
+      return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));
     }

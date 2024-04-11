@@ -2,40 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
-import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 
-import '../../pages/home.dart';
+import '../../../constants/constant.dart';
+import '../../pages/archive.dart';
 
-class CloseLeadDialog extends StatefulWidget {
+
+class OpenLeadDialog extends StatefulWidget {
   final int leadId;
-  const CloseLeadDialog({Key? key, required this.leadId}) : super(key: key);
+  const OpenLeadDialog({Key? key, required this.leadId}) : super(key: key);
 
   @override
-  State<CloseLeadDialog> createState() => _CloseLeadDialogState();
+  State<OpenLeadDialog> createState() => _OpenLeadDialogState();
 }
 
-class _CloseLeadDialogState extends State<CloseLeadDialog> {
+class _OpenLeadDialogState extends State<OpenLeadDialog> {
   final _reasonController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LeadBloc, LeadState>(
       listener: (context, state) {
         state.maybeWhen(
-          loadingInProgress: (){
-            showLoader(context);
-          },
-          success: (message){
-            showToastMessage(message);
-            //to close loader
-            Navigator.pop(context);
-            //to close container
-            Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) => const Home()), (route) => false);
-          },
-          orElse: (){}
+            loadingInProgress: (){
+              showLoader(context);
+            },
+            success: (message){
+              showToastMessage(message);
+              //to close loader
+              Navigator.pop(context);
+              //to close container
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => const ArchivePage()), (route) => route.isFirst);
+            },
+            orElse: (){}
         );
       },
       child: Center(
@@ -55,11 +57,11 @@ class _CloseLeadDialogState extends State<CloseLeadDialog> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Close Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
+                      Text("Open Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
                       const SizedBox(height: 10),
                       CustomTextField(
                           isBoardAddPage: true,
-                          labelText: 'Enter reason for closure',
+                          labelText: 'Enter reason for Opening',
                           maxLines: 1,
                           controller: _reasonController,
                           keyBoardType: TextInputType.text,
@@ -83,12 +85,12 @@ class _CloseLeadDialogState extends State<CloseLeadDialog> {
                               onTap: (){
                                 if(_formKey.currentState!.validate()){
                                   context.read<LeadBloc>().add(
-                                      LeadEvent.updateLeadStatus(
-                                          widget.leadId,
-                                          6,
-                                          _reasonController.text,
-                                          context
-                                      ),
+                                    LeadEvent.updateLeadStatus(
+                                        widget.leadId,
+                                        1,
+                                        _reasonController.text,
+                                        context
+                                    ),
                                   );
                                 }
                               }

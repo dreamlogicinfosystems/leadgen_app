@@ -26,6 +26,9 @@ class LeadDataSource{
       map['name'] = leadDto.name;
       map['phone'] = leadDto.phone;
       map['email'] = leadDto.email;
+      map['title'] = leadDto.title;
+      map['date'] = leadDto.date;
+      map['time'] = leadDto.time;
       map['message'] = leadDto.message;
 
       final response = await _apiMethods.post(
@@ -91,6 +94,7 @@ class LeadDataSource{
             phone: result['leads'][i]['phone'],
             email: result['leads'][i]['email'],
             message: result['leads'][i]['note'],
+            title: result['leads'][i]['title']?? '',
             createdAt: result['leads'][i]['created_at'],
             showStatus: result['leads'][i]['show_status'],
             lastChatDate: result['leads'][i]['last_chat_date']
@@ -100,7 +104,7 @@ class LeadDataSource{
         }
         return Right(leadsList);
       }else{
-        return Left(result['leads']);
+        return Left(result['message']);
       }
     }catch(e){
       return const Left([]);
@@ -159,9 +163,9 @@ class LeadDataSource{
     try{
       Map<String, dynamic> map = {};
 
-      map['id'] = leadId;
+      map['id'] = leadId.toString();
       map['message'] = message;
-      map['status_id'] = statusId;
+      map['status_id'] = statusId.toString();
 
       final response = await _apiMethods.post(
           url: 'update_lead_status',

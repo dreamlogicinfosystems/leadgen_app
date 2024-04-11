@@ -36,7 +36,7 @@ class _ChatDrawerState extends State<ChatDrawer> {
           const SizedBox(height: 20,),
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder(userName: '',)));
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => const AddReminder(userName: '',)));
             },
             child: Container(
               width: MediaQuery.of(context).size.width*0.75,
@@ -52,7 +52,7 @@ class _ChatDrawerState extends State<ChatDrawer> {
           const SizedBox(height: 10,),
           GestureDetector(
             onTap: (){
-              showDialog(context: context, builder: (context) => const CloseLeadDialog());
+              // showDialog(context: context, builder: (context) => const CloseLeadDialog(leadId: ,));
             },
             child: Container(
               width: MediaQuery.of(context).size.width*0.75,

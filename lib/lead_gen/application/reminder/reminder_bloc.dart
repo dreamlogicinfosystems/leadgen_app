@@ -75,6 +75,17 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
           },(success){
             emit(ReminderState.saved(success));
           });
+        },
+        getRemindersCount: (e) async{
+          emit(const ReminderState.loadingInProgress());
+
+          final tryGetReminderCount = await _reminderRepository.getRemindersCount(e.context);
+
+          tryGetReminderCount.fold((error){
+            emit(ReminderState.failed(error.message));
+          },(count){
+            emit(ReminderState.successRemCount(count));
+          });
         }
     );
   }

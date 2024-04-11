@@ -24,6 +24,9 @@ mixin _$LeadDto {
   String? get name => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
+  String? get time => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   String? get showStatus => throw _privateConstructorUsedError;
@@ -45,6 +48,9 @@ abstract class $LeadDtoCopyWith<$Res> {
       String? name,
       String? phone,
       String? email,
+      String? title,
+      String? date,
+      String? time,
       String? message,
       String? createdAt,
       String? showStatus,
@@ -69,6 +75,9 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
     Object? name = freezed,
     Object? phone = freezed,
     Object? email = freezed,
+    Object? title = freezed,
+    Object? date = freezed,
+    Object? time = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
     Object? showStatus = freezed,
@@ -91,6 +100,18 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
       message: freezed == message
           ? _value.message
@@ -128,6 +149,9 @@ abstract class _$$LeadDtoImplCopyWith<$Res> implements $LeadDtoCopyWith<$Res> {
       String? name,
       String? phone,
       String? email,
+      String? title,
+      String? date,
+      String? time,
       String? message,
       String? createdAt,
       String? showStatus,
@@ -150,6 +174,9 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? phone = freezed,
     Object? email = freezed,
+    Object? title = freezed,
+    Object? date = freezed,
+    Object? time = freezed,
     Object? message = freezed,
     Object? createdAt = freezed,
     Object? showStatus = freezed,
@@ -172,6 +199,18 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      date: freezed == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
       message: freezed == message
           ? _value.message
@@ -205,6 +244,9 @@ class _$LeadDtoImpl extends _LeadDto {
       this.name,
       this.phone,
       this.email,
+      this.title,
+      this.date,
+      this.time,
       this.message,
       this.createdAt,
       this.showStatus,
@@ -225,6 +267,12 @@ class _$LeadDtoImpl extends _LeadDto {
   @override
   final String? email;
   @override
+  final String? title;
+  @override
+  final String? date;
+  @override
+  final String? time;
+  @override
   final String? message;
   @override
   final String? createdAt;
@@ -244,7 +292,7 @@ class _$LeadDtoImpl extends _LeadDto {
 
   @override
   String toString() {
-    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, message: $message, createdAt: $createdAt, showStatus: $showStatus, lastChatDate: $lastChatDate, departmentIds: $departmentIds)';
+    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, title: $title, date: $date, time: $time, message: $message, createdAt: $createdAt, showStatus: $showStatus, lastChatDate: $lastChatDate, departmentIds: $departmentIds)';
   }
 
   @override
@@ -256,6 +304,9 @@ class _$LeadDtoImpl extends _LeadDto {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.time, time) || other.time == time) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -275,6 +326,9 @@ class _$LeadDtoImpl extends _LeadDto {
       name,
       phone,
       email,
+      title,
+      date,
+      time,
       message,
       createdAt,
       showStatus,
@@ -301,6 +355,9 @@ abstract class _LeadDto extends LeadDto {
       final String? name,
       final String? phone,
       final String? email,
+      final String? title,
+      final String? date,
+      final String? time,
       final String? message,
       final String? createdAt,
       final String? showStatus,
@@ -318,6 +375,12 @@ abstract class _LeadDto extends LeadDto {
   String? get phone;
   @override
   String? get email;
+  @override
+  String? get title;
+  @override
+  String? get date;
+  @override
+  String? get time;
   @override
   String? get message;
   @override

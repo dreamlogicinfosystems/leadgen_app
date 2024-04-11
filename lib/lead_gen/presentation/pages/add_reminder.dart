@@ -5,13 +5,15 @@ import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/view_reminders.dart';
 
 import '../../domain/reminder/reminder.dart';
 import '../widgets/add_reminder/reminder_drop_down.dart';
 
 class AddReminder extends StatefulWidget {
   final String userName;
-  const AddReminder({Key? key, required this.userName}) : super(key: key);
+  final String source;
+  const AddReminder({Key? key, required this.userName, required this.source}) : super(key: key);
 
   @override
   State<AddReminder> createState() => _AddReminderState();
@@ -72,10 +74,18 @@ class _AddReminderState extends State<AddReminder> {
           },
           saved: (message){
             showToastMessage(message);
-            //to close loader
-            Navigator.pop(context);
-            //to close dialog
-            Navigator.pop(context);
+            if(widget.source=='chat page'){
+              //to close loader
+              Navigator.pop(context);
+              //to close dialog
+              Navigator.pop(context);
+            }else{
+              //to close loader
+              Navigator.pop(context);
+
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => const ViewReminders()), (route) => route.isFirst);
+            }
           },
           orElse: (){}
         );

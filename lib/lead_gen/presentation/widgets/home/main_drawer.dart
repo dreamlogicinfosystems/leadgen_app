@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/archive.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/customers.dart';
 import '../../../application/auth/auth_bloc.dart';
@@ -25,6 +26,12 @@ class _MainDrawerState extends State<MainDrawer> {
   bool isUsers = false;
   bool isLogin = false;
   bool isCustomers = false;
+  
+  @override
+  void initState() {
+    context.read<ReminderBloc>().add(ReminderEvent.getRemindersCount(context));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +95,30 @@ class _MainDrawerState extends State<MainDrawer> {
                                 color: const Color(0xFFC2E90B),
                                 borderRadius: BorderRadius.circular(5)
                               ),
-                              child:Center(
-                                child: Text("2",style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 11),),
+                              child:BlocBuilder<ReminderBloc, ReminderState>(
+                                builder: (context, state) {
+                                  return state.maybeWhen(
+                                    loadingInProgress: (){
+                                      return const Center(
+                                        child: SizedBox(
+                                          height: 10,
+                                            width: 10,
+                                            child: CircularProgressIndicator(strokeWidth: 1,)
+                                        ),
+                                      );
+                                    },
+                                    successRemCount: (count){
+                                      return Center(
+                                        child: Text(count.toString(),style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 11),),
+                                      );
+                                    },
+                                    orElse: (){
+                                      return Center(
+                                        child: Text("0",style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 11),),
+                                      );
+                                    }
+                                  );
+                                },
                               ),
                             )
                           ],

@@ -24,7 +24,7 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
     final tomorrow = today.add(const Duration(days: 1));
 
     if(today.year == dateToCheck.year && today.month == dateToCheck.month && today.day == dateToCheck.day){
-      return "Today's";
+      return "Today's Reminders";
     }else if (today.year == dateToCheck.year && today.month == dateToCheck.month && tomorrow.day == dateToCheck.day){
       return "Tomorrow's";
     }else{
@@ -119,7 +119,7 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
                                             ),
                                           ),
                                           const SizedBox(width: 5),
-                                          Text(" ${checkIfDateIsToday(reminders[index].date!)} Reminders",
+                                          Text(" ${checkIfDateIsToday(reminders[index].date!)}",
                                             style: GoogleFonts.poppins(fontSize: 22,fontWeight: FontWeight.w600),),
                                         ],
                                       ),

@@ -5,7 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/shared_preference.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 showToastMessage(String message){
   Fluttertoast.showToast(
@@ -184,7 +187,64 @@ convertUTCtoLocalTime(String utcDateTime){
 convertDateToReadableDate(String stringDate){
   final date = DateTime.parse(stringDate);
 
-  final formattedDate = DateFormat('EEE, MMM yy').format(date);
+  final formattedDate = DateFormat('EEE, MMM dd').format(date);
 
   return formattedDate;
+}
+
+sessionExpired(context, message) async {
+  return showDialog(
+    context: context,
+    builder: (context){
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                message,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff3E8AFB),
+                ),
+              ),
+              const Text(
+                "Your session has been expired, please login again",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xff646363),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomButton(
+                  name: 'Logout',
+                  onTap: () async{
+                    SharedPreferences pref = await SharedPreferences.getInstance();
+                    LocalDataSource localDataSource = LocalDataSource(pref);
+                    localDataSource.setToken('');
+
+                    if(context.mounted){
+                      Navigator.pushAndRemoveUntil(context,
+                          MaterialPageRoute(builder: (context) => const Login()), (route) => false);
+                    }
+                  },
+                )
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

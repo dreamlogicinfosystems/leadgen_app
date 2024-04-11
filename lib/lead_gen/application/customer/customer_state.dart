@@ -11,4 +11,6 @@ class CustomerState with _$CustomerState {
   const factory CustomerState.successCustLeadList(List<Lead> custLeadsList) = _successCustLeadList;
 
   const factory CustomerState.failed(String error) = _failed;
+
+  const factory CustomerState.success(String message) = _success;
 }

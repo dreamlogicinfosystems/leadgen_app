@@ -23,6 +23,7 @@ mixin _$ReminderEvent {
     required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
+    required TResult Function(BuildContext context) getRemindersCount,
     required TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)
         setRemainder,
@@ -33,6 +34,7 @@ mixin _$ReminderEvent {
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
     TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult? Function(BuildContext context)? getRemindersCount,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -43,6 +45,7 @@ mixin _$ReminderEvent {
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
     TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult Function(BuildContext context)? getRemindersCount,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -54,6 +57,7 @@ mixin _$ReminderEvent {
     required TResult Function(_addReminder value) addReminder,
     required TResult Function(_getReminders value) getReminders,
     required TResult Function(_deleteReminder value) deleteReminder,
+    required TResult Function(_getRemindersCount value) getRemindersCount,
     required TResult Function(_setRemainder value) setRemainder,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +66,7 @@ mixin _$ReminderEvent {
     TResult? Function(_addReminder value)? addReminder,
     TResult? Function(_getReminders value)? getReminders,
     TResult? Function(_deleteReminder value)? deleteReminder,
+    TResult? Function(_getRemindersCount value)? getRemindersCount,
     TResult? Function(_setRemainder value)? setRemainder,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +75,7 @@ mixin _$ReminderEvent {
     TResult Function(_addReminder value)? addReminder,
     TResult Function(_getReminders value)? getReminders,
     TResult Function(_deleteReminder value)? deleteReminder,
+    TResult Function(_getRemindersCount value)? getRemindersCount,
     TResult Function(_setRemainder value)? setRemainder,
     required TResult orElse(),
   }) =>
@@ -182,6 +188,7 @@ class _$addReminderImpl implements _addReminder {
     required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
+    required TResult Function(BuildContext context) getRemindersCount,
     required TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)
         setRemainder,
@@ -195,6 +202,7 @@ class _$addReminderImpl implements _addReminder {
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
     TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult? Function(BuildContext context)? getRemindersCount,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -208,6 +216,7 @@ class _$addReminderImpl implements _addReminder {
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
     TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult Function(BuildContext context)? getRemindersCount,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -225,6 +234,7 @@ class _$addReminderImpl implements _addReminder {
     required TResult Function(_addReminder value) addReminder,
     required TResult Function(_getReminders value) getReminders,
     required TResult Function(_deleteReminder value) deleteReminder,
+    required TResult Function(_getRemindersCount value) getRemindersCount,
     required TResult Function(_setRemainder value) setRemainder,
   }) {
     return addReminder(this);
@@ -236,6 +246,7 @@ class _$addReminderImpl implements _addReminder {
     TResult? Function(_addReminder value)? addReminder,
     TResult? Function(_getReminders value)? getReminders,
     TResult? Function(_deleteReminder value)? deleteReminder,
+    TResult? Function(_getRemindersCount value)? getRemindersCount,
     TResult? Function(_setRemainder value)? setRemainder,
   }) {
     return addReminder?.call(this);
@@ -247,6 +258,7 @@ class _$addReminderImpl implements _addReminder {
     TResult Function(_addReminder value)? addReminder,
     TResult Function(_getReminders value)? getReminders,
     TResult Function(_deleteReminder value)? deleteReminder,
+    TResult Function(_getRemindersCount value)? getRemindersCount,
     TResult Function(_setRemainder value)? setRemainder,
     required TResult orElse(),
   }) {
@@ -337,6 +349,7 @@ class _$getRemindersImpl implements _getReminders {
     required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
+    required TResult Function(BuildContext context) getRemindersCount,
     required TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)
         setRemainder,
@@ -350,6 +363,7 @@ class _$getRemindersImpl implements _getReminders {
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
     TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult? Function(BuildContext context)? getRemindersCount,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -363,6 +377,7 @@ class _$getRemindersImpl implements _getReminders {
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
     TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult Function(BuildContext context)? getRemindersCount,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -380,6 +395,7 @@ class _$getRemindersImpl implements _getReminders {
     required TResult Function(_addReminder value) addReminder,
     required TResult Function(_getReminders value) getReminders,
     required TResult Function(_deleteReminder value) deleteReminder,
+    required TResult Function(_getRemindersCount value) getRemindersCount,
     required TResult Function(_setRemainder value) setRemainder,
   }) {
     return getReminders(this);
@@ -391,6 +407,7 @@ class _$getRemindersImpl implements _getReminders {
     TResult? Function(_addReminder value)? addReminder,
     TResult? Function(_getReminders value)? getReminders,
     TResult? Function(_deleteReminder value)? deleteReminder,
+    TResult? Function(_getRemindersCount value)? getRemindersCount,
     TResult? Function(_setRemainder value)? setRemainder,
   }) {
     return getReminders?.call(this);
@@ -402,6 +419,7 @@ class _$getRemindersImpl implements _getReminders {
     TResult Function(_addReminder value)? addReminder,
     TResult Function(_getReminders value)? getReminders,
     TResult Function(_deleteReminder value)? deleteReminder,
+    TResult Function(_getRemindersCount value)? getRemindersCount,
     TResult Function(_setRemainder value)? setRemainder,
     required TResult orElse(),
   }) {
@@ -500,6 +518,7 @@ class _$deleteReminderImpl implements _deleteReminder {
     required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
+    required TResult Function(BuildContext context) getRemindersCount,
     required TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)
         setRemainder,
@@ -513,6 +532,7 @@ class _$deleteReminderImpl implements _deleteReminder {
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
     TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult? Function(BuildContext context)? getRemindersCount,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -526,6 +546,7 @@ class _$deleteReminderImpl implements _deleteReminder {
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
     TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult Function(BuildContext context)? getRemindersCount,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -543,6 +564,7 @@ class _$deleteReminderImpl implements _deleteReminder {
     required TResult Function(_addReminder value) addReminder,
     required TResult Function(_getReminders value) getReminders,
     required TResult Function(_deleteReminder value) deleteReminder,
+    required TResult Function(_getRemindersCount value) getRemindersCount,
     required TResult Function(_setRemainder value) setRemainder,
   }) {
     return deleteReminder(this);
@@ -554,6 +576,7 @@ class _$deleteReminderImpl implements _deleteReminder {
     TResult? Function(_addReminder value)? addReminder,
     TResult? Function(_getReminders value)? getReminders,
     TResult? Function(_deleteReminder value)? deleteReminder,
+    TResult? Function(_getRemindersCount value)? getRemindersCount,
     TResult? Function(_setRemainder value)? setRemainder,
   }) {
     return deleteReminder?.call(this);
@@ -565,6 +588,7 @@ class _$deleteReminderImpl implements _deleteReminder {
     TResult Function(_addReminder value)? addReminder,
     TResult Function(_getReminders value)? getReminders,
     TResult Function(_deleteReminder value)? deleteReminder,
+    TResult Function(_getRemindersCount value)? getRemindersCount,
     TResult Function(_setRemainder value)? setRemainder,
     required TResult orElse(),
   }) {
@@ -583,6 +607,167 @@ abstract class _deleteReminder implements ReminderEvent {
   BuildContext get context;
   @JsonKey(ignore: true)
   _$$deleteReminderImplCopyWith<_$deleteReminderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$getRemindersCountImplCopyWith<$Res> {
+  factory _$$getRemindersCountImplCopyWith(_$getRemindersCountImpl value,
+          $Res Function(_$getRemindersCountImpl) then) =
+      __$$getRemindersCountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$getRemindersCountImplCopyWithImpl<$Res>
+    extends _$ReminderEventCopyWithImpl<$Res, _$getRemindersCountImpl>
+    implements _$$getRemindersCountImplCopyWith<$Res> {
+  __$$getRemindersCountImplCopyWithImpl(_$getRemindersCountImpl _value,
+      $Res Function(_$getRemindersCountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$getRemindersCountImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$getRemindersCountImpl implements _getRemindersCount {
+  const _$getRemindersCountImpl(this.context);
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ReminderEvent.getRemindersCount(context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$getRemindersCountImpl &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$getRemindersCountImplCopyWith<_$getRemindersCountImpl> get copyWith =>
+      __$$getRemindersCountImplCopyWithImpl<_$getRemindersCountImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Reminder reminder, BuildContext context)
+        addReminder,
+    required TResult Function(BuildContext context) getReminders,
+    required TResult Function(int reminderId, BuildContext context)
+        deleteReminder,
+    required TResult Function(BuildContext context) getRemindersCount,
+    required TResult Function(
+            String message, DateTime reminderDate, TimeOfDay reminderTime)
+        setRemainder,
+  }) {
+    return getRemindersCount(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Reminder reminder, BuildContext context)? addReminder,
+    TResult? Function(BuildContext context)? getReminders,
+    TResult? Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult? Function(BuildContext context)? getRemindersCount,
+    TResult? Function(
+            String message, DateTime reminderDate, TimeOfDay reminderTime)?
+        setRemainder,
+  }) {
+    return getRemindersCount?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Reminder reminder, BuildContext context)? addReminder,
+    TResult Function(BuildContext context)? getReminders,
+    TResult Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult Function(BuildContext context)? getRemindersCount,
+    TResult Function(
+            String message, DateTime reminderDate, TimeOfDay reminderTime)?
+        setRemainder,
+    required TResult orElse(),
+  }) {
+    if (getRemindersCount != null) {
+      return getRemindersCount(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_addReminder value) addReminder,
+    required TResult Function(_getReminders value) getReminders,
+    required TResult Function(_deleteReminder value) deleteReminder,
+    required TResult Function(_getRemindersCount value) getRemindersCount,
+    required TResult Function(_setRemainder value) setRemainder,
+  }) {
+    return getRemindersCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_addReminder value)? addReminder,
+    TResult? Function(_getReminders value)? getReminders,
+    TResult? Function(_deleteReminder value)? deleteReminder,
+    TResult? Function(_getRemindersCount value)? getRemindersCount,
+    TResult? Function(_setRemainder value)? setRemainder,
+  }) {
+    return getRemindersCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_addReminder value)? addReminder,
+    TResult Function(_getReminders value)? getReminders,
+    TResult Function(_deleteReminder value)? deleteReminder,
+    TResult Function(_getRemindersCount value)? getRemindersCount,
+    TResult Function(_setRemainder value)? setRemainder,
+    required TResult orElse(),
+  }) {
+    if (getRemindersCount != null) {
+      return getRemindersCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _getRemindersCount implements ReminderEvent {
+  const factory _getRemindersCount(final BuildContext context) =
+      _$getRemindersCountImpl;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$getRemindersCountImplCopyWith<_$getRemindersCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -674,6 +859,7 @@ class _$setRemainderImpl implements _setRemainder {
     required TResult Function(BuildContext context) getReminders,
     required TResult Function(int reminderId, BuildContext context)
         deleteReminder,
+    required TResult Function(BuildContext context) getRemindersCount,
     required TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)
         setRemainder,
@@ -687,6 +873,7 @@ class _$setRemainderImpl implements _setRemainder {
     TResult? Function(Reminder reminder, BuildContext context)? addReminder,
     TResult? Function(BuildContext context)? getReminders,
     TResult? Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult? Function(BuildContext context)? getRemindersCount,
     TResult? Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -700,6 +887,7 @@ class _$setRemainderImpl implements _setRemainder {
     TResult Function(Reminder reminder, BuildContext context)? addReminder,
     TResult Function(BuildContext context)? getReminders,
     TResult Function(int reminderId, BuildContext context)? deleteReminder,
+    TResult Function(BuildContext context)? getRemindersCount,
     TResult Function(
             String message, DateTime reminderDate, TimeOfDay reminderTime)?
         setRemainder,
@@ -717,6 +905,7 @@ class _$setRemainderImpl implements _setRemainder {
     required TResult Function(_addReminder value) addReminder,
     required TResult Function(_getReminders value) getReminders,
     required TResult Function(_deleteReminder value) deleteReminder,
+    required TResult Function(_getRemindersCount value) getRemindersCount,
     required TResult Function(_setRemainder value) setRemainder,
   }) {
     return setRemainder(this);
@@ -728,6 +917,7 @@ class _$setRemainderImpl implements _setRemainder {
     TResult? Function(_addReminder value)? addReminder,
     TResult? Function(_getReminders value)? getReminders,
     TResult? Function(_deleteReminder value)? deleteReminder,
+    TResult? Function(_getRemindersCount value)? getRemindersCount,
     TResult? Function(_setRemainder value)? setRemainder,
   }) {
     return setRemainder?.call(this);
@@ -739,6 +929,7 @@ class _$setRemainderImpl implements _setRemainder {
     TResult Function(_addReminder value)? addReminder,
     TResult Function(_getReminders value)? getReminders,
     TResult Function(_deleteReminder value)? deleteReminder,
+    TResult Function(_getRemindersCount value)? getRemindersCount,
     TResult Function(_setRemainder value)? setRemainder,
     required TResult orElse(),
   }) {
@@ -768,6 +959,7 @@ mixin _$ReminderState {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
     required TResult Function(List<Reminder> remindersList)
         successRemindersList,
     required TResult Function(String error) failed,
@@ -778,6 +970,7 @@ mixin _$ReminderState {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
     TResult? Function(List<Reminder> remindersList)? successRemindersList,
     TResult? Function(String error)? failed,
   }) =>
@@ -787,6 +980,7 @@ mixin _$ReminderState {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
     TResult Function(List<Reminder> remindersList)? successRemindersList,
     TResult Function(String error)? failed,
     required TResult orElse(),
@@ -797,6 +991,7 @@ mixin _$ReminderState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
     required TResult Function(_successRemindersList value) successRemindersList,
     required TResult Function(_failed value) failed,
   }) =>
@@ -806,6 +1001,7 @@ mixin _$ReminderState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
     TResult? Function(_successRemindersList value)? successRemindersList,
     TResult? Function(_failed value)? failed,
   }) =>
@@ -815,6 +1011,7 @@ mixin _$ReminderState {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
     TResult Function(_successRemindersList value)? successRemindersList,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
@@ -881,6 +1078,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
     required TResult Function(List<Reminder> remindersList)
         successRemindersList,
     required TResult Function(String error) failed,
@@ -894,6 +1092,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
     TResult? Function(List<Reminder> remindersList)? successRemindersList,
     TResult? Function(String error)? failed,
   }) {
@@ -906,6 +1105,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
     TResult Function(List<Reminder> remindersList)? successRemindersList,
     TResult Function(String error)? failed,
     required TResult orElse(),
@@ -922,6 +1122,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
     required TResult Function(_successRemindersList value) successRemindersList,
     required TResult Function(_failed value) failed,
   }) {
@@ -934,6 +1135,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
     TResult? Function(_successRemindersList value)? successRemindersList,
     TResult? Function(_failed value)? failed,
   }) {
@@ -946,6 +1148,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
     TResult Function(_successRemindersList value)? successRemindersList,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
@@ -1002,6 +1205,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
     required TResult Function(List<Reminder> remindersList)
         successRemindersList,
     required TResult Function(String error) failed,
@@ -1015,6 +1219,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
     TResult? Function(List<Reminder> remindersList)? successRemindersList,
     TResult? Function(String error)? failed,
   }) {
@@ -1027,6 +1232,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
     TResult Function(List<Reminder> remindersList)? successRemindersList,
     TResult Function(String error)? failed,
     required TResult orElse(),
@@ -1043,6 +1249,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
     required TResult Function(_successRemindersList value) successRemindersList,
     required TResult Function(_failed value) failed,
   }) {
@@ -1055,6 +1262,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
     TResult? Function(_successRemindersList value)? successRemindersList,
     TResult? Function(_failed value)? failed,
   }) {
@@ -1067,6 +1275,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
     TResult Function(_successRemindersList value)? successRemindersList,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
@@ -1149,6 +1358,7 @@ class _$savedImpl implements _saved {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
     required TResult Function(List<Reminder> remindersList)
         successRemindersList,
     required TResult Function(String error) failed,
@@ -1162,6 +1372,7 @@ class _$savedImpl implements _saved {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
     TResult? Function(List<Reminder> remindersList)? successRemindersList,
     TResult? Function(String error)? failed,
   }) {
@@ -1174,6 +1385,7 @@ class _$savedImpl implements _saved {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
     TResult Function(List<Reminder> remindersList)? successRemindersList,
     TResult Function(String error)? failed,
     required TResult orElse(),
@@ -1190,6 +1402,7 @@ class _$savedImpl implements _saved {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
     required TResult Function(_successRemindersList value) successRemindersList,
     required TResult Function(_failed value) failed,
   }) {
@@ -1202,6 +1415,7 @@ class _$savedImpl implements _saved {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
     TResult? Function(_successRemindersList value)? successRemindersList,
     TResult? Function(_failed value)? failed,
   }) {
@@ -1214,6 +1428,7 @@ class _$savedImpl implements _saved {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
     TResult Function(_successRemindersList value)? successRemindersList,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
@@ -1231,6 +1446,165 @@ abstract class _saved implements ReminderState {
   String get message;
   @JsonKey(ignore: true)
   _$$savedImplCopyWith<_$savedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$successRemCountImplCopyWith<$Res> {
+  factory _$$successRemCountImplCopyWith(_$successRemCountImpl value,
+          $Res Function(_$successRemCountImpl) then) =
+      __$$successRemCountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int count});
+}
+
+/// @nodoc
+class __$$successRemCountImplCopyWithImpl<$Res>
+    extends _$ReminderStateCopyWithImpl<$Res, _$successRemCountImpl>
+    implements _$$successRemCountImplCopyWith<$Res> {
+  __$$successRemCountImplCopyWithImpl(
+      _$successRemCountImpl _value, $Res Function(_$successRemCountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? count = null,
+  }) {
+    return _then(_$successRemCountImpl(
+      null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$successRemCountImpl implements _successRemCount {
+  const _$successRemCountImpl(this.count);
+
+  @override
+  final int count;
+
+  @override
+  String toString() {
+    return 'ReminderState.successRemCount(count: $count)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$successRemCountImpl &&
+            (identical(other.count, count) || other.count == count));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, count);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$successRemCountImplCopyWith<_$successRemCountImpl> get copyWith =>
+      __$$successRemCountImplCopyWithImpl<_$successRemCountImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingInProgress,
+    required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
+    required TResult Function(List<Reminder> remindersList)
+        successRemindersList,
+    required TResult Function(String error) failed,
+  }) {
+    return successRemCount(count);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingInProgress,
+    TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
+    TResult? Function(List<Reminder> remindersList)? successRemindersList,
+    TResult? Function(String error)? failed,
+  }) {
+    return successRemCount?.call(count);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingInProgress,
+    TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
+    TResult Function(List<Reminder> remindersList)? successRemindersList,
+    TResult Function(String error)? failed,
+    required TResult orElse(),
+  }) {
+    if (successRemCount != null) {
+      return successRemCount(count);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_loadingInProgress value) loadingInProgress,
+    required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
+    required TResult Function(_successRemindersList value) successRemindersList,
+    required TResult Function(_failed value) failed,
+  }) {
+    return successRemCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loadingInProgress value)? loadingInProgress,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
+    TResult? Function(_successRemindersList value)? successRemindersList,
+    TResult? Function(_failed value)? failed,
+  }) {
+    return successRemCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_loadingInProgress value)? loadingInProgress,
+    TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
+    TResult Function(_successRemindersList value)? successRemindersList,
+    TResult Function(_failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (successRemCount != null) {
+      return successRemCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _successRemCount implements ReminderState {
+  const factory _successRemCount(final int count) = _$successRemCountImpl;
+
+  int get count;
+  @JsonKey(ignore: true)
+  _$$successRemCountImplCopyWith<_$successRemCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1311,6 +1685,7 @@ class _$successRemindersListImpl implements _successRemindersList {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
     required TResult Function(List<Reminder> remindersList)
         successRemindersList,
     required TResult Function(String error) failed,
@@ -1324,6 +1699,7 @@ class _$successRemindersListImpl implements _successRemindersList {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
     TResult? Function(List<Reminder> remindersList)? successRemindersList,
     TResult? Function(String error)? failed,
   }) {
@@ -1336,6 +1712,7 @@ class _$successRemindersListImpl implements _successRemindersList {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
     TResult Function(List<Reminder> remindersList)? successRemindersList,
     TResult Function(String error)? failed,
     required TResult orElse(),
@@ -1352,6 +1729,7 @@ class _$successRemindersListImpl implements _successRemindersList {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
     required TResult Function(_successRemindersList value) successRemindersList,
     required TResult Function(_failed value) failed,
   }) {
@@ -1364,6 +1742,7 @@ class _$successRemindersListImpl implements _successRemindersList {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
     TResult? Function(_successRemindersList value)? successRemindersList,
     TResult? Function(_failed value)? failed,
   }) {
@@ -1376,6 +1755,7 @@ class _$successRemindersListImpl implements _successRemindersList {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
     TResult Function(_successRemindersList value)? successRemindersList,
     TResult Function(_failed value)? failed,
     required TResult orElse(),
@@ -1464,6 +1844,7 @@ class _$failedImpl implements _failed {
     required TResult Function() initial,
     required TResult Function() loadingInProgress,
     required TResult Function(String message) saved,
+    required TResult Function(int count) successRemCount,
     required TResult Function(List<Reminder> remindersList)
         successRemindersList,
     required TResult Function(String error) failed,
@@ -1477,6 +1858,7 @@ class _$failedImpl implements _failed {
     TResult? Function()? initial,
     TResult? Function()? loadingInProgress,
     TResult? Function(String message)? saved,
+    TResult? Function(int count)? successRemCount,
     TResult? Function(List<Reminder> remindersList)? successRemindersList,
     TResult? Function(String error)? failed,
   }) {
@@ -1489,6 +1871,7 @@ class _$failedImpl implements _failed {
     TResult Function()? initial,
     TResult Function()? loadingInProgress,
     TResult Function(String message)? saved,
+    TResult Function(int count)? successRemCount,
     TResult Function(List<Reminder> remindersList)? successRemindersList,
     TResult Function(String error)? failed,
     required TResult orElse(),
@@ -1505,6 +1888,7 @@ class _$failedImpl implements _failed {
     required TResult Function(_Initial value) initial,
     required TResult Function(_loadingInProgress value) loadingInProgress,
     required TResult Function(_saved value) saved,
+    required TResult Function(_successRemCount value) successRemCount,
     required TResult Function(_successRemindersList value) successRemindersList,
     required TResult Function(_failed value) failed,
   }) {
@@ -1517,6 +1901,7 @@ class _$failedImpl implements _failed {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loadingInProgress value)? loadingInProgress,
     TResult? Function(_saved value)? saved,
+    TResult? Function(_successRemCount value)? successRemCount,
     TResult? Function(_successRemindersList value)? successRemindersList,
     TResult? Function(_failed value)? failed,
   }) {
@@ -1529,6 +1914,7 @@ class _$failedImpl implements _failed {
     TResult Function(_Initial value)? initial,
     TResult Function(_loadingInProgress value)? loadingInProgress,
     TResult Function(_saved value)? saved,
+    TResult Function(_successRemCount value)? successRemCount,
     TResult Function(_successRemindersList value)? successRemindersList,
     TResult Function(_failed value)? failed,
     required TResult orElse(),

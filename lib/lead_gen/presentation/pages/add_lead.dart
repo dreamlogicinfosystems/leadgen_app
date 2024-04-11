@@ -2,7 +2,6 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../application/department/department_bloc.dart';
 import '../../application/lead/lead_bloc.dart';
@@ -46,16 +45,13 @@ class _AddLeadState extends State<AddLead> {
   }
   
   pickReminderDate() async{
-    pickedDate = await showDatePicker(
-        context: context, 
-        initialDate: DateTime.now(), 
-        firstDate: DateTime.now(), 
-        lastDate: DateTime(2050)
-    );
+    final pickedDateTime = await LeadBloc.selectReminderDateTime(context);
 
-    if(pickedDate!=null){
-      final date = DateFormat('dd-MMM-yyyy').format(pickedDate!);
-      _reminderController.text = date;
+    debugPrint("data from bloc:$pickedDateTime");
+
+    if(pickedDateTime!=null){
+
+      _reminderController.text = pickedDateTime;
     }
   }
 
@@ -77,7 +73,7 @@ class _AddLeadState extends State<AddLead> {
 
   bool validateData(){
     if(_nameController.text.trim()=='' || _emailController.text.trim()=='' || _titleController.text.trim()==''
-        || _phoneController.text.trim()=='' || _messageController.text=='' || _reminderController.text==''){
+        || _phoneController.text.trim()=='' || _messageController.text==''){
       showErrorToastMessage("Please fill in all details");
       return false;
     }else if(selectedBoards.isEmpty){
@@ -85,6 +81,12 @@ class _AddLeadState extends State<AddLead> {
       return false;
     }else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
       showErrorToastMessage("Invalid Full Name");
+      return false;
+    }else if(_titleController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
+      showErrorToastMessage('Invalid title');
+      return false;
+    }else if(_messageController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
+      showErrorToastMessage('Invalid message');
       return false;
     }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
       showErrorToastMessage("Invalid Email");
@@ -290,6 +292,9 @@ class _AddLeadState extends State<AddLead> {
                                             name: _nameController.text.trim(),
                                             phone: _phoneController.text,
                                             email: _emailController.text.trim(),
+                                            title: _titleController.text.trim(),
+                                            date: _reminderController.text==''? '' : _reminderController.text.split(' ')[0],
+                                            time: _reminderController.text==''? '' : _reminderController.text.split('  ')[1],
                                             message: _messageController.text,
                                             departmentIds: selectedBoardsIds
                                         ),

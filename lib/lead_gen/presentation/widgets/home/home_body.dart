@@ -26,10 +26,79 @@ class _HomePageBodyState extends State<HomePageBody> {
     return simpleDate;
   }
 
-
   @override
   Widget build(BuildContext context) {
     context.read<LeadBloc>().add(LeadEvent.getLeads('all',widget.departmentId, context));
+
+    Widget loading = SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height*0.58,
+      child: Column(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*0.07,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFF87168)
+                    ),
+                    height: 22,
+                    width: 22,
+                  ),
+                  const SizedBox(width: 5),
+                  Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                  const SizedBox(width: 10),
+                  Container(
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFC2E90B)
+                    ),
+                    height: 22,
+                    width: 22,
+                  ),
+                  const SizedBox(width: 5),
+                  Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                  const SizedBox(width: 10),
+                  Container(
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFF579DFF)
+                    ),
+                    height: 22,
+                    width: 22,
+                  ),
+                  const SizedBox(width: 5),
+                  Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                  const Spacer(),
+                  Row(
+                    children: [
+                      Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                      const SizedBox(width: 5),
+                      SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: Image.asset('assets/images/Slider.png'),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height*0.45,
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+        ],
+      ),
+    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -37,75 +106,7 @@ class _HomePageBodyState extends State<HomePageBody> {
           builder: (context, state) {
             return state.maybeWhen(
                 loadingInProgress: (){
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.58,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height*0.07,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(0xFFF87168)
-                                  ),
-                                  height: 22,
-                                  width: 22,
-                                ),
-                                const SizedBox(width: 5),
-                                Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                const SizedBox(width: 10),
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(0xFFC2E90B)
-                                  ),
-                                  height: 22,
-                                  width: 22,
-                                ),
-                                const SizedBox(width: 5),
-                                Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                const SizedBox(width: 10),
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Color(0xFF579DFF)
-                                  ),
-                                  height: 22,
-                                  width: 22,
-                                ),
-                                const SizedBox(width: 5),
-                                Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                const Spacer(),
-                                Row(
-                                  children: [
-                                    Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                                    const SizedBox(width: 5),
-                                    SizedBox(
-                                      width: 20,
-                                      height: 20,
-                                      child: Image.asset('assets/images/Slider.png'),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height*0.45,
-                          child: const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                  return loading;
                 },
                 emptyLeadList: (emptyList){
                   return SizedBox(
@@ -184,67 +185,66 @@ class _HomePageBodyState extends State<HomePageBody> {
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height*0.58,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height*0.07,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xFFF87168)
-                                    ),
-                                    height: 22,
-                                    width: 22,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height*0.07,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFF87168)
                                   ),
-                                  const SizedBox(width: 5),
-                                  Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                  const SizedBox(width: 10),
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xFFC2E90B)
-                                    ),
-                                    height: 22,
-                                    width: 22,
+                                  height: 22,
+                                  width: 22,
+                                ),
+                                const SizedBox(width: 5),
+                                Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                const SizedBox(width: 10),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFC2E90B)
                                   ),
-                                  const SizedBox(width: 5),
-                                  Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                  const SizedBox(width: 10),
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xFF579DFF)
-                                    ),
-                                    height: 22,
-                                    width: 22,
+                                  height: 22,
+                                  width: 22,
+                                ),
+                                const SizedBox(width: 5),
+                                Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                const SizedBox(width: 10),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFF579DFF)
                                   ),
-                                  const SizedBox(width: 5),
-                                  Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                  const Spacer(),
-                                  Row(
-                                    children: [
-                                      Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                                      const SizedBox(width: 5),
-                                      SizedBox(
-                                        width: 20,
-                                        height: 20,
-                                        child: Image.asset('assets/images/Slider.png'),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
+                                  height: 22,
+                                  width: 22,
+                                ),
+                                const SizedBox(width: 5),
+                                Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                const Spacer(),
+                                Row(
+                                  children: [
+                                    Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                                    const SizedBox(width: 5),
+                                    SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: Image.asset('assets/images/Slider.png'),
+                                    )
+                                  ],
+                                )
+                              ],
                             ),
                           ),
-                          ListView.builder(
+                        ),
+                        Expanded(
+                          child: ListView.builder(
                               shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: leadsList.length,
                               itemBuilder: (context,index){
                                 return Padding(
@@ -294,7 +294,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                                 SizedBox(
                                                   width: MediaQuery.of(context).size.width*0.65,
                                                   height: MediaQuery.of(context).size.height*0.061,
-                                                  child: Text(leadsList[index].message!,style:
+                                                  child: Text(leadsList[index].title==''? leadsList[index].message! : leadsList[index].title!,style:
                                                   GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
                                                 )
                                               ],
@@ -325,20 +325,14 @@ class _HomePageBodyState extends State<HomePageBody> {
                                   ),
                                 );
                               }
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
                   );
                 },
                 orElse: (){
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height*0.5,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
+                  return loading;
                 }
             );
           },

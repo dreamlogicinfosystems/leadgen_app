@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
+import 'package:lead_gen/lead_gen/presentation/widgets/add_lead/open_lead.dart';
+
+import '../../../../injections.dart';
 
 class ArchivePageBody extends StatefulWidget {
   const ArchivePageBody({super.key});
@@ -44,12 +47,12 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
           loadingInProgress: (){
             return loading;
           },
-          failed: (error){
+          emptyLeadList: (error){
             return SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height*0.8,
               child: Center(
-                child: Text(error,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
+                child: Text('No archive leads',style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
               ),
             );
           },
@@ -65,6 +68,10 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
                     itemBuilder: (context,index){
                       return GestureDetector(
                         onTap: (){
+                          showDialog(context: context, builder: (context) => BlocProvider(
+                            create: (context) => sl<LeadBloc>(),
+                            child: OpenLeadDialog(leadId: leadList[index].id!),
+                          ));
                         },
                         child: Card(
                           shadowColor: Colors.black,

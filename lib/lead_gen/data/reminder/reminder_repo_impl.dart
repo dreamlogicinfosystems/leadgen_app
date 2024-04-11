@@ -67,4 +67,15 @@ class ReminderRepositoryImpl extends ReminderRepository{
       return Right(remindersList.map((e) => const ReminderDto().toDomain(e)).toList());
     });
   }
+
+  @override
+  Future<Either<ErrorMessage, int>> getRemindersCount(BuildContext context) async{
+    final getCount = await _reminderApiDataSource.getReminderCount(context);
+
+    return getCount.fold((error){
+      return Left(error);
+    },(count){
+      return Right(count);
+    });
+  }
 }

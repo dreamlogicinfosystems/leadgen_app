@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import '../../../injections.dart';
 import '../core/custom_bottom_navBar.dart';
@@ -83,7 +84,10 @@ class _HomeState extends State<Home> {
         shape: const RoundedRectangleBorder(),
         shadowColor: Colors.white,
         backgroundColor: Colors.white,
-        child: const MainDrawer(),
+        child: BlocProvider(
+          create: (context) => sl<ReminderBloc>(),
+          child: const MainDrawer(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

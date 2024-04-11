@@ -1,6 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
+import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/customer/customer_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/lead_dto.dart';
 
@@ -52,6 +53,23 @@ class CustomerRepositoryImpl extends CustomerRepository{
         return Left(error);
       },(customerList){
         return Right(customerList.map((e) => const CustomerDto().toDomain(e)).toList());
+      });
+    }
+  }
+
+  @override
+  Future<Either<ErrorMessage, Success>> updateCustomer(Customer customer, BuildContext context) async{
+    if(customer==const Customer()){
+      return Left(ErrorMessage('Something went wrong'));
+    }else{
+      final data = CustomerDto.fromDomain(customer);
+
+      final tryUpdateCust = await _customerDataSource.updateCustomerData(data, context);
+
+      return tryUpdateCust.fold((error){
+        return Left(error);
+      },(success){
+        return Right(success);
       });
     }
   }

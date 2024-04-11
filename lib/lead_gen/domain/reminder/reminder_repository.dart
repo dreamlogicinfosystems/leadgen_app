@@ -12,4 +12,6 @@ abstract class ReminderRepository{
   Future<Either<ErrorMessage,List<Reminder>>>getReminders(BuildContext context);
 
   Future<Either<ErrorMessage,Success>>deleteReminder(int reminderId,BuildContext context);
+
+  Future<Either<ErrorMessage,int>>getRemindersCount(BuildContext context);
 }

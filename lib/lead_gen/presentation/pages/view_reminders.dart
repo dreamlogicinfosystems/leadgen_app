@@ -19,8 +19,8 @@ class _ViewRemindersState extends State<ViewReminders> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const  Color(0xffEFEFF0),
-      bottomNavigationBar: const CustomBottomNavBar(title: 'Add Reminder',),
+      backgroundColor: Colors.white,
+      bottomNavigationBar: const CustomBottomNavBar(title: 'Add Reminder'),
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight * 1),
         child: CustomAppBar(

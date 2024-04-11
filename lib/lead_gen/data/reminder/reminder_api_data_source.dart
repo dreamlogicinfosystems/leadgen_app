@@ -123,4 +123,19 @@ class ReminderApiDataSource{
       return Left(ErrorMessage(e.toString()));
     }
   }
+
+  Future<Either<ErrorMessage,int>>getReminderCount(BuildContext context) async{
+    final response = await _apiMethods.get(
+        url: 'get_reminders_count',
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
+    if(result['status'] == true){
+      return Right(result['count']);
+    }else{
+      return Left(ErrorMessage('Something went wrong'));
+    }
+  }
 }

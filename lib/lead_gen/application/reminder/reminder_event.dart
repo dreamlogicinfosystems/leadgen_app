@@ -8,5 +8,7 @@ class ReminderEvent with _$ReminderEvent {
 
   const factory ReminderEvent.deleteReminder(int reminderId,BuildContext context) = _deleteReminder;
 
+  const factory ReminderEvent.getRemindersCount(BuildContext context) = _getRemindersCount;
+
   const factory ReminderEvent.setRemainder(String message,DateTime reminderDate,TimeOfDay reminderTime) = _setRemainder;
 }

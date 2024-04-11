@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
+import '../../constants/constant.dart';
 import '../../domain/lead/chat.dart';
 import '../../domain/lead/lead.dart';
 import '../../domain/lead/lead_repository.dart';
@@ -13,6 +16,8 @@ part 'lead_bloc.freezed.dart';
 class LeadBloc extends Bloc<LeadEvent, LeadState> {
   final LeadRepository _leadRepository;
   static List<String> departmentIds = [];
+  static DateTime? pickedDate;
+  static String? formattedDate;
   LeadBloc(this._leadRepository) : super(const LeadState.initial()) {
     on<LeadEvent>(mapEventToState);
   }
@@ -22,11 +27,18 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
         addLead: (e) async{
           emit(const LeadState.loadingInProgress());
 
+          if(pickedDate!=null){
+            formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate!);
+          }
+
           final tryAddLead = await _leadRepository.addLead(
               Lead(
                 name: e.lead.name,
                 phone: e.lead.phone,
                 email: e.lead.email,
+                title: e.lead.title,
+                date: formattedDate ?? '',
+                time: e.lead.time,
                 message: e.lead.message,
                 departmentIds: e.lead.departmentIds
               ),
@@ -79,8 +91,10 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
           emit(const LeadState.loadingInProgress());
 
           final tryUpdateStatus = await _leadRepository.updateLeadStatus(
-              e.leadId, e.statusId,
-              e.message, e.context
+              e.leadId,
+              e.statusId,
+              e.message,
+              e.context
           );
 
           tryUpdateStatus.fold((error){
@@ -90,5 +104,73 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
           });
         }
     );
+  }
+
+  static Future<String?> selectReminderDateTime(BuildContext context) async{
+    pickedDate = await showDatePicker(
+        builder: (context,child){
+          return Theme(
+              data: ThemeData(
+                  datePickerTheme: const DatePickerThemeData(
+                      backgroundColor: Colors.white
+                  ),
+                  useMaterial3: true
+              ),
+              child: child!
+          );
+        },
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2030)
+    );
+
+    String time = '';
+
+    if(pickedDate!=null){
+      if(context.mounted){
+        final pickedTime = await showTimePicker(
+            context: context,
+            initialTime: TimeOfDay.fromDateTime(DateTime.now())
+        );
+
+        debugPrint("Time: $pickedTime");
+
+        if(pickedTime!=null){
+          if(pickedTime.hour>=12){
+            if(pickedTime.hour==12){
+              time = "${pickedTime.hour}:${pickedTime.minute} PM";
+            }else{
+              final hour = pickedTime.hour - 12;
+              debugPrint(hour.toString());
+              time = "$hour:${pickedTime.minute} PM";
+            }
+          }else{
+            if(pickedTime.hour==00){
+              final hour = pickedTime.hour + 12;
+              debugPrint(hour.toString());
+              time = "$hour:${pickedTime.minute} AM";
+            }else{
+              time = "${pickedTime.hour}:${pickedTime.minute} AM";
+            }
+          }
+
+          debugPrint("Time: $time");
+
+          final formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate!);
+
+          final simpleDateTime = "$formattedDate  $time";
+
+          return simpleDateTime;
+
+        }else{
+          showErrorToastMessage("Please select time");
+        }
+      }
+    }else{
+      showErrorToastMessage('Please select date!');
+    }
+
+    return null;
   }
 }

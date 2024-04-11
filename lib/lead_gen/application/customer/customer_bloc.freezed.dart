@@ -24,6 +24,8 @@ mixin _$CustomerEvent {
         getCustomersLead,
     required TResult Function(String custDetail, BuildContext context)
         searchCustomer,
+    required TResult Function(Customer customer, BuildContext context)
+        updateCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +33,7 @@ mixin _$CustomerEvent {
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
     TResult? Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult? Function(Customer customer, BuildContext context)? updateCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +41,7 @@ mixin _$CustomerEvent {
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
     TResult Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult Function(Customer customer, BuildContext context)? updateCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +50,7 @@ mixin _$CustomerEvent {
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
     required TResult Function(_searchCustomer value) searchCustomer,
+    required TResult Function(_updateCustomer value) updateCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +58,7 @@ mixin _$CustomerEvent {
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
     TResult? Function(_searchCustomer value)? searchCustomer,
+    TResult? Function(_updateCustomer value)? updateCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +66,7 @@ mixin _$CustomerEvent {
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
     TResult Function(_searchCustomer value)? searchCustomer,
+    TResult Function(_updateCustomer value)? updateCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +180,8 @@ class _$getCustomersImpl implements _getCustomers {
         getCustomersLead,
     required TResult Function(String custDetail, BuildContext context)
         searchCustomer,
+    required TResult Function(Customer customer, BuildContext context)
+        updateCustomer,
   }) {
     return getCustomers(context);
   }
@@ -183,6 +192,7 @@ class _$getCustomersImpl implements _getCustomers {
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
     TResult? Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult? Function(Customer customer, BuildContext context)? updateCustomer,
   }) {
     return getCustomers?.call(context);
   }
@@ -193,6 +203,7 @@ class _$getCustomersImpl implements _getCustomers {
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
     TResult Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult Function(Customer customer, BuildContext context)? updateCustomer,
     required TResult orElse(),
   }) {
     if (getCustomers != null) {
@@ -207,6 +218,7 @@ class _$getCustomersImpl implements _getCustomers {
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
     required TResult Function(_searchCustomer value) searchCustomer,
+    required TResult Function(_updateCustomer value) updateCustomer,
   }) {
     return getCustomers(this);
   }
@@ -217,6 +229,7 @@ class _$getCustomersImpl implements _getCustomers {
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
     TResult? Function(_searchCustomer value)? searchCustomer,
+    TResult? Function(_updateCustomer value)? updateCustomer,
   }) {
     return getCustomers?.call(this);
   }
@@ -227,6 +240,7 @@ class _$getCustomersImpl implements _getCustomers {
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
     TResult Function(_searchCustomer value)? searchCustomer,
+    TResult Function(_updateCustomer value)? updateCustomer,
     required TResult orElse(),
   }) {
     if (getCustomers != null) {
@@ -327,6 +341,8 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
         getCustomersLead,
     required TResult Function(String custDetail, BuildContext context)
         searchCustomer,
+    required TResult Function(Customer customer, BuildContext context)
+        updateCustomer,
   }) {
     return getCustomersLead(custId, context);
   }
@@ -337,6 +353,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
     TResult? Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult? Function(Customer customer, BuildContext context)? updateCustomer,
   }) {
     return getCustomersLead?.call(custId, context);
   }
@@ -347,6 +364,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
     TResult Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult Function(Customer customer, BuildContext context)? updateCustomer,
     required TResult orElse(),
   }) {
     if (getCustomersLead != null) {
@@ -361,6 +379,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
     required TResult Function(_searchCustomer value) searchCustomer,
+    required TResult Function(_updateCustomer value) updateCustomer,
   }) {
     return getCustomersLead(this);
   }
@@ -371,6 +390,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
     TResult? Function(_searchCustomer value)? searchCustomer,
+    TResult? Function(_updateCustomer value)? updateCustomer,
   }) {
     return getCustomersLead?.call(this);
   }
@@ -381,6 +401,7 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
     TResult Function(_searchCustomer value)? searchCustomer,
+    TResult Function(_updateCustomer value)? updateCustomer,
     required TResult orElse(),
   }) {
     if (getCustomersLead != null) {
@@ -484,6 +505,8 @@ class _$searchCustomerImpl implements _searchCustomer {
         getCustomersLead,
     required TResult Function(String custDetail, BuildContext context)
         searchCustomer,
+    required TResult Function(Customer customer, BuildContext context)
+        updateCustomer,
   }) {
     return searchCustomer(custDetail, context);
   }
@@ -494,6 +517,7 @@ class _$searchCustomerImpl implements _searchCustomer {
     TResult? Function(BuildContext context)? getCustomers,
     TResult? Function(int custId, BuildContext context)? getCustomersLead,
     TResult? Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult? Function(Customer customer, BuildContext context)? updateCustomer,
   }) {
     return searchCustomer?.call(custDetail, context);
   }
@@ -504,6 +528,7 @@ class _$searchCustomerImpl implements _searchCustomer {
     TResult Function(BuildContext context)? getCustomers,
     TResult Function(int custId, BuildContext context)? getCustomersLead,
     TResult Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult Function(Customer customer, BuildContext context)? updateCustomer,
     required TResult orElse(),
   }) {
     if (searchCustomer != null) {
@@ -518,6 +543,7 @@ class _$searchCustomerImpl implements _searchCustomer {
     required TResult Function(_getCustomers value) getCustomers,
     required TResult Function(_getCustomersLead value) getCustomersLead,
     required TResult Function(_searchCustomer value) searchCustomer,
+    required TResult Function(_updateCustomer value) updateCustomer,
   }) {
     return searchCustomer(this);
   }
@@ -528,6 +554,7 @@ class _$searchCustomerImpl implements _searchCustomer {
     TResult? Function(_getCustomers value)? getCustomers,
     TResult? Function(_getCustomersLead value)? getCustomersLead,
     TResult? Function(_searchCustomer value)? searchCustomer,
+    TResult? Function(_updateCustomer value)? updateCustomer,
   }) {
     return searchCustomer?.call(this);
   }
@@ -538,6 +565,7 @@ class _$searchCustomerImpl implements _searchCustomer {
     TResult Function(_getCustomers value)? getCustomers,
     TResult Function(_getCustomersLead value)? getCustomersLead,
     TResult Function(_searchCustomer value)? searchCustomer,
+    TResult Function(_updateCustomer value)? updateCustomer,
     required TResult orElse(),
   }) {
     if (searchCustomer != null) {
@@ -562,6 +590,181 @@ abstract class _searchCustomer implements CustomerEvent {
 }
 
 /// @nodoc
+abstract class _$$updateCustomerImplCopyWith<$Res>
+    implements $CustomerEventCopyWith<$Res> {
+  factory _$$updateCustomerImplCopyWith(_$updateCustomerImpl value,
+          $Res Function(_$updateCustomerImpl) then) =
+      __$$updateCustomerImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Customer customer, BuildContext context});
+
+  $CustomerCopyWith<$Res> get customer;
+}
+
+/// @nodoc
+class __$$updateCustomerImplCopyWithImpl<$Res>
+    extends _$CustomerEventCopyWithImpl<$Res, _$updateCustomerImpl>
+    implements _$$updateCustomerImplCopyWith<$Res> {
+  __$$updateCustomerImplCopyWithImpl(
+      _$updateCustomerImpl _value, $Res Function(_$updateCustomerImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customer = null,
+    Object? context = null,
+  }) {
+    return _then(_$updateCustomerImpl(
+      null == customer
+          ? _value.customer
+          : customer // ignore: cast_nullable_to_non_nullable
+              as Customer,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerCopyWith<$Res> get customer {
+    return $CustomerCopyWith<$Res>(_value.customer, (value) {
+      return _then(_value.copyWith(customer: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$updateCustomerImpl implements _updateCustomer {
+  const _$updateCustomerImpl(this.customer, this.context);
+
+  @override
+  final Customer customer;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'CustomerEvent.updateCustomer(customer: $customer, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$updateCustomerImpl &&
+            (identical(other.customer, customer) ||
+                other.customer == customer) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, customer, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$updateCustomerImplCopyWith<_$updateCustomerImpl> get copyWith =>
+      __$$updateCustomerImplCopyWithImpl<_$updateCustomerImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(BuildContext context) getCustomers,
+    required TResult Function(int custId, BuildContext context)
+        getCustomersLead,
+    required TResult Function(String custDetail, BuildContext context)
+        searchCustomer,
+    required TResult Function(Customer customer, BuildContext context)
+        updateCustomer,
+  }) {
+    return updateCustomer(customer, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(BuildContext context)? getCustomers,
+    TResult? Function(int custId, BuildContext context)? getCustomersLead,
+    TResult? Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult? Function(Customer customer, BuildContext context)? updateCustomer,
+  }) {
+    return updateCustomer?.call(customer, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(BuildContext context)? getCustomers,
+    TResult Function(int custId, BuildContext context)? getCustomersLead,
+    TResult Function(String custDetail, BuildContext context)? searchCustomer,
+    TResult Function(Customer customer, BuildContext context)? updateCustomer,
+    required TResult orElse(),
+  }) {
+    if (updateCustomer != null) {
+      return updateCustomer(customer, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_getCustomers value) getCustomers,
+    required TResult Function(_getCustomersLead value) getCustomersLead,
+    required TResult Function(_searchCustomer value) searchCustomer,
+    required TResult Function(_updateCustomer value) updateCustomer,
+  }) {
+    return updateCustomer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_getCustomers value)? getCustomers,
+    TResult? Function(_getCustomersLead value)? getCustomersLead,
+    TResult? Function(_searchCustomer value)? searchCustomer,
+    TResult? Function(_updateCustomer value)? updateCustomer,
+  }) {
+    return updateCustomer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_getCustomers value)? getCustomers,
+    TResult Function(_getCustomersLead value)? getCustomersLead,
+    TResult Function(_searchCustomer value)? searchCustomer,
+    TResult Function(_updateCustomer value)? updateCustomer,
+    required TResult orElse(),
+  }) {
+    if (updateCustomer != null) {
+      return updateCustomer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _updateCustomer implements CustomerEvent {
+  const factory _updateCustomer(
+          final Customer customer, final BuildContext context) =
+      _$updateCustomerImpl;
+
+  Customer get customer;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$updateCustomerImplCopyWith<_$updateCustomerImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CustomerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -570,6 +773,7 @@ mixin _$CustomerState {
     required TResult Function(List<Customer> customerList) successCustomerList,
     required TResult Function(List<Lead> custLeadsList) successCustLeadList,
     required TResult Function(String error) failed,
+    required TResult Function(String message) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -579,6 +783,7 @@ mixin _$CustomerState {
     TResult? Function(List<Customer> customerList)? successCustomerList,
     TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -588,6 +793,7 @@ mixin _$CustomerState {
     TResult Function(List<Customer> customerList)? successCustomerList,
     TResult Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult Function(String error)? failed,
+    TResult Function(String message)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -598,6 +804,7 @@ mixin _$CustomerState {
     required TResult Function(_successCustomerList value) successCustomerList,
     required TResult Function(_successCustLeadList value) successCustLeadList,
     required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -607,6 +814,7 @@ mixin _$CustomerState {
     TResult? Function(_successCustomerList value)? successCustomerList,
     TResult? Function(_successCustLeadList value)? successCustLeadList,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -616,6 +824,7 @@ mixin _$CustomerState {
     TResult Function(_successCustomerList value)? successCustomerList,
     TResult Function(_successCustLeadList value)? successCustLeadList,
     TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -682,6 +891,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<Customer> customerList) successCustomerList,
     required TResult Function(List<Lead> custLeadsList) successCustLeadList,
     required TResult Function(String error) failed,
+    required TResult Function(String message) success,
   }) {
     return initial();
   }
@@ -694,6 +904,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<Customer> customerList)? successCustomerList,
     TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
   }) {
     return initial?.call();
   }
@@ -706,6 +917,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<Customer> customerList)? successCustomerList,
     TResult Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult Function(String error)? failed,
+    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -722,6 +934,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_successCustomerList value) successCustomerList,
     required TResult Function(_successCustLeadList value) successCustLeadList,
     required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
   }) {
     return initial(this);
   }
@@ -734,6 +947,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_successCustomerList value)? successCustomerList,
     TResult? Function(_successCustLeadList value)? successCustLeadList,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
   }) {
     return initial?.call(this);
   }
@@ -746,6 +960,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_successCustomerList value)? successCustomerList,
     TResult Function(_successCustLeadList value)? successCustLeadList,
     TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -802,6 +1017,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function(List<Customer> customerList) successCustomerList,
     required TResult Function(List<Lead> custLeadsList) successCustLeadList,
     required TResult Function(String error) failed,
+    required TResult Function(String message) success,
   }) {
     return loadingInProgress();
   }
@@ -814,6 +1030,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function(List<Customer> customerList)? successCustomerList,
     TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
   }) {
     return loadingInProgress?.call();
   }
@@ -826,6 +1043,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function(List<Customer> customerList)? successCustomerList,
     TResult Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult Function(String error)? failed,
+    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (loadingInProgress != null) {
@@ -842,6 +1060,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     required TResult Function(_successCustomerList value) successCustomerList,
     required TResult Function(_successCustLeadList value) successCustLeadList,
     required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
   }) {
     return loadingInProgress(this);
   }
@@ -854,6 +1073,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult? Function(_successCustomerList value)? successCustomerList,
     TResult? Function(_successCustLeadList value)? successCustLeadList,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
   }) {
     return loadingInProgress?.call(this);
   }
@@ -866,6 +1086,7 @@ class _$loadingInProgressImpl implements _loadingInProgress {
     TResult Function(_successCustomerList value)? successCustomerList,
     TResult Function(_successCustLeadList value)? successCustLeadList,
     TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
     required TResult orElse(),
   }) {
     if (loadingInProgress != null) {
@@ -957,6 +1178,7 @@ class _$successCustomerListImpl implements _successCustomerList {
     required TResult Function(List<Customer> customerList) successCustomerList,
     required TResult Function(List<Lead> custLeadsList) successCustLeadList,
     required TResult Function(String error) failed,
+    required TResult Function(String message) success,
   }) {
     return successCustomerList(customerList);
   }
@@ -969,6 +1191,7 @@ class _$successCustomerListImpl implements _successCustomerList {
     TResult? Function(List<Customer> customerList)? successCustomerList,
     TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
   }) {
     return successCustomerList?.call(customerList);
   }
@@ -981,6 +1204,7 @@ class _$successCustomerListImpl implements _successCustomerList {
     TResult Function(List<Customer> customerList)? successCustomerList,
     TResult Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult Function(String error)? failed,
+    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (successCustomerList != null) {
@@ -997,6 +1221,7 @@ class _$successCustomerListImpl implements _successCustomerList {
     required TResult Function(_successCustomerList value) successCustomerList,
     required TResult Function(_successCustLeadList value) successCustLeadList,
     required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
   }) {
     return successCustomerList(this);
   }
@@ -1009,6 +1234,7 @@ class _$successCustomerListImpl implements _successCustomerList {
     TResult? Function(_successCustomerList value)? successCustomerList,
     TResult? Function(_successCustLeadList value)? successCustLeadList,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
   }) {
     return successCustomerList?.call(this);
   }
@@ -1021,6 +1247,7 @@ class _$successCustomerListImpl implements _successCustomerList {
     TResult Function(_successCustomerList value)? successCustomerList,
     TResult Function(_successCustLeadList value)? successCustLeadList,
     TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
     required TResult orElse(),
   }) {
     if (successCustomerList != null) {
@@ -1118,6 +1345,7 @@ class _$successCustLeadListImpl implements _successCustLeadList {
     required TResult Function(List<Customer> customerList) successCustomerList,
     required TResult Function(List<Lead> custLeadsList) successCustLeadList,
     required TResult Function(String error) failed,
+    required TResult Function(String message) success,
   }) {
     return successCustLeadList(custLeadsList);
   }
@@ -1130,6 +1358,7 @@ class _$successCustLeadListImpl implements _successCustLeadList {
     TResult? Function(List<Customer> customerList)? successCustomerList,
     TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
   }) {
     return successCustLeadList?.call(custLeadsList);
   }
@@ -1142,6 +1371,7 @@ class _$successCustLeadListImpl implements _successCustLeadList {
     TResult Function(List<Customer> customerList)? successCustomerList,
     TResult Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult Function(String error)? failed,
+    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (successCustLeadList != null) {
@@ -1158,6 +1388,7 @@ class _$successCustLeadListImpl implements _successCustLeadList {
     required TResult Function(_successCustomerList value) successCustomerList,
     required TResult Function(_successCustLeadList value) successCustLeadList,
     required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
   }) {
     return successCustLeadList(this);
   }
@@ -1170,6 +1401,7 @@ class _$successCustLeadListImpl implements _successCustLeadList {
     TResult? Function(_successCustomerList value)? successCustomerList,
     TResult? Function(_successCustLeadList value)? successCustLeadList,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
   }) {
     return successCustLeadList?.call(this);
   }
@@ -1182,6 +1414,7 @@ class _$successCustLeadListImpl implements _successCustLeadList {
     TResult Function(_successCustomerList value)? successCustomerList,
     TResult Function(_successCustLeadList value)? successCustLeadList,
     TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
     required TResult orElse(),
   }) {
     if (successCustLeadList != null) {
@@ -1270,6 +1503,7 @@ class _$failedImpl implements _failed {
     required TResult Function(List<Customer> customerList) successCustomerList,
     required TResult Function(List<Lead> custLeadsList) successCustLeadList,
     required TResult Function(String error) failed,
+    required TResult Function(String message) success,
   }) {
     return failed(error);
   }
@@ -1282,6 +1516,7 @@ class _$failedImpl implements _failed {
     TResult? Function(List<Customer> customerList)? successCustomerList,
     TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
   }) {
     return failed?.call(error);
   }
@@ -1294,6 +1529,7 @@ class _$failedImpl implements _failed {
     TResult Function(List<Customer> customerList)? successCustomerList,
     TResult Function(List<Lead> custLeadsList)? successCustLeadList,
     TResult Function(String error)? failed,
+    TResult Function(String message)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -1310,6 +1546,7 @@ class _$failedImpl implements _failed {
     required TResult Function(_successCustomerList value) successCustomerList,
     required TResult Function(_successCustLeadList value) successCustLeadList,
     required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
   }) {
     return failed(this);
   }
@@ -1322,6 +1559,7 @@ class _$failedImpl implements _failed {
     TResult? Function(_successCustomerList value)? successCustomerList,
     TResult? Function(_successCustLeadList value)? successCustLeadList,
     TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
   }) {
     return failed?.call(this);
   }
@@ -1334,6 +1572,7 @@ class _$failedImpl implements _failed {
     TResult Function(_successCustomerList value)? successCustomerList,
     TResult Function(_successCustLeadList value)? successCustLeadList,
     TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -1349,5 +1588,162 @@ abstract class _failed implements CustomerState {
   String get error;
   @JsonKey(ignore: true)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$successImplCopyWith<$Res> {
+  factory _$$successImplCopyWith(
+          _$successImpl value, $Res Function(_$successImpl) then) =
+      __$$successImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$successImplCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$successImpl>
+    implements _$$successImplCopyWith<$Res> {
+  __$$successImplCopyWithImpl(
+      _$successImpl _value, $Res Function(_$successImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$successImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$successImpl implements _success {
+  const _$successImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'CustomerState.success(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$successImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$successImplCopyWith<_$successImpl> get copyWith =>
+      __$$successImplCopyWithImpl<_$successImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadingInProgress,
+    required TResult Function(List<Customer> customerList) successCustomerList,
+    required TResult Function(List<Lead> custLeadsList) successCustLeadList,
+    required TResult Function(String error) failed,
+    required TResult Function(String message) success,
+  }) {
+    return success(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadingInProgress,
+    TResult? Function(List<Customer> customerList)? successCustomerList,
+    TResult? Function(List<Lead> custLeadsList)? successCustLeadList,
+    TResult? Function(String error)? failed,
+    TResult? Function(String message)? success,
+  }) {
+    return success?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadingInProgress,
+    TResult Function(List<Customer> customerList)? successCustomerList,
+    TResult Function(List<Lead> custLeadsList)? successCustLeadList,
+    TResult Function(String error)? failed,
+    TResult Function(String message)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_loadingInProgress value) loadingInProgress,
+    required TResult Function(_successCustomerList value) successCustomerList,
+    required TResult Function(_successCustLeadList value) successCustLeadList,
+    required TResult Function(_failed value) failed,
+    required TResult Function(_success value) success,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loadingInProgress value)? loadingInProgress,
+    TResult? Function(_successCustomerList value)? successCustomerList,
+    TResult? Function(_successCustLeadList value)? successCustLeadList,
+    TResult? Function(_failed value)? failed,
+    TResult? Function(_success value)? success,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_loadingInProgress value)? loadingInProgress,
+    TResult Function(_successCustomerList value)? successCustomerList,
+    TResult Function(_successCustLeadList value)? successCustLeadList,
+    TResult Function(_failed value)? failed,
+    TResult Function(_success value)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _success implements CustomerState {
+  const factory _success(final String message) = _$successImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$successImplCopyWith<_$successImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
