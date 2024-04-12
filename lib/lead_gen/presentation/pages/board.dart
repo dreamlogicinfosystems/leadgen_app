@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
-import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
-import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
-import '../../constants/delete_dialog.dart';
-import '../widgets/add_board/add_board.dart';
 import '../widgets/add_board/body_page_body.dart';
 
 class Board extends StatefulWidget {

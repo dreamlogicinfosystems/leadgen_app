@@ -20,8 +20,8 @@ class ApiMethods{
     || connectivityResult == ConnectivityResult.wifi) {
 
       final token = await _localDataSource.getToken();
-      if(token!=null || token==''){
-        if(_jwtHelper.isTokenExpired(token!, 0)){
+      if(token!=null && token!=''){
+        if(_jwtHelper.isTokenExpired(token, 0)){
           await refreshToken();
         }
       }

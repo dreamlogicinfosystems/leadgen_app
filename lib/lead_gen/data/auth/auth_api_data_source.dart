@@ -39,6 +39,8 @@ class AuthApiDataSource{
 
     if(result['status'] == true){
 
+      await _localDataSource.setToken(result['user']['token']);
+
       await _userDBHelper.saveUserData(result['user']);
 
       await _localDataSource.storeUserData(
@@ -47,19 +49,15 @@ class AuthApiDataSource{
 
       return Right(Success(result['message']));
     }else{
-      // print(result['error']);
-      // result['error'].forEach((key,value){
-      //   print("$key");
-      //
-      //   if(value is List){
-      //     for(var item in value){
-      //       return Left(ErrorMessage(item));
-      //     }
-      //   }else{
-      //     return Left(ErrorMessage(value));
-      //   }
-      // });
-      return Left(ErrorMessage('Something went wrong'));
+      String error = '';
+
+      result['error'].forEach((key,value){
+
+        error = value[0];
+
+      });
+
+      return Left(ErrorMessage(error));
     }
   }
 
@@ -107,6 +105,8 @@ class AuthApiDataSource{
 
     if(result['status'] == true){
       await _userDBHelper.deleteUser();
+
+      await _localDataSource.setToken('');
       return Right(Success(result['message']));
     }else{
       return Left(ErrorMessage(result['message']));

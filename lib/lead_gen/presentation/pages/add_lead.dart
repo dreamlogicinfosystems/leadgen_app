@@ -64,6 +64,8 @@ class _AddLeadState extends State<AddLead> {
   @override
   void dispose() {
     _nameController.dispose();
+    _titleController.dispose();
+    _reminderController.dispose();
     _phoneController.dispose();
     _emailController.dispose();
     _messageController.dispose();
@@ -85,8 +87,8 @@ class _AddLeadState extends State<AddLead> {
     }else if(_titleController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
       showErrorToastMessage('Invalid title');
       return false;
-    }else if(_messageController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
-      showErrorToastMessage('Invalid message');
+    }else if(_messageController.text.length>500){
+      showErrorToastMessage("Message can't be more than 500 character's");
       return false;
     }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
       showErrorToastMessage("Invalid Email");
@@ -140,7 +142,6 @@ class _AddLeadState extends State<AddLead> {
               child: Card(
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.9,
-
                   decoration: BoxDecoration(
                       color: const Color(0xFFECECED),
                       borderRadius: BorderRadius.circular(15)
@@ -187,7 +188,7 @@ class _AddLeadState extends State<AddLead> {
                           CustomTextField(
                               isBoardAddPage: true,
                               labelText: 'Message',
-                              maxLines: 3,
+                              maxLines: 4,
                               controller: _messageController,
                               keyBoardType: TextInputType.text
                           ),
@@ -280,6 +281,7 @@ class _AddLeadState extends State<AddLead> {
                                 name: 'Add lead',
                                 onTap: (){
                                   if(validateData()==true){
+                                    print(_messageController.text.split(" ").length);
                                     //retrieving department ids from department lis
                                     for(int i=0; i<selectedBoards.length; i++){
                                       selectedBoardsIds.add(selectedBoards[i].id!);
@@ -288,17 +290,17 @@ class _AddLeadState extends State<AddLead> {
                                     debugPrint("selected department ids: $selectedBoardsIds");
 
                                     context.read<LeadBloc>().add(LeadEvent.addLead(
-                                        Lead(
-                                            name: _nameController.text.trim(),
-                                            phone: _phoneController.text,
-                                            email: _emailController.text.trim(),
-                                            title: _titleController.text.trim(),
-                                            date: _reminderController.text==''? '' : _reminderController.text.split(' ')[0],
-                                            time: _reminderController.text==''? '' : _reminderController.text.split('  ')[1],
-                                            message: _messageController.text,
-                                            departmentIds: selectedBoardsIds
-                                        ),
-                                        context),
+                                      Lead(
+                                        name: _nameController.text.trim(),
+                                        phone: _phoneController.text,
+                                        email: _emailController.text.trim(),
+                                        title: _titleController.text.trim(),
+                                        date: _reminderController.text==''? '' : _reminderController.text.split(' ')[0],
+                                        time: _reminderController.text==''? '' : _reminderController.text.split('  ')[1],
+                                        message: _messageController.text,
+                                        departmentIds: selectedBoardsIds
+                                      ),
+                                      context),
                                     );
                                   }
                                 },),

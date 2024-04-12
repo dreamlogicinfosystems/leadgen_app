@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/customer/customer_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
+import 'package:lead_gen/lead_gen/presentation/widgets/customer/update_customer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../injections.dart';
 import '../../../constants/constant.dart';
 import '../../pages/customer_leads.dart';
 
@@ -162,13 +164,31 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                                         Expanded(
                                           child: SizedBox(
                                             width: MediaQuery.of(context).size.width*0.22,
-                                            child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.only(top:5,right: 5),
-                                                  child: Text(modifyDate(customersList[index].date!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
-                                                ),
-                                              ],
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top:5,right: 10),
+                                              child: Column(
+                                                children: [
+                                                  Text(modifyDate(customersList[index].date!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(right: 5),
+                                                    child: GestureDetector(
+                                                      onTap: (){
+                                                        showDialog(context: context, builder: (context) => BlocProvider(
+                                                          create: (context) => sl<CustomerBloc>(),
+                                                          child: UpdateCustomer(customer: customersList[index]),
+                                                        ));
+                                                      },
+                                                      child: SizedBox(
+                                                        height: MediaQuery.of(context).size.height*0.05,
+                                                        child: const Align(
+                                                          alignment: Alignment.centerRight,
+                                                            child: Icon(Icons.edit,size: 20,),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         )

@@ -35,4 +35,3 @@ class _AllCustomersState extends State<AllCustomers> {
   }
 }
 
-//Search bar and list

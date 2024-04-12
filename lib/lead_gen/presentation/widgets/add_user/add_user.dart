@@ -102,6 +102,7 @@ class _AddUserState extends State<AddUser> {
         state.maybeWhen(
           failed: (error){
             showErrorToastMessage(error);
+            selectedBoardsIds = [];
           },
           success: (message){
             showToastMessage(message);

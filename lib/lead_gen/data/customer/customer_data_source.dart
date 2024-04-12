@@ -66,6 +66,7 @@ class CustomerDataSource{
             phone: result['leads'][i]['phone'],
             email: result['leads'][i]['email'],
             message: result['leads'][i]['note'],
+            title: result['leads'][i]['title'],
             showStatus: result['leads'][i]['show_status'],
             lastChatDate: result['leads'][i]['last_chat_date'],
             createdAt: result['leads'][i]['created_at']

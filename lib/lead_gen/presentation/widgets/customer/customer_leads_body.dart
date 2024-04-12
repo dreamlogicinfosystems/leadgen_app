@@ -270,7 +270,7 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                                             SizedBox(
                                               width: MediaQuery.of(context).size.width*0.65,
                                               height: MediaQuery.of(context).size.height*0.061,
-                                              child: Text(leadsList[index].message!,style:
+                                              child: Text(leadsList[index].title!,style:
                                               GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
                                             )
                                           ],

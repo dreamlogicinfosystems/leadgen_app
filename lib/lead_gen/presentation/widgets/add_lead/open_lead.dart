@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
 import '../../../constants/constant.dart';
 import '../../pages/archive.dart';
@@ -11,7 +12,8 @@ import '../../pages/archive.dart';
 
 class OpenLeadDialog extends StatefulWidget {
   final int leadId;
-  const OpenLeadDialog({Key? key, required this.leadId}) : super(key: key);
+  final String? source;
+  const OpenLeadDialog({Key? key, required this.leadId, this.source}) : super(key: key);
 
   @override
   State<OpenLeadDialog> createState() => _OpenLeadDialogState();
@@ -34,6 +36,9 @@ class _OpenLeadDialogState extends State<OpenLeadDialog> {
               //to close loader
               Navigator.pop(context);
               //to close container
+              widget.source=="chat"?
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => const Home()), (route) => false) :
               Navigator.pushAndRemoveUntil(context,
                   MaterialPageRoute(builder: (context) => const ArchivePage()), (route) => route.isFirst);
             },

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
+import 'package:lead_gen/lead_gen/presentation/widgets/add_lead/open_lead.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/close_lead_dialog.dart';
 
 import '../../../../injections.dart';
@@ -13,7 +14,7 @@ BoxDecoration decoration = BoxDecoration(
     borderRadius: BorderRadius.circular(12)
 );
 
-displayBottomSheet(BuildContext context,String username,int leadId){
+displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus){
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -22,12 +23,12 @@ displayBottomSheet(BuildContext context,String username,int leadId){
       ),
       builder: (context){
         return SizedBox(
-          height: MediaQuery.of(context).size.height*0.26,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 decoration: decoration,
-                height: MediaQuery.of(context).size.height*0.14,
+                // height: MediaQuery.of(context).size.height*0.14,
                 width: MediaQuery.of(context).size.width*0.9,
                 child: Column(
                   children: [
@@ -58,12 +59,36 @@ displayBottomSheet(BuildContext context,String username,int leadId){
                       color: Color(0xFFC6C6C8),
                       height: 0,
                     ),
+                    leadStatus=='past' || leadStatus=='archived'?
                     GestureDetector(
                       onTap: (){
                         showDialog(context: context, builder: (context) => BlocProvider(
-                            create: (context) => sl<LeadBloc>(),
-                            child: CloseLeadDialog(leadId: leadId),
-                          ));
+                          create: (context) => sl<LeadBloc>(),
+                          child: OpenLeadDialog(leadId: leadId,source: "chat"),
+                        ));
+                      },
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height*0.070,
+                        width: MediaQuery.of(context).size.width*0.9,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/Cancel.png",height: 25,),
+                              const SizedBox(width: 20),
+                              Text("Open Lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ):
+                    GestureDetector(
+                      onTap: (){
+                        showDialog(context: context, builder: (context) => BlocProvider(
+                          create: (context) => sl<LeadBloc>(),
+                          child: CloseLeadDialog(leadId: leadId,title: "Close",),
+                        ));
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.070,
@@ -76,6 +101,35 @@ displayBottomSheet(BuildContext context,String username,int leadId){
                               Image.asset("assets/images/Cancel.png",height: 25,),
                               const SizedBox(width: 20),
                               Text("Close Lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox() : const Divider(
+                      color: Color(0xFFC6C6C8),
+                      height: 0,
+                    ),
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox() : GestureDetector(
+                      onTap: (){
+                        showDialog(context: context, builder: (context) => BlocProvider(
+                          create: (context) => sl<LeadBloc>(),
+                          child: CloseLeadDialog(leadId: leadId,title: "Archive"),
+                        ));
+                      },
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height*0.070,
+                        width: MediaQuery.of(context).size.width*0.9,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/Cancel.png",height: 25,),
+                              const SizedBox(width: 20),
+                              Text("Archive Lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
                             ],
                           ),
                         ),
@@ -98,6 +152,7 @@ displayBottomSheet(BuildContext context,String username,int leadId){
                   ),
                 ),
               ),
+              const SizedBox(height: 30),
             ],
           ),
         );

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/department/department_bloc.dart';
 import '../../../constants/delete_dialog.dart';
+import '../../../domain/department/department.dart';
 import '../../core/custom_button.dart';
 import 'add_board.dart';
 
@@ -48,13 +49,25 @@ class _BoardPageBodyState extends State<BoardPageBody> {
               return loading;
             },
             departmentList: (departments){
-              return Padding(
+              List<Department> departList = [];
+
+              departList = departments.toList();
+              //remove default department from list
+              departList.removeAt(0);
+
+              return departList.isEmpty? SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height*0.8,
+                child: Center(
+                  child: Text('No Boards created!',style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
+                ),
+              ): Padding(
                 padding: const EdgeInsets.only(top:10),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                      itemCount: departments.length,
+                      itemCount: departList.length,
                       itemBuilder: (context, ind){
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 2,left: 25,right: 17),
@@ -64,7 +77,7 @@ class _BoardPageBodyState extends State<BoardPageBody> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(departments[ind].departmentName!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
+                                Text(departList[ind].departmentName!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
                                 Row(
                                   children: [
                                     SizedBox(
@@ -75,7 +88,7 @@ class _BoardPageBodyState extends State<BoardPageBody> {
                                           isBoardPage: true,
                                           onTap: (){
                                             showDialog(context: context, builder: (context) => AddBoard(
-                                                department: departments[ind],buttonName: 'Update'));
+                                                department: departList[ind],buttonName: 'Update'));
                                           }
                                       ),
                                     ),
@@ -83,11 +96,10 @@ class _BoardPageBodyState extends State<BoardPageBody> {
                                     GestureDetector(
                                       onTap: (){
                                         showDialog(context: context, builder: (context) =>
-                                            DeleteDialog(source: 'board',deletionId: departments[ind].id!,));
-                                        // showAlertDialog(context,'board',departments[ind].id);
+                                            DeleteDialog(source: 'board',deletionId: departList[ind].id!,));
                                       },
                                       child: Icon(Icons.delete_forever,color: Colors.redAccent,size: MediaQuery.of(context).size.height*0.034),
-                                    )
+                                    ),
                                   ],
                                 )
                               ],

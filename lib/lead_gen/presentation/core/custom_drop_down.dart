@@ -28,8 +28,16 @@ class _CustomDropDownState extends State<CustomDropDown> {
         color: Colors.grey
     ),
   );
+
   @override
   Widget build(BuildContext context) {
+
+    final list = widget.departments.toList();
+
+    if(list.length>1) {
+      list.removeAt(0);
+    }
+
     return DropdownButtonFormField<Department>(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         style: GoogleFonts.poppins(color: Colors.black),
@@ -46,7 +54,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
         ),
         value: _selectedValue,
         validator: widget.validator,
-        items: widget.departments.map<DropdownMenuItem<Department>>((Department department){
+        items: list.map<DropdownMenuItem<Department>>((Department department){
              return DropdownMenuItem(
                value: department,
                child: Text(department.departmentName!),

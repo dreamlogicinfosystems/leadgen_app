@@ -21,7 +21,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   VoidCallback? refreshPage;
   String type = 'all';
-  int deptId = 0;
+  int deptId = 1;
   Widget loading = ListView.builder(
       itemCount: 3,
       scrollDirection: Axis.horizontal,

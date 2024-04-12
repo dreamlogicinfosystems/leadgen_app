@@ -152,7 +152,7 @@ class _ChatState extends State<Chat> {
                   children: [
                     GestureDetector(
                       onTap:(){
-                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!);
+                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!);
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.04,

@@ -10,7 +10,8 @@ import '../../pages/home.dart';
 
 class CloseLeadDialog extends StatefulWidget {
   final int leadId;
-  const CloseLeadDialog({Key? key, required this.leadId}) : super(key: key);
+  final String title;
+  const CloseLeadDialog({Key? key, required this.leadId, required this.title}) : super(key: key);
 
   @override
   State<CloseLeadDialog> createState() => _CloseLeadDialogState();
@@ -55,11 +56,11 @@ class _CloseLeadDialogState extends State<CloseLeadDialog> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Close Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
+                      Text("${widget.title} Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
                       const SizedBox(height: 10),
                       CustomTextField(
                           isBoardAddPage: true,
-                          labelText: 'Enter reason for closure',
+                          labelText: widget.title=="Close"? 'Enter reason for closure' : 'Enter reason',
                           maxLines: 1,
                           controller: _reasonController,
                           keyBoardType: TextInputType.text,
@@ -82,14 +83,25 @@ class _CloseLeadDialogState extends State<CloseLeadDialog> {
                               name: 'Submit',
                               onTap: (){
                                 if(_formKey.currentState!.validate()){
-                                  context.read<LeadBloc>().add(
+                                  if(widget.title=="Close"){
+                                    context.read<LeadBloc>().add(
                                       LeadEvent.updateLeadStatus(
                                           widget.leadId,
                                           6,
                                           _reasonController.text,
                                           context
                                       ),
-                                  );
+                                    );
+                                  }else{
+                                    context.read<LeadBloc>().add(
+                                      LeadEvent.updateLeadStatus(
+                                          widget.leadId,
+                                          8,
+                                          _reasonController.text,
+                                          context
+                                      ),
+                                    );
+                                  }
                                 }
                               }
                           ),

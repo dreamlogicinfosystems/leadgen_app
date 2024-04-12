@@ -14,7 +14,7 @@ part 'department_bloc.freezed.dart';
 class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
   final DepartmentRepository _departmentRepository;
   static List<Department> departmentsList = [];
-  static int departmentId = 0;
+  static int departmentId = 1;
   DepartmentBloc(this._departmentRepository) : super(const DepartmentState.initial()) {
     on<DepartmentEvent>(mapEventToState);
   }
