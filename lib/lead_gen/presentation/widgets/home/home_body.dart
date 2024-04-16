@@ -17,6 +17,7 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> {
   List<String> leadsList = ["added"];
+  VoidCallback? refresh;
 
   simplifyDate(String createdDate){
     final date = DateTime.parse(createdDate);
@@ -27,10 +28,16 @@ class _HomePageBodyState extends State<HomePageBody> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     context.read<LeadBloc>().add(LeadEvent.getLeads('all',widget.departmentId, context));
+    super.initState();
+  }
 
-    Widget loading = SizedBox(
+  @override
+  Widget build(BuildContext context) {
+    // context.read<LeadBloc>().add(LeadEvent.getLeads('all',DepartmentBloc.departmentId, context));
+
+    Widget leadLoading = SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height*0.58,
       child: Column(
@@ -106,7 +113,7 @@ class _HomePageBodyState extends State<HomePageBody> {
           builder: (context, state) {
             return state.maybeWhen(
                 loadingInProgress: (){
-                  return loading;
+                  return leadLoading;
                 },
                 emptyLeadList: (emptyList){
                   return SizedBox(
@@ -253,7 +260,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                     onTap: (){
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => BlocProvider(
                                         create: (context) => sl<LeadBloc>(),
-                                        child: Chat(lead: leadsList[index]),
+                                        child: ChatPage(lead: leadsList[index]),
                                       )));
                                     },
                                     child: Container(
@@ -332,7 +339,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                   );
                 },
                 orElse: (){
-                  return loading;
+                  return leadLoading;
                 }
             );
           },

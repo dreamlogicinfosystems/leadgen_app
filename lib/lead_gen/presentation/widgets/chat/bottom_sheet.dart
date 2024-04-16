@@ -32,7 +32,8 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                 width: MediaQuery.of(context).size.width*0.9,
                 child: Column(
                   children: [
-                    GestureDetector(
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox():GestureDetector(
                       onTap: (){
                         showDialog(context: context, builder: (context) => BlocProvider(
                           create: (context) => sl<ReminderBloc>(),
@@ -55,7 +56,8 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                         ),
                       ),
                     ),
-                    const Divider(
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox() : const Divider(
                       color: Color(0xFFC6C6C8),
                       height: 0,
                     ),
@@ -77,7 +79,7 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                             children: [
                               Image.asset("assets/images/Cancel.png",height: 25,),
                               const SizedBox(width: 20),
-                              Text("Open Lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
+                              Text("Reopen Lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
                             ],
                           ),
                         ),

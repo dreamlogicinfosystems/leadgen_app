@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => sl<LeadCountBloc>(),
-        )
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

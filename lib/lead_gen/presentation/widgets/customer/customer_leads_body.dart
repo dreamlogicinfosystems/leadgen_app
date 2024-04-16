@@ -229,7 +229,7 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) => BlocProvider(
                                         create: (context) => sl<LeadBloc>(),
-                                        child: Chat(lead: leadsList[index]),
+                                        child: ChatPage(lead: leadsList[index]),
                                       )));
                                 },
                                 child: Container(

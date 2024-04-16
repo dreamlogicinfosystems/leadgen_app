@@ -41,7 +41,10 @@ class _BoardPageBodyState extends State<BoardPageBody> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height*0.8,
                 child: Center(
-                  child: Text(error,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(error,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
+                  ),
                 ),
               );
             },

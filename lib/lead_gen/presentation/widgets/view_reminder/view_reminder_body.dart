@@ -85,7 +85,7 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
                         width: MediaQuery.of(context).size.width,
                         color: Colors.white,
                         child: Center(
-                          child: Text(error,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
+                          child: Text("No reminders",style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
                         ),
                     );
                   },

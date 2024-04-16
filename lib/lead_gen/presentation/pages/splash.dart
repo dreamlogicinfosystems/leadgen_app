@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
+import '../../../injections.dart';
 import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -28,7 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     }else{
       Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home()),(route) => false,);
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BlocProvider(
+          create: (context) => sl<LeadBloc>(),
+          child: const Home(),
+        )),(route) => false,);
       });
     }
 

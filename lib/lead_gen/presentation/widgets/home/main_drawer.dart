@@ -26,12 +26,13 @@ class _MainDrawerState extends State<MainDrawer> {
   bool isUsers = false;
   bool isLogin = false;
   bool isCustomers = false;
-  
+
   @override
   void initState() {
     context.read<ReminderBloc>().add(ReminderEvent.getRemindersCount(context));
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {

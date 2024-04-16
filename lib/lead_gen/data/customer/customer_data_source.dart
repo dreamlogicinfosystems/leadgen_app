@@ -133,7 +133,13 @@ class CustomerDataSource{
     if(result['status'] == true){
       return Right(Success(result['message']));
     }else{
-      return Left(ErrorMessage(result['message']));
+      String error = '';
+
+      result['error'].forEach((key,value){
+        error = value[0];
+      });
+
+      return Left(ErrorMessage(error));
     }
   }
 }

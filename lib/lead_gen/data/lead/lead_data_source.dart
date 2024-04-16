@@ -18,10 +18,10 @@ class LeadDataSource{
   Future<Either<ErrorMessage,Success>> addLeadToServer(LeadDto leadDto,BuildContext context) async{
     try{
       Map<String,dynamic> map = {};
+      String departmentIds = '';
 
-      for(int i=0; i<leadDto.departmentIds!.length; i++){
-        map['department_ids[$i]'] = leadDto.departmentIds![i].toString();
-      }
+      //Stringify department ids
+      departmentIds = leadDto.departmentIds!.join(",");
 
       map['name'] = leadDto.name;
       map['phone'] = leadDto.phone;
@@ -30,6 +30,7 @@ class LeadDataSource{
       map['date'] = leadDto.date;
       map['time'] = leadDto.time;
       map['message'] = leadDto.message;
+      map['department_ids'] = departmentIds;
 
       final response = await _apiMethods.post(
           url: 'add_lead',

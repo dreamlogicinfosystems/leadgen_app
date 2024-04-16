@@ -28,6 +28,7 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
 
           tryCreateDepartment.fold((error){
             emit(DepartmentState.failed(error.message));
+            add(DepartmentEvent.getDepartments(e.context));
           },(message){
             emit(DepartmentState.success(message.successMessage));
           });
@@ -68,6 +69,7 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
 
           tryDelDet.fold((error){
             emit(DepartmentState.failed(error.message));
+            add(DepartmentEvent.getDepartments(e.context));
           },(message){
             emit(DepartmentState.success(message.successMessage));
             add(DepartmentEvent.getDepartments(e.context));
@@ -79,7 +81,7 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
           }
         },
         resetDeptId: (e) async{
-          departmentId = 0;
+          departmentId = 1;
         }
     );
   }

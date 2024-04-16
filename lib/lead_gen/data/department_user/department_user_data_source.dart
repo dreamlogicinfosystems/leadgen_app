@@ -12,37 +12,42 @@ class DepartmentUserDataSource{
   DepartmentUserDataSource(this._apiMethods);
 
   Future<Either<ErrorMessage,Success>> addDepartUser(DepartmentUserDto departmentUserDto,BuildContext context) async{
-    Map<String,dynamic> map = {};
+    try{
+      Map<String,dynamic> map = {};
+      String departmentIds = '';
 
-    for(int i=0; i<departmentUserDto.departmentId!.length; i++){
-      map['department_ids[$i]'] = departmentUserDto.departmentId![i].toString();
-    }
+      //Stringify department ids
+      departmentIds = departmentUserDto.departmentId!.join(",");
 
-    map['name'] = departmentUserDto.name;
-    map['phone'] = departmentUserDto.phone;
-    map['email'] = departmentUserDto.email;
-    map['password'] = departmentUserDto.password;
+      map['name'] = departmentUserDto.name;
+      map['phone'] = departmentUserDto.phone;
+      map['email'] = departmentUserDto.email;
+      map['password'] = departmentUserDto.password;
+      map['department_ids'] = departmentIds;
 
-    final response = await _apiMethods.post(
-        url: 'add_department_user',
-        data: map,
-        context: context
-    );
+      final response = await _apiMethods.post(
+          url: 'add_department_user',
+          data: map,
+          context: context
+      );
 
-    final result = jsonDecode(response!.body);
+      final result = jsonDecode(response!.body);
 
-    if(result['status']==true){
-      return Right(Success(result['message']));
-    }else{
-      String error = '';
+      if(result['status']==true){
+        return Right(Success(result['message']));
+      }else{
+        String error = '';
 
-      result['error'].forEach((key,value){
+        result['error'].forEach((key,value){
 
-        error = value[0];
+          error = value[0];
 
-      });
+        });
 
-      return Left(ErrorMessage(error));
+        return Left(ErrorMessage(error));
+      }
+    }catch (e){
+      return Left(ErrorMessage(e.toString()));
     }
   }
 
@@ -73,16 +78,17 @@ class DepartmentUserDataSource{
   Future<Either<ErrorMessage,Success>> updateDeptUser(DepartmentUserDto departmentUserDto,BuildContext context) async{
     try{
       Map<String,dynamic> map = {};
+      String departmentIds = '';
 
-      for(int i=0; i<departmentUserDto.departmentId!.length; i++){
-        map['department_ids[$i]'] = departmentUserDto.departmentId![i].toString();
-      }
+      //Stringify department ids
+      departmentIds = departmentUserDto.departmentId!.join(",");
 
       map['id'] = departmentUserDto.id.toString();
       map['name'] = departmentUserDto.name;
       map['phone'] = departmentUserDto.phone;
       map['email'] = departmentUserDto.email;
       map['password'] = departmentUserDto.password;
+      map['department_ids'] = departmentIds;
       
       final response = await _apiMethods.post(
           url: 'update_department_user',
@@ -95,7 +101,15 @@ class DepartmentUserDataSource{
       if(result['status'] ==  true){
         return Right(Success(result['message']));
       }else{
-        return Left(ErrorMessage(result['message']));
+        String error = '';
+
+        result['error'].forEach((key,value){
+
+          error = value[0];
+
+        });
+
+        return Left(ErrorMessage(error));
       }
     }catch(e){
       return Left(ErrorMessage(e.toString()));

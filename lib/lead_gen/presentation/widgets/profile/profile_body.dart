@@ -5,6 +5,8 @@ import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/profile/profile_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
+import '../../../../injections.dart';
+import '../../../application/lead/lead_bloc.dart';
 import '../../../domain/auth/user.dart';
 import '../../core/custom_button.dart';
 import '../../core/custom_textfield.dart';
@@ -82,7 +84,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                   showToastMessage(message);
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) =>  const Home()), (route) => false);
+                      MaterialPageRoute(builder: (context) => BlocProvider(
+                        create: (context) => sl<LeadBloc>(),
+                        child: const Home(),
+                      )), (route) => false);
                 },
                 orElse:(){}
             );
@@ -197,7 +202,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               validator: (value){
                                 if(value!.isEmpty || value.trim()==''){
                                   return 'Enter address';
-                                }else if(value.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                                }else if(value.contains(RegExp(r'[~!@$%^&*()_=+{};:?<>"]'))){
                                   return 'Invalid address';
                                 }else{
                                   return null;

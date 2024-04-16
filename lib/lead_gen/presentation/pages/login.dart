@@ -9,6 +9,8 @@ import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/register.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/verify_number.dart';
 
+import '../../../injections.dart';
+import '../../application/lead/lead_bloc.dart';
 import '../../constants/constant.dart';
 
 class Login extends StatefulWidget {
@@ -64,7 +66,10 @@ class _LoginState extends State<Login> {
                           showToastMessage(message!);
                           Navigator.pop(context);
                           Navigator.pushAndRemoveUntil(context,
-                              MaterialPageRoute(builder: (context) => const Home()),(route) => false);
+                              MaterialPageRoute(builder: (context) => BlocProvider(
+                                create: (context) => sl<LeadBloc>(),
+                                child: const Home(),
+                              )), (route) => false);
                         },
                         failed: (error){
                           showErrorToastMessage(error!);

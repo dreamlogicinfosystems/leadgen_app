@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
+import '../../../../injections.dart';
 import '../../../constants/constant.dart';
 import '../../pages/archive.dart';
 
@@ -38,9 +40,15 @@ class _OpenLeadDialogState extends State<OpenLeadDialog> {
               //to close container
               widget.source=="chat"?
               Navigator.pushAndRemoveUntil(context,
-                  MaterialPageRoute(builder: (context) => const Home()), (route) => false) :
+                  MaterialPageRoute(builder: (context) => BlocProvider(
+                    create: (context) => sl<LeadBloc>(),
+                    child: const Home(),
+                  )), (route) => false) :
               Navigator.pushAndRemoveUntil(context,
                   MaterialPageRoute(builder: (context) => const ArchivePage()), (route) => route.isFirst);
+
+              //To reset the dept id
+              context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
             },
             orElse: (){}
         );
@@ -62,7 +70,7 @@ class _OpenLeadDialogState extends State<OpenLeadDialog> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Open Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
+                      Text("Reopen Lead",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
                       const SizedBox(height: 10),
                       CustomTextField(
                           isBoardAddPage: true,

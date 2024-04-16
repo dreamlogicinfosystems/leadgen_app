@@ -10,15 +10,15 @@ import '../../domain/lead/lead.dart';
 import '../core/custom_appbar.dart';
 import '../core/custom_textfield.dart';
 
-class Chat extends StatefulWidget {
+class ChatPage extends StatefulWidget {
   final Lead lead;
-  const Chat({Key? key, required this.lead}) : super(key: key);
+  const ChatPage({Key? key, required this.lead}) : super(key: key);
 
   @override
-  State<Chat> createState() => _ChatState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _ChatState extends State<Chat> {
+class _ChatPageState extends State<ChatPage> {
   final _scroll = ScrollController(initialScrollOffset: 0.0,keepScrollOffset: true);
   final _messageController = TextEditingController();
   bool isMessage = false;
@@ -166,7 +166,6 @@ class _ChatState extends State<Chat> {
                       child: CustomTextField(
                         controller: _messageController,
                         hintText: '',
-                        maxLines: 1,
                         keyBoardType: TextInputType.text,
                         onEditingComplete: (){
                           //To close the keyboard

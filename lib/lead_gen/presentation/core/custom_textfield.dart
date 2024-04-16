@@ -66,6 +66,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       style: GoogleFonts.poppins(fontSize: 14),
       controller: widget.controller,
+
       onTap: (){
         if(widget.onTap!=null){
           widget.onTap!();
@@ -99,7 +100,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         focusedErrorBorder: widget.isChatPage==true? planBorder :border,
         focusedBorder: widget.isChatPage==true? planBorder :border,
         errorBorder: widget.isChatPage==true? planBorder :border,
-        contentPadding: widget.isChatPage==true? const EdgeInsets.symmetric(horizontal: 10,vertical: 0) : const EdgeInsets.symmetric(horizontal: 15,vertical: 15)
+        contentPadding: widget.isChatPage==true? const EdgeInsets.symmetric(horizontal: 10,vertical: 3) : const EdgeInsets.symmetric(horizontal: 15,vertical: 15)
       ),
     );
   }

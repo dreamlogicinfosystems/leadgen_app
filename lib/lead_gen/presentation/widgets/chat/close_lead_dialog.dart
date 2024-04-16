@@ -6,6 +6,8 @@ import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 
+import '../../../../injections.dart';
+import '../../../application/department/department_bloc.dart';
 import '../../pages/home.dart';
 
 class CloseLeadDialog extends StatefulWidget {
@@ -34,7 +36,13 @@ class _CloseLeadDialogState extends State<CloseLeadDialog> {
             Navigator.pop(context);
             //to close container
             Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) => const Home()), (route) => false);
+                MaterialPageRoute(builder: (context) => BlocProvider(
+                  create: (context) => sl<LeadBloc>(),
+                  child: const Home(),
+                )), (route) => false);
+
+            //To reset the dept id
+            context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
           },
           orElse: (){}
         );

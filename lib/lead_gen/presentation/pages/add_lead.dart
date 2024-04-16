@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
+import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
 import '../../application/lead/lead_bloc.dart';
 import '../../constants/constant.dart';
@@ -43,7 +44,7 @@ class _AddLeadState extends State<AddLead> {
       selectedBoards.add(board);
     }
   }
-  
+
   pickReminderDate() async{
     final pickedDateTime = await LeadBloc.selectReminderDateTime(context);
 
@@ -115,7 +116,10 @@ class _AddLeadState extends State<AddLead> {
           success: (message){
             showToastMessage(message);
             Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) => const Home()), (route) => false);
+                MaterialPageRoute(builder: (context) => BlocProvider(
+                    create: (context) => sl<LeadBloc>(),
+                    child: const Home(),
+                  )), (route) => false);
           },
           orElse: (){}
         );
@@ -281,7 +285,7 @@ class _AddLeadState extends State<AddLead> {
                                 name: 'Add lead',
                                 onTap: (){
                                   if(validateData()==true){
-                                    print(_messageController.text.split(" ").length);
+                                    debugPrint(_messageController.text.length.toString());
                                     //retrieving department ids from department lis
                                     for(int i=0; i<selectedBoards.length; i++){
                                       selectedBoardsIds.add(selectedBoards[i].id!);
