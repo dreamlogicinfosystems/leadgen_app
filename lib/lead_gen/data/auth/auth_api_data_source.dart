@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
@@ -41,6 +42,8 @@ class AuthApiDataSource{
 
       await _localDataSource.setToken(result['user']['token']);
 
+      await _localDataSource.setRole(result['user']['role']);
+
       await _userDBHelper.saveUserData(result['user']);
 
       await _localDataSource.storeUserData(
@@ -78,6 +81,8 @@ class AuthApiDataSource{
 
     if(result['status'] == true){
       await _localDataSource.setToken(result['user']['token']);
+
+      await _localDataSource.setRole(result['user']['role']);
 
       await _userDBHelper.saveUserData(result['user']);
 

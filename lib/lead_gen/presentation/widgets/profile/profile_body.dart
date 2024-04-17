@@ -100,7 +100,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                         _nameController.text = userData.name!;
                         _emailController.text = userData.email!;
                         _phoneController.text = userData.phoneNumber!;
-                        _businessNameControll.text = userData.businessName!;
+                        _businessNameControll.text = userData.businessName?? '';
                         _addressController.text = userData.address!;
                         _stateController.text = userData.state!;
                         _countryController.text = userData.country!;
@@ -290,7 +290,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               keyBoardType: TextInputType.text,
                               maxLines: 3,
                               validator: (value){
-                                if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                                if(value!.contains(RegExp(r'[~!@$%^&*()=+{};:?<>"]'))){
                                   return 'Invalid Registered Address';
                                 }else{
                                   return null;

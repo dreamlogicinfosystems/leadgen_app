@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/add_lead/open_lead.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/close_lead_dialog.dart';
@@ -14,7 +16,7 @@ BoxDecoration decoration = BoxDecoration(
     borderRadius: BorderRadius.circular(12)
 );
 
-displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus){
+displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus,String role){
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -64,6 +66,8 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                     leadStatus=='past' || leadStatus=='archived'?
                     GestureDetector(
                       onTap: (){
+                        role=="user"?
+                        showErrorToastMessage("Only admin can reopen the lead!"):
                         showDialog(context: context, builder: (context) => BlocProvider(
                           create: (context) => sl<LeadBloc>(),
                           child: OpenLeadDialog(leadId: leadId,source: "chat"),
@@ -108,12 +112,12 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                         ),
                       ),
                     ),
-                    leadStatus=='past' || leadStatus=='archived'?
+                    leadStatus=='past' || leadStatus=='archived' || role=="user"?
                     const SizedBox() : const Divider(
                       color: Color(0xFFC6C6C8),
                       height: 0,
                     ),
-                    leadStatus=='past' || leadStatus=='archived'?
+                    leadStatus=='past' || leadStatus=='archived' || role=="user"?
                     const SizedBox() : GestureDetector(
                       onTap: (){
                         showDialog(context: context, builder: (context) => BlocProvider(

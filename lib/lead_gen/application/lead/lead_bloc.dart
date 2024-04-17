@@ -106,6 +106,14 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
     );
   }
 
+  static isTimePassed(DateTime dateTime){
+    final now = DateTime.now();
+
+    final selectedDateTime = dateTime;
+
+    return now.isAfter(selectedDateTime);
+  }
+
   static Future<String?> selectReminderDateTime(BuildContext context) async{
     pickedDate = await showDatePicker(
         builder: (context,child){
@@ -145,7 +153,8 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
               debugPrint(hour.toString());
               time = "$hour:${pickedTime.minute} PM";
             }
-          }else{
+          }
+          else{
             if(pickedTime.hour==00){
               final hour = pickedTime.hour + 12;
               debugPrint(hour.toString());
@@ -154,15 +163,19 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
               time = "${pickedTime.hour}:${pickedTime.minute} AM";
             }
           }
+          final dateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime.hour,pickedTime.minute);
 
-          debugPrint("Time: $time");
+          if(isTimePassed(dateTime)){
+            showErrorToastMessage("Time has been passed! Please select another time");
+          }else {
+            debugPrint("Time: $time");
 
-          final formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate!);
+            final formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate!);
 
-          final simpleDateTime = "$formattedDate  $time";
+            final simpleDateTime = "$formattedDate  $time";
 
-          return simpleDateTime;
-
+            return simpleDateTime;
+          }
         }else{
           showErrorToastMessage("Please select time");
         }

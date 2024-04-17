@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/bottom_sheet.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/chat_header.dart';
+import '../../application/department/department_bloc.dart';
 import '../../constants/constant.dart';
 import '../../domain/lead/chat_details.dart';
 import '../../domain/lead/lead.dart';
@@ -22,6 +23,7 @@ class _ChatPageState extends State<ChatPage> {
   final _scroll = ScrollController(initialScrollOffset: 0.0,keepScrollOffset: true);
   final _messageController = TextEditingController();
   bool isMessage = false;
+  String role = '';
 
   @override
   void dispose() {
@@ -33,7 +35,13 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     context.read<LeadBloc>().add(LeadEvent.getLeadChat(widget.lead.id!, context));
+    getRole();
     super.initState();
+  }
+
+  getRole() async{
+    role = await DepartmentBloc.getUserRole();
+    setState(() {});
   }
 
   @override
@@ -152,7 +160,7 @@ class _ChatPageState extends State<ChatPage> {
                   children: [
                     GestureDetector(
                       onTap:(){
-                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!);
+                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!,role);
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.04,

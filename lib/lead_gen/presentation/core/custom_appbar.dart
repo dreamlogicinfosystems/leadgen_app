@@ -47,29 +47,33 @@ class _CustomAppBarState extends State<CustomAppBar> {
       centerTitle: widget.centerTitle,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       actions: [
-        widget.isChatPage==true || widget.isMainPage==true || widget.isArchivePage==true? Padding(
-          padding: const EdgeInsets.only(right: 8,top: 5),
-          child: GestureDetector(
-               onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationPage()));
-               },
-              child: SizedBox(
-                width: 50,
-                height: 40,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height*0.03,
-                      child: Image.asset('assets/images/notification.png')
-                    ),
-                    const SizedBox(width: 2),
-                    const Text("2",style: TextStyle(fontSize: 11),)
-                  ],
-                )
-              ),
-          ),
-        ): widget.isBoardPage==true || widget.isUserPage==true?
+        widget.isChatPage==true || widget.isMainPage==true || widget.isArchivePage==true?
+            //TODO: Remind to undo on completion of the functionality
+            const SizedBox()
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 8,top: 5),
+            //   child: GestureDetector(
+            //        onTap: (){
+            //          Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationPage()));
+            //        },
+            //       child: SizedBox(
+            //         width: 50,
+            //         height: 40,
+            //         child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             SizedBox(
+            //               height: MediaQuery.of(context).size.height*0.03,
+            //               child: Image.asset('assets/images/notification.png')
+            //             ),
+            //             const SizedBox(width: 2),
+            //             const Text("2",style: TextStyle(fontSize: 11),)
+            //           ],
+            //         )
+            //       ),
+            //   ),
+            // )
+            : widget.isBoardPage==true || widget.isUserPage==true?
           GestureDetector(
             onTap: (){
               widget.isBoardPage==true?

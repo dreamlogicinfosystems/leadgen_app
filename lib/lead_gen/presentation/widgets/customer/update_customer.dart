@@ -127,7 +127,8 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                             validator: (value){
                               if(value!.trim()==''){
                                 return 'Enter Email';
-                              }else if(!EmailValidator.validate(value) || value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                              }else if(!EmailValidator.validate(value) || value.contains(RegExp(r'[+*-]'))
+                                  ||value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
                                 return 'Invalid Email';
                               }else{
                                 return null;

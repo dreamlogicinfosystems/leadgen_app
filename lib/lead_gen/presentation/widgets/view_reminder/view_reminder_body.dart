@@ -49,6 +49,10 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
         )
     );
 
+    final currentMonth =  DateTime.now().month;
+    //to get number of days in a month
+    final noOfDaysInMonth = DateTime(DateTime.now().year,currentMonth+1,0).day;
+
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
@@ -57,12 +61,15 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
             color: Colors.white,
             child: TableCalendar(
               headerStyle: HeaderStyle(
+                headerPadding: const EdgeInsets.only(left: 25,bottom: 10),
+                leftChevronVisible: false,
+                rightChevronVisible: false,
                 formatButtonVisible: false,
                 titleTextStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 22),
               ),
               focusedDay: DateTime.now(),
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
+              firstDay: DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day),
+              lastDay: DateTime.utc(DateTime.now().year, DateTime.now().month, noOfDaysInMonth),
               calendarFormat: CalendarFormat.month,
               calendarStyle: const CalendarStyle(
                 todayDecoration: BoxDecoration(
@@ -178,11 +185,14 @@ class _ReminderDataState extends State<ReminderData> {
               padding: const EdgeInsets.only(left: 2,right: 15,top: 10,bottom: 10),
               child: Row(
                 children: [
-                  const Icon(Icons.circle,color: Color(0xFF1573FE),size: 12,),
+                  const Icon(Icons.circle,color: Color(0xFF1573FE),size: 12),
                   const SizedBox(width: 2),
-                  Text(widget.reminderData[index].note!,style: GoogleFonts.poppins(
-                      color: const Color(0xFF5B5B5C),fontSize: 14,fontWeight: FontWeight.w300
-                  ),),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*0.75,
+                    child: Text(widget.reminderData[index].note!,style: GoogleFonts.poppins(
+                        color: const Color(0xFF5B5B5C),fontSize: 14,fontWeight: FontWeight.w300
+                    ),),
+                  ),
                   const Spacer(),
                   Text(time,style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,fontSize: 12,color: const Color(0xFF8A8A8B)

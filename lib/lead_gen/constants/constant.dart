@@ -69,6 +69,8 @@ showAlertDialog(BuildContext context,String page,int? id){
                             onTap: (){
                               if(page=="logout"){
                                 context.read<AuthBloc>().add(AuthEvent.logOut(context));
+
+                                context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
                               }else if(page=="board"){
                                 debugPrint("deletion id: $id");
                                 context.read<DepartmentBloc>().add(DepartmentEvent.deleteDepartment(id!, context));

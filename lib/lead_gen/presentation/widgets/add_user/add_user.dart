@@ -63,7 +63,8 @@ class _AddUserState extends State<AddUser> {
     }else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
       showErrorToastMessage("Invalid Full Name");
       return false;
-    }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+    }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))
+        || _emailController.text.contains(RegExp(r'[+*-]'))){
       showErrorToastMessage("Invalid Email");
       return false;
     }else if(_phoneController.text.contains(RegExp(r'[-.,]')) || _phoneController.text.contains(' ')){

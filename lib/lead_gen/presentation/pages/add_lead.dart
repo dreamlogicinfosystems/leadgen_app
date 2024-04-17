@@ -85,13 +85,17 @@ class _AddLeadState extends State<AddLead> {
     }else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
       showErrorToastMessage("Invalid Full Name");
       return false;
-    }else if(_titleController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
+    }else if(_titleController.text.contains(RegExp(r'[~`!@#$%^&*()=+{};:?/<>]'))){
       showErrorToastMessage('Invalid title');
       return false;
-    }else if(_messageController.text.length>500){
-      showErrorToastMessage("Message can't be more than 500 character's");
+    }else if(_titleController.text.length>50){
+      showErrorToastMessage("title cannot exceed 50 characters");
       return false;
-    }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+    }else if(_messageController.text.length>500){
+      showErrorToastMessage("Message cannot exceed 500 character's");
+      return false;
+    }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]')) 
+        || _emailController.text.contains(RegExp(r'[+*-]'))){
       showErrorToastMessage("Invalid Email");
       return false;
     }else if(_phoneController.text.contains(RegExp(r'[-.,]')) || _phoneController.text.contains(' ')){

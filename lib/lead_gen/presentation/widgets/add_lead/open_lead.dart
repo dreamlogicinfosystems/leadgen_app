@@ -83,6 +83,8 @@ class _OpenLeadDialogState extends State<OpenLeadDialog> {
                               return 'Enter reason';
                             }else if(value.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
                               return 'Invalid reason';
+                            }else if(value.length>500){
+                              return "Reason cannot exceed 500 characters";
                             }else{
                               return null;
                             }

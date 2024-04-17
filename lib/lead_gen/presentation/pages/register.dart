@@ -133,9 +133,7 @@ class _RegisterState extends State<Register> {
                                 keyBoardType: TextInputType.text,
                                 maxLines: 1,
                                 validator: (value){
-                                  if(value=='' || value?.trim()==''){
-                                    return 'Enter Business Name';
-                                  }else if(value!.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                                  if(value!.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
                                     return 'Invalid Business Name';
                                   }else{
                                     return null;

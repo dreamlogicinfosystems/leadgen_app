@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/archive.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/customers.dart';
@@ -26,11 +27,18 @@ class _MainDrawerState extends State<MainDrawer> {
   bool isUsers = false;
   bool isLogin = false;
   bool isCustomers = false;
+  String role = '';
 
   @override
   void initState() {
     context.read<ReminderBloc>().add(ReminderEvent.getRemindersCount(context));
+    getRole();
     super.initState();
+  }
+
+  getRole() async{
+    role = await DepartmentBloc.getUserRole();
+    setState(() {});
   }
 
 
@@ -163,8 +171,8 @@ class _MainDrawerState extends State<MainDrawer> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5),
-                  GestureDetector(
+                  role=="user"? const SizedBox() : const SizedBox(height: 5),
+                  role=="user"? const SizedBox() : GestureDetector(
                     onTap: (){
                       setState(() {
                         isBoards = !isBoards;
@@ -198,8 +206,8 @@ class _MainDrawerState extends State<MainDrawer> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5),
-                  GestureDetector(
+                  role=="user"? const SizedBox() : const SizedBox(height: 5),
+                  role=="user"? const SizedBox() : GestureDetector(
                     onTap: (){
                       setState(() {
                         isUsers = !isUsers;

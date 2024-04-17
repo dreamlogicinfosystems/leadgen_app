@@ -90,6 +90,14 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     );
   }
 
+  static isTimePassed(DateTime dateTime){
+    final now = DateTime.now();
+
+    final selectedDateTime = dateTime;
+
+    return now.isAfter(selectedDateTime);
+  }
+
   static Future<String?> selectReminderDate(BuildContext context) async{
     pickedDate = await showDatePicker(
         builder: (context,child){
@@ -129,7 +137,8 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
               debugPrint(hour.toString());
               time = "$hour:${pickedTime.minute} PM";
             }
-          }else{
+          }
+          else{
             if(pickedTime.hour==00){
               final hour = pickedTime.hour + 12;
               debugPrint(hour.toString());
@@ -139,14 +148,19 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
             }
           }
 
-          debugPrint("Time: $time");
+          final dateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime.hour,pickedTime.minute);
 
-          final formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate!);
+          if(isTimePassed(dateTime)){
+            showErrorToastMessage("Time has been passed! Please select another time");
+          }else{
+            debugPrint("Time: $time");
 
-          final simpleDateTime = "$formattedDate  $time";
+            final formattedDate = DateFormat('dd-MM-yyyy').format(pickedDate!);
 
-          return simpleDateTime;
+            final simpleDateTime = "$formattedDate  $time";
 
+            return simpleDateTime;
+          }
         }else{
           showErrorToastMessage("Please select time");
         }
@@ -155,48 +169,6 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
       showErrorToastMessage('Please select date!');
     }
 
-    return null;
-  }
-
-  static Future<String?> selectReminderTime(BuildContext context) async{
-    pickedTime = await showTimePicker(
-      builder: (context,child){
-        return Theme(
-            data: ThemeData(
-                timePickerTheme: const TimePickerThemeData(
-                    backgroundColor: Colors.white
-                ),
-                shadowColor: Colors.black,
-                useMaterial3: true
-            ),
-            child: child!
-        );
-      },
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
-
-    debugPrint("Time: $pickedTime");
-
-    if(pickedTime!=null){
-      if(pickedTime!.hour>=12){
-        if(pickedTime!.hour==12){
-          return "${pickedTime!.hour}:${pickedTime!.minute} PM";
-        }else{
-          final hour = pickedTime!.hour - 12;
-          debugPrint(hour.toString());
-          return "$hour:${pickedTime!.minute} PM";
-        }
-      }else{
-        if(pickedTime!.hour==00){
-          final hour = pickedTime!.hour + 12;
-          debugPrint(hour.toString());
-          return "$hour:${pickedTime!.minute} AM";
-        }else{
-          return "${pickedTime!.hour}:${pickedTime!.minute} AM";
-        }
-      }
-    }
     return null;
   }
 }

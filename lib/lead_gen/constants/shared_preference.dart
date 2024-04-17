@@ -29,4 +29,13 @@ class LocalDataSource{
   Future<void> setToken(String token) async{
     await _sharedPreferences.setString('token', token);
   }
+
+  Future<void> setRole(String role) async{
+    await _sharedPreferences.setString('role', role);
+  }
+
+  Future<String?> getRole() async{
+    final role = _sharedPreferences.getString('role');
+    return role;
+  }
 }

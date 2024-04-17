@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/add_lead/open_lead.dart';
@@ -68,6 +69,7 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
                     itemBuilder: (context,index){
                       return GestureDetector(
                         onTap: (){
+                          DepartmentBloc.role=="user"? () :
                           showDialog(context: context, builder: (context) => BlocProvider(
                             create: (context) => sl<LeadBloc>(),
                             child: OpenLeadDialog(leadId: leadList[index].id!),
