@@ -16,6 +16,7 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
   static List<Department> departmentsList = [];
   static int departmentId = 1;
   static String role = '';
+  static String userName = '';
   DepartmentBloc(this._departmentRepository) : super(const DepartmentState.initial()) {
     on<DepartmentEvent>(mapEventToState);
   }
@@ -94,6 +95,13 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
     return role;
   }
 
+  static getUserName() async{
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final pref = LocalDataSource(sharedPreferences);
+    userName = (await pref.getUserName())!;
+    return userName;
+  }
+
   static getUserData()async{
     final sharedPreferences = await SharedPreferences.getInstance();
     final pref = LocalDataSource(sharedPreferences);
@@ -107,6 +115,5 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
 
     return count;
   }
-
 
 }

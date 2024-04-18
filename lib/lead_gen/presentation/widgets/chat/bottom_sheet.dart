@@ -16,7 +16,7 @@ BoxDecoration decoration = BoxDecoration(
     borderRadius: BorderRadius.circular(12)
 );
 
-displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus,String role){
+displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus){
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -66,7 +66,7 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                     leadStatus=='past' || leadStatus=='archived'?
                     GestureDetector(
                       onTap: (){
-                        role=="user"?
+                        DepartmentBloc.role=="user"?
                         showErrorToastMessage("Only admin can reopen the lead!"):
                         showDialog(context: context, builder: (context) => BlocProvider(
                           create: (context) => sl<LeadBloc>(),
@@ -112,12 +112,12 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                         ),
                       ),
                     ),
-                    leadStatus=='past' || leadStatus=='archived' || role=="user"?
+                    leadStatus=='past' || leadStatus=='archived' || DepartmentBloc.role=="user"?
                     const SizedBox() : const Divider(
                       color: Color(0xFFC6C6C8),
                       height: 0,
                     ),
-                    leadStatus=='past' || leadStatus=='archived' || role=="user"?
+                    leadStatus=='past' || leadStatus=='archived' || DepartmentBloc.role=="user"?
                     const SizedBox() : GestureDetector(
                       onTap: (){
                         showDialog(context: context, builder: (context) => BlocProvider(

@@ -7,11 +7,13 @@ import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
 import 'package:lead_gen/lead_gen/helper/firebase_notifications.dart';
 
 import 'injections.dart';
+import 'lead_gen/data/reminder/local_notification_handler.dart';
 import 'lead_gen/presentation/pages/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
+  await LocalNotificationHandler().init();
   // await FCM().init();
   serviceLocator();
   runApp(const MyApp());

@@ -27,18 +27,11 @@ class _MainDrawerState extends State<MainDrawer> {
   bool isUsers = false;
   bool isLogin = false;
   bool isCustomers = false;
-  String role = '';
 
   @override
   void initState() {
     context.read<ReminderBloc>().add(ReminderEvent.getRemindersCount(context));
-    getRole();
     super.initState();
-  }
-
-  getRole() async{
-    role = await DepartmentBloc.getUserRole();
-    setState(() {});
   }
 
 
@@ -171,8 +164,8 @@ class _MainDrawerState extends State<MainDrawer> {
                       ),
                     ),
                   ),
-                  role=="user"? const SizedBox() : const SizedBox(height: 5),
-                  role=="user"? const SizedBox() : GestureDetector(
+                  DepartmentBloc.role=="user"? const SizedBox() : const SizedBox(height: 5),
+                  DepartmentBloc.role=="user"? const SizedBox() : GestureDetector(
                     onTap: (){
                       setState(() {
                         isBoards = !isBoards;
@@ -206,8 +199,8 @@ class _MainDrawerState extends State<MainDrawer> {
                       ),
                     ),
                   ),
-                  role=="user"? const SizedBox() : const SizedBox(height: 5),
-                  role=="user"? const SizedBox() : GestureDetector(
+                  DepartmentBloc.role=="user"? const SizedBox() : const SizedBox(height: 5),
+                  DepartmentBloc.role=="user"? const SizedBox() : GestureDetector(
                     onTap: (){
                       setState(() {
                         isUsers = !isUsers;

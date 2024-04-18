@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/customer/customer_bloc.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/customer/update_customer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -169,7 +170,8 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                                               child: Column(
                                                 children: [
                                                   Text(modifyDate(customersList[index].date!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
-                                                  Padding(
+                                                  DepartmentBloc.role=="user"?
+                                                  const SizedBox() : Padding(
                                                     padding: const EdgeInsets.only(right: 5),
                                                     child: GestureDetector(
                                                       onTap: (){

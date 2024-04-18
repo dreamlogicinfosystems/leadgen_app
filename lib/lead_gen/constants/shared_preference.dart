@@ -21,6 +21,11 @@ class LocalDataSource{
     return userData;
   }
 
+  Future<String?> getUserName() async{
+    final userName = _sharedPreferences.getString('name');
+    return userName;
+  }
+
   Future<String?> getToken() async{
     final token = _sharedPreferences.getString('token');
     return token;

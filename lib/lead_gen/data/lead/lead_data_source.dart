@@ -9,13 +9,15 @@ import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
 import '../../constants/error.dart';
+import '../reminder/local_notification_handler.dart';
 import 'lead_dto.dart';
 
 class LeadDataSource{
   final ApiMethods _apiMethods;
-  LeadDataSource(this._apiMethods);
+  final LocalNotificationHandler _localNotificationHandler;
+  LeadDataSource(this._apiMethods, this._localNotificationHandler);
 
-  Future<Either<ErrorMessage,Success>> addLeadToServer(LeadDto leadDto,BuildContext context) async{
+  Future<Either<ErrorMessage,Success>> addLeadToServer(LeadDto leadDto,DateTime reminderTime,BuildContext context) async{
     try{
       Map<String,dynamic> map = {};
       String departmentIds = '';
@@ -41,6 +43,12 @@ class LeadDataSource{
       final result = jsonDecode(response!.body);
 
       if(result['status'] == true){
+
+        final randomNumber = DateTime.now().millisecondsSinceEpoch;
+        //generating a random number
+        final id = int.parse(randomNumber.toString().substring(7,13));
+
+        await _localNotificationHandler.setReminder1(id, leadDto.title!, reminderTime, "Fixed", 0);
         return Right(Success(result['message']));
       }else{
         return Left(ErrorMessage(result['message']));

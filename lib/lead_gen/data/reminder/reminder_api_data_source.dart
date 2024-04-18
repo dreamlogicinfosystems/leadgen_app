@@ -26,7 +26,7 @@ class ReminderApiDataSource{
     }
   }
 
-  Future<Either<ErrorMessage,Success>> addReminderToServer(ReminderDto reminderDto, BuildContext context) async{
+  Future<Either<ErrorMessage,Success>> addReminderToServer(ReminderDto reminderDto,DateTime reminderDateTime,BuildContext context) async{
     try{
       Map<String,dynamic> map = {};
 
@@ -36,15 +36,27 @@ class ReminderApiDataSource{
       map['type'] = reminderDto.repeatInterval;
       map['repeat'] = reminderDto.repeatCount;
 
-      final response = await _apiMethods.post(
-          url: 'add_reminder',
-          data: map,
-          context: context
-      );
+      // final response = await _apiMethods.post(
+      //     url: 'add_reminder',
+      //     data: map,
+      //     context: context
+      // );
+      //
+      // final result = jsonDecode(response!.body);
 
-      final result = jsonDecode(response!.body);
+      Map<String,dynamic> result = {
+        'status': true,
+        'message':"Reminder set successfully!",
+      };
 
       if(result['status'] == true){
+
+        final randomNumber = DateTime.now().millisecondsSinceEpoch;
+        //generating a random number
+        final id = int.parse(randomNumber.toString().substring(7,13));
+
+        final count = int.parse(reminderDto.repeatCount!);
+        await _localNotificationHandler.setReminder1(id, reminderDto.message!, reminderDateTime, reminderDto.repeatInterval!,count);
         return Right(Success(result['message']));
       }else{
         return Left(ErrorMessage(result['message']));

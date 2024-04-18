@@ -7,7 +7,7 @@ import 'package:lead_gen/lead_gen/domain/reminder/reminder.dart';
 abstract class ReminderRepository{
   Future<Either<String,String>> setRemainder(String message,DateTime reminderDate,TimeOfDay reminderTime);
 
-  Future<Either<ErrorMessage,Success>>addReminder(Reminder reminder,BuildContext context);
+  Future<Either<ErrorMessage,Success>>addReminder(Reminder reminder,DateTime reminderDateTime,BuildContext context);
 
   Future<Either<ErrorMessage,List<Reminder>>>getReminders(BuildContext context);
 

@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
   VoidCallback? refreshPage;
   String type = 'all';
   int deptId = 1;
+  String role = '';
 
   Widget loading = ListView.builder(
       itemCount: 3,
@@ -60,7 +61,14 @@ class _HomeState extends State<Home> {
   void initState() {
     context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
     context.read<LeadBloc>().add(LeadEvent.getLeads('all',deptId, context));
+    getRole();
     super.initState();
+  }
+
+  getRole() async{
+    role = await DepartmentBloc.getUserRole();
+    setState(() {});
+    await DepartmentBloc.getUserName();
   }
 
   @override
@@ -75,53 +83,66 @@ class _HomeState extends State<Home> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height*0.07,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFFF87168)
-                    ),
-                    height: 22,
-                    width: 22,
-                  ),
-                  const SizedBox(width: 5),
-                  Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFFC2E90B)
-                    ),
-                    height: 22,
-                    width: 22,
-                  ),
-                  const SizedBox(width: 5),
-                  Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFF579DFF)
-                    ),
-                    height: 22,
-                    width: 22,
-                  ),
-                  const SizedBox(width: 5),
-                  Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  const Spacer(),
                   Row(
                     children: [
-                      Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                      const SizedBox(width: 5),
-                      SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: Image.asset('assets/images/Slider.png'),
-                      )
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFF87168)
+                        ),
+                        height: 22,
+                        width: 22,
+                      ),
+                      const SizedBox(width: 8),
+                      Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                     ],
-                  )
+                  ),
+                  const SizedBox(width: 10),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFC2E90B)
+                        ),
+                        height: 22,
+                        width: 22,
+                      ),
+                      const SizedBox(width: 8),
+                      Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF579DFF)
+                        ),
+                        height: 22,
+                        width: 22,
+                      ),
+                      const SizedBox(width: 8),
+                      Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                    ],
+                  ),
+                  // const Spacer(),
+                  // Row(
+                  //   children: [
+                  //     Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                  //     const SizedBox(width: 5),
+                  //     SizedBox(
+                  //       width: 20,
+                  //       height: 20,
+                  //       child: Image.asset('assets/images/Slider.png'),
+                  //     )
+                  //   ],
+                  // )
                 ],
               ),
             ),
@@ -148,7 +169,7 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: true
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavBar(
+      bottomNavigationBar: role=="user"? const SizedBox() : const CustomBottomNavBar(
         title: 'Add Lead',
         isHomePage: true
       ),
@@ -247,53 +268,66 @@ class _HomeState extends State<Home> {
                                 width: MediaQuery.of(context).size.width,
                                 height: MediaQuery.of(context).size.height*0.07,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(horizontal: 0),
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFFF87168)
-                                        ),
-                                        height: 22,
-                                        width: 22,
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                      const SizedBox(width: 10),
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFFC2E90B)
-                                        ),
-                                        height: 22,
-                                        width: 22,
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                      const SizedBox(width: 10),
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Color(0xFF579DFF)
-                                        ),
-                                        height: 22,
-                                        width: 22,
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                      const Spacer(),
                                       Row(
                                         children: [
-                                          Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                                          const SizedBox(width: 5),
-                                          SizedBox(
-                                            width: 20,
-                                            height: 20,
-                                            child: Image.asset('assets/images/Slider.png'),
-                                          )
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xFFF87168)
+                                            ),
+                                            height: 22,
+                                            width: 22,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                                         ],
-                                      )
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xFFC2E90B)
+                                            ),
+                                            height: 22,
+                                            width: 22,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                        ],
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xFF579DFF)
+                                            ),
+                                            height: 22,
+                                            width: 22,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                        ],
+                                      ),
+                                      // const Spacer(),
+                                      // Row(
+                                      //   children: [
+                                      //     Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                                      //     const SizedBox(width: 5),
+                                      //     SizedBox(
+                                      //       width: 20,
+                                      //       height: 20,
+                                      //       child: Image.asset('assets/images/Slider.png'),
+                                      //     )
+                                      //   ],
+                                      // )
                                     ],
                                   ),
                                 ),

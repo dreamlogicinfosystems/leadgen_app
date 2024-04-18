@@ -80,7 +80,7 @@ void serviceLocator() async{
 
   sl.registerLazySingleton<CustomerDataSource>(() => CustomerDataSource(sl()));
 
-  sl.registerLazySingleton<LeadDataSource>(() => LeadDataSource(sl()));
+  sl.registerLazySingleton<LeadDataSource>(() => LeadDataSource(sl(),sl()));
 
   sl.registerLazySingleton<DepartmentUserDataSource>(() => DepartmentUserDataSource(sl()));
 

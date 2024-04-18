@@ -15,6 +15,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   final ReminderRepository _reminderRepository;
   static DateTime? pickedDate;
   static TimeOfDay? pickedTime;
+  static TimeOfDay? selectedTime;
   ReminderBloc(this._reminderRepository) : super(const ReminderState.initial()) {
     on<ReminderEvent>(mapEventToState);
   }
@@ -26,6 +27,8 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
 
           final date = DateFormat('yyyy-MM-dd').format(pickedDate!);
 
+          DateTime reminderDateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,selectedTime!.hour,selectedTime!.minute);
+
           final tryAddReminder = await _reminderRepository.addReminder(
               Reminder(
                 message: e.reminder.message,
@@ -34,6 +37,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
                 repeatInterval: e.reminder.repeatInterval,
                 repeatCount: e.reminder.repeatCount
               ),
+              reminderDateTime,
               e.context
           );
 
@@ -125,6 +129,8 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
             context: context,
             initialTime: TimeOfDay.fromDateTime(DateTime.now())
         );
+
+        selectedTime = pickedTime;
 
         debugPrint("Time: $pickedTime");
 

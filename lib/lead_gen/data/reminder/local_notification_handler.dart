@@ -27,6 +27,158 @@ class LocalNotificationHandler{
         AndroidFlutterLocalNotificationsPlugin>()?.pendingNotificationRequests();
   }
 
+  setReminder1(int id,String message,DateTime reminderDateTime,String interval,int count) async{
+
+    AndroidNotificationDetails androidNotificationDetails = const AndroidNotificationDetails(
+      "1",
+      "LeadGen",
+      channelDescription:  "reminder",
+      priority: Priority.max,
+      importance: Importance.max,
+    );
+
+    NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails);
+
+    if(interval=="Fixed"){
+      tz.Location location = tz.getLocation('Asia/Kolkata');
+
+      tz.TZDateTime scheduledDateTime = tz.TZDateTime.from(
+          reminderDateTime
+          ,location
+      );
+
+      debugPrint("reminder date time: $scheduledDateTime");
+
+      await _flutterLocalNotificationsPlugin.zonedSchedule(
+          id,
+          "Remainder",
+          message,
+          scheduledDateTime,
+          notificationDetails,
+          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+      );
+    }else if(interval=="Daily"){
+      for(int i=0;i<count;i++){
+
+        final date = reminderDateTime.add(Duration(days: i));
+
+        tz.Location location = tz.getLocation('Asia/Kolkata');
+
+        tz.TZDateTime scheduledDateTime = tz.TZDateTime.from(
+            date
+            ,location
+        );
+
+        id++;
+
+        debugPrint("reminder date time: $scheduledDateTime and id: $id ");
+
+        await _flutterLocalNotificationsPlugin.zonedSchedule(
+            id,
+            "Remainder",
+            message,
+            scheduledDateTime,
+            notificationDetails,
+            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+        );
+      }
+    }else if(interval=="Weekly"){
+      for(int i=0; i<count; i++){
+
+        DateTime date = reminderDateTime;
+        if(i!=0){
+          date = reminderDateTime.add(const Duration(days: 7));
+        }
+
+        tz.Location location = tz.getLocation('Asia/Kolkata');
+
+        tz.TZDateTime scheduledDateTime = tz.TZDateTime.from(
+            date,
+            location
+        );
+
+        id++;
+
+        debugPrint("reminder date time: $scheduledDateTime and id: $id");
+
+        //to assign new date to increment date properly
+        reminderDateTime = date;
+
+        await _flutterLocalNotificationsPlugin.zonedSchedule(
+            id,
+            "Remainder",
+            message,
+            scheduledDateTime,
+            notificationDetails,
+            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+        );
+      }
+    }else if(interval=="Monthly"){
+      for(int i=0; i<count; i++) {
+
+        DateTime? date = reminderDateTime;
+        if (i != 0) {
+          date = reminderDateTime.add(const Duration(days: 30));
+        }
+
+        tz.Location location = tz.getLocation('Asia/Kolkata');
+
+        tz.TZDateTime scheduledDateTime = tz.TZDateTime.from(
+            date,
+            location
+        );
+
+        id++;
+
+        debugPrint("reminder date time: $scheduledDateTime and id: $id");
+
+        //to assign new date to increment date properly
+        reminderDateTime = date;
+
+        await _flutterLocalNotificationsPlugin.zonedSchedule(
+            id,
+            "Remainder",
+            message,
+            scheduledDateTime,
+            notificationDetails,
+            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation
+                .absoluteTime
+        );
+      }
+    }else{
+      for(int i=0; i<count; i++) {
+        DateTime? date = reminderDateTime;
+        if (i != 0) {
+          date = reminderDateTime.add(const Duration(days: 365));
+        }
+
+        tz.Location location = tz.getLocation('Asia/Kolkata');
+
+        tz.TZDateTime scheduledDateTime = tz.TZDateTime.from(
+            date,
+            location
+        );
+
+        id++;
+
+        debugPrint("reminder date time: $scheduledDateTime and id: $id");
+
+        //to assign new date to increment date properly
+        reminderDateTime = date;
+
+        await _flutterLocalNotificationsPlugin.zonedSchedule(
+            id,
+            "Remainder",
+            message,
+            scheduledDateTime,
+            notificationDetails,
+            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation
+                .absoluteTime
+        );
+      }
+    }
+  }
+
   setRemainder(String message,DateTime date,TimeOfDay time) async{
     DateTime reminderDateTime = DateTime(date.year,date.month,date.day,time.hour,time.minute);
 

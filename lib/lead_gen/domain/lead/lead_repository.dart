@@ -7,7 +7,7 @@ import 'package:lead_gen/lead_gen/domain/lead/chat.dart';
 import 'lead.dart';
 
 abstract class LeadRepository{
-  Future<Either<ErrorMessage,Success>> addLead(Lead lead,BuildContext context);
+  Future<Either<ErrorMessage,Success>> addLead(Lead lead,DateTime reminderTime,BuildContext context);
 
   Future<Either<ErrorMessage,Success>> addLeadChat(Lead lead,BuildContext context);
 

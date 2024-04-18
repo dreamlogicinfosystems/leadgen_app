@@ -38,53 +38,66 @@ class _LeadsDisplayerState extends State<LeadsDisplayer> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height*0.07,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFFF87168)
-                    ),
-                    height: 22,
-                    width: 22,
-                  ),
-                  const SizedBox(width: 5),
-                  Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFFC2E90B)
-                    ),
-                    height: 22,
-                    width: 22,
-                  ),
-                  const SizedBox(width: 5),
-                  Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  const SizedBox(width: 10),
-                  Container(
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xFF579DFF)
-                    ),
-                    height: 22,
-                    width: 22,
-                  ),
-                  const SizedBox(width: 5),
-                  Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  const Spacer(),
                   Row(
                     children: [
-                      Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                      const SizedBox(width: 5),
-                      SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: Image.asset('assets/images/Slider.png'),
-                      )
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFF87168)
+                        ),
+                        height: 22,
+                        width: 22,
+                      ),
+                      const SizedBox(width: 8),
+                      Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                     ],
-                  )
+                  ),
+                  const SizedBox(width: 10),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFC2E90B)
+                        ),
+                        height: 22,
+                        width: 22,
+                      ),
+                      const SizedBox(width: 8),
+                      Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF579DFF)
+                        ),
+                        height: 22,
+                        width: 22,
+                      ),
+                      const SizedBox(width: 8),
+                      Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                    ],
+                  ),
+                  // const Spacer(),
+                  // Row(
+                  //   children: [
+                  //     Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                  //     const SizedBox(width: 5),
+                  //     SizedBox(
+                  //       width: 20,
+                  //       height: 20,
+                  //       child: Image.asset('assets/images/Slider.png'),
+                  //     )
+                  //   ],
+                  // )
                 ],
               ),
             ),

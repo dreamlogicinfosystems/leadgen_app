@@ -25,13 +25,13 @@ class ReminderRepositoryImpl extends ReminderRepository{
   }
 
   @override
-  Future<Either<ErrorMessage, Success>> addReminder(Reminder reminder, BuildContext context) async{
+  Future<Either<ErrorMessage, Success>> addReminder(Reminder reminder,DateTime reminderDateTime,BuildContext context) async{
     if(reminder == const Reminder()){
       return Left(ErrorMessage('Something went wrong!'));
     }else{
       final reminderDtoData = ReminderDto.fromDomain(reminder);
 
-      final tryAddReminder = await _reminderApiDataSource.addReminderToServer(reminderDtoData, context);
+      final tryAddReminder = await _reminderApiDataSource.addReminderToServer(reminderDtoData,reminderDateTime,context);
 
       return tryAddReminder.fold((error){
         return Left(error);

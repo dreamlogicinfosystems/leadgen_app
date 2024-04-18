@@ -17,6 +17,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
   final LeadRepository _leadRepository;
   static List<String> departmentIds = [];
   static DateTime? pickedDate;
+  static TimeOfDay? pickedTime;
   static String? formattedDate;
   LeadBloc(this._leadRepository) : super(const LeadState.initial()) {
     on<LeadEvent>(mapEventToState);
@@ -31,6 +32,8 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
             formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate!);
           }
 
+          final reminderDateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime!.hour,pickedTime!.minute);
+
           final tryAddLead = await _leadRepository.addLead(
               Lead(
                 name: e.lead.name,
@@ -42,6 +45,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
                 message: e.lead.message,
                 departmentIds: e.lead.departmentIds
               ),
+              reminderDateTime,
               e.context
           );
 
@@ -137,7 +141,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
 
     if(pickedDate!=null){
       if(context.mounted){
-        final pickedTime = await showTimePicker(
+        pickedTime = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.fromDateTime(DateTime.now())
         );
@@ -145,25 +149,25 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
         debugPrint("Time: $pickedTime");
 
         if(pickedTime!=null){
-          if(pickedTime.hour>=12){
-            if(pickedTime.hour==12){
-              time = "${pickedTime.hour}:${pickedTime.minute} PM";
+          if(pickedTime!.hour>=12){
+            if(pickedTime!.hour==12){
+              time = "${pickedTime!.hour}:${pickedTime!.minute} PM";
             }else{
-              final hour = pickedTime.hour - 12;
+              final hour = pickedTime!.hour - 12;
               debugPrint(hour.toString());
-              time = "$hour:${pickedTime.minute} PM";
+              time = "$hour:${pickedTime!.minute} PM";
             }
           }
           else{
-            if(pickedTime.hour==00){
-              final hour = pickedTime.hour + 12;
+            if(pickedTime!.hour==00){
+              final hour = pickedTime!.hour + 12;
               debugPrint(hour.toString());
-              time = "$hour:${pickedTime.minute} AM";
+              time = "$hour:${pickedTime!.minute} AM";
             }else{
-              time = "${pickedTime.hour}:${pickedTime.minute} AM";
+              time = "${pickedTime!.hour}:${pickedTime!.minute} AM";
             }
           }
-          final dateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime.hour,pickedTime.minute);
+          final dateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime!.hour,pickedTime!.minute);
 
           if(isTimePassed(dateTime)){
             showErrorToastMessage("Time has been passed! Please select another time");

@@ -17,13 +17,13 @@ class LeadRepositoryImpl extends LeadRepository{
   LeadRepositoryImpl(this._leadDataSource);
 
   @override
-  Future<Either<ErrorMessage, Success>> addLead(Lead lead, BuildContext context) async{
+  Future<Either<ErrorMessage, Success>> addLead(Lead lead,DateTime reminderTime, BuildContext context) async{
     if(lead == const Lead()){
       return Left(ErrorMessage('Something went wrong!'));
     }else{
       final leadDto = LeadDto.fromDomain(lead);
 
-      final tryAddLead = await _leadDataSource.addLeadToServer(leadDto, context);
+      final tryAddLead = await _leadDataSource.addLeadToServer(leadDto, reminderTime,context);
 
       return tryAddLead.fold((error){
         return Left(error);

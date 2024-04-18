@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/bottom_sheet.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/chat_header.dart';
-import '../../application/department/department_bloc.dart';
 import '../../constants/constant.dart';
 import '../../domain/lead/chat_details.dart';
 import '../../domain/lead/lead.dart';
@@ -23,7 +23,6 @@ class _ChatPageState extends State<ChatPage> {
   final _scroll = ScrollController(initialScrollOffset: 0.0,keepScrollOffset: true);
   final _messageController = TextEditingController();
   bool isMessage = false;
-  String role = '';
 
   @override
   void dispose() {
@@ -35,13 +34,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     context.read<LeadBloc>().add(LeadEvent.getLeadChat(widget.lead.id!, context));
-    getRole();
     super.initState();
-  }
-
-  getRole() async{
-    role = await DepartmentBloc.getUserRole();
-    setState(() {});
   }
 
   @override
@@ -153,14 +146,14 @@ class _ChatPageState extends State<ChatPage> {
               ),
               height: MediaQuery.of(context).size.height*0.085,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.only(left: 10,right: 15),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
                       onTap:(){
-                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!,role);
+                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!);
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.04,
@@ -169,7 +162,7 @@ class _ChatPageState extends State<ChatPage> {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width*0.6,
+                      width: MediaQuery.of(context).size.width*0.82,
                       height: 40,
                       child: CustomTextField(
                         controller: _messageController,
@@ -193,16 +186,16 @@ class _ChatPageState extends State<ChatPage> {
                         isChatPage: true,
                       ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height*0.04,
-                      width: 25,
-                      child: Image.asset("assets/images/Camera.png"),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height*0.03,
-                      width: 25,
-                      child: Image.asset("assets/images/Record Audio.png"),
-                    ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height*0.04,
+                    //   width: 25,
+                    //   child: Image.asset("assets/images/Camera.png"),
+                    // ),
+                    // SizedBox(
+                    //   height: MediaQuery.of(context).size.height*0.03,
+                    //   width: 25,
+                    //   child: Image.asset("assets/images/Record Audio.png"),
+                    // ),
                   ],
                 ),
               ),
@@ -234,7 +227,7 @@ class _ChatDetailsDisplayerState extends State<ChatDetailsDisplayer> {
       itemCount: widget.chatDetails.length,
       itemBuilder: (BuildContext context, int index) {
         return Align(
-          alignment:Alignment.centerRight,
+          alignment: DepartmentBloc.userName==widget.chatDetails[index].name? Alignment.centerRight : Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: Container(
@@ -245,7 +238,7 @@ class _ChatDetailsDisplayerState extends State<ChatDetailsDisplayer> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: DepartmentBloc.userName==widget.chatDetails[index].name? CrossAxisAlignment.end : CrossAxisAlignment.start,
                   children: [
                     Text(widget.chatDetails[index].message!,style:
                     GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400),),
