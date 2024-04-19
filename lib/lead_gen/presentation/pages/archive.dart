@@ -16,7 +16,7 @@ class _ArchivePageState extends State<ArchivePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade50,
+        backgroundColor: Colors.white,
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(kToolbarHeight * 1),
             child: CustomAppBar(

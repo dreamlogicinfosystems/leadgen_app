@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -77,6 +76,20 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
           tryGetLeads.fold((emptyList){
             emit(LeadState.emptyLeadList(emptyList));
           },(leadList){
+            // sorting lead list to show due leads first , than upcoming leads and last past leads
+            leadList.sort((a, b) {
+              if(a.showStatus=="due"){
+                return -1;
+              }else if(b.showStatus=="due"){
+                return 1;
+              }else if(a.showStatus=="upcoming"){
+                return -1;
+              }else if(b.showStatus=="upcoming"){
+                return 1;
+              }else{
+                return 0;
+              }
+            });
             emit(LeadState.successLeadsList(leadList));
           });
         },
@@ -105,6 +118,17 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
             emit(LeadState.failed(error.message));
           },(message){
             emit(LeadState.success(message.successMessage));
+          });
+        },
+        getArchiveLeads: (e) async{
+          emit(const LeadState.loadingInProgress());
+
+          final tryGetLeads = await _leadRepository.getArchiveLeads(e.type,e.subType,e.context);
+
+          tryGetLeads.fold((emptyList){
+            emit(LeadState.emptyLeadList(emptyList));
+          },(leadList){
+            emit(LeadState.successLeadsList(leadList));
           });
         }
     );

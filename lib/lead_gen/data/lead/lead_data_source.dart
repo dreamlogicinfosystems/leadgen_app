@@ -193,4 +193,41 @@ class LeadDataSource{
       return Left(ErrorMessage(e.toString()));
     }
   }
+
+  Future<Either<List<Lead>,List<LeadDto>>>getArchiveLeads(String type,String subType,BuildContext context) async{
+    try{
+      List<LeadDto> leadsList = [];
+
+      final response = await _apiMethods.get(
+          url: 'get_leads?type=$type&sub_type=$subType',
+          context: context
+      );
+
+      final result = jsonDecode(response!.body);
+
+      if(result['status'] == true){
+
+        for(int i = 0; i<result['leads'].length; i++){
+          LeadDto leadDto = LeadDto(
+              id: result['leads'][i]['id'],
+              name: result['leads'][i]['name'],
+              phone: result['leads'][i]['phone'],
+              email: result['leads'][i]['email'],
+              message: result['leads'][i]['note'],
+              title: result['leads'][i]['title']?? '',
+              createdAt: result['leads'][i]['created_at'],
+              showStatus: result['leads'][i]['show_status'],
+              lastChatDate: result['leads'][i]['last_chat_date']
+          );
+
+          leadsList.add(leadDto);
+        }
+        return Right(leadsList);
+      }else{
+        return Left(result['message']);
+      }
+    }catch(e){
+      return const Left([]);
+    }
+  }
 }

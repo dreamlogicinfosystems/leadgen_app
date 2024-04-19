@@ -182,9 +182,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               labelText: 'Business Name',
                               keyBoardType: TextInputType.text,
                               validator: (value){
-                                if(value=='' || value!.trim()==''){
-                                  return 'Enter Business Name';
-                                }else if(value.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                                if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
                                   return 'Invalid Business Name';
                                 }else if(value.length>20){
                                   return "cannot exceed 20 letter's";
@@ -202,7 +200,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               validator: (value){
                                 if(value!.isEmpty || value.trim()==''){
                                   return 'Enter address';
-                                }else if(value.contains(RegExp(r'[~!@$%^&*()_=+{};:?<>"]'))){
+                                }else if(value.contains(RegExp(r'[~!@$%^&*()=+{};:?<>"]'))){
                                   return 'Invalid address';
                                 }else{
                                   return null;
@@ -497,7 +495,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               validator: (value){
                                 if(value!.isEmpty || value.trim()==''){
                                   return 'Enter address';
-                                }else if(value.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                                }else if(value.contains(RegExp(r'[~!@$%^&*()=+{};:?<>"]'))){
                                   return 'Invalid address';
                                 }else{
                                   return null;
@@ -585,7 +583,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                               keyBoardType: TextInputType.text,
                               maxLines: 3,
                               validator: (value){
-                                if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
+                                if(value!.contains(RegExp(r'[~!@$%^&*()=+{};:?<>"]'))){
                                   return 'Invalid Registered Address';
                                 }else{
                                   return null;

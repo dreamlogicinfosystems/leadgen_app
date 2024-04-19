@@ -36,18 +36,18 @@ class ReminderApiDataSource{
       map['type'] = reminderDto.repeatInterval;
       map['repeat'] = reminderDto.repeatCount;
 
-      // final response = await _apiMethods.post(
-      //     url: 'add_reminder',
-      //     data: map,
-      //     context: context
-      // );
-      //
-      // final result = jsonDecode(response!.body);
+      final response = await _apiMethods.post(
+          url: 'add_reminder',
+          data: map,
+          context: context
+      );
 
-      Map<String,dynamic> result = {
-        'status': true,
-        'message':"Reminder set successfully!",
-      };
+      final result = jsonDecode(response!.body);
+
+      // Map<String,dynamic> result = {
+      //   'status': true,
+      //   'message':"Reminder set successfully!",
+      // };
 
       if(result['status'] == true){
 

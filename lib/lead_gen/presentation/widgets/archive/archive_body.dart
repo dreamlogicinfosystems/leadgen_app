@@ -6,8 +6,10 @@ import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/add_lead/open_lead.dart';
+import 'package:lead_gen/lead_gen/presentation/widgets/archive/filter_dialog.dart';
 
 import '../../../../injections.dart';
+import '../../core/custom_textfield.dart';
 
 class ArchivePageBody extends StatefulWidget {
   const ArchivePageBody({super.key});
@@ -17,6 +19,7 @@ class ArchivePageBody extends StatefulWidget {
 }
 
 class _ArchivePageBodyState extends State<ArchivePageBody> {
+  final _searchController = TextEditingController();
 
   simplifyDate(String createdDate){
     final date = DateTime.parse(createdDate);
@@ -28,10 +31,16 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
   
   @override
   void initState() {
-    context.read<LeadBloc>().add(LeadEvent.getLeads('archived', 0, context));
+    context.read<LeadBloc>().add(LeadEvent.getArchiveLeads("archived", "all", context));
     super.initState();
   }
-  
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget loading = SizedBox(
@@ -62,82 +71,147 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: leadList.length,
-                    itemBuilder: (context,index){
-                      return GestureDetector(
-                        onTap: (){
-                          DepartmentBloc.role=="user"? () :
-                          showDialog(context: context, builder: (context) => BlocProvider(
-                            create: (context) => sl<LeadBloc>(),
-                            child: OpenLeadDialog(leadId: leadList[index].id!),
-                          ));
-                        },
-                        child: Card(
-                          shadowColor: Colors.black,
-                          elevation: 7,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height*0.1,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
+                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                          const SizedBox(width: 5),
+                          GestureDetector(
+                            onTap: (){
+                              showDialog(context: context, builder: (context) => BlocProvider(
+                                create: (context) => sl<LeadBloc>(),
+                                child: const FilterDialog(),
+                              )).then((value){
+                                print(value);
+                                context.read<LeadBloc>().add(LeadEvent.getArchiveLeads(value, "one", context));
+                              });
+                            },
+                            child: SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: Image.asset('assets/images/Slider.png'),
                             ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                      color: Color(0xFF8A8A8B),
-                                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12),topLeft: Radius.circular(12))
-                                  ),
-                                  height: MediaQuery.of(context).size.height*0.1,
-                                  width: 10,
+                          )
+                          // PopupMenuButton(
+                          //   position: PopupMenuPosition.under,
+                          //   surfaceTintColor: Colors.white,
+                          //     color: Colors.white,
+                          //     child: SizedBox(
+                          //       width: 20,
+                          //       height: 20,
+                          //       child: Image.asset('assets/images/Slider.png'),
+                          //     ),
+                          //     // icon: const Icon(Icons.more_vert),
+                          //     itemBuilder: (context) => [
+                          //       const PopupMenuItem(
+                          //           value: 'archived',
+                          //           child: Text("Archive leads")
+                          //       ),
+                          //       const PopupMenuItem(
+                          //           value: 'Close',
+                          //           child: Text("Close leads")
+                          //       ),
+                          //     ],
+                          //   onSelected: (value){
+                          //     context.read<LeadBloc>().add(LeadEvent.getLeads(value, 0, context));
+                          //   },
+                          // ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: CustomTextField(
+                        isBoardAddPage: true,
+                        controller: _searchController,
+                        keyBoardType: TextInputType.text,
+                        labelText: 'Search lead',
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: leadList.length,
+                        itemBuilder: (context,index){
+                          return GestureDetector(
+                            onTap: (){
+                              DepartmentBloc.role=="user"? () :
+                              showDialog(context: context, builder: (context) => BlocProvider(
+                                create: (context) => sl<LeadBloc>(),
+                                child: OpenLeadDialog(leadId: leadList[index].id!),
+                              ));
+                            },
+                            child: Card(
+                              shadowColor: Colors.black,
+                              elevation: 7,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height*0.1,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
-                                const SizedBox(width: 6),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width*0.65,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(height: 2),
-                                      Text(leadList[index].name!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                                      const SizedBox(height: 2),
-                                      SizedBox(
-                                        width: MediaQuery.of(context).size.width*0.65,
-                                        height: MediaQuery.of(context).size.height*0.061,
-                                        child: Text(leadList[index].message!,style:
-                                        GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: SizedBox(
-                                    width: MediaQuery.of(context).size.width*0.22,
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(top:5,right: 5),
-                                          child: Text(modifyDate(leadList[index].lastChatDate!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top:35,right: 10),
-                                          child: Align(
-                                              alignment: Alignment.centerRight,
-                                              child: Text(simplifyDate(leadList[index].createdAt!),style: GoogleFonts.poppins(fontSize: 10,fontWeight: FontWeight.w400,color: const Color(0xFFB9B9B9)),)),
-                                        )
-                                      ],
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      decoration: const BoxDecoration(
+                                          color: Color(0xFF8A8A8B),
+                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12),topLeft: Radius.circular(12))
+                                      ),
+                                      height: MediaQuery.of(context).size.height*0.1,
+                                      width: 10,
                                     ),
-                                  ),
-                                )
-                              ],
+                                    const SizedBox(width: 6),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width*0.65,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(height: 2),
+                                          Text(leadList[index].name!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                                          const SizedBox(height: 2),
+                                          SizedBox(
+                                            width: MediaQuery.of(context).size.width*0.65,
+                                            height: MediaQuery.of(context).size.height*0.061,
+                                            child: Text(leadList[index].message!,style:
+                                            GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: SizedBox(
+                                        width: MediaQuery.of(context).size.width*0.22,
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(top:5,right: 5),
+                                              child: Text(modifyDate(leadList[index].lastChatDate!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(top:35,right: 10),
+                                              child: Align(
+                                                  alignment: Alignment.centerRight,
+                                                  child: Text(simplifyDate(leadList[index].createdAt!),style: GoogleFonts.poppins(fontSize: 10,fontWeight: FontWeight.w400,color: const Color(0xFFB9B9B9)),)),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      );
-                    }
+                          );
+                        }
+                    ),
+                  ],
                 ),
               ),
             );

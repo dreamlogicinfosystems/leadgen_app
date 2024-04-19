@@ -91,4 +91,15 @@ class LeadRepositoryImpl extends LeadRepository{
       });
     }
   }
+
+  @override
+  Future<Either<List<Lead>, List<Lead>>> getArchiveLeads(String type, String subType, BuildContext context) async{
+    final getLeads= await _leadDataSource.getArchiveLeads(type,subType,context);
+
+    return getLeads.fold((error){
+      return Left(error);
+    },(leadsList){
+      return Right(leadsList.map((e) => const LeadDto().toDomain(e)).toList());
+    });
+  }
 }

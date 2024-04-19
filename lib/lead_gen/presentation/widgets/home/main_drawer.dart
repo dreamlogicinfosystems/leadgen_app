@@ -10,6 +10,7 @@ import '../../../constants/constant.dart';
 import '../../pages/all_users.dart';
 import '../../pages/board.dart';
 import '../../pages/login.dart';
+import '../../pages/past_leads.dart';
 import '../../pages/view_reminders.dart';
 import 'drawer_head.dart';
 
@@ -27,6 +28,7 @@ class _MainDrawerState extends State<MainDrawer> {
   bool isUsers = false;
   bool isLogin = false;
   bool isCustomers = false;
+  bool isPastLeads = false;
 
   @override
   void initState() {
@@ -68,6 +70,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         isUsers = false;
                         isLogin = false;
                         isCustomers = false;
+                        isPastLeads = false;
                       });
 
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const ViewReminders()));
@@ -128,6 +131,43 @@ class _MainDrawerState extends State<MainDrawer> {
                       ),
                     ),
                   ),
+                  // const SizedBox(height: 5),
+                  // GestureDetector(
+                  //   onTap: (){
+                  //     setState(() {
+                  //       isPastLeads = !isPastLeads;
+                  //       isArchivedLeads = false;
+                  //       isReminders = false;
+                  //       isBoards = false;
+                  //       isUsers = false;
+                  //       isLogin = false;
+                  //       isCustomers = false;
+                  //     });
+                  //
+                  //     Navigator.push(context, MaterialPageRoute(builder: (context) => const PastLeadsPage()));
+                  //   },
+                  //   child: Container(
+                  //     width: MediaQuery.of(context).size.width*0.8,
+                  //     height: MediaQuery.of(context).size.height*0.068,
+                  //     decoration: BoxDecoration(
+                  //         color: isPastLeads==true? Colors.black :Colors.transparent,
+                  //         borderRadius: BorderRadius.circular(8)
+                  //     ),
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.symmetric(horizontal: 12),
+                  //       child: Row(
+                  //         children: [
+                  //           Image.asset("assets/images/archive.png",height: MediaQuery.of(context).size.height*0.035,
+                  //             color: isPastLeads==true? Colors.white :Colors.black,),
+                  //           const SizedBox(width: 10),
+                  //           Text("Past Leads",style: GoogleFonts.poppins(
+                  //               fontSize: 14,fontWeight: FontWeight.w400,color: isPastLeads==true? Colors.white :Colors.black
+                  //           ),)
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(height: 5),
                   GestureDetector(
                     onTap: (){
@@ -138,6 +178,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         isUsers = false;
                         isLogin = false;
                         isCustomers = false;
+                        isPastLeads = false;
                       });
                       
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const ArchivePage()));
@@ -174,6 +215,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         isLogin = false;
                         isArchivedLeads = false;
                         isCustomers = false;
+                        isPastLeads = false;
                       });
                       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Board()),(route) => route.isFirst);
                     },
@@ -209,6 +251,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         isLogin = false;
                         isArchivedLeads = false;
                         isCustomers = false;
+                        isPastLeads = false;
                       });
 
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const AllUsers()));
@@ -245,6 +288,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         isUsers = false;
                         isLogin = false;
                         isCustomers = !isCustomers;
+                        isPastLeads = false;
                       });
 
                       Navigator.push(context, MaterialPageRoute(builder: (context) => const AllCustomers()));
@@ -294,6 +338,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   isReminders = false;
                   isArchivedLeads = false;
                   isCustomers = false;
+                  isPastLeads = false;
                 });
                 showAlertDialog(context,"logout",0);
               },

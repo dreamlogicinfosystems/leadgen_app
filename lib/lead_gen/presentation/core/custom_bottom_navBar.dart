@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
-import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
 
 import '../../../injections.dart';

@@ -13,6 +13,8 @@ abstract class LeadRepository{
 
   Future<Either<List<Lead>,List<Lead>>> getLeadsList(String type,int deptId,BuildContext context);
 
+  Future<Either<List<Lead>,List<Lead>>> getArchiveLeads(String type,String subType,BuildContext context);
+
   Future<Either<ErrorMessage,List<Chat>>> getLeadChat(int leadId,BuildContext context);
 
   Future<Either<ErrorMessage,Success>> updateLeadStatus(int leadId,int statusId,String message,
