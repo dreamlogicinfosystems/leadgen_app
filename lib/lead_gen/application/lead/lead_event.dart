@@ -12,5 +12,7 @@ class LeadEvent with _$LeadEvent {
 
   const factory LeadEvent.getArchiveLeads(String type,String subType,BuildContext context) = _getArchiveLeads;
 
+  const factory LeadEvent.getSearchedLead(String name,String type,String subType,BuildContext context) = _getSearchedLead;
+
   const factory LeadEvent.updateLeadStatus(int leadId,int statusId,String message,BuildContext context) = _updateLeadStatus;
 }

@@ -17,6 +17,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
   static List<String> departmentIds = [];
   static DateTime? pickedDate;
   static TimeOfDay? pickedTime;
+  static DateTime? reminderDateTime;
   static String? formattedDate;
   LeadBloc(this._leadRepository) : super(const LeadState.initial()) {
     on<LeadEvent>(mapEventToState);
@@ -31,7 +32,9 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
             formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate!);
           }
 
-          final reminderDateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime!.hour,pickedTime!.minute);
+          if(pickedDate!=null){
+            reminderDateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime!.hour,pickedTime!.minute);
+          }
 
           final tryAddLead = await _leadRepository.addLead(
               Lead(
@@ -44,7 +47,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
                 message: e.lead.message,
                 departmentIds: e.lead.departmentIds
               ),
-              reminderDateTime,
+              reminderDateTime==null? DateTime(0) : reminderDateTime!,
               e.context
           );
 
@@ -126,6 +129,17 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
           final tryGetLeads = await _leadRepository.getArchiveLeads(e.type,e.subType,e.context);
 
           tryGetLeads.fold((emptyList){
+            emit(LeadState.emptyLeadList(emptyList));
+          },(leadList){
+            emit(LeadState.successLeadsList(leadList));
+          });
+        },
+        getSearchedLead: (e) async{
+          emit(const LeadState.loadingInProgress());
+
+          final tryGetSearchLead = await _leadRepository.getSearchedLeads(e.name, e.type, e.subType, e.context);
+
+          tryGetSearchLead.fold((emptyList){
             emit(LeadState.emptyLeadList(emptyList));
           },(leadList){
             emit(LeadState.successLeadsList(leadList));

@@ -43,11 +43,11 @@ class CustomerRepositoryImpl extends CustomerRepository{
   }
 
   @override
-  Future<Either<ErrorMessage, List<Customer>>> getSearchedCustomer(String custDetail,BuildContext context) async{
+  Future<Either<ErrorMessage, List<Customer>>> getSearchedCustomer(String custDetail,String type,String subType,BuildContext context) async{
     if(custDetail.isEmpty){
       return Left(ErrorMessage('Something went wrong'));
     }else{
-      final getCustomer = await _customerDataSource.getSearchedCustomer(custDetail, context);
+      final getCustomer = await _customerDataSource.getSearchedCustomer(custDetail,type,subType, context);
 
       return getCustomer.fold((error){
         return Left(error);

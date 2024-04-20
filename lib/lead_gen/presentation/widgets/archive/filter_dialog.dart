@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
 
 import '../../core/custom_button.dart';
@@ -26,13 +24,13 @@ class _FilterDialogState extends State<FilterDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      surfaceTintColor: Colors.white,
-      backgroundColor: Colors.white,
+      surfaceTintColor: const Color(0xFFECECED),
+      backgroundColor: const Color(0xFFECECED),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(15)
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -64,7 +62,7 @@ class _FilterDialogState extends State<FilterDialog> {
                     });
                   }else{
                     setState(() {
-                      selectedValue = "Close";
+                      selectedValue = "Closed";
                     });
                   }
                   debugPrint(selectedValue);
@@ -88,7 +86,7 @@ class _FilterDialogState extends State<FilterDialog> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
           ],
         ),
       ),

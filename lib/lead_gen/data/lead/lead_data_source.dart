@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/api.dart';
@@ -43,12 +42,13 @@ class LeadDataSource{
       final result = jsonDecode(response!.body);
 
       if(result['status'] == true){
+        if(reminderTime != DateTime(0)){
+          final randomNumber = DateTime.now().millisecondsSinceEpoch;
+          //generating a random number
+          final id = int.parse(randomNumber.toString().substring(7,13));
 
-        final randomNumber = DateTime.now().millisecondsSinceEpoch;
-        //generating a random number
-        final id = int.parse(randomNumber.toString().substring(7,13));
-
-        await _localNotificationHandler.setReminder1(id, leadDto.title!, reminderTime, "Fixed", 0);
+          await _localNotificationHandler.setReminder1(id, leadDto.title!, reminderTime, "Fixed", 0);
+        }
         return Right(Success(result['message']));
       }else{
         return Left(ErrorMessage(result['message']));
@@ -195,38 +195,71 @@ class LeadDataSource{
   }
 
   Future<Either<List<Lead>,List<LeadDto>>>getArchiveLeads(String type,String subType,BuildContext context) async{
-    try{
-      List<LeadDto> leadsList = [];
 
-      final response = await _apiMethods.get(
-          url: 'get_leads?type=$type&sub_type=$subType',
-          context: context
-      );
+    List<LeadDto> leadsList = [];
 
-      final result = jsonDecode(response!.body);
 
-      if(result['status'] == true){
+    final response = await _apiMethods.get(
+        url: 'get_leads?type=$type&sub_type=$subType',
+        context: context
+    );
 
-        for(int i = 0; i<result['leads'].length; i++){
-          LeadDto leadDto = LeadDto(
-              id: result['leads'][i]['id'],
-              name: result['leads'][i]['name'],
-              phone: result['leads'][i]['phone'],
-              email: result['leads'][i]['email'],
-              message: result['leads'][i]['note'],
-              title: result['leads'][i]['title']?? '',
-              createdAt: result['leads'][i]['created_at'],
-              showStatus: result['leads'][i]['show_status'],
-              lastChatDate: result['leads'][i]['last_chat_date']
-          );
+    final result = jsonDecode(response!.body);
 
-          leadsList.add(leadDto);
-        }
-        return Right(leadsList);
-      }else{
-        return Left(result['message']);
+    if(result['status'] == true){
+
+      for(int i = 0; i<result['leads'].length; i++){
+        LeadDto leadDto = LeadDto(
+            id: result['leads'][i]['id'],
+            name: result['leads'][i]['name'],
+            phone: result['leads'][i]['phone'],
+            email: result['leads'][i]['email'],
+            message: result['leads'][i]['note'],
+            title: result['leads'][i]['title']?? '',
+            createdAt: result['leads'][i]['created_at'],
+            showStatus: result['leads'][i]['show_status'],
+            lastChatDate: result['leads'][i]['last_chat_date']
+        );
+
+        leadsList.add(leadDto);
       }
-    }catch(e){
+      return Right(leadsList);
+    }else{
+      return const Left([]);
+    }
+  }
+
+  Future<Either<List<Lead>,List<LeadDto>>>getSearchedLeads(String custDetail,String type,String subType,BuildContext context) async{
+    List<LeadDto> leadsList = [];
+
+    final response = await _apiMethods.get(
+        url: 'get_customers?search=$custDetail&type=$type&sub_type=$subType',
+        context: context
+    );
+
+    final result = jsonDecode(response!.body);
+
+
+    if(result['status'] == true){
+
+      for(int i=0; i<result['customers'].length; i++){
+        LeadDto leadDto = LeadDto(
+            id: result['customers'][i]['id'],
+            name: result['customers'][i]['name'],
+            phone: result['customers'][i]['phone'],
+            email: result['customers'][i]['email'],
+            message: result['customers'][i]['note'],
+            title: result['customers'][i]['title']?? '',
+            createdAt: result['customers'][i]['created_at'],
+            showStatus: result['customers'][i]['show_status'],
+            lastChatDate: result['customers'][i]['last_followup_date']
+        );
+
+        leadsList.add(leadDto);
+      }
+
+      return Right(leadsList);
+    }else{
       return const Left([]);
     }
   }

@@ -14,5 +14,5 @@ abstract class CustomerRepository{
 
   Future<Either<ErrorMessage,Success>> updateCustomer(Customer customer,BuildContext context);
 
-  Future<Either<ErrorMessage,List<Customer>>> getSearchedCustomer(String custDetail,BuildContext context);
+  Future<Either<ErrorMessage,List<Customer>>> getSearchedCustomer(String custDetail,String type,String subType,BuildContext context);
 }

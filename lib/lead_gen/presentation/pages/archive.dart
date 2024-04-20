@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lead_gen/lead_gen/application/customer/customer_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import '../../../injections.dart';
 import '../core/custom_appbar.dart';
@@ -27,8 +28,15 @@ class _ArchivePageState extends State<ArchivePage> {
                 iconColor: Colors.black
             )
         ),
-        body: BlocProvider(
-          create: (context) => sl<LeadBloc>(),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => sl<LeadBloc>(),
+            ),
+            BlocProvider(
+              create: (context) => sl<CustomerBloc>(),
+            )
+          ],
           child: const ArchivePageBody(),
         )
     );

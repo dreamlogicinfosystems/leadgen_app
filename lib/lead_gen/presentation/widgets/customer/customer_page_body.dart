@@ -65,7 +65,7 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                         if(_searchController.text.trim()==""){
                           showErrorToastMessage('Enter name or email to search!');
                         }else{
-                          context.read<CustomerBloc>().add(CustomerEvent.searchCustomer(_searchController.text.trim(),context));
+                          context.read<CustomerBloc>().add(CustomerEvent.searchCustomer(_searchController.text.trim(),'customer_list','all',context));
                         }
                       },
                       child: Container(

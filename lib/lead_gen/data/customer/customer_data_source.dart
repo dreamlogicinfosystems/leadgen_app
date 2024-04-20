@@ -84,11 +84,11 @@ class CustomerDataSource{
     }
   }
 
-  Future<Either<ErrorMessage,List<CustomerDto>>>getSearchedCustomer(String custDetail,BuildContext context) async{
+  Future<Either<ErrorMessage,List<CustomerDto>>>getSearchedCustomer(String custDetail,String type,String subType,BuildContext context) async{
     List<CustomerDto> customersList = [];
 
     final response = await _apiMethods.get(
-        url: 'get_customers?search=$custDetail',
+        url: 'get_customers?search=$custDetail&type=$type&sub_type=$subType',
         context: context
     );
 

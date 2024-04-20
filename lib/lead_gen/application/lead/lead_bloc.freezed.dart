@@ -27,6 +27,9 @@ mixin _$LeadEvent {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) =>
@@ -39,6 +42,9 @@ mixin _$LeadEvent {
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -53,6 +59,9 @@ mixin _$LeadEvent {
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
     required TResult orElse(),
@@ -65,6 +74,7 @@ mixin _$LeadEvent {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +85,7 @@ mixin _$LeadEvent {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) =>
       throw _privateConstructorUsedError;
@@ -85,6 +96,7 @@ mixin _$LeadEvent {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) =>
@@ -219,6 +231,9 @@ class _$addLeadImpl implements _addLead {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
@@ -235,6 +250,9 @@ class _$addLeadImpl implements _addLead {
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
@@ -250,6 +268,9 @@ class _$addLeadImpl implements _addLead {
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -269,6 +290,7 @@ class _$addLeadImpl implements _addLead {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) {
     return addLead(this);
@@ -282,6 +304,7 @@ class _$addLeadImpl implements _addLead {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) {
     return addLead?.call(this);
@@ -295,6 +318,7 @@ class _$addLeadImpl implements _addLead {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) {
@@ -410,6 +434,9 @@ class _$addLeadChatImpl implements _addLeadChat {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
@@ -426,6 +453,9 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
@@ -441,6 +471,9 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -460,6 +493,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) {
     return addLeadChat(this);
@@ -473,6 +507,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) {
     return addLeadChat?.call(this);
@@ -486,6 +521,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) {
@@ -599,6 +635,9 @@ class _$getLeadsImpl implements _getLeads {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
@@ -615,6 +654,9 @@ class _$getLeadsImpl implements _getLeads {
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
@@ -630,6 +672,9 @@ class _$getLeadsImpl implements _getLeads {
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -649,6 +694,7 @@ class _$getLeadsImpl implements _getLeads {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) {
     return getLeads(this);
@@ -662,6 +708,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) {
     return getLeads?.call(this);
@@ -675,6 +722,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) {
@@ -782,6 +830,9 @@ class _$getLeadChatImpl implements _getLeadChat {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
@@ -798,6 +849,9 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
@@ -813,6 +867,9 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -832,6 +889,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) {
     return getLeadChat(this);
@@ -845,6 +903,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) {
     return getLeadChat?.call(this);
@@ -858,6 +917,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) {
@@ -972,6 +1032,9 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
@@ -988,6 +1051,9 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
@@ -1003,6 +1069,9 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -1022,6 +1091,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) {
     return getArchiveLeads(this);
@@ -1035,6 +1105,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) {
     return getArchiveLeads?.call(this);
@@ -1048,6 +1119,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) {
@@ -1070,6 +1142,218 @@ abstract class _getArchiveLeads implements LeadEvent {
   @override
   @JsonKey(ignore: true)
   _$$getArchiveLeadsImplCopyWith<_$getArchiveLeadsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$getSearchedLeadImplCopyWith<$Res>
+    implements $LeadEventCopyWith<$Res> {
+  factory _$$getSearchedLeadImplCopyWith(_$getSearchedLeadImpl value,
+          $Res Function(_$getSearchedLeadImpl) then) =
+      __$$getSearchedLeadImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, String type, String subType, BuildContext context});
+}
+
+/// @nodoc
+class __$$getSearchedLeadImplCopyWithImpl<$Res>
+    extends _$LeadEventCopyWithImpl<$Res, _$getSearchedLeadImpl>
+    implements _$$getSearchedLeadImplCopyWith<$Res> {
+  __$$getSearchedLeadImplCopyWithImpl(
+      _$getSearchedLeadImpl _value, $Res Function(_$getSearchedLeadImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? type = null,
+    Object? subType = null,
+    Object? context = null,
+  }) {
+    return _then(_$getSearchedLeadImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == subType
+          ? _value.subType
+          : subType // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$getSearchedLeadImpl implements _getSearchedLead {
+  const _$getSearchedLeadImpl(this.name, this.type, this.subType, this.context);
+
+  @override
+  final String name;
+  @override
+  final String type;
+  @override
+  final String subType;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'LeadEvent.getSearchedLead(name: $name, type: $type, subType: $subType, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$getSearchedLeadImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.subType, subType) || other.subType == subType) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, type, subType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$getSearchedLeadImplCopyWith<_$getSearchedLeadImpl> get copyWith =>
+      __$$getSearchedLeadImplCopyWithImpl<_$getSearchedLeadImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Lead lead, BuildContext context) addLead,
+    required TResult Function(Lead lead, BuildContext context) addLeadChat,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
+    required TResult Function(int leadId, BuildContext context) getLeadChat,
+    required TResult Function(String type, String subType, BuildContext context)
+        getArchiveLeads,
+    required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
+            int leadId, int statusId, String message, BuildContext context)
+        updateLeadStatus,
+  }) {
+    return getSearchedLead(name, type, subType, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Lead lead, BuildContext context)? addLead,
+    TResult? Function(Lead lead, BuildContext context)? addLeadChat,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(int leadId, BuildContext context)? getLeadChat,
+    TResult? Function(String type, String subType, BuildContext context)?
+        getArchiveLeads,
+    TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
+            int leadId, int statusId, String message, BuildContext context)?
+        updateLeadStatus,
+  }) {
+    return getSearchedLead?.call(name, type, subType, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Lead lead, BuildContext context)? addLead,
+    TResult Function(Lead lead, BuildContext context)? addLeadChat,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(int leadId, BuildContext context)? getLeadChat,
+    TResult Function(String type, String subType, BuildContext context)?
+        getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult Function(
+            int leadId, int statusId, String message, BuildContext context)?
+        updateLeadStatus,
+    required TResult orElse(),
+  }) {
+    if (getSearchedLead != null) {
+      return getSearchedLead(name, type, subType, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_addLead value) addLead,
+    required TResult Function(_addLeadChat value) addLeadChat,
+    required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_getLeadChat value) getLeadChat,
+    required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
+    required TResult Function(_updateLeadStatus value) updateLeadStatus,
+  }) {
+    return getSearchedLead(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_addLead value)? addLead,
+    TResult? Function(_addLeadChat value)? addLeadChat,
+    TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_getLeadChat value)? getLeadChat,
+    TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
+    TResult? Function(_updateLeadStatus value)? updateLeadStatus,
+  }) {
+    return getSearchedLead?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_addLead value)? addLead,
+    TResult Function(_addLeadChat value)? addLeadChat,
+    TResult Function(_getLeads value)? getLeads,
+    TResult Function(_getLeadChat value)? getLeadChat,
+    TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
+    TResult Function(_updateLeadStatus value)? updateLeadStatus,
+    required TResult orElse(),
+  }) {
+    if (getSearchedLead != null) {
+      return getSearchedLead(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _getSearchedLead implements LeadEvent {
+  const factory _getSearchedLead(final String name, final String type,
+      final String subType, final BuildContext context) = _$getSearchedLeadImpl;
+
+  String get name;
+  String get type;
+  String get subType;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$getSearchedLeadImplCopyWith<_$getSearchedLeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1175,6 +1459,9 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
     required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
             int leadId, int statusId, String message, BuildContext context)
         updateLeadStatus,
   }) {
@@ -1191,6 +1478,9 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
     TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
   }) {
@@ -1206,6 +1496,9 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
     TResult Function(
             int leadId, int statusId, String message, BuildContext context)?
         updateLeadStatus,
@@ -1225,6 +1518,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     required TResult Function(_getLeads value) getLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
   }) {
     return updateLeadStatus(this);
@@ -1238,6 +1532,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult? Function(_getLeads value)? getLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
   }) {
     return updateLeadStatus?.call(this);
@@ -1251,6 +1546,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult Function(_getLeads value)? getLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     required TResult orElse(),
   }) {

@@ -102,4 +102,15 @@ class LeadRepositoryImpl extends LeadRepository{
       return Right(leadsList.map((e) => const LeadDto().toDomain(e)).toList());
     });
   }
+
+  @override
+  Future<Either<List<Lead>, List<Lead>>> getSearchedLeads(String custDetail, String type, String subType, BuildContext context) async{
+    final getSearchedLeads= await _leadDataSource.getSearchedLeads(custDetail,type,subType,context);
+
+    return getSearchedLeads.fold((error){
+      return Left(error);
+    },(leadsList){
+      return Right(leadsList.map((e) => const LeadDto().toDomain(e)).toList());
+    });
+  }
 }

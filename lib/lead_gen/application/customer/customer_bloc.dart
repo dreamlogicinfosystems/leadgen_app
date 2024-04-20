@@ -43,7 +43,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
         searchCustomer: (e) async{
           emit(const CustomerState.loadingInProgress());
 
-          final trySearchingCust = await _customerRepository.getSearchedCustomer(e.custDetail,e.context);
+          final trySearchingCust = await _customerRepository.getSearchedCustomer(e.custDetail,e.type,e.subType,e.context);
 
           trySearchingCust.fold((error){
             emit(CustomerState.failed(error.message));
