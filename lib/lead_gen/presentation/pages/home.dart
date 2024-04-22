@@ -83,9 +83,9 @@ class _HomeState extends State<Home> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height*0.07,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
                       Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                     ],
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 40),
                   Row(
                     children: [
                       Container(
@@ -116,21 +116,21 @@ class _HomeState extends State<Home> {
                       Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                     ],
                   ),
-                  const SizedBox(width: 10),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFF579DFF)
-                        ),
-                        height: 22,
-                        width: 22,
-                      ),
-                      const SizedBox(width: 8),
-                      Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                    ],
-                  ),
+                  // const SizedBox(width: 10),
+                  // Row(
+                  //   children: [
+                  //     Container(
+                  //       decoration: const BoxDecoration(
+                  //           shape: BoxShape.circle,
+                  //           color: Color(0xFF579DFF)
+                  //       ),
+                  //       height: 22,
+                  //       width: 22,
+                  //     ),
+                  //     const SizedBox(width: 8),
+                  //     Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                  //   ],
+                  // ),
                   // const Spacer(),
                   // Row(
                   //   children: [
@@ -268,9 +268,9 @@ class _HomeState extends State<Home> {
                                 width: MediaQuery.of(context).size.width,
                                 height: MediaQuery.of(context).size.height*0.07,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
                                         children: [
@@ -286,7 +286,7 @@ class _HomeState extends State<Home> {
                                           Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                                         ],
                                       ),
-                                      const SizedBox(width: 10),
+                                      const SizedBox(width: 40),
                                       Row(
                                         children: [
                                           Container(
@@ -301,21 +301,21 @@ class _HomeState extends State<Home> {
                                           Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                                         ],
                                       ),
-                                      const SizedBox(width: 10),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Color(0xFF579DFF)
-                                            ),
-                                            height: 22,
-                                            width: 22,
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                                        ],
-                                      ),
+                                      // const SizedBox(width: 10),
+                                      // Row(
+                                      //   children: [
+                                      //     Container(
+                                      //       decoration: const BoxDecoration(
+                                      //           shape: BoxShape.circle,
+                                      //           color: Color(0xFF579DFF)
+                                      //       ),
+                                      //       height: 22,
+                                      //       width: 22,
+                                      //     ),
+                                      //     const SizedBox(width: 8),
+                                      //     Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+                                      //   ],
+                                      // ),
                                       // const Spacer(),
                                       // Row(
                                       //   children: [

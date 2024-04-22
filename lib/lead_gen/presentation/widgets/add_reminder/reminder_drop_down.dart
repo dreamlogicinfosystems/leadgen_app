@@ -29,35 +29,38 @@ class _RepeatIntervalDropDownState extends State<RepeatIntervalDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField(
-      decoration: InputDecoration(
-        filled: true,
-        labelText: widget.labelText,
-        labelStyle: GoogleFonts.poppins(color: const Color(0xFF727373),fontWeight: FontWeight.w400,fontSize: 13),
-        fillColor: Colors.transparent,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 14),
-        enabledBorder: border,
-        focusedErrorBorder: border,
-        errorBorder: border,
-        focusedBorder: border,
-      ),
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: GoogleFonts.poppins(color: Colors.black),
-      validator: widget.validator,
-      items: widget.items.map<DropdownMenuItem<String>>((String value){
-        return DropdownMenuItem(
-          value: value,
-          child: Text(value,style: GoogleFonts.poppins(),)
-        );
-      }).toList(),
-      onChanged: (value){
-        if(value!.isNotEmpty){
-          setState(() {
-            selectedValue = value;
-          });
-          widget.getSelectedValue(selectedValue);
+    return ButtonTheme(
+      alignedDropdown: true,
+      child: DropdownButtonFormField(
+        decoration: InputDecoration(
+          filled: true,
+          labelText: widget.labelText,
+          labelStyle: GoogleFonts.poppins(color: const Color(0xFF727373),fontWeight: FontWeight.w400,fontSize: 13),
+          fillColor: Colors.transparent,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 14),
+          enabledBorder: border,
+          focusedErrorBorder: border,
+          errorBorder: border,
+          focusedBorder: border,
+        ),
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        style: GoogleFonts.poppins(color: Colors.black),
+        validator: widget.validator,
+        items: widget.items.map<DropdownMenuItem<String>>((String value){
+          return DropdownMenuItem(
+            value: value,
+            child: Text(value,style: GoogleFonts.poppins(),)
+          );
+        }).toList(),
+        onChanged: (value){
+          if(value!.isNotEmpty){
+            setState(() {
+              selectedValue = value;
+            });
+            widget.getSelectedValue(selectedValue);
+          }
         }
-      }
+      ),
     );
   }
 }

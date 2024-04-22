@@ -310,6 +310,9 @@ class _AddLeadState extends State<AddLead> {
                                       ),
                                       context),
                                     );
+
+                                    //reset department id
+                                    context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
                                   }
                                 },),
                             ),

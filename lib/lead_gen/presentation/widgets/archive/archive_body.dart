@@ -102,6 +102,8 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
                       context.read<LeadBloc>().add(
                         LeadEvent.getSearchedLead(_searchController.text,'archived_list',filter,context),
                       );
+                    }else{
+                      showErrorToastMessage("Please enter name to search");
                     }
                   },
                 ),

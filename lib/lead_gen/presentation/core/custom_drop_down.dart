@@ -38,34 +38,37 @@ class _CustomDropDownState extends State<CustomDropDown> {
       list.removeAt(0);
     }
 
-    return DropdownButtonFormField<Department>(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        style: GoogleFonts.poppins(color: Colors.black),
-        decoration: InputDecoration(
-          filled: true,
-          hintText: widget.hintText,
-          hintStyle: GoogleFonts.poppins(color: const Color(0xFF727373),fontWeight: FontWeight.w400,fontSize: 13),
-          fillColor: Colors.transparent,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 14),
-          enabledBorder: border,
-          focusedErrorBorder: border,
-          errorBorder: border,
-          focusedBorder: border,
-        ),
-        value: _selectedValue,
-        validator: widget.validator,
-        items: list.map<DropdownMenuItem<Department>>((Department department){
-             return DropdownMenuItem(
-               value: department,
-               child: Text(department.departmentName!),
-             );
-           }).toList(),
-        onChanged: (value){
-          setState(() {
-            _selectedValue = value;
-          });
-          widget.getSelectedValue(_selectedValue!);
-        }
+    return ButtonTheme(
+      alignedDropdown: true,
+      child: DropdownButtonFormField<Department>(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          style: GoogleFonts.poppins(color: Colors.black),
+          decoration: InputDecoration(
+            filled: true,
+            hintText: widget.hintText,
+            hintStyle: GoogleFonts.poppins(color: const Color(0xFF727373),fontWeight: FontWeight.w400,fontSize: 13),
+            fillColor: Colors.transparent,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 14),
+            enabledBorder: border,
+            focusedErrorBorder: border,
+            errorBorder: border,
+            focusedBorder: border,
+          ),
+          value: _selectedValue,
+          validator: widget.validator,
+          items: list.map<DropdownMenuItem<Department>>((Department department){
+               return DropdownMenuItem(
+                 value: department,
+                 child: Text(department.departmentName!),
+               );
+             }).toList(),
+          onChanged: (value){
+            setState(() {
+              _selectedValue = value;
+            });
+            widget.getSelectedValue(_selectedValue!);
+          }
+      ),
     );
   }
 }

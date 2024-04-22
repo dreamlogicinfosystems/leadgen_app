@@ -168,6 +168,8 @@ class _AddReminderState extends State<AddReminder> {
                               return 'Enter count';
                             }else if(value.contains(RegExp(r'[-,.]')) || value.contains(" ")){
                               return 'Invalid count';
+                            }else if(RegExp(r'^0+').hasMatch(value)){
+                              return 'Count cannot start with 0';
                             }else{
                               return null;
                             }
@@ -183,6 +185,7 @@ class _AddReminderState extends State<AddReminder> {
                               isBoardAddPage: true,
                               onTap: (){
                                 if(_formKey.currentState!.validate()){
+
                                   context.read<ReminderBloc>().add(
                                     ReminderEvent.addReminder(
                                       Reminder(
