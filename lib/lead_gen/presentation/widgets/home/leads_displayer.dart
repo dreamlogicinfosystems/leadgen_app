@@ -114,7 +114,9 @@ class _LeadsDisplayerState extends State<LeadsDisplayer> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => BlocProvider(
                           create: (context) => sl<LeadBloc>(),
                           child: ChatPage(lead:  widget.leadsList[index]),
-                        )));
+                        ))).then((value){
+
+                        });
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,

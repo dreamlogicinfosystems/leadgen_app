@@ -189,22 +189,28 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
         if(pickedTime!=null){
           if(pickedTime!.hour>=12){
             if(pickedTime!.hour==12){
-              time = "${pickedTime!.hour}:${pickedTime!.minute} PM";
+              final minute = pickedTime!.minute.toString().length==1? "0${pickedTime!.minute.toString()}" : pickedTime!.minute.toString();
+              time = "${pickedTime!.hour}:$minute PM";
             }else{
-              final hour = pickedTime!.hour - 12;
-              debugPrint(hour.toString());
-              time = "$hour:${pickedTime!.minute} PM";
+              final temp = pickedTime!.hour - 12;
+              final hour = temp.toString().length==1? "0${temp.toString()}" : temp.toString();
+              final minute = pickedTime!.minute.toString().length==1? "0${pickedTime!.minute.toString()}" : pickedTime!.minute.toString();
+              time = "$hour:$minute PM";
             }
           }
           else{
             if(pickedTime!.hour==00){
               final hour = pickedTime!.hour + 12;
+              final minute = pickedTime!.minute.toString().length==1? "0${pickedTime!.minute.toString()}" : pickedTime!.minute.toString();
               debugPrint(hour.toString());
-              time = "$hour:${pickedTime!.minute} AM";
+              time = "$hour:$minute AM";
             }else{
-              time = "${pickedTime!.hour}:${pickedTime!.minute} AM";
+              final hour = pickedTime!.hour.toString().length==1? "0${pickedTime!.hour.toString()}" : pickedTime!.hour.toString();
+              final minute = pickedTime!.minute.toString().length==1? "0${pickedTime!.minute.toString()}" : pickedTime!.minute.toString();
+              time = "$hour:$minute AM";
             }
           }
+
           final dateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime!.hour,pickedTime!.minute);
 
           if(isTimePassed(dateTime)){

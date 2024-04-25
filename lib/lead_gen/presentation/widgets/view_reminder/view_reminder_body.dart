@@ -88,15 +88,12 @@ class _ViewReminderBodyState extends State<ViewReminderBody> {
           color: Colors.white,
           child: TableCalendar(
             headerStyle: HeaderStyle(
-              headerPadding: const EdgeInsets.only(left: 25,bottom: 10),
-              leftChevronVisible: false,
-              rightChevronVisible: false,
               formatButtonVisible: false,
               titleTextStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 22),
             ),
             focusedDay: selectedDate,
             firstDay: DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day),
-            lastDay: DateTime.utc(DateTime.now().year, DateTime.now().month, noOfDaysInMonth),
+            lastDay: DateTime.utc(DateTime.now().year, 12, noOfDaysInMonth),
             calendarFormat: CalendarFormat.month,
             selectedDayPredicate: (day){
               return isSameDay(selectedDate,day);
