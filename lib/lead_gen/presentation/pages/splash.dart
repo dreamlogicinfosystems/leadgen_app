@@ -5,6 +5,7 @@ import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
 import '../../../injections.dart';
+import '../../application/licence/licence_bloc.dart';
 import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -31,8 +32,15 @@ class _SplashScreenState extends State<SplashScreen> {
       });
     }else{
       Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BlocProvider(
-          create: (context) => sl<LeadBloc>(),
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => sl<LeadBloc>(),
+            ),
+            BlocProvider(
+              create:  (context) => sl<LicenceBloc>(),
+            )
+          ],
           child: const Home(),
         )),(route) => false,);
       });

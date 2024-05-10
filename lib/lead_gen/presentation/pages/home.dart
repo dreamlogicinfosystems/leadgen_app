@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import '../../../injections.dart';
@@ -25,6 +26,7 @@ class _HomeState extends State<Home> {
   String type = 'all';
   int deptId = 1;
   String role = '';
+  bool? validity;
 
   Widget loading = ListView.builder(
       itemCount: 3,
@@ -71,7 +73,9 @@ class _HomeState extends State<Home> {
   void initState() {
     context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
     context.read<LeadBloc>().add(LeadEvent.getLeads('all',deptId, context));
+    context.read<LicenceBloc>().add(LicenceEvent.checkLicence(context));
     getRole();
+    getValidity();
     super.initState();
   }
 
@@ -79,6 +83,12 @@ class _HomeState extends State<Home> {
     role = await DepartmentBloc.getUserRole();
     setState(() {});
     await DepartmentBloc.getUserName();
+  }
+
+  getValidity() async{
+    validity = await DepartmentBloc.getValidity();
+    setState(() {});
+    debugPrint("licence validity: $validity");
   }
 
   @override
@@ -126,33 +136,6 @@ class _HomeState extends State<Home> {
                       Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
                     ],
                   ),
-                  // const SizedBox(width: 10),
-                  // Row(
-                  //   children: [
-                  //     Container(
-                  //       decoration: const BoxDecoration(
-                  //           shape: BoxShape.circle,
-                  //           color: Color(0xFF579DFF)
-                  //       ),
-                  //       height: 22,
-                  //       width: 22,
-                  //     ),
-                  //     const SizedBox(width: 8),
-                  //     Text("Past",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-                  //   ],
-                  // ),
-                  // const Spacer(),
-                  // Row(
-                  //   children: [
-                  //     Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                  //     const SizedBox(width: 5),
-                  //     SizedBox(
-                  //       width: 20,
-                  //       height: 20,
-                  //       child: Image.asset('assets/images/Slider.png'),
-                  //     )
-                  //   ],
-                  // )
                 ],
               ),
             ),
@@ -179,7 +162,7 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: true
         ),
       ),
-      bottomNavigationBar: role=="user"? const SizedBox() : const CustomBottomNavBar(
+      bottomNavigationBar: role=="user" || validity==false? const SizedBox() : const CustomBottomNavBar(
         title: 'Add Lead',
         isHomePage: true
       ),
@@ -422,13 +405,15 @@ class _HomeState extends State<Home> {
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       const SizedBox(height: 2),
-                                                      Text(leadsList[index].name!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                                                      Text(leadsList[index].name!,style: GoogleFonts.poppins(
+                                                          fontSize: 14,fontWeight: FontWeight.w500),),
                                                       const SizedBox(height: 2),
                                                       SizedBox(
                                                         width: MediaQuery.of(context).size.width*0.65,
                                                         height: MediaQuery.of(context).size.height*0.061,
                                                         child: Text(leadsList[index].title!,style:
-                                                        GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
+                                                        GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,
+                                                            color: const Color(0xFF8A8A8B)),),
                                                       )
                                                     ],
                                                   ),

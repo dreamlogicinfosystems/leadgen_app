@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
+import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
@@ -68,8 +69,15 @@ class _LoginState extends State<Login> {
                           showToastMessage(message!);
                           Navigator.pop(context);
                           Navigator.pushAndRemoveUntil(context,
-                              MaterialPageRoute(builder: (context) => BlocProvider(
-                                create: (context) => sl<LeadBloc>(),
+                              MaterialPageRoute(builder: (context) => MultiBlocProvider(
+                                providers: [
+                                  BlocProvider(
+                                    create: (context) => sl<LeadBloc>(),
+                                  ),
+                                  BlocProvider(
+                                    create:  (context) => sl<LicenceBloc>(),
+                                  )
+                                ],
                                 child: const Home(),
                               )), (route) => false);
                         },

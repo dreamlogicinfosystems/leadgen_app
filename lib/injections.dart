@@ -10,11 +10,13 @@ import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
 import 'package:lead_gen/lead_gen/data/customer/customer_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/department/department_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/department_user/department_user_repo_impl.dart';
+import 'package:lead_gen/lead_gen/data/licence/licence_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/profile/profile_repo_impl.dart';
 import 'package:lead_gen/lead_gen/data/reminder/reminder_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'lead_gen/application/customer/customer_bloc.dart';
+import 'lead_gen/application/licence/licence_bloc.dart';
 import 'lead_gen/application/profile/profile_bloc.dart';
 import 'lead_gen/constants/api.dart';
 import 'lead_gen/constants/shared_preference.dart';
@@ -26,6 +28,7 @@ import 'lead_gen/data/lead/lead_data_source.dart';
 import 'lead_gen/data/lead/lead_repo_impl.dart';
 import 'lead_gen/data/lead_count/lead_count_data_source.dart';
 import 'lead_gen/data/lead_count/lead_count_repo_impl.dart';
+import 'lead_gen/data/licence/licence_data_source.dart';
 import 'lead_gen/data/profile/profile_data_source.dart';
 import 'lead_gen/data/reminder/local_notification_handler.dart';
 import 'lead_gen/data/reminder/reminder_api_data_source.dart';
@@ -35,6 +38,7 @@ import 'lead_gen/domain/department/department_repository.dart';
 import 'lead_gen/domain/department_user/department_user_repo.dart';
 import 'lead_gen/domain/lead/lead_repository.dart';
 import 'lead_gen/domain/lead_count/lead_count_repository.dart';
+import 'lead_gen/domain/licence/licence_repository.dart';
 import 'lead_gen/domain/profile/profile_repository.dart';
 import 'lead_gen/domain/reminder/reminder_repository.dart';
 
@@ -58,6 +62,8 @@ void serviceLocator() async{
 
   sl.registerFactory<LeadCountBloc>(() => LeadCountBloc(sl()));
 
+  sl.registerFactory<LicenceBloc>(() => LicenceBloc(sl()));
+
   //repo
   sl.registerLazySingleton<LeadCountRepository>(() => LeadCountRepositoryImpl(sl()));
 
@@ -75,10 +81,14 @@ void serviceLocator() async{
 
   sl.registerLazySingleton<DepartmentRepository>(() => DepartmentRepositoryImpl(sl()));
 
+  sl.registerLazySingleton<LicenceRepository>(() => LicenceRepositoryImpl(sl(),sl()));
+
   //data source
   sl.registerLazySingleton<LeadCountDataSource>(() => LeadCountDataSource(sl()));
 
   sl.registerLazySingleton<CustomerDataSource>(() => CustomerDataSource(sl()));
+
+  sl.registerLazySingleton<LicenceDataSource>(() => LicenceDataSource(sl(),sl()));
 
   sl.registerLazySingleton<LeadDataSource>(() => LeadDataSource(sl(),sl()));
 

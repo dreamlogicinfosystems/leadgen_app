@@ -43,4 +43,22 @@ class LocalDataSource{
     final role = _sharedPreferences.getString('role');
     return role;
   }
+
+  Future<void> setLicenceValidity(bool validity) async{
+    await _sharedPreferences.setBool('licence_validity', validity);
+  }
+
+  Future<bool?> getLicenceValidity() async{
+    final validity = _sharedPreferences.getBool('licence_validity');
+    return validity;
+  }
+
+  Future<void> setUserId(String userId) async{
+    await _sharedPreferences.setString('user_id', userId);
+  }
+
+  Future<String?> getUserId() async{
+    final id = _sharedPreferences.getString('user_id');
+    return id;
+  }
 }

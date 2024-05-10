@@ -8,6 +8,7 @@ import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../injections.dart';
 import '../../application/lead/lead_bloc.dart';
+import '../../application/licence/licence_bloc.dart';
 import '../../constants/constant.dart';
 import '../../domain/auth/user.dart';
 import '../core/custom_appbar.dart';
@@ -79,8 +80,15 @@ class _RegisterState extends State<Register> {
                         showToastMessage(message!);
                         Navigator.pop(context);
                         Navigator.pushAndRemoveUntil(context,
-                            MaterialPageRoute(builder: (context) => BlocProvider(
-                              create: (context) => sl<LeadBloc>(),
+                            MaterialPageRoute(builder: (context) => MultiBlocProvider(
+                              providers: [
+                                BlocProvider(
+                                  create: (context) => sl<LeadBloc>(),
+                                ),
+                                BlocProvider(
+                                  create:  (context) => sl<LicenceBloc>(),
+                                )
+                              ],
                               child: const Home(),
                             )), (route) => false);
                       },

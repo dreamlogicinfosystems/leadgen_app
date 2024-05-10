@@ -50,6 +50,8 @@ class AuthApiDataSource{
           userDto.name!, userDto.email!
       );
 
+      await _localDataSource.setUserId(result['user']['id'].toString());
+
       return Right(Success(result['message']));
     }else{
       String error = '';
@@ -89,6 +91,8 @@ class AuthApiDataSource{
       await _localDataSource.storeUserData(
         result['user']['name'], email,
       );
+
+      await _localDataSource.setUserId(result['user']['id'].toString());
 
       if(context.mounted){
         await updateFcmToken(result['user']['id'],fcmToken, device, context);

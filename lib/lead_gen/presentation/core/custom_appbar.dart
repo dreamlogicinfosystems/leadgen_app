@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department_user/department_user_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/notification.dart';
 
@@ -76,16 +77,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
             : widget.isBoardPage==true || widget.isUserPage==true?
           GestureDetector(
             onTap: (){
-              widget.isBoardPage==true?
-              showDialog(context: context, builder: (context) => const AddBoard(buttonName: 'Add',)) :
-              widget.isUserPage==true?
+              widget.isBoardPage==true && DepartmentBloc.validity==true?
+              showDialog(context: context, builder: (context) => const AddBoard(buttonName: 'Add')) :
+              widget.isUserPage==true && DepartmentBloc.validity==true?
               showDialog(context: context, builder: (context) => BlocProvider(
                 create: (context) => sl<DepartmentUserBloc>(),
-                child: const AddUser(title: 'Add',),
+                child: const AddUser(title: 'Add'),
               ))
               : ();
             },
-            child: Padding(
+            child: DepartmentBloc.validity==true? Padding(
               padding: const EdgeInsets.only(right: 20,top: 5),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width*0.0695, //25
@@ -94,7 +95,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   child: Image.asset("assets/images/add.png"),
                 ),
               ),
-            ),
+            ): const SizedBox(),
           ) : const SizedBox()
       ],
     );
