@@ -7,6 +7,7 @@ import 'package:lead_gen/lead_gen/constants/constant.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../../injections.dart';
 import '../../../application/lead/lead_bloc.dart';
+import '../../../application/licence/licence_bloc.dart';
 import '../../../domain/auth/user.dart';
 import '../../core/custom_button.dart';
 import '../../core/custom_textfield.dart';
@@ -84,8 +85,15 @@ class _ProfileBodyState extends State<ProfileBody> {
                   showToastMessage(message);
                   Navigator.pop(context);
                   Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) => BlocProvider(
-                        create: (context) => sl<LeadBloc>(),
+                      MaterialPageRoute(builder: (context) => MultiBlocProvider(
+                        providers: [
+                          BlocProvider(
+                            create:  (context) => sl<LicenceBloc>(),
+                          ),
+                          BlocProvider(
+                            create: (context) => sl<LeadBloc>(),
+                          )
+                        ],
                         child: const Home(),
                       )), (route) => false);
                 },

@@ -162,7 +162,7 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: true
         ),
       ),
-      bottomNavigationBar: role=="user" || validity==false? const SizedBox() : const CustomBottomNavBar(
+      bottomNavigationBar: validity==false? const SizedBox() : const CustomBottomNavBar(
         title: 'Add Lead',
         isHomePage: true
       ),

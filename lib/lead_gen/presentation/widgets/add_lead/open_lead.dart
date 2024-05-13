@@ -8,6 +8,7 @@ import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 
 import '../../../../injections.dart';
+import '../../../application/licence/licence_bloc.dart';
 import '../../../constants/constant.dart';
 import '../../pages/archive.dart';
 
@@ -40,8 +41,15 @@ class _OpenLeadDialogState extends State<OpenLeadDialog> {
               //to close container
               widget.source=="chat"?
               Navigator.pushAndRemoveUntil(context,
-                  MaterialPageRoute(builder: (context) => BlocProvider(
-                    create: (context) => sl<LeadBloc>(),
+                  MaterialPageRoute(builder: (context) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create:  (context) => sl<LicenceBloc>(),
+                      ),
+                      BlocProvider(
+                        create: (context) => sl<LeadBloc>(),
+                      )
+                    ],
                     child: const Home(),
                   )), (route) => false) :
               Navigator.pushAndRemoveUntil(context,

@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
@@ -120,8 +121,15 @@ class _AddLeadState extends State<AddLead> {
           success: (message){
             showToastMessage(message);
             Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) => BlocProvider(
-                    create: (context) => sl<LeadBloc>(),
+                MaterialPageRoute(builder: (context) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider(
+                        create: (context) => sl<LeadBloc>(),
+                      ),
+                      BlocProvider(
+                        create: (context) => sl<LicenceBloc>(),
+                      )
+                    ],
                     child: const Home(),
                   )), (route) => false);
           },
