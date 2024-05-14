@@ -52,6 +52,10 @@ class AuthApiDataSource{
 
       await _localDataSource.setUserId(result['user']['id'].toString());
 
+      if(context.mounted){
+        await checkLicenceValidity(result['user']['id'].toString(), context);
+      }
+
       return Right(Success(result['message']));
     }else{
       String error = '';
@@ -232,6 +236,33 @@ class AuthApiDataSource{
         return Right(Success(result['message']));
       }else{
         return Left(ErrorMessage(result['message']));
+      }
+    }catch(e){
+      return Left(ErrorMessage(e.toString()));
+    }
+  }
+
+  Future<Either<ErrorMessage,String>> checkLicenceValidity(String userId,BuildContext context) async{
+    try{
+      Map<String,dynamic> map = {};
+
+      map["id"] = userId;
+
+      final response = await _apiMethods.post(
+          url: 'check_license',
+          data: map,
+          context: context
+      );
+
+      final result = jsonDecode(response!.body);
+
+      if(result['status'] == true){
+        //store check validity value
+        await _localDataSource.setLicenceValidity(true);
+        return Right(result['message']);
+      }else{
+        await _localDataSource.setLicenceValidity(false);
+        return Left(ErrorMessage(result["message"]));
       }
     }catch(e){
       return Left(ErrorMessage(e.toString()));

@@ -42,7 +42,7 @@ class LeadDataSource{
       final result = jsonDecode(response!.body);
 
       if(result['status'] == true){
-        if(reminderTime != DateTime(0)){
+        if(reminderTime != DateTime(0) && leadDto.date!.isNotEmpty){
           final randomNumber = DateTime.now().millisecondsSinceEpoch;
           //generating a random number
           final id = int.parse(randomNumber.toString().substring(7,13));

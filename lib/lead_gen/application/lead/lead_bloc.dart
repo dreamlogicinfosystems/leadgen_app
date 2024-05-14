@@ -28,11 +28,11 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
         addLead: (e) async{
           emit(const LeadState.loadingInProgress());
 
-          if(pickedDate!=null){
+          if(pickedDate!=null && e.lead.date!.isNotEmpty){
             formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate!);
           }
 
-          if(pickedDate!=null){
+          if(pickedDate!=null && e.lead.date!.isNotEmpty){
             reminderDateTime = DateTime(pickedDate!.year,pickedDate!.month,pickedDate!.day,pickedTime!.hour,pickedTime!.minute);
           }
 
@@ -47,7 +47,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
                 message: e.lead.message,
                 departmentIds: e.lead.departmentIds
               ),
-              reminderDateTime==null? DateTime(0) : reminderDateTime!,
+              reminderDateTime==null || e.lead.date!.isEmpty? DateTime(0) : reminderDateTime!,
               e.context
           );
 
