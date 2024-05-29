@@ -232,7 +232,7 @@ class _ChatDetailsDisplayerState extends State<ChatDetailsDisplayer> {
             padding: const EdgeInsets.only(bottom: 10),
             child: Container(
               decoration: BoxDecoration(
-                  color: const Color(0xFFDCF7C5),
+                  color: DepartmentBloc.userName==widget.chatDetails[index].name? const Color(0xFFDCF7C5) : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(10)
               ),
               child: Padding(

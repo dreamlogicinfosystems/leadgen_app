@@ -1,10 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
-import 'package:lead_gen/lead_gen/helper/firebase_notifications.dart';
 
 import 'injections.dart';
 import 'lead_gen/data/reminder/local_notification_handler.dart';
