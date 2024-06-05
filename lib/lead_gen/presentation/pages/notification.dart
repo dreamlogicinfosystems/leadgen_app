@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:lead_gen/lead_gen/helper/firebase_access_token.dart';
 
 import '../core/custom_appbar.dart';
 import '../widgets/notification/notification_page_body.dart';
@@ -13,6 +14,7 @@ class NotificationPage extends StatefulWidget {
 
 class _NotificationPageState extends State<NotificationPage> {
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final FirebaseAccessToken accessToken = FirebaseAccessToken();
 
   @override
   void initState() {
@@ -23,6 +25,9 @@ class _NotificationPageState extends State<NotificationPage> {
   Future<void> getToken() async{
     final fcmToken = await _firebaseMessaging.getToken();
     print("fcm token: $fcmToken");
+
+    final accessTok = await accessToken.getAccessToken();
+    print("access token: $accessTok");
   }
 
   @override

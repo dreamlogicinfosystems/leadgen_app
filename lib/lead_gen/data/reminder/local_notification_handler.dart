@@ -179,6 +179,14 @@ class LocalNotificationHandler{
     }
   }
 
+  AndroidNotificationDetails androidNotificationDetails = const AndroidNotificationDetails(
+    "1",
+    "LeadGen",
+    channelDescription:  "reminder",
+    priority: Priority.max,
+    importance: Importance.max,
+  );
+
   setRemainder(String message,DateTime date,TimeOfDay time) async{
     DateTime reminderDateTime = DateTime(date.year,date.month,date.day,time.hour,time.minute);
 
@@ -187,14 +195,6 @@ class LocalNotificationHandler{
     tz.TZDateTime scheduledDateTime = tz.TZDateTime.from(
         reminderDateTime
         ,location
-    );
-
-    AndroidNotificationDetails androidNotificationDetails = const AndroidNotificationDetails(
-        "1",
-        "LeadGen",
-        channelDescription:  "reminder",
-        priority: Priority.max,
-        importance: Importance.max,
     );
 
     NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails);
@@ -206,6 +206,17 @@ class LocalNotificationHandler{
         scheduledDateTime,
         notificationDetails,
         uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+    );
+  }
+
+  void showNotification(String title,String body) async {
+    NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails);
+
+    await _flutterLocalNotificationsPlugin.show(
+        0001,
+        title,
+        body,
+        notificationDetails
     );
   }
 }

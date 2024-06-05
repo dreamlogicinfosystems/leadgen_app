@@ -4,6 +4,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../data/reminder/local_notification_handler.dart';
+
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   debugPrint("Handling a background message: ${message.messageId}");
@@ -27,17 +29,17 @@ void showToastMessage(RemoteMessage message) {
 
 class FCM {
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
+  final localNotificationHandler = LocalNotificationHandler();
 
   init() async{
     await registerNotification();
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      debugPrint("title on message:${message.notification?.title.toString()}");
-      debugPrint("body on message:${message.notification?.body.toString()}");
-      debugPrint("type of message:${message.data.toString()}");
-      debugPrint("type of message:${message.data['typeE']}");
-      debugPrint("id of message:${message.data['id']}");
-      showToastMessage(message);
+      //show localNotification when received
+      localNotificationHandler.showNotification(
+          message.notification!.title!,
+          message.notification!.body!
+      );
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
