@@ -6,7 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
   debugPrint("Handling a background message: ${message.messageId}");
 }
 

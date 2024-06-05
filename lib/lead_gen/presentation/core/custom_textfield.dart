@@ -20,6 +20,8 @@ class CustomTextField extends StatefulWidget {
   final Function()? onEditingComplete;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
+  final Function(String)? onSubmitted;
+  final FocusNode? focusNode;
 
   const CustomTextField(
       {Key? key,
@@ -36,7 +38,7 @@ class CustomTextField extends StatefulWidget {
         this.isLogin, this.labelText,
         this.isLoginPass, this.suffixIcon,
         this.onEditingComplete,
-        this.isBoardAddPage
+        this.isBoardAddPage, this.focusNode, this.onSubmitted
       })
       : super(key: key);
 
@@ -66,7 +68,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       style: GoogleFonts.poppins(fontSize: 14),
       controller: widget.controller,
-
       onTap: (){
         if(widget.onTap!=null){
           widget.onTap!();
@@ -78,9 +79,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           widget.onEditingComplete!();
         }
       },
+      onFieldSubmitted: widget.onSubmitted,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
       enabled: true,
+      focusNode: widget.focusNode,
       readOnly: widget.readOnly==null? false: widget.readOnly!,
       maxLines: widget.maxLines,
       obscureText: widget.obscureText==null? false : widget.obscureText!,

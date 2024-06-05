@@ -16,7 +16,7 @@ showToastMessage(String message){
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade300,
       textColor: Colors.black,
       fontSize: 17.0
   );

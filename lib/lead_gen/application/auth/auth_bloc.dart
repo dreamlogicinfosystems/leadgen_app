@@ -1,6 +1,7 @@
 import 'dart:io';
 
 // import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,9 +15,9 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
-  // static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   static String device = '';
-  static String fcmToken = 'abcd'; //TODO: FOR TEST
+  static String fcmToken = '';
   AuthBloc(this._authRepository) : super(const AuthState.initial()) {
     on<AuthEvent>(mapEventToState);
   }
@@ -115,11 +116,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   static Future<void>getFcmTokenAndDevice() async{
-    //TODO: REMIND TO UNCOMMENT
-    // final firebaseToken = await _firebaseMessaging.getToken();
-    // if(firebaseToken!=null){
-    //   fcmToken = firebaseToken;
-    // }
+    final firebaseToken = await _firebaseMessaging.getToken();
+    if(firebaseToken!=null){
+      fcmToken = firebaseToken;
+    }
 
     if(Platform.isAndroid){
       device = 'android';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
@@ -50,23 +51,25 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context){
-    return  Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      body:  Center(
-          child:  Container(
-            width: 200,
-            height: 80,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10))
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      body: SizedBox(
+        width: width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: width*0.8,
+              height: height*0.17,
+              child: Image.asset("assets/images/splash.png"),
             ),
-            child: const Center(
-              child: Text("Lead Gen",style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w600
-              ),),
-            ),
-          )
+            Text("Never miss a lead",style:
+            GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w500))
+          ],
+        ),
       ),
     );
   }

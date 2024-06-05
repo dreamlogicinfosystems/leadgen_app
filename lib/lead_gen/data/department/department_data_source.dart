@@ -40,7 +40,7 @@ class DepartmentDataSource{
         return Left(ErrorMessage(error));
       }
     }catch(e){
-      return Left(ErrorMessage(e.toString()));
+      return Left(ErrorMessage("Something went wrong! Please try again"));
     }
   }
 
@@ -70,7 +70,7 @@ class DepartmentDataSource{
         return Left(ErrorMessage(result['message']));
       }
     }catch(e){
-      return Left(ErrorMessage(e.toString()));
+      return Left(ErrorMessage("Something went wrong! Please try again"));
     }
   }
 

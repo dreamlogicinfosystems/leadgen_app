@@ -36,6 +36,15 @@ class _ProfileBodyState extends State<ProfileBody> {
   final _linkedin = TextEditingController();
   final _google = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  //focus keyboard
+  final _focusFullName = FocusNode();
+  final _focusEmail = FocusNode();
+  final _focusPhone = FocusNode();
+  final _focusBussName = FocusNode();
+  final _focusAddress = FocusNode();
+  final _focusState = FocusNode();
+  final _focusCountry = FocusNode();
+  final _focusPin = FocusNode();
 
   @override
   void initState() {
@@ -60,6 +69,14 @@ class _ProfileBodyState extends State<ProfileBody> {
     _twitter.dispose();
     _linkedin.dispose();
     _google.dispose();
+    _focusFullName.dispose();
+    _focusEmail.dispose();
+    _focusPhone.dispose();
+    _focusBussName.dispose();
+    _focusAddress.dispose();
+    _focusState.dispose();
+    _focusCountry.dispose();
+    _focusPin.dispose();
     super.dispose();
   }
 
@@ -138,6 +155,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                               controller: _nameController,
                               labelText: 'Name',
                               keyBoardType: TextInputType.text,
+                              focusNode: _focusFullName,
+                              onSubmitted: (value){
+                                FocusScope.of(context).requestFocus(_focusEmail);
+                              },
                               validator: (value){
                                 if(value=='' || value!.trim()==''){
                                   return 'Enter Name';
@@ -155,6 +176,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                               controller: _emailController,
                               labelText: 'Email',
                               keyBoardType: TextInputType.emailAddress,
+                              focusNode: _focusEmail,
+                              onSubmitted: (value){
+                                FocusScope.of(context).requestFocus(_focusPhone);
+                              },
                               validator: (value){
                                 if(value=='' || value!.trim()==''){
                                   return 'Enter Email';
@@ -172,6 +197,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                               controller: _phoneController,
                               labelText: 'Phone',
                               keyBoardType: TextInputType.number,
+                              focusNode: _focusPhone,
+                              onSubmitted: (value){
+                                FocusScope.of(context).requestFocus(_focusBussName);
+                              },
                               validator: (value){
                                 if(value=='' || value!.trim()==''){
                                   return 'Enter Phone Number';
@@ -189,6 +218,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                               controller: _businessNameControll,
                               labelText: 'Business Name',
                               keyBoardType: TextInputType.text,
+                              focusNode: _focusBussName,
+                              onSubmitted: (value){
+                                FocusScope.of(context).requestFocus(_focusAddress);
+                              },
                               validator: (value){
                                 if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
                                   return 'Invalid Business Name';
@@ -205,6 +238,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                               labelText: 'Address',
                               keyBoardType: TextInputType.text,
                               maxLines: 3,
+                              focusNode: _focusAddress,
+                              onSubmitted: (value){
+                                FocusScope.of(context).requestFocus(_focusState);
+                              },
                               validator: (value){
                                 if(value!.isEmpty || value.trim()==''){
                                   return 'Enter address';
@@ -223,6 +260,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                                     controller: _stateController,
                                     labelText: 'State',
                                     keyBoardType: TextInputType.text,
+                                    focusNode: _focusState,
+                                    onSubmitted: (value){
+                                      FocusScope.of(context).requestFocus(_focusCountry);
+                                    },
                                     validator: (value){
                                       if(value!.isEmpty || value.trim()==''){
                                         return 'Enter State';
@@ -240,6 +281,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                                       controller: _countryController,
                                       labelText: 'Country',
                                       keyBoardType: TextInputType.text,
+                                      focusNode: _focusCountry,
+                                      onSubmitted: (value){
+                                        FocusScope.of(context).requestFocus(_focusPin);
+                                      },
                                       validator: (value){
                                         if(value!.isEmpty || value.trim()==''){
                                           return 'Enter Country';
@@ -258,6 +303,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                               controller: _pincodeController,
                               labelText: 'Pin code',
                               keyBoardType: TextInputType.number,
+                              focusNode: _focusPin,
+                              onSubmitted: (value){
+                                FocusScope.of(context).unfocus();
+                              },
                               validator: (value){
                                 if(value!.isEmpty || value.trim()==''){
                                   return 'Enter Pincode';

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
@@ -6,13 +7,25 @@ import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
 
 import 'injections.dart';
 import 'lead_gen/data/reminder/local_notification_handler.dart';
+import 'lead_gen/helper/firebase_data.dart';
+import 'lead_gen/helper/firebase_notifications.dart';
 import 'lead_gen/presentation/pages/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: FirebaseData.apiKey,
+      appId: FirebaseData.appId,
+      messagingSenderId: FirebaseData.messagingSenderId,
+      projectId: FirebaseData.projectId,
+      storageBucket: FirebaseData.storageBucket
+    )
+  );
+
   await LocalNotificationHandler().init();
-  // await FCM().init();
+  await FCM().init();
   serviceLocator();
   runApp(const MyApp());
 }
