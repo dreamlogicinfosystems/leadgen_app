@@ -8,7 +8,7 @@ part of 'department_dto.dart';
 
 _$DepartmentDtoImpl _$$DepartmentDtoImplFromJson(Map<String, dynamic> json) =>
     _$DepartmentDtoImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       departmentName: json['departmentName'] as String?,
     );
 

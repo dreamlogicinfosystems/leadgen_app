@@ -9,13 +9,13 @@ part of 'department_user_dto.dart';
 _$DepartmentUserDtoImpl _$$DepartmentUserDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$DepartmentUserDtoImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       email: json['email'] as String?,
       password: json['password'] as String?,
       departmentId: (json['departmentId'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
       departmentDtos: (json['departmentDtos'] as List<dynamic>?)
           ?.map((e) => DepartmentDto.fromJson(e as Map<String, dynamic>))

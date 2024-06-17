@@ -7,6 +7,7 @@ import 'package:lead_gen/lead_gen/data/lead/chat_details_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
+import '../../constants/api_endpoint.dart';
 import '../../constants/error.dart';
 import '../reminder/local_notification_handler.dart';
 import 'lead_dto.dart';
@@ -14,7 +15,8 @@ import 'lead_dto.dart';
 class LeadDataSource{
   final ApiMethods _apiMethods;
   final LocalNotificationHandler _localNotificationHandler;
-  LeadDataSource(this._apiMethods, this._localNotificationHandler);
+  final ApiEndPoint _apiEndPoint;
+  LeadDataSource(this._apiMethods, this._localNotificationHandler, this._apiEndPoint);
 
   Future<Either<ErrorMessage,Success>> addLeadToServer(LeadDto leadDto,DateTime reminderTime,BuildContext context) async{
     try{
@@ -34,7 +36,7 @@ class LeadDataSource{
       map['department_ids'] = departmentIds;
 
       final response = await _apiMethods.post(
-          url: 'add_lead',
+          url: _apiEndPoint.addLead,
           data: map,
           context: context
       );
@@ -66,7 +68,7 @@ class LeadDataSource{
       map['message'] = leadDto.message;
 
       final response = await _apiMethods.post(
-          url: 'add_lead_chat',
+          url: _apiEndPoint.addLeadChat,
           data: map,
           context: context
       );
@@ -177,7 +179,7 @@ class LeadDataSource{
       map['status_id'] = statusId.toString();
 
       final response = await _apiMethods.post(
-          url: 'update_lead_status',
+          url: _apiEndPoint.updateLeadStatus,
           data: map,
           context: context
       );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
+import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
@@ -283,6 +284,20 @@ class _AddLeadState extends State<AddLead> {
                           CustomTextField(
                               isBoardAddPage: true,
                               labelText: 'Reminder',
+                              clearReminder: true,
+                              clearReminderWidget: Padding(
+                                padding: const EdgeInsets.only(top:5),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    _reminderController.clear();
+                                    //also mark picked date , time & reminder time null
+                                    LeadBloc.pickedDate = null;
+                                    LeadBloc.pickedTime = null;
+                                    LeadBloc.reminderDateTime = null;
+                                  },
+                                  child: Icon(Icons.clear,size: 16),
+                                ),
+                              ),
                               controller: _reminderController,
                               onTap: (){
                                 pickReminderDate();

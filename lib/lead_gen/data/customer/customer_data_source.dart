@@ -8,16 +8,19 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/customer/customer_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/lead_dto.dart';
 
+import '../../constants/api_endpoint.dart';
+
 class CustomerDataSource{
   final ApiMethods _apiMethods;
-  CustomerDataSource(this._apiMethods);
+  final ApiEndPoint _apiEndpoint;
+  CustomerDataSource(this._apiMethods, this._apiEndpoint);
 
   Future<Either<ErrorMessage,List<CustomerDto>>>getCustomers(BuildContext context) async{
     try{
       List<CustomerDto> customersList = [];
 
       final response = await _apiMethods.get(
-          url: 'get_customers',
+          url: _apiEndpoint.getCustomers,
           context: context
       );
 
@@ -123,7 +126,7 @@ class CustomerDataSource{
     map['email'] = customer.custEmail;
 
     final response = await _apiMethods.post(
-        url: 'update_customer',
+        url: _apiEndpoint.updateCustomer,
         data: map,
         context: context
     );

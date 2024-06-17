@@ -5,13 +5,15 @@ import 'package:flutter/cupertino.dart';
 
 import '../../constants/api.dart';
 
+import '../../constants/api_endpoint.dart';
 import '../../constants/error.dart';
 import '../../constants/shared_preference.dart';
 
 class LicenceDataSource{
   final ApiMethods _apiMethods;
+  final ApiEndPoint _apiEndPoint;
   final LocalDataSource _localDataSource;
-  LicenceDataSource(this._apiMethods, this._localDataSource);
+  LicenceDataSource(this._apiMethods, this._localDataSource, this._apiEndPoint);
 
   Future<Either<ErrorMessage,String>> checkLicenceValidity(String userId,BuildContext context) async{
     try{
@@ -20,7 +22,7 @@ class LicenceDataSource{
       map["id"] = userId;
 
       final response = await _apiMethods.post(
-          url: 'check_license',
+          url: _apiEndPoint.checkLicense,
           data: map,
           context: context
       );

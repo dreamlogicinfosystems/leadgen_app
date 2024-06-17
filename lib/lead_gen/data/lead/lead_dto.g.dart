@@ -8,7 +8,7 @@ part of 'lead_dto.dart';
 
 _$LeadDtoImpl _$$LeadDtoImplFromJson(Map<String, dynamic> json) =>
     _$LeadDtoImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       email: json['email'] as String?,
@@ -20,7 +20,7 @@ _$LeadDtoImpl _$$LeadDtoImplFromJson(Map<String, dynamic> json) =>
       showStatus: json['showStatus'] as String?,
       lastChatDate: json['lastChatDate'] as String?,
       departmentIds: (json['departmentIds'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
     );
 

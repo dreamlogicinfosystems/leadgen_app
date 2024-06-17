@@ -7,10 +7,12 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/department/department_dto.dart';
 
 import '../../constants/api.dart';
+import '../../constants/api_endpoint.dart';
 
 class DepartmentDataSource{
   final ApiMethods _apiMethods;
-  DepartmentDataSource(this._apiMethods);
+  final ApiEndPoint _apiEndPoint;
+  DepartmentDataSource(this._apiMethods, this._apiEndPoint);
 
   Future<Either<ErrorMessage,Success>> createDepartmentOnServer(String departmentName,BuildContext context) async{
     try{
@@ -19,7 +21,7 @@ class DepartmentDataSource{
       map['name'] = departmentName;
 
       final response = await _apiMethods.post(
-          url: 'add_department',
+          url: _apiEndPoint.addDepartment,
           data: map,
           context: context
       );
@@ -49,7 +51,7 @@ class DepartmentDataSource{
       List<DepartmentDto> departments = [];
 
       final response = await _apiMethods.get(
-          url: 'get_departments',
+          url: _apiEndPoint.getDepartments,
           context: context
       );
 
@@ -80,7 +82,7 @@ class DepartmentDataSource{
     map['id'] = deptId.toString();
     
     final response = await _apiMethods.post(
-        url: 'delete_department',
+        url: _apiEndPoint.deleteDepartment,
         data: map,
         context: context
     );
@@ -101,7 +103,7 @@ class DepartmentDataSource{
     map['name'] = departmentDto.departmentName;
 
     final response = await _apiMethods.post(
-        url: 'update_department',
+        url: _apiEndPoint.updateDepartment,
         data: map,
         context: context
     );

@@ -12,9 +12,11 @@ class CustomTextField extends StatefulWidget {
   final bool? isChatPage;
   final int? maxLength;
   final bool? isBoardAddPage;
+  final Widget? clearReminderWidget;
   final Function()? onTap;
   final IconData? icon;
   final bool? isLogin;
+  final bool? clearReminder;
   final bool? isLoginPass;
   final Widget? suffixIcon;
   final Function()? onEditingComplete;
@@ -38,7 +40,7 @@ class CustomTextField extends StatefulWidget {
         this.isLogin, this.labelText,
         this.isLoginPass, this.suffixIcon,
         this.onEditingComplete,
-        this.isBoardAddPage, this.focusNode, this.onSubmitted
+        this.isBoardAddPage, this.focusNode, this.onSubmitted, this.clearReminder, this.clearReminderWidget
       })
       : super(key: key);
 
@@ -91,6 +93,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLength: widget.maxLength,
       decoration: InputDecoration(
         prefixIcon: widget.isLogin==true? Icon(widget.icon) : null,
+        suffix: widget.clearReminder==true?
+          widget.clearReminderWidget: null,
+        suffixIconColor: Colors.black,
         fillColor: Colors.transparent,
         filled: true,
         hintText: widget.hintText,

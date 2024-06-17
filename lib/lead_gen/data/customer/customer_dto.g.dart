@@ -8,7 +8,7 @@ part of 'customer_dto.dart';
 
 _$CustomerDtoImpl _$$CustomerDtoImplFromJson(Map<String, dynamic> json) =>
     _$CustomerDtoImpl(
-      custId: json['custId'] as int?,
+      custId: (json['custId'] as num?)?.toInt(),
       custName: json['custName'] as String?,
       custPhone: json['custPhone'] as String?,
       custEmail: json['custEmail'] as String?,

@@ -7,12 +7,14 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/auth/user_dto.dart';
 
 import '../../constants/api.dart';
+import '../../constants/api_endpoint.dart';
 import '../../constants/shared_preference.dart';
 
 class ProfileDataSource{
   final ApiMethods _apiMethod;
+  final ApiEndPoint _apiEndPoint;
   final LocalDataSource _localDataSource;
-  ProfileDataSource(this._apiMethod, this._localDataSource);
+  ProfileDataSource(this._apiMethod, this._localDataSource, this._apiEndPoint);
 
   Future<Either<ErrorMessage,Success>> updateUserData(UserDto userDto,BuildContext context) async{
     Map<String,dynamic> userDetails = {};
@@ -34,7 +36,7 @@ class ProfileDataSource{
     userDetails['linkedIn'] = userDto.linkedIn;
 
     final response = await _apiMethod.post(
-        url: 'update_profile',
+        url: _apiEndPoint.updateProfile,
         data: userDetails,
         context: context
     );
@@ -56,7 +58,7 @@ class ProfileDataSource{
   Future<Either<ErrorMessage,UserDto>> getUserDetails(BuildContext context) async{
 
     final response = await _apiMethod.get(
-        url: 'get_profile',
+        url: _apiEndPoint.getProfile,
         context: context
     );
 

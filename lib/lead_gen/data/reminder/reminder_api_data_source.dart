@@ -6,13 +6,15 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/reminder/reminder_dto.dart';
 
 import '../../constants/api.dart';
+import '../../constants/api_endpoint.dart';
 import '../../constants/error.dart';
 import 'local_notification_handler.dart';
 
 class ReminderApiDataSource{
   final LocalNotificationHandler _localNotificationHandler;
   final ApiMethods _apiMethods;
-  ReminderApiDataSource(this._localNotificationHandler, this._apiMethods);
+  final ApiEndPoint _apiEndPoint;
+  ReminderApiDataSource(this._localNotificationHandler, this._apiMethods, this._apiEndPoint);
 
   Future<Either<String,String>> setReminderLocally(String message, DateTime reminderDate, TimeOfDay reminderTime) async{
     try{
@@ -37,7 +39,7 @@ class ReminderApiDataSource{
       map['repeat'] = reminderDto.repeatCount;
 
       final response = await _apiMethods.post(
-          url: 'add_reminder',
+          url: _apiEndPoint.addReminder,
           data: map,
           context: context
       );
@@ -73,7 +75,7 @@ class ReminderApiDataSource{
       map['id'] = reminderId;
 
       final response = await _apiMethods.post(
-          url: 'delete_reminder',
+          url: _apiEndPoint.deleteReminder,
           data: map,
           context: context
       );
@@ -98,7 +100,7 @@ class ReminderApiDataSource{
       List<ReminderDto> reminders = [];
       
       final response = await _apiMethods.get(
-          url: 'get_reminders',
+          url: _apiEndPoint.getReminders,
           context: context
       );
 
@@ -138,7 +140,7 @@ class ReminderApiDataSource{
 
   Future<Either<ErrorMessage,int>>getReminderCount(BuildContext context) async{
     final response = await _apiMethods.get(
-        url: 'get_reminders_count',
+        url: _apiEndPoint.getRemindersCount,
         context: context
     );
 

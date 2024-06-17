@@ -4,12 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/department_user/department_user_dto.dart';
 import '../../constants/api.dart';
+import '../../constants/api_endpoint.dart';
 import '../../constants/error.dart';
 import '../department/department_dto.dart';
 
 class DepartmentUserDataSource{
   final ApiMethods _apiMethods;
-  DepartmentUserDataSource(this._apiMethods);
+  final ApiEndPoint _apiEndPoint;
+  DepartmentUserDataSource(this._apiMethods, this._apiEndPoint);
 
   Future<Either<ErrorMessage,Success>> addDepartUser(DepartmentUserDto departmentUserDto,BuildContext context) async{
     try{
@@ -26,7 +28,7 @@ class DepartmentUserDataSource{
       map['department_ids'] = departmentIds;
 
       final response = await _apiMethods.post(
-          url: 'add_department_user',
+          url: _apiEndPoint.addDepartmentUser,
           data: map,
           context: context
       );
@@ -58,7 +60,7 @@ class DepartmentUserDataSource{
       map['id'] = userId.toString();
 
       final response = await _apiMethods.post(
-          url: 'delete_department_user',
+          url: _apiEndPoint.deleteDepartmentUser,
           data: map,
           context: context
       );
@@ -91,7 +93,7 @@ class DepartmentUserDataSource{
       map['department_ids'] = departmentIds;
       
       final response = await _apiMethods.post(
-          url: 'update_department_user',
+          url: _apiEndPoint.updateDepartmentUser,
           data: map,
           context: context
       );
@@ -122,7 +124,7 @@ class DepartmentUserDataSource{
       List<DepartmentDto> departmentDtoList = [];
 
       final response = await _apiMethods.get(
-          url: 'get_department_users',
+          url: _apiEndPoint.getDepartmentUsers,
           context: context
       );
 

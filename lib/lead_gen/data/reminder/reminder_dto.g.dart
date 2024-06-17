@@ -8,7 +8,7 @@ part of 'reminder_dto.dart';
 
 _$ReminderDtoImpl _$$ReminderDtoImplFromJson(Map<String, dynamic> json) =>
     _$ReminderDtoImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       message: json['message'] as String?,
       date: json['date'] as String?,
       time: json['time'] as String?,
@@ -35,7 +35,7 @@ Map<String, dynamic> _$$ReminderDtoImplToJson(_$ReminderDtoImpl instance) =>
 _$ReminderDataDtoImpl _$$ReminderDataDtoImplFromJson(
         Map<String, dynamic> json) =>
     _$ReminderDataDtoImpl(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       note: json['note'] as String?,
       inviteSendOn: json['inviteSendOn'] as String?,
     );

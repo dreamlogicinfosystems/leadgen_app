@@ -5,18 +5,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/api.dart';
 import 'package:lead_gen/lead_gen/data/status/status_dto.dart';
 
+import '../../constants/api_endpoint.dart';
 import '../../constants/error.dart';
 
 class StatusDataSource{
   final ApiMethods _apiMethods;
-  StatusDataSource(this._apiMethods);
+  final ApiEndPoint _apiEndPoint;
+  StatusDataSource(this._apiMethods, this._apiEndPoint);
   
   Future<Either<ErrorMessage,List<StatusDto>>>getStatusFromServer(BuildContext context) async{
     try{
       List<StatusDto> statusesList = [];
 
       final response = await _apiMethods.get(
-          url: 'get_statuses',
+          url: _apiEndPoint.getStatuses,
           context: context
       );
 

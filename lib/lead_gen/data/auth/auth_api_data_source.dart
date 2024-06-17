@@ -9,13 +9,15 @@ import 'package:lead_gen/lead_gen/data/auth/user_db.dart';
 import 'package:lead_gen/lead_gen/data/auth/user_dto.dart';
 
 import '../../constants/api.dart';
+import '../../constants/api_endpoint.dart';
 import '../../constants/shared_preference.dart';
 
 class AuthApiDataSource{
   final ApiMethods _apiMethods;
   final LocalDataSource _localDataSource;
   final UserDBHelper _userDBHelper;
-  AuthApiDataSource(this._apiMethods, this._localDataSource, this._userDBHelper);
+  final ApiEndPoint _apiEndPoint;
+  AuthApiDataSource(this._apiMethods, this._localDataSource, this._userDBHelper, this._apiEndPoint);
 
   String emailAddress = '';
   String saveOtp = '';
@@ -31,7 +33,7 @@ class AuthApiDataSource{
     map['device'] = userDto.device;
 
     final response = await _apiMethods.post(
-        url: 'register',
+        url: _apiEndPoint.register,
         data: map,
         context: context
     );
@@ -78,7 +80,7 @@ class AuthApiDataSource{
     map['password'] = password;
 
     final response = await _apiMethods.post(
-        url: 'login',
+        url: _apiEndPoint.login,
         data: map,
         context: context
     );
@@ -110,7 +112,7 @@ class AuthApiDataSource{
 
   Future<Either<ErrorMessage,Success>> logOut(BuildContext context) async{
     final response = await _apiMethods.post(
-        url: 'logout',
+        url: _apiEndPoint.logout,
         context: context
     );
 
@@ -134,7 +136,7 @@ class AuthApiDataSource{
     map['email'] = email;
     
     final response = await _apiMethods.post(
-        url: 'send_otp',
+        url: _apiEndPoint.sendOtp,
         data: map,
         context: context
     );
@@ -157,7 +159,7 @@ class AuthApiDataSource{
     map['otp'] = otp;
 
     final response = await _apiMethods.post(
-        url: 'verify_otp',
+        url: _apiEndPoint.verifyOtp,
         data: map,
         context: context
     );
@@ -182,7 +184,7 @@ class AuthApiDataSource{
     map['password'] = password;
 
     final response = await _apiMethods.post(
-        url: 'update_password',
+        url: _apiEndPoint.updatePassword,
         data: map,
         context: context
     );
@@ -204,7 +206,7 @@ class AuthApiDataSource{
     map['device'] = device;
 
     final response = await _apiMethods.post(
-        url: 'update_fcm_token',
+        url: _apiEndPoint.updateFcmToken,
         data: map,
         context: context
     );
@@ -225,7 +227,7 @@ class AuthApiDataSource{
       map['id'] = id.toString();
 
       final response = await _apiMethods.post(
-          url: 'delete_account_request',
+          url: _apiEndPoint.deleteAccountRequest,
           data: map,
           context: context
       );
@@ -249,7 +251,7 @@ class AuthApiDataSource{
       map["id"] = userId;
 
       final response = await _apiMethods.post(
-          url: 'check_license',
+          url: _apiEndPoint.checkLicense,
           data: map,
           context: context
       );
@@ -257,7 +259,7 @@ class AuthApiDataSource{
       final result = jsonDecode(response!.body);
 
       if(result['status'] == true){
-        //store check validity value
+        //to store check validity value
         await _localDataSource.setLicenceValidity(true);
         return Right(result['message']);
       }else{
