@@ -8,6 +8,7 @@ import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
 import '../../../injections.dart';
+import '../../application/lead_count/lead_count_bloc.dart';
 import '../../constants/constant.dart';
 import '../core/custom_bottom_navBar.dart';
 import '../widgets/home/leads_count_container.dart';
@@ -370,6 +371,7 @@ class _HomeState extends State<Home> {
                                               child: ChatPage(lead:  leadsList[index]),
                                             ))).then((value){
                                               context.read<LeadBloc>().add(LeadEvent.getLeads(type, deptId, context));
+                                              context.read<LeadCountBloc>().add(LeadCountEvent.getLeadCount(context));
                                             });
                                           },
                                           child: Container(
