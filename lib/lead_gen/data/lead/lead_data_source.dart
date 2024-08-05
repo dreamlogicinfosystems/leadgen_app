@@ -3,12 +3,14 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/api.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
+import 'package:lead_gen/lead_gen/data/department/department_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_details_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
 import '../../constants/api_endpoint.dart';
 import '../../constants/error.dart';
+import '../../domain/department/department.dart';
 import '../reminder/local_notification_handler.dart';
 import 'lead_dto.dart';
 
@@ -88,6 +90,7 @@ class LeadDataSource{
   Future<Either<List<Lead>,List<LeadDto>>>getLeads(String type,int deptId,BuildContext context) async{
     try{
       List<LeadDto> leadsList = [];
+      List<DepartmentDto> departments = [];
       
       final response = await _apiMethods.get(
           url: 'get_leads?type=$type&department_id=$deptId',
@@ -99,6 +102,18 @@ class LeadDataSource{
       if(result['status'] == true){
 
         for(int i = 0; i<result['leads'].length; i++){
+
+          final dept = result['leads'][i]['departments'];
+
+          for(int i=0; i<dept.length; i++){
+            DepartmentDto department = DepartmentDto(
+                id: dept[i]['id'],
+                departmentName: dept[i]['name']
+            );
+
+            departments.add(department);
+          }
+
           LeadDto leadDto = LeadDto(
             id: result['leads'][i]['id'],
             name: result['leads'][i]['name'],
@@ -108,10 +123,13 @@ class LeadDataSource{
             title: result['leads'][i]['title']?? '',
             createdAt: result['leads'][i]['created_at'],
             showStatus: result['leads'][i]['show_status'],
-            lastChatDate: result['leads'][i]['last_chat_date']
+            lastChatDate: result['leads'][i]['last_chat_date'],
+            departments: List.from(departments)
           );
 
           leadsList.add(leadDto);
+
+          departments.clear();
         }
         return Right(leadsList);
       }else{
@@ -199,7 +217,7 @@ class LeadDataSource{
   Future<Either<List<Lead>,List<LeadDto>>>getArchiveLeads(String type,String subType,BuildContext context) async{
 
     List<LeadDto> leadsList = [];
-
+    List<DepartmentDto> departments = [];
 
     final response = await _apiMethods.get(
         url: 'get_leads?type=$type&sub_type=$subType',
@@ -211,6 +229,17 @@ class LeadDataSource{
     if(result['status'] == true){
 
       for(int i = 0; i<result['leads'].length; i++){
+
+        final dept = result['leads'][i]['departments'];
+        
+        for(int i=0; i<dept.length; i++){
+          DepartmentDto department = DepartmentDto(
+              id: dept[i]['id'],
+              departmentName: dept[i]['name']
+          );
+          departments.add(department);
+        }
+        
         LeadDto leadDto = LeadDto(
             id: result['leads'][i]['id'],
             name: result['leads'][i]['name'],
@@ -220,10 +249,13 @@ class LeadDataSource{
             title: result['leads'][i]['title']?? '',
             createdAt: result['leads'][i]['created_at'],
             showStatus: result['leads'][i]['show_status'],
-            lastChatDate: result['leads'][i]['last_chat_date']
+            lastChatDate: result['leads'][i]['last_chat_date'],
+            departments: List.from(departments)
         );
 
         leadsList.add(leadDto);
+
+        departments.clear();
       }
       return Right(leadsList);
     }else{
@@ -263,6 +295,32 @@ class LeadDataSource{
       return Right(leadsList);
     }else{
       return const Left([]);
+    }
+  }
+
+  Future<Either<ErrorMessage,Success>> updateLeadDepartments(int leadId,List<int> deptIds,BuildContext context) async{
+    try{
+      Map<String,dynamic> map = {};
+      final departmentIds = deptIds.join(",");
+
+      map['id'] = leadId.toString();
+      map['department_ids'] = departmentIds;
+
+      final response = await _apiMethods.post(
+          url: 'update_lead_departments',
+          data: map,
+          context: context
+      );
+
+      final result = jsonDecode(response!.body);
+
+      if(result['status'] == true){
+        return Right(Success(result["message"]));
+      } else{
+        return Left(ErrorMessage(result["message"]));
+      }
+    } catch(e){
+      return Left(ErrorMessage(e.toString()));
     }
   }
 }

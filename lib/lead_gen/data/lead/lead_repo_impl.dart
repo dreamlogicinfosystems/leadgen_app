@@ -113,4 +113,15 @@ class LeadRepositoryImpl extends LeadRepository{
       return Right(leadsList.map((e) => const LeadDto().toDomain(e)).toList());
     });
   }
+
+  @override
+  Future<Either<ErrorMessage, Success>> updateLeadDepts(int leadId, List<int> deptIds, BuildContext context) async{
+    final result = await _leadDataSource.updateLeadDepartments(leadId, deptIds, context);
+
+    return result.fold((error){
+      return Left(error);
+    },(success){
+      return Right(success);
+    });
+  }
 }

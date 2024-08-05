@@ -39,6 +39,7 @@ mixin _$UserDto {
   String? get fcmToken => throw _privateConstructorUsedError;
   String? get device => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
+  String? get validity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,7 +70,8 @@ abstract class $UserDtoCopyWith<$Res> {
       String? google,
       String? fcmToken,
       String? device,
-      String? password});
+      String? password,
+      String? validity});
 }
 
 /// @nodoc
@@ -104,6 +106,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? fcmToken = freezed,
     Object? device = freezed,
     Object? password = freezed,
+    Object? validity = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -182,6 +185,10 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      validity: freezed == validity
+          ? _value.validity
+          : validity // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -212,7 +219,8 @@ abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String? google,
       String? fcmToken,
       String? device,
-      String? password});
+      String? password,
+      String? validity});
 }
 
 /// @nodoc
@@ -245,6 +253,7 @@ class __$$UserDtoImplCopyWithImpl<$Res>
     Object? fcmToken = freezed,
     Object? device = freezed,
     Object? password = freezed,
+    Object? validity = freezed,
   }) {
     return _then(_$UserDtoImpl(
       userId: freezed == userId
@@ -323,6 +332,10 @@ class __$$UserDtoImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
+      validity: freezed == validity
+          ? _value.validity
+          : validity // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -349,7 +362,8 @@ class _$UserDtoImpl extends _UserDto {
       this.google,
       this.fcmToken,
       this.device,
-      this.password})
+      this.password,
+      this.validity})
       : super._();
 
   factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -393,10 +407,12 @@ class _$UserDtoImpl extends _UserDto {
   final String? device;
   @override
   final String? password;
+  @override
+  final String? validity;
 
   @override
   String toString() {
-    return 'UserDto(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, fcmToken: $fcmToken, device: $device, password: $password)';
+    return 'UserDto(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, fcmToken: $fcmToken, device: $device, password: $password, validity: $validity)';
   }
 
   @override
@@ -430,7 +446,9 @@ class _$UserDtoImpl extends _UserDto {
                 other.fcmToken == fcmToken) &&
             (identical(other.device, device) || other.device == device) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.validity, validity) ||
+                other.validity == validity));
   }
 
   @JsonKey(ignore: true)
@@ -455,7 +473,8 @@ class _$UserDtoImpl extends _UserDto {
         google,
         fcmToken,
         device,
-        password
+        password,
+        validity
       ]);
 
   @JsonKey(ignore: true)
@@ -492,7 +511,8 @@ abstract class _UserDto extends UserDto {
       final String? google,
       final String? fcmToken,
       final String? device,
-      final String? password}) = _$UserDtoImpl;
+      final String? password,
+      final String? validity}) = _$UserDtoImpl;
   const _UserDto._() : super._();
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
@@ -535,6 +555,8 @@ abstract class _UserDto extends UserDto {
   String? get device;
   @override
   String? get password;
+  @override
+  String? get validity;
   @override
   @JsonKey(ignore: true)
   _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>

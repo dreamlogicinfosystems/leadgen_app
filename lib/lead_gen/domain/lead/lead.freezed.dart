@@ -28,6 +28,7 @@ mixin _$Lead {
   String? get lastChatDate => throw _privateConstructorUsedError;
   String? get showStatus => throw _privateConstructorUsedError;
   List<int>? get departmentIds => throw _privateConstructorUsedError;
+  List<Department>? get departments => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LeadCopyWith<Lead> get copyWith => throw _privateConstructorUsedError;
@@ -50,7 +51,8 @@ abstract class $LeadCopyWith<$Res> {
       String? createdAt,
       String? lastChatDate,
       String? showStatus,
-      List<int>? departmentIds});
+      List<int>? departmentIds,
+      List<Department>? departments});
 }
 
 /// @nodoc
@@ -78,6 +80,7 @@ class _$LeadCopyWithImpl<$Res, $Val extends Lead>
     Object? lastChatDate = freezed,
     Object? showStatus = freezed,
     Object? departmentIds = freezed,
+    Object? departments = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -128,6 +131,10 @@ class _$LeadCopyWithImpl<$Res, $Val extends Lead>
           ? _value.departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      departments: freezed == departments
+          ? _value.departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<Department>?,
     ) as $Val);
   }
 }
@@ -151,7 +158,8 @@ abstract class _$$LeadImplCopyWith<$Res> implements $LeadCopyWith<$Res> {
       String? createdAt,
       String? lastChatDate,
       String? showStatus,
-      List<int>? departmentIds});
+      List<int>? departmentIds,
+      List<Department>? departments});
 }
 
 /// @nodoc
@@ -176,6 +184,7 @@ class __$$LeadImplCopyWithImpl<$Res>
     Object? lastChatDate = freezed,
     Object? showStatus = freezed,
     Object? departmentIds = freezed,
+    Object? departments = freezed,
   }) {
     return _then(_$LeadImpl(
       id: freezed == id
@@ -226,6 +235,10 @@ class __$$LeadImplCopyWithImpl<$Res>
           ? _value._departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      departments: freezed == departments
+          ? _value._departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<Department>?,
     ));
   }
 }
@@ -245,8 +258,10 @@ class _$LeadImpl implements _Lead {
       this.createdAt,
       this.lastChatDate,
       this.showStatus,
-      final List<int>? departmentIds})
-      : _departmentIds = departmentIds;
+      final List<int>? departmentIds,
+      final List<Department>? departments})
+      : _departmentIds = departmentIds,
+        _departments = departments;
 
   @override
   final int? id;
@@ -280,9 +295,19 @@ class _$LeadImpl implements _Lead {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Department>? _departments;
+  @override
+  List<Department>? get departments {
+    final value = _departments;
+    if (value == null) return null;
+    if (_departments is EqualUnmodifiableListView) return _departments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'Lead(id: $id, name: $name, phone: $phone, email: $email, title: $title, date: $date, time: $time, message: $message, createdAt: $createdAt, lastChatDate: $lastChatDate, showStatus: $showStatus, departmentIds: $departmentIds)';
+    return 'Lead(id: $id, name: $name, phone: $phone, email: $email, title: $title, date: $date, time: $time, message: $message, createdAt: $createdAt, lastChatDate: $lastChatDate, showStatus: $showStatus, departmentIds: $departmentIds, departments: $departments)';
   }
 
   @override
@@ -305,7 +330,9 @@ class _$LeadImpl implements _Lead {
             (identical(other.showStatus, showStatus) ||
                 other.showStatus == showStatus) &&
             const DeepCollectionEquality()
-                .equals(other._departmentIds, _departmentIds));
+                .equals(other._departmentIds, _departmentIds) &&
+            const DeepCollectionEquality()
+                .equals(other._departments, _departments));
   }
 
   @override
@@ -322,7 +349,8 @@ class _$LeadImpl implements _Lead {
       createdAt,
       lastChatDate,
       showStatus,
-      const DeepCollectionEquality().hash(_departmentIds));
+      const DeepCollectionEquality().hash(_departmentIds),
+      const DeepCollectionEquality().hash(_departments));
 
   @JsonKey(ignore: true)
   @override
@@ -344,7 +372,8 @@ abstract class _Lead implements Lead {
       final String? createdAt,
       final String? lastChatDate,
       final String? showStatus,
-      final List<int>? departmentIds}) = _$LeadImpl;
+      final List<int>? departmentIds,
+      final List<Department>? departments}) = _$LeadImpl;
 
   @override
   int? get id;
@@ -370,6 +399,8 @@ abstract class _Lead implements Lead {
   String? get showStatus;
   @override
   List<int>? get departmentIds;
+  @override
+  List<Department>? get departments;
   @override
   @JsonKey(ignore: true)
   _$$LeadImplCopyWith<_$LeadImpl> get copyWith =>

@@ -1,6 +1,6 @@
 class ApiEndPoint{
   //Auth endpoints
-  String register = "register";
+  String register = "register_user";
 
   String login = "login";
 
@@ -66,4 +66,7 @@ class ApiEndPoint{
 
   //Status endpoint
   String getStatuses = "get_statuses";
+
+  //Maintenance
+  String getMaintenance = "get_maintenances";
 }

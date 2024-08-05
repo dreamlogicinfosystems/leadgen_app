@@ -27,6 +27,7 @@ _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
       fcmToken: json['fcmToken'] as String?,
       device: json['device'] as String?,
       password: json['password'] as String?,
+      validity: json['validity'] as String?,
     );
 
 Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
@@ -50,4 +51,5 @@ Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
       'fcmToken': instance.fcmToken,
       'device': instance.device,
       'password': instance.password,
+      'validity': instance.validity,
     };

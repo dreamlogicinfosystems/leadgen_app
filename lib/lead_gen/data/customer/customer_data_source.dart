@@ -9,6 +9,7 @@ import 'package:lead_gen/lead_gen/data/customer/customer_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/lead_dto.dart';
 
 import '../../constants/api_endpoint.dart';
+import '../department/department_dto.dart';
 
 class CustomerDataSource{
   final ApiMethods _apiMethods;
@@ -52,6 +53,7 @@ class CustomerDataSource{
   Future<Either<ErrorMessage,List<LeadDto>>> getCustomerLeads(int custId,BuildContext context) async{
     try{
       List<LeadDto> customerLeadsList = [];
+      List<DepartmentDto> departments = [];
 
       final response = await _apiMethods.get(
           url: 'get_customer_leads?id=$custId',
@@ -63,6 +65,17 @@ class CustomerDataSource{
       if(result['status'] == true){
 
         for(int i=0; i<result['leads'].length; i++){
+
+          final dept = result['leads'][i]['departments'];
+
+          for(int i=0; i<dept.length; i++){
+            DepartmentDto department = DepartmentDto(
+                id: dept[i]['id'],
+                departmentName: dept[i]['name']
+            );
+            departments.add(department);
+          }
+
           LeadDto leadDto = LeadDto(
             id: result['leads'][i]['id'],
             name: result['leads'][i]['name'],
@@ -72,10 +85,13 @@ class CustomerDataSource{
             title: result['leads'][i]['title'],
             showStatus: result['leads'][i]['show_status'],
             lastChatDate: result['leads'][i]['last_chat_date'],
-            createdAt: result['leads'][i]['created_at']
+            createdAt: result['leads'][i]['created_at'],
+            departments: List.from(departments)
           );
 
           customerLeadsList.add(leadDto);
+
+          departments.clear();
         }
 
         return Right(customerLeadsList);

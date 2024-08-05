@@ -10,13 +10,15 @@ import 'package:lead_gen/lead_gen/presentation/widgets/add_lead/open_lead.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/chat/close_lead_dialog.dart';
 
 import '../../../../injections.dart';
+import '../../../domain/lead/lead.dart';
+import '../add_lead/edit_lead_dept.dart';
 
 BoxDecoration decoration = BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(12)
 );
 
-displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus){
+displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus,Lead leadData){
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -34,6 +36,35 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                 width: MediaQuery.of(context).size.width*0.9,
                 child: Column(
                   children: [
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox():GestureDetector(
+                      onTap: (){
+                        showDialog(context: context, builder: (context) => BlocProvider(
+                          create: (context) => sl<LeadBloc>(),
+                          child: EditLeadDeptDialog(lead: leadData),
+                        ));
+                      },
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height*0.070,
+                        width: MediaQuery.of(context).size.width*0.9,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.edit,color: Colors.blueAccent),
+                              const SizedBox(width: 20),
+                              Text("Re-assign lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox() : const Divider(
+                      color: Color(0xFFC6C6C8),
+                      height: 0,
+                    ),
                     leadStatus=='past' || leadStatus=='archived'?
                     const SizedBox():GestureDetector(
                       onTap: (){

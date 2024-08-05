@@ -24,5 +24,6 @@ class User with _$User{
     String? fcmToken,
     String? device,
     String? password,
+    String? validity
   }) = _User;
 }

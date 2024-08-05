@@ -6,19 +6,27 @@ import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
 import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
 import '../../application/lead/lead_bloc.dart';
+import '../../domain/customer/customer.dart';
 import '../pages/add_lead.dart';
 import 'custom_button.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final bool? isHomePage;
   final String title;
-  const CustomBottomNavBar({super.key, this.isHomePage, required this.title});
+  final Customer? customerData;
+  const CustomBottomNavBar({super.key, this.isHomePage, required this.title, this.customerData});
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  // @override
+  // void initState() {
+  //   print(widget.customerData!);
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +58,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                         create: (BuildContext context) => sl<LeadBloc>(),
                       )
                     ],
-                    child: const AddLead()));
+                    child: AddLead(leadData: widget.customerData==null? Customer() : widget.customerData!)));
               }else{
                 showDialog(context: context, builder: (context) => BlocProvider(
                   create: (context) => sl<ReminderBloc>(),

@@ -82,6 +82,7 @@ class ProfileDataSource{
         instagram: result['user']['instagram'] ?? '',
         twitter: result['user']['twitter'] ?? '',
         linkedIn: result['user']['linkedin'] ?? '',
+        validity: result['user']['validity'] ?? ''
       );
 
       return Right(user);

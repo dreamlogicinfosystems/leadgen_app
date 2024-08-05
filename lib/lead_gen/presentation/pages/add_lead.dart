@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
-import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
 import '../../application/lead/lead_bloc.dart';
 import '../../constants/constant.dart';
+import '../../domain/customer/customer.dart';
 import '../../domain/department/department.dart';
 import '../../domain/lead/lead.dart';
 import '../core/custom_button.dart';
@@ -16,7 +16,8 @@ import '../core/custom_drop_down.dart';
 import '../core/custom_textfield.dart';
 
 class AddLead extends StatefulWidget {
-  const AddLead({Key? key}) : super(key: key);
+  final Customer? customerData;
+  const AddLead({Key? key, this.customerData, required leadData}) : super(key: key);
 
   @override
   State<AddLead> createState() => _AddLeadState();
@@ -61,6 +62,10 @@ class _AddLeadState extends State<AddLead> {
   @override
   void initState() {
     context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
+    // setState(() {
+    //   _nameController.text = widget.customerData!.custName!;
+    // });
+    print(widget.customerData!.custName!);
     super.initState();
   }
 

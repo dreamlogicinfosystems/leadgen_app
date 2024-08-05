@@ -51,7 +51,7 @@ class LocalNotificationHandler{
 
       await _flutterLocalNotificationsPlugin.zonedSchedule(
           id,
-          "Remainder",
+          "Reminder",
           message,
           scheduledDateTime,
           notificationDetails,

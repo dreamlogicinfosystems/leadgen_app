@@ -1,9 +1,13 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/application/maintenance/maintenance_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
+import 'package:lead_gen/lead_gen/presentation/pages/maintenance_popup.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../injections.dart';
 import '../../application/licence/licence_bloc.dart';
@@ -17,22 +21,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
+  int? checkIfUserExist;
   @override
   void initState() {
-    navigator();
+    context.read<MaintenanceBloc>().add(MaintenanceEvent.checkMaintenance(context));
+    checkUserCount();
     super.initState();
   }
 
-  navigator() async{
-    final checkIfUserExist = await AuthBloc.checkIfUserExist();
+  checkUserCount() async{
+    checkIfUserExist = await AuthBloc.checkIfUserExist();
+    setState(() {});
+  }
 
+  navigate() {
     if(checkIfUserExist==0){
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Login()),(route) => false,);
       });
     }else{
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MultiBlocProvider(
           providers: [
             BlocProvider(
@@ -46,7 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
         )),(route) => false,);
       });
     }
-
   }
 
   @override
@@ -55,21 +62,61 @@ class _SplashScreenState extends State<SplashScreen> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: SizedBox(
-        width: width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: width*0.8,
-              height: height*0.17,
-              child: Image.asset("assets/images/splash.png"),
+      body: BlocListener<MaintenanceBloc,MaintenanceState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            success: (maintenance) async{
+              final packageInfo = await PackageInfo.fromPlatform();
+
+              final buildNumber = packageInfo.buildNumber;
+
+              if(Platform.isAndroid){
+                if(int.parse(buildNumber)<maintenance.minAndroidVersion!){
+                  if(context.mounted){
+                    showDialog(context: context, barrierDismissible: maintenance.isCompulsory==1? false: true,builder: (context) =>
+                        MaintenancePopUpDialog(maintenanceInfo: maintenance)).then((value){
+                      if(maintenance.isCompulsory==0){
+                        navigate();
+                      }
+                    });
+                  }
+                }else{
+                  navigate();
+                }
+              }else {
+                if(int.parse(buildNumber)<maintenance.minIosVersion!){
+                  if(context.mounted){
+                    showDialog(context: context, barrierDismissible: maintenance.isCompulsory==1? false: true,builder: (context) =>
+                        MaintenancePopUpDialog(maintenanceInfo: maintenance)).then((value){
+                      if(maintenance.isCompulsory==0){
+                        navigate();
+                      }
+                    });
+                  }
+                }else{
+                  navigate();
+                }
+              }
+            },
+            orElse: (){}
+          );
+        },
+        child: SizedBox(
+              width: width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: width*0.8,
+                    height: height*0.17,
+                    child: Image.asset("assets/images/splash.png"),
+                  ),
+                  Text("Never miss a lead",style:
+                  GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w500))
+                ],
+              ),
             ),
-            Text("Never miss a lead",style:
-            GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w500))
-          ],
-        ),
       ),
     );
   }

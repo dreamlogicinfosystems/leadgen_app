@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
@@ -13,7 +14,9 @@ import '../../constants/constant.dart';
 import '../core/custom_bottom_navBar.dart';
 import '../widgets/home/leads_count_container.dart';
 import '../widgets/home/main_drawer.dart';
+import 'add_lead.dart';
 import 'chat.dart';
+import 'dart:io';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -77,6 +80,9 @@ class _HomeState extends State<Home> {
     context.read<LicenceBloc>().add(LicenceEvent.checkLicence(context));
     getRole();
     getValidity();
+    if(Platform.isAndroid){
+      checkUpdate();
+    }
     super.initState();
   }
 
@@ -90,6 +96,18 @@ class _HomeState extends State<Home> {
     validity = await DepartmentBloc.getValidity();
     setState(() {});
     debugPrint("licence validity: $validity");
+  }
+
+  Future<void> checkUpdate() async {
+    InAppUpdate.checkForUpdate().then((info) {
+      if (info.updateAvailability == UpdateAvailability.updateAvailable) {
+        InAppUpdate.startFlexibleUpdate().catchError((e) {
+          debugPrint(e.toString());
+        });
+      }
+    }).catchError((e) {
+      debugPrint(e.toString());
+    });
   }
 
   @override
@@ -431,8 +449,9 @@ class _HomeState extends State<Home> {
                                                           padding: const EdgeInsets.only(top:5,right: 5),
                                                           child: Text(modifyDate(leadsList[index].lastChatDate!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
                                                         ),
+                                                        const Spacer(),
                                                         Padding(
-                                                          padding: const EdgeInsets.only(top:35,right: 10),
+                                                          padding: const EdgeInsets.only(bottom:5,right: 15),
                                                           child: Align(
                                                               alignment: Alignment.centerRight,
                                                               child: Text(simplifyDate(leadsList[index].createdAt!),style: GoogleFonts.poppins(fontSize: 10,fontWeight: FontWeight.w400,color: const Color(0xFFB9B9B9)),)),

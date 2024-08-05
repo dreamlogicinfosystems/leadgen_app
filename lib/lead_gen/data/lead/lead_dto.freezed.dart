@@ -32,6 +32,7 @@ mixin _$LeadDto {
   String? get showStatus => throw _privateConstructorUsedError;
   String? get lastChatDate => throw _privateConstructorUsedError;
   List<int>? get departmentIds => throw _privateConstructorUsedError;
+  List<DepartmentDto>? get departments => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +56,8 @@ abstract class $LeadDtoCopyWith<$Res> {
       String? createdAt,
       String? showStatus,
       String? lastChatDate,
-      List<int>? departmentIds});
+      List<int>? departmentIds,
+      List<DepartmentDto>? departments});
 }
 
 /// @nodoc
@@ -83,6 +85,7 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
     Object? showStatus = freezed,
     Object? lastChatDate = freezed,
     Object? departmentIds = freezed,
+    Object? departments = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -133,6 +136,10 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
           ? _value.departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      departments: freezed == departments
+          ? _value.departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<DepartmentDto>?,
     ) as $Val);
   }
 }
@@ -156,7 +163,8 @@ abstract class _$$LeadDtoImplCopyWith<$Res> implements $LeadDtoCopyWith<$Res> {
       String? createdAt,
       String? showStatus,
       String? lastChatDate,
-      List<int>? departmentIds});
+      List<int>? departmentIds,
+      List<DepartmentDto>? departments});
 }
 
 /// @nodoc
@@ -182,6 +190,7 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
     Object? showStatus = freezed,
     Object? lastChatDate = freezed,
     Object? departmentIds = freezed,
+    Object? departments = freezed,
   }) {
     return _then(_$LeadDtoImpl(
       id: freezed == id
@@ -232,6 +241,10 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
           ? _value._departmentIds
           : departmentIds // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      departments: freezed == departments
+          ? _value._departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<DepartmentDto>?,
     ));
   }
 }
@@ -251,8 +264,10 @@ class _$LeadDtoImpl extends _LeadDto {
       this.createdAt,
       this.showStatus,
       this.lastChatDate,
-      final List<int>? departmentIds})
+      final List<int>? departmentIds,
+      final List<DepartmentDto>? departments})
       : _departmentIds = departmentIds,
+        _departments = departments,
         super._();
 
   factory _$LeadDtoImpl.fromJson(Map<String, dynamic> json) =>
@@ -290,9 +305,19 @@ class _$LeadDtoImpl extends _LeadDto {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<DepartmentDto>? _departments;
+  @override
+  List<DepartmentDto>? get departments {
+    final value = _departments;
+    if (value == null) return null;
+    if (_departments is EqualUnmodifiableListView) return _departments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, title: $title, date: $date, time: $time, message: $message, createdAt: $createdAt, showStatus: $showStatus, lastChatDate: $lastChatDate, departmentIds: $departmentIds)';
+    return 'LeadDto(id: $id, name: $name, phone: $phone, email: $email, title: $title, date: $date, time: $time, message: $message, createdAt: $createdAt, showStatus: $showStatus, lastChatDate: $lastChatDate, departmentIds: $departmentIds, departments: $departments)';
   }
 
   @override
@@ -315,7 +340,9 @@ class _$LeadDtoImpl extends _LeadDto {
             (identical(other.lastChatDate, lastChatDate) ||
                 other.lastChatDate == lastChatDate) &&
             const DeepCollectionEquality()
-                .equals(other._departmentIds, _departmentIds));
+                .equals(other._departmentIds, _departmentIds) &&
+            const DeepCollectionEquality()
+                .equals(other._departments, _departments));
   }
 
   @JsonKey(ignore: true)
@@ -333,7 +360,8 @@ class _$LeadDtoImpl extends _LeadDto {
       createdAt,
       showStatus,
       lastChatDate,
-      const DeepCollectionEquality().hash(_departmentIds));
+      const DeepCollectionEquality().hash(_departmentIds),
+      const DeepCollectionEquality().hash(_departments));
 
   @JsonKey(ignore: true)
   @override
@@ -362,7 +390,8 @@ abstract class _LeadDto extends LeadDto {
       final String? createdAt,
       final String? showStatus,
       final String? lastChatDate,
-      final List<int>? departmentIds}) = _$LeadDtoImpl;
+      final List<int>? departmentIds,
+      final List<DepartmentDto>? departments}) = _$LeadDtoImpl;
   const _LeadDto._() : super._();
 
   factory _LeadDto.fromJson(Map<String, dynamic> json) = _$LeadDtoImpl.fromJson;
@@ -391,6 +420,8 @@ abstract class _LeadDto extends LeadDto {
   String? get lastChatDate;
   @override
   List<int>? get departmentIds;
+  @override
+  List<DepartmentDto>? get departments;
   @override
   @JsonKey(ignore: true)
   _$$LeadDtoImplCopyWith<_$LeadDtoImpl> get copyWith =>

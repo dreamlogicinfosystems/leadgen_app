@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/auth/auth_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
+import 'package:lead_gen/lead_gen/application/maintenance/maintenance_bloc.dart';
 
 import 'injections.dart';
 import 'lead_gen/data/reminder/local_notification_handler.dart';
@@ -26,7 +27,7 @@ void main() async {
 
   await LocalNotificationHandler().init();
   await FCM().init();
-  serviceLocator();
+  await serviceLocator();
   runApp(const MyApp());
 }
 
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (context) => sl<LeadCountBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<MaintenanceBloc>(),
         ),
       ],
       child: MaterialApp(

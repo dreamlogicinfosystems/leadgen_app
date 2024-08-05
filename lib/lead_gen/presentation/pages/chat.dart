@@ -34,6 +34,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     context.read<LeadBloc>().add(LeadEvent.getLeadChat(widget.lead.id!, context));
+    print(widget.lead.departments);
     super.initState();
   }
 
@@ -153,7 +154,7 @@ class _ChatPageState extends State<ChatPage> {
                   children: [
                     GestureDetector(
                       onTap:(){
-                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!);
+                        displayBottomSheet(context,widget.lead.name!,widget.lead.id!,widget.lead.showStatus!,widget.lead);
                       },
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.04,

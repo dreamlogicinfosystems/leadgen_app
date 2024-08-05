@@ -110,7 +110,7 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                               child: GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                                      CustomerLeads(custId: customersList[index].custId!,)));
+                                      CustomerLeads(custId: customersList[index].custId!, customerData: customersList[index])));
                                 },
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,

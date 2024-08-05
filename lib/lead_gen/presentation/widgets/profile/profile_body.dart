@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/profile/profile_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/constant.dart';
@@ -30,6 +31,7 @@ class _ProfileBodyState extends State<ProfileBody> {
   final _pincodeController = TextEditingController();
   final _companyWebsiteControll = TextEditingController();
   final _registeredAddressContr = TextEditingController();
+  final _licenseValidityController = TextEditingController();
   final _facebook = TextEditingController();
   final _instagram = TextEditingController();
   final _twitter = TextEditingController();
@@ -77,6 +79,7 @@ class _ProfileBodyState extends State<ProfileBody> {
     _focusState.dispose();
     _focusCountry.dispose();
     _focusPin.dispose();
+    _licenseValidityController.dispose();
     super.dispose();
   }
 
@@ -136,6 +139,14 @@ class _ProfileBodyState extends State<ProfileBody> {
                         _instagram.text = userData.instagram!;
                         _twitter.text = userData.twitter!;
                         _linkedin.text = userData.linkedIn!;
+
+                        //converting string date time to DateTime Object
+                        final validityDate = DateTime.parse(userData.validity!);
+                        //formatting the date
+                        final formattedDate = DateFormat.yMd().add_jm().format(validityDate);
+                        //display the formatted date
+                        _licenseValidityController.text = formattedDate;
+
                         return Column(
                           children: [
                             Container(
@@ -231,6 +242,13 @@ class _ProfileBodyState extends State<ProfileBody> {
                                   return null;
                                 }
                               },
+                            ),
+                            const SizedBox(height: 15),
+                            CustomTextField(
+                              controller: _licenseValidityController,
+                              labelText: 'License validity',
+                              keyBoardType: TextInputType.none,
+                              readOnly: true,
                             ),
                             const SizedBox(height: 15),
                             CustomTextField(

@@ -7,6 +7,7 @@ import 'package:lead_gen/lead_gen/presentation/pages/notification.dart';
 
 import 'package:lead_gen/lead_gen/presentation/widgets/add_board/add_board.dart';
 import '../../../injections.dart';
+import '../widgets/add_lead/edit_lead_dept.dart';
 import '../widgets/add_user/add_user.dart';
 
 class CustomAppBar extends StatefulWidget {
@@ -48,7 +49,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       centerTitle: widget.centerTitle,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       actions: [
-        widget.isChatPage==true || widget.isMainPage==true || widget.isArchivePage==true?
+         widget.isMainPage==true || widget.isArchivePage==true?
             //TODO: Remind to undo on completion of the functionality
             const SizedBox()
             // Padding(
@@ -96,7 +97,34 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ),
               ),
             ): const SizedBox(),
-          ) : const SizedBox()
+          ) : widget.isChatPage==true?
+             SizedBox(): SizedBox()
+          // PopupMenuButton(
+          //   surfaceTintColor: Colors.white,
+          //   color: Colors.white,
+          //   shadowColor: Colors.black,
+          //   elevation: 20,
+          //   position: PopupMenuPosition.under,
+          //   itemBuilder: (context){
+          //     return [
+          //       PopupMenuItem(
+          //         value: "1",
+          //         child: GestureDetector(
+          //           onTap: (){
+          //             showDialog(context: context, builder: (context) => const EditLeadDeptDialog());
+          //           },
+          //           child: const Row(
+          //             children: [
+          //               Icon(Icons.edit),
+          //               Spacer(),
+          //               Text("Re-assign lead"),
+          //             ],
+          //           ),
+          //         )
+          //       )
+          //     ];
+          //   }
+          // ): const SizedBox()
       ],
     );
   }

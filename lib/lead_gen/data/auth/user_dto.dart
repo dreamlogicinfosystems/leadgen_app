@@ -28,6 +28,7 @@ abstract class UserDto implements _$UserDto{
     String? fcmToken,
     String? device,
     String? password,
+    String? validity
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String,dynamic>json) => _$UserDtoFromJson(json);
@@ -74,7 +75,8 @@ abstract class UserDto implements _$UserDto{
         instagram: user.instagram,
         twitter: user.twitter,
         linkedIn: user.linkedIn,
-        google: user.google
+        google: user.google,
+        validity: user.validity
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:lead_gen/lead_gen/data/department/department_dto.dart';
 
+import '../../domain/department/department.dart';
 import '../../domain/lead/lead.dart';
 
 part 'lead_dto.freezed.dart';
@@ -22,7 +24,8 @@ abstract class LeadDto implements _$LeadDto{
     String? createdAt,
     String? showStatus,
     String? lastChatDate,
-    List<int>? departmentIds
+    List<int>? departmentIds,
+    List<DepartmentDto>? departments
   }) = _LeadDto;
 
   factory LeadDto.fromJson(Map<String,dynamic>json) => _$LeadDtoFromJson(json);
@@ -51,7 +54,8 @@ abstract class LeadDto implements _$LeadDto{
       message: leadDto.message,
       createdAt: leadDto.createdAt,
       showStatus: leadDto.showStatus,
-      lastChatDate: leadDto.lastChatDate
+      lastChatDate: leadDto.lastChatDate,
+      departments: leadDto.departments!.map((e) => const DepartmentDto().toDomain(e)).toList()
     );
   }
 }

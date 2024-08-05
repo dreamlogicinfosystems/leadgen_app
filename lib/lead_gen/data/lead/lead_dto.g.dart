@@ -22,6 +22,9 @@ _$LeadDtoImpl _$$LeadDtoImplFromJson(Map<String, dynamic> json) =>
       departmentIds: (json['departmentIds'] as List<dynamic>?)
           ?.map((e) => (e as num).toInt())
           .toList(),
+      departments: (json['departments'] as List<dynamic>?)
+          ?.map((e) => DepartmentDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$LeadDtoImplToJson(_$LeadDtoImpl instance) =>
@@ -38,4 +41,5 @@ Map<String, dynamic> _$$LeadDtoImplToJson(_$LeadDtoImpl instance) =>
       'showStatus': instance.showStatus,
       'lastChatDate': instance.lastChatDate,
       'departmentIds': instance.departmentIds,
+      'departments': instance.departments,
     };

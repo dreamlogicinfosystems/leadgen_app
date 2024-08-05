@@ -22,4 +22,6 @@ abstract class LeadRepository{
   Future<Either<ErrorMessage,Success>> updateLeadStatus(int leadId,int statusId,String message,
       BuildContext context
   );
+
+  Future<Either<ErrorMessage, Success>> updateLeadDepts(int leadId,List<int> deptIds,BuildContext context);
 }

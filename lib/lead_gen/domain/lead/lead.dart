@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../department/department.dart';
+
 part 'lead.freezed.dart';
 
 @freezed
@@ -16,6 +18,7 @@ class Lead with _$Lead{
     String? createdAt,
     String? lastChatDate,
     String? showStatus,
-    List<int>? departmentIds
+    List<int>? departmentIds,
+    List<Department>? departments
   }) = _Lead;
 }
