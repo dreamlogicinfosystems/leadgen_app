@@ -2,22 +2,23 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lead_gen/lead_gen/application/customer/customer_bloc.dart';
 import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/home.dart';
 import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
 import '../../application/lead/lead_bloc.dart';
 import '../../constants/constant.dart';
-import '../../domain/customer/customer.dart';
 import '../../domain/department/department.dart';
 import '../../domain/lead/lead.dart';
 import '../core/custom_button.dart';
 import '../core/custom_drop_down.dart';
 import '../core/custom_textfield.dart';
+import 'customer_leads.dart';
 
 class AddLead extends StatefulWidget {
-  final Customer? customerData;
-  const AddLead({Key? key, this.customerData, required leadData}) : super(key: key);
+  final Source sourcePage;
+  const AddLead({Key? key, required this.sourcePage}) : super(key: key);
 
   @override
   State<AddLead> createState() => _AddLeadState();
@@ -62,10 +63,12 @@ class _AddLeadState extends State<AddLead> {
   @override
   void initState() {
     context.read<DepartmentBloc>().add(DepartmentEvent.getDepartments(context));
-    // setState(() {
-    //   _nameController.text = widget.customerData!.custName!;
-    // });
-    print(widget.customerData!.custName!);
+    final customer = CustomerBloc.customer;
+    if(customer!=null && widget.sourcePage == Source.customerLeadsPage){
+      _nameController.text = customer.custName!;
+      _phoneController.text = customer.custPhone!;
+      _emailController.text = customer.custEmail!;
+    }
     super.initState();
   }
 
@@ -126,8 +129,12 @@ class _AddLeadState extends State<AddLead> {
           },
           success: (message){
             showToastMessage(message);
-            Navigator.pushAndRemoveUntil(context,
-                MaterialPageRoute(builder: (context) => MultiBlocProvider(
+            if(widget.sourcePage==Source.customerLeadsPage){
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => const CustomerLeads()), (route) => route.isFirst);
+            }else{
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => MultiBlocProvider(
                     providers: [
                       BlocProvider(
                         create: (context) => sl<LeadBloc>(),
@@ -138,6 +145,7 @@ class _AddLeadState extends State<AddLead> {
                     ],
                     child: const Home(),
                   )), (route) => false);
+            }
           },
           orElse: (){}
         );
@@ -184,6 +192,7 @@ class _AddLeadState extends State<AddLead> {
                             isBoardAddPage: true,
                             controller: _nameController,
                             keyBoardType: TextInputType.text,
+                            readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
                           ),
                           const SizedBox(height: 20),
                           CustomTextField(
@@ -197,14 +206,16 @@ class _AddLeadState extends State<AddLead> {
                               isBoardAddPage: true,
                               labelText: 'Phone',
                               controller: _phoneController,
-                              keyBoardType: TextInputType.number
+                              keyBoardType: TextInputType.number,
+                              readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
                           ),
                           const SizedBox(height: 20),
                           CustomTextField(
                               isBoardAddPage: true,
                               labelText: 'Email',
                               controller: _emailController,
-                              keyBoardType: TextInputType.emailAddress
+                              keyBoardType: TextInputType.emailAddress,
+                              readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
                           ),
                           const SizedBox(height: 20),
                           CustomTextField(

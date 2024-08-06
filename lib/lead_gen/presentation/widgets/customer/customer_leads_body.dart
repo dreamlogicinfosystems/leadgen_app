@@ -10,8 +10,7 @@ import '../../../../injections.dart';
 import '../../../constants/constant.dart';
 
 class CustomerLeadsBody extends StatefulWidget {
-  final int custId;
-  const CustomerLeadsBody({super.key, required this.custId});
+  const CustomerLeadsBody({super.key});
 
   @override
   State<CustomerLeadsBody> createState() => _CustomerLeadsBodyState();
@@ -21,7 +20,10 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
 
   @override
   void initState() {
-    context.read<CustomerBloc>().add(CustomerEvent.getCustomersLead(widget.custId, context));
+    final custId = CustomerBloc.custId;
+    if(custId.toString().isNotEmpty){
+      context.read<CustomerBloc>().add(CustomerEvent.getCustomersLead(custId!, context));
+    }
     super.initState();
   }
 

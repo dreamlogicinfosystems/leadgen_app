@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -196,8 +197,8 @@ class _EditLeadDeptDialogState extends State<EditLeadDeptDialog> {
                                   selectedBoardsIds.add(selectedBoards[i].id!);
                                 }
 
-                                if(selectedBoards.length == widget.lead.departments!.length){
-                                  showErrorToastMessage("Please select department to update lead!");
+                                if(listEquals(selectedBoards, widget.lead.departments!)){
+                                  showErrorToastMessage("Please select another department to update lead!");
                                 } else {
                                   context.read<LeadBloc>().add(LeadEvent.updateLeadDepartments(
                                       widget.lead.id!,

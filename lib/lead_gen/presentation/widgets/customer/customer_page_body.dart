@@ -109,8 +109,12 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                               padding: const EdgeInsets.only(bottom: 10),
                               child: GestureDetector(
                                 onTap: (){
+                                  CustomerBloc.setSelectedCustomer(customersList[index]);
+
+                                  CustomerBloc.setCustomerId(customersList[index].custId!);
+
                                   Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                                      CustomerLeads(custId: customersList[index].custId!, customerData: customersList[index])));
+                                      const CustomerLeads()));
                                 },
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,

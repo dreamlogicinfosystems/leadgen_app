@@ -12,6 +12,8 @@ part 'customer_bloc.freezed.dart';
 
 class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   final CustomerRepository _customerRepository;
+  static Customer? customer;
+  static int? custId;
   CustomerBloc(this._customerRepository) : super(const CustomerState.initial()) {
     on<CustomerEvent>(mapEventToState);
   }
@@ -72,5 +74,13 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
           });
         }
     );
+  }
+
+  static setSelectedCustomer(Customer selectedCustomer){
+    customer = selectedCustomer;
+  }
+
+  static setCustomerId(int id){
+    custId = id;
   }
 }

@@ -183,7 +183,8 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: validity==false? const SizedBox() : const CustomBottomNavBar(
         title: 'Add Lead',
-        isHomePage: true
+        isHomePage: true,
+        sourcePage: Source.dashboardPage,
       ),
       drawer: Drawer(
         width: MediaQuery.of(context).size.width*0.92,
