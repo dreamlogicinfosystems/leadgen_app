@@ -153,7 +153,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Row(
                           children: [
-                            Image.asset("assets/images/archive.png",height: MediaQuery.of(context).size.height*0.035,
+                            Image.asset("assets/images/archived.png",height: MediaQuery.of(context).size.height*0.035,
                             color: isArchivedLeads==true? Colors.white :Colors.black,),
                             const SizedBox(width: 10),
                             Text("Archived Leads",style: GoogleFonts.poppins(

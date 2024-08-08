@@ -118,7 +118,7 @@ class _LoginState extends State<Login> {
                             // isLogin: true,
                             // icon: Icons.mail,
                             controller: _emailController,
-                            labelText: 'Email or Phone no',
+                            labelText: 'Email',
                             keyBoardType: TextInputType.emailAddress,
                             validator: (value){
                               if(value=='' || value?.trim()==''){
@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
                           ),
                           const SizedBox(height: 30,),
                           CustomTextField(
-                            // isLogin: true,
+                            isLogin: true,
                             // icon: Icons.lock,
                             controller: _passwordController,
                             labelText: 'Password',
@@ -144,7 +144,7 @@ class _LoginState extends State<Login> {
                                     isObscureText = !isObscureText;
                                   });
                                 },
-                                child: isObscureText==true? const Icon(Icons.remove_red_eye_sharp,color: Colors.black):
+                                child: isObscureText==true? const Icon(Icons.visibility_off_sharp,color: Colors.black):
                                 const Icon(Icons.remove_red_eye_sharp,color: Colors.black)
                             ),
                             keyBoardType: TextInputType.visiblePassword,
@@ -195,7 +195,7 @@ class _LoginState extends State<Login> {
                                 children: [
                                   InkWell(
                                     onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => const VerifyNumber()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => const VerifyEmail()));
                                     },
                                     child: Text('Reset password',style:
                                     GoogleFonts.poppins(fontSize: 13,fontWeight: FontWeight.w500,color: Colors.blue),),

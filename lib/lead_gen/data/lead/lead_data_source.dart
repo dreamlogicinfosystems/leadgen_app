@@ -323,4 +323,29 @@ class LeadDataSource{
       return Left(ErrorMessage(e.toString()));
     }
   }
+
+  Future<Either<ErrorMessage,Success>> updateLeadDescript(int leadId,String description,BuildContext context) async {
+    try{
+      Map<String,dynamic> map = {};
+
+      map['id'] = leadId.toString();
+      map['description'] = description;
+
+      final response = await _apiMethods.post(
+          url: 'update_lead_description',
+          data: map,
+          context: context
+      );
+
+      final result = jsonDecode(response!.body);
+
+      if(result['status'] == true){
+        return Right(Success(result["message"]));
+      } else{
+        return Left(ErrorMessage(result["message"]));
+      }
+    } catch (e) {
+      return Left(ErrorMessage(e.toString()));
+    }
+  }
 }

@@ -34,6 +34,8 @@ mixin _$LeadEvent {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +54,8 @@ mixin _$LeadEvent {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,8 @@ mixin _$LeadEvent {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,6 +90,8 @@ mixin _$LeadEvent {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +104,7 @@ mixin _$LeadEvent {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,6 +117,7 @@ mixin _$LeadEvent {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -248,6 +258,8 @@ class _$addLeadImpl implements _addLead {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return addLead(lead, context);
   }
@@ -269,6 +281,8 @@ class _$addLeadImpl implements _addLead {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return addLead?.call(lead, context);
   }
@@ -290,6 +304,8 @@ class _$addLeadImpl implements _addLead {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (addLead != null) {
@@ -310,6 +326,8 @@ class _$addLeadImpl implements _addLead {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return addLead(this);
   }
@@ -325,6 +343,7 @@ class _$addLeadImpl implements _addLead {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return addLead?.call(this);
   }
@@ -340,6 +359,7 @@ class _$addLeadImpl implements _addLead {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (addLead != null) {
@@ -461,6 +481,8 @@ class _$addLeadChatImpl implements _addLeadChat {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return addLeadChat(lead, context);
   }
@@ -482,6 +504,8 @@ class _$addLeadChatImpl implements _addLeadChat {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return addLeadChat?.call(lead, context);
   }
@@ -503,6 +527,8 @@ class _$addLeadChatImpl implements _addLeadChat {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (addLeadChat != null) {
@@ -523,6 +549,8 @@ class _$addLeadChatImpl implements _addLeadChat {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return addLeadChat(this);
   }
@@ -538,6 +566,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return addLeadChat?.call(this);
   }
@@ -553,6 +582,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (addLeadChat != null) {
@@ -672,6 +702,8 @@ class _$getLeadsImpl implements _getLeads {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return getLeads(type, deptId, context);
   }
@@ -693,6 +725,8 @@ class _$getLeadsImpl implements _getLeads {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return getLeads?.call(type, deptId, context);
   }
@@ -714,6 +748,8 @@ class _$getLeadsImpl implements _getLeads {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getLeads != null) {
@@ -734,6 +770,8 @@ class _$getLeadsImpl implements _getLeads {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return getLeads(this);
   }
@@ -749,6 +787,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return getLeads?.call(this);
   }
@@ -764,6 +803,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getLeads != null) {
@@ -877,6 +917,8 @@ class _$getLeadChatImpl implements _getLeadChat {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return getLeadChat(leadId, context);
   }
@@ -898,6 +940,8 @@ class _$getLeadChatImpl implements _getLeadChat {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return getLeadChat?.call(leadId, context);
   }
@@ -919,6 +963,8 @@ class _$getLeadChatImpl implements _getLeadChat {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getLeadChat != null) {
@@ -939,6 +985,8 @@ class _$getLeadChatImpl implements _getLeadChat {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return getLeadChat(this);
   }
@@ -954,6 +1002,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return getLeadChat?.call(this);
   }
@@ -969,6 +1018,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getLeadChat != null) {
@@ -1089,6 +1139,8 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return getArchiveLeads(type, subType, context);
   }
@@ -1110,6 +1162,8 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return getArchiveLeads?.call(type, subType, context);
   }
@@ -1131,6 +1185,8 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getArchiveLeads != null) {
@@ -1151,6 +1207,8 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return getArchiveLeads(this);
   }
@@ -1166,6 +1224,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return getArchiveLeads?.call(this);
   }
@@ -1181,6 +1240,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getArchiveLeads != null) {
@@ -1311,6 +1371,8 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return getSearchedLead(name, type, subType, context);
   }
@@ -1332,6 +1394,8 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return getSearchedLead?.call(name, type, subType, context);
   }
@@ -1353,6 +1417,8 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getSearchedLead != null) {
@@ -1373,6 +1439,8 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return getSearchedLead(this);
   }
@@ -1388,6 +1456,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return getSearchedLead?.call(this);
   }
@@ -1403,6 +1472,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (getSearchedLead != null) {
@@ -1536,6 +1606,8 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return updateLeadStatus(leadId, statusId, message, context);
   }
@@ -1557,6 +1629,8 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return updateLeadStatus?.call(leadId, statusId, message, context);
   }
@@ -1578,6 +1652,8 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (updateLeadStatus != null) {
@@ -1598,6 +1674,8 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return updateLeadStatus(this);
   }
@@ -1613,6 +1691,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return updateLeadStatus?.call(this);
   }
@@ -1628,6 +1707,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (updateLeadStatus != null) {
@@ -1763,6 +1843,8 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
         updateLeadStatus,
     required TResult Function(int id, List<int> deptIds, BuildContext context)
         updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
   }) {
     return updateLeadDepartments(id, deptIds, context);
   }
@@ -1784,6 +1866,8 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
         updateLeadStatus,
     TResult? Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
   }) {
     return updateLeadDepartments?.call(id, deptIds, context);
   }
@@ -1805,6 +1889,8 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
         updateLeadStatus,
     TResult Function(int id, List<int> deptIds, BuildContext context)?
         updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
     required TResult orElse(),
   }) {
     if (updateLeadDepartments != null) {
@@ -1825,6 +1911,8 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     required TResult Function(_updateLeadStatus value) updateLeadStatus,
     required TResult Function(_updateLeadDepartments value)
         updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
   }) {
     return updateLeadDepartments(this);
   }
@@ -1840,6 +1928,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     TResult? Function(_getSearchedLead value)? getSearchedLead,
     TResult? Function(_updateLeadStatus value)? updateLeadStatus,
     TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
   }) {
     return updateLeadDepartments?.call(this);
   }
@@ -1855,6 +1944,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     TResult Function(_getSearchedLead value)? getSearchedLead,
     TResult Function(_updateLeadStatus value)? updateLeadStatus,
     TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
     required TResult orElse(),
   }) {
     if (updateLeadDepartments != null) {
@@ -1876,6 +1966,232 @@ abstract class _updateLeadDepartments implements LeadEvent {
   @override
   @JsonKey(ignore: true)
   _$$updateLeadDepartmentsImplCopyWith<_$updateLeadDepartmentsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$updateLeadDescriptionImplCopyWith<$Res>
+    implements $LeadEventCopyWith<$Res> {
+  factory _$$updateLeadDescriptionImplCopyWith(
+          _$updateLeadDescriptionImpl value,
+          $Res Function(_$updateLeadDescriptionImpl) then) =
+      __$$updateLeadDescriptionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id, String description, BuildContext context});
+}
+
+/// @nodoc
+class __$$updateLeadDescriptionImplCopyWithImpl<$Res>
+    extends _$LeadEventCopyWithImpl<$Res, _$updateLeadDescriptionImpl>
+    implements _$$updateLeadDescriptionImplCopyWith<$Res> {
+  __$$updateLeadDescriptionImplCopyWithImpl(_$updateLeadDescriptionImpl _value,
+      $Res Function(_$updateLeadDescriptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? description = null,
+    Object? context = null,
+  }) {
+    return _then(_$updateLeadDescriptionImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$updateLeadDescriptionImpl implements _updateLeadDescription {
+  const _$updateLeadDescriptionImpl(this.id, this.description, this.context);
+
+  @override
+  final int id;
+  @override
+  final String description;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'LeadEvent.updateLeadDescription(id: $id, description: $description, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$updateLeadDescriptionImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, description, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$updateLeadDescriptionImplCopyWith<_$updateLeadDescriptionImpl>
+      get copyWith => __$$updateLeadDescriptionImplCopyWithImpl<
+          _$updateLeadDescriptionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Lead lead, BuildContext context) addLead,
+    required TResult Function(Lead lead, BuildContext context) addLeadChat,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
+    required TResult Function(int leadId, BuildContext context) getLeadChat,
+    required TResult Function(String type, String subType, BuildContext context)
+        getArchiveLeads,
+    required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
+            int leadId, int statusId, String message, BuildContext context)
+        updateLeadStatus,
+    required TResult Function(int id, List<int> deptIds, BuildContext context)
+        updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
+  }) {
+    return updateLeadDescription(id, description, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Lead lead, BuildContext context)? addLead,
+    TResult? Function(Lead lead, BuildContext context)? addLeadChat,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(int leadId, BuildContext context)? getLeadChat,
+    TResult? Function(String type, String subType, BuildContext context)?
+        getArchiveLeads,
+    TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
+            int leadId, int statusId, String message, BuildContext context)?
+        updateLeadStatus,
+    TResult? Function(int id, List<int> deptIds, BuildContext context)?
+        updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
+  }) {
+    return updateLeadDescription?.call(id, description, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Lead lead, BuildContext context)? addLead,
+    TResult Function(Lead lead, BuildContext context)? addLeadChat,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(int leadId, BuildContext context)? getLeadChat,
+    TResult Function(String type, String subType, BuildContext context)?
+        getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult Function(
+            int leadId, int statusId, String message, BuildContext context)?
+        updateLeadStatus,
+    TResult Function(int id, List<int> deptIds, BuildContext context)?
+        updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
+    required TResult orElse(),
+  }) {
+    if (updateLeadDescription != null) {
+      return updateLeadDescription(id, description, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_addLead value) addLead,
+    required TResult Function(_addLeadChat value) addLeadChat,
+    required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_getLeadChat value) getLeadChat,
+    required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
+    required TResult Function(_updateLeadStatus value) updateLeadStatus,
+    required TResult Function(_updateLeadDepartments value)
+        updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
+  }) {
+    return updateLeadDescription(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_addLead value)? addLead,
+    TResult? Function(_addLeadChat value)? addLeadChat,
+    TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_getLeadChat value)? getLeadChat,
+    TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
+    TResult? Function(_updateLeadStatus value)? updateLeadStatus,
+    TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
+  }) {
+    return updateLeadDescription?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_addLead value)? addLead,
+    TResult Function(_addLeadChat value)? addLeadChat,
+    TResult Function(_getLeads value)? getLeads,
+    TResult Function(_getLeadChat value)? getLeadChat,
+    TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
+    TResult Function(_updateLeadStatus value)? updateLeadStatus,
+    TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
+    required TResult orElse(),
+  }) {
+    if (updateLeadDescription != null) {
+      return updateLeadDescription(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _updateLeadDescription implements LeadEvent {
+  const factory _updateLeadDescription(
+          final int id, final String description, final BuildContext context) =
+      _$updateLeadDescriptionImpl;
+
+  int get id;
+  String get description;
+  @override
+  BuildContext get context;
+  @override
+  @JsonKey(ignore: true)
+  _$$updateLeadDescriptionImplCopyWith<_$updateLeadDescriptionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

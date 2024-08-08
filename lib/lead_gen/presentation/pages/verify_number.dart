@@ -9,14 +9,14 @@ import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_textfield.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/otp_verification.dart';
 
-class VerifyNumber extends StatefulWidget {
-  const VerifyNumber({Key? key}) : super(key: key);
+class VerifyEmail extends StatefulWidget {
+  const VerifyEmail({Key? key}) : super(key: key);
 
   @override
-  State<VerifyNumber> createState() => _VerifyNumberState();
+  State<VerifyEmail> createState() => _VerifyEmailState();
 }
 
-class _VerifyNumberState extends State<VerifyNumber> {
+class _VerifyEmailState extends State<VerifyEmail> {
   final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 

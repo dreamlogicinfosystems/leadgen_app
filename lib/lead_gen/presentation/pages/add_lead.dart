@@ -197,7 +197,7 @@ class _AddLeadState extends State<AddLead> {
                           const SizedBox(height: 20),
                           CustomTextField(
                               isBoardAddPage: true,
-                              labelText: 'Title',
+                              labelText: 'Short description',
                               controller: _titleController,
                               keyBoardType: TextInputType.text
                           ),

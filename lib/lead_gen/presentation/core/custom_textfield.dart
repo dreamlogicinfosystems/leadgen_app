@@ -92,7 +92,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.keyBoardType,
       maxLength: widget.maxLength,
       decoration: InputDecoration(
-        prefixIcon: widget.isLogin==true? Icon(widget.icon) : null,
+        // prefixIcon: widget.isLogin==true? Icon(widget.icon) : null,
         suffix: widget.clearReminder==true?
           widget.clearReminderWidget: null,
         suffixIconColor: Colors.black,

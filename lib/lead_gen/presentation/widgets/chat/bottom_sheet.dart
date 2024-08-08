@@ -11,6 +11,7 @@ import 'package:lead_gen/lead_gen/presentation/widgets/chat/close_lead_dialog.da
 
 import '../../../../injections.dart';
 import '../../../domain/lead/lead.dart';
+import '../add_lead/edit_description_dialog.dart';
 import '../add_lead/edit_lead_dept.dart';
 
 BoxDecoration decoration = BoxDecoration(
@@ -36,6 +37,35 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                 width: MediaQuery.of(context).size.width*0.9,
                 child: Column(
                   children: [
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox():GestureDetector(
+                      onTap: (){
+                        showDialog(context: context, builder: (context) => BlocProvider(
+                          create: (context) => sl<LeadBloc>(),
+                          child: EditDescriptionDialog(leadId: leadData.id!, description: leadData.title!),
+                        ));
+                      },
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height*0.070,
+                        width: MediaQuery.of(context).size.width*0.9,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/tag.png",height: 25),
+                              const SizedBox(width: 20),
+                              Text("Change description",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    leadStatus=='past' || leadStatus=='archived'?
+                    const SizedBox() : const Divider(
+                      color: Color(0xFFC6C6C8),
+                      height: 0,
+                    ),
                     leadStatus=='past' || leadStatus=='archived'?
                     const SizedBox():GestureDetector(
                       onTap: (){

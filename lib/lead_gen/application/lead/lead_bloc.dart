@@ -155,6 +155,17 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
           },(success){
             emit(LeadState.success(success.successMessage));
           });
+        },
+        updateLeadDescription: (e) async{
+          emit(const LeadState.loadingInProgress());
+
+          final tryUpdateDescription = await _leadRepository.updateLeadDescription(e.id, e.description, e.context);
+
+          tryUpdateDescription.fold((error){
+            emit(LeadState.failed(error.message));
+          },(success){
+            emit(LeadState.success(success.successMessage));
+          });
         }
     );
   }

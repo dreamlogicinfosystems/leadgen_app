@@ -124,4 +124,19 @@ class LeadRepositoryImpl extends LeadRepository{
       return Right(success);
     });
   }
+
+  @override
+  Future<Either<ErrorMessage, Success>> updateLeadDescription(int leadId, String description,BuildContext context) async{
+    if(leadId.toString().isEmpty){
+      return Left(ErrorMessage("Something went wrong!"));
+    } else {
+      final result = await _leadDataSource.updateLeadDescript(leadId, description, context);
+
+      return result.fold((error){
+        return Left(error);
+      },(success){
+        return Right(success);
+      });
+    }
+  }
 }
