@@ -28,13 +28,12 @@ class _LeadsCountContainerState extends State<LeadsCountContainer> {
               padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 5),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height*0.12,
                 decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 12),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

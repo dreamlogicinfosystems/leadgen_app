@@ -14,7 +14,6 @@ import '../../constants/constant.dart';
 import '../core/custom_bottom_navBar.dart';
 import '../widgets/home/leads_count_container.dart';
 import '../widgets/home/main_drawer.dart';
-import 'add_lead.dart';
 import 'chat.dart';
 import 'dart:io';
 
@@ -95,11 +94,10 @@ class _HomeState extends State<Home> {
   getValidity() async{
     validity = await DepartmentBloc.getValidity();
     setState(() {});
-    debugPrint("licence validity: $validity");
   }
 
   Future<void> checkUpdate() async {
-    InAppUpdate.checkForUpdate().then((info) {
+    await InAppUpdate.checkForUpdate().then((info) {
       if (info.updateAvailability == UpdateAvailability.updateAvailable) {
         InAppUpdate.startFlexibleUpdate().catchError((e) {
           debugPrint(e.toString());
@@ -196,6 +194,13 @@ class _HomeState extends State<Home> {
           child: const MainDrawer(),
         ),
       ),
+      onDrawerChanged: (bool isOpen) {
+        if(isOpen == false) {
+          //calling get count and leads api again to load the new data and show
+          context.read<LeadBloc>().add(LeadEvent.getLeads(type, deptId, context));
+          context.read<LeadCountBloc>().add(LeadCountEvent.getLeadCount(context));
+        }
+      },
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

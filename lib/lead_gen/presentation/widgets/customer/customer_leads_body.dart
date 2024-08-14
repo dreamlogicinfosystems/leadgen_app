@@ -232,7 +232,10 @@ class _CustomerLeadsBodyState extends State<CustomerLeadsBody> {
                                       MaterialPageRoute(builder: (context) => BlocProvider(
                                         create: (context) => sl<LeadBloc>(),
                                         child: ChatPage(lead: leadsList[index]),
-                                      )));
+                                      ))).then((value) {
+                                        final custId = CustomerBloc.custId;
+                                        context.read<CustomerBloc>().add(CustomerEvent.getCustomersLead(custId!, context));
+                                  });
                                 },
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,

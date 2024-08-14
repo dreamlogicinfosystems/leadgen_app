@@ -143,7 +143,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                         //converting string date time to DateTime Object
                         final validityDate = DateTime.parse(userData.validity!);
                         //formatting the date
-                        final formattedDate = DateFormat.yMd().add_jm().format(validityDate);
+                        final formattedDate = DateFormat('dd-MM-yyyy').add_jm().format(validityDate);
                         //display the formatted date
                         _licenseValidityController.text = formattedDate;
 

@@ -19,7 +19,7 @@ BoxDecoration decoration = BoxDecoration(
     borderRadius: BorderRadius.circular(12)
 );
 
-displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus,Lead leadData){
+displayBottomSheet(BuildContext context,String username,int leadId,String leadStatus,Lead leadData) async{
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,

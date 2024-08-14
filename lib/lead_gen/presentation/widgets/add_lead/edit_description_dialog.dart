@@ -39,10 +39,15 @@ class _EditDescriptionDialogState extends State<EditDescriptionDialog> {
             Navigator.pop(context);
           },
           success: (message){
+            //this is worst case senario becz pushAndReplace was giving issue
             showToastMessage(message);
             //To close loader
             Navigator.pop(context);
             //To close dialog
+            Navigator.pop(context);
+            //to close modal sheet
+            Navigator.pop(context);
+            //to close the page
             Navigator.pop(context);
           },
           loadingInProgress: (){
