@@ -197,7 +197,9 @@ class _EditLeadDeptDialogState extends State<EditLeadDeptDialog> {
                                   selectedBoardsIds.add(selectedBoards[i].id!);
                                 }
 
-                                if(listEquals(selectedBoards, widget.lead.departments!)){
+                                if(selectedBoards.isEmpty){
+                                  showErrorToastMessage("Please select department to update lead!");
+                                }else if(listEquals(selectedBoards, widget.lead.departments!)){
                                   showErrorToastMessage("Please select another department to update lead!");
                                 } else {
                                   context.read<LeadBloc>().add(LeadEvent.updateLeadDepartments(

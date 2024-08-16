@@ -84,7 +84,7 @@ displayBottomSheet(BuildContext context,String username,int leadId,String leadSt
                             children: [
                               const Icon(Icons.edit,color: Colors.blueAccent),
                               const SizedBox(width: 20),
-                              Text("Re-assign lead",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
+                              Text("Re-assign to Board",style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w400),)
                             ],
                           ),
                         ),
