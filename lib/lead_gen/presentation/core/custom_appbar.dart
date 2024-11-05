@@ -95,7 +95,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ): const SizedBox(),
           ) : widget.isChatPage==true?
-             SizedBox(): SizedBox()
+             const SizedBox(): const SizedBox()
           // PopupMenuButton(
           //   surfaceTintColor: Colors.white,
           //   color: Colors.white,
