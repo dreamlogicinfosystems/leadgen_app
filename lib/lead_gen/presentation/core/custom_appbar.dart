@@ -3,11 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department_user/department_user_bloc.dart';
-import 'package:lead_gen/lead_gen/presentation/pages/notification.dart';
-
 import 'package:lead_gen/lead_gen/presentation/widgets/add_board/add_board.dart';
 import '../../../injections.dart';
-import '../widgets/add_lead/edit_lead_dept.dart';
 import '../widgets/add_user/add_user.dart';
 
 class CustomAppBar extends StatefulWidget {

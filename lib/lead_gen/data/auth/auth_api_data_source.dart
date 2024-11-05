@@ -120,7 +120,8 @@ class AuthApiDataSource{
 
     if(result['status'] == true){
       await _userDBHelper.deleteUser();
-
+      await _localDataSource.setLicenceValidity(false);
+      await _localDataSource.setRole("");
       await _localDataSource.setToken('');
       return Right(Success(result['message']));
     }else{
