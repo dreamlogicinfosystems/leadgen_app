@@ -107,14 +107,16 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                             controller: _phoneController,
                             keyBoardType: TextInputType.number,
                             validator: (value){
-                              if(value!.trim()==''){
-                                return 'Enter Phone Number';
-                              }else if(value.contains(RegExp(r'[-.,]')) || value.contains(' ')){
-                                return 'Invalid Phone Number';
-                              }else if(value.length>10 || value.length<10){
-                                return 'Phone number should be of 10 digit';
-                              }else{
-                               return null;
+                              if(value!.trim() != ""){
+                                if(value.contains(RegExp(r'[-.,]')) || value.contains(' ')){
+                                  return 'Invalid Phone Number';
+                                } else if(value.length>10 || value.length<10){
+                                  return 'Phone number should be of 10 digit';
+                                } else{
+                                  return null;
+                                }
+                              } else {
+                                return null;
                               }
                             },
                         ),
@@ -125,12 +127,14 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                             controller: _emailController,
                             keyBoardType: TextInputType.emailAddress,
                             validator: (value){
-                              if(value!.trim()==''){
-                                return 'Enter Email';
-                              }else if(!EmailValidator.validate(value) || value.contains(RegExp(r'[+*-]'))
-                                  ||value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
-                                return 'Invalid Email';
-                              }else{
+                              if(value!.trim() != ""){
+                                if(!EmailValidator.validate(value) || value.contains(RegExp(r'[+*-]'))
+                                    ||value.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))){
+                                  return 'Invalid Email';
+                                } else{
+                                  return null;
+                                }
+                              } else {
                                 return null;
                               }
                             },
