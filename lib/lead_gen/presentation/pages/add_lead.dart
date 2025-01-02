@@ -85,36 +85,47 @@ class _AddLeadState extends State<AddLead> {
   }
 
   bool validateData(){
-    if(_nameController.text.trim()=='' || _emailController.text.trim()=='' || _titleController.text.trim()==''
-        || _phoneController.text.trim()=='' || _messageController.text==''){
+    if(_nameController.text.trim()=='' || _titleController.text.trim()=='' || _messageController.text==''){
       showErrorToastMessage("Please fill in all details");
       return false;
-    }else if(selectedBoards.isEmpty){
+    } else if(selectedBoards.isEmpty){
       showErrorToastMessage("Atleast select one board");
       return false;
-    }else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
+    } else if(_nameController.text.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>]'))){
       showErrorToastMessage("Invalid Full Name");
       return false;
-    }else if(_titleController.text.contains(RegExp(r'[~`!@#$%^&*()=+{};:?/<>]'))){
+    } else if(_titleController.text.contains(RegExp(r'[~`!@#$%^&*()=+{};:?/<>]'))){
       showErrorToastMessage('Invalid title');
       return false;
-    }else if(_titleController.text.length>50){
+    } else if(_titleController.text.length>50){
       showErrorToastMessage("title cannot exceed 50 characters");
       return false;
-    }else if(_messageController.text.length>500){
+    } else if(_messageController.text.length>500){
       showErrorToastMessage("Message cannot exceed 500 character's");
       return false;
-    }else if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]')) 
-        || _emailController.text.contains(RegExp(r'[+*-]'))){
+    } else{
+      return true;
+    }
+  }
+
+  validateEmail(){
+    if(!EmailValidator.validate(_emailController.text) || _emailController.text.contains(RegExp(r'^[-~!@#$%^&*()_+-=;:{},./?><]'))
+        || _emailController.text.contains(RegExp(r'[+*-]'))) {
       showErrorToastMessage("Invalid Email");
       return false;
-    }else if(_phoneController.text.contains(RegExp(r'[-.,]')) || _phoneController.text.contains(' ')){
+    } else {
+      return true;
+    }
+  }
+
+  validatePhone(){
+    if(_phoneController.text.contains(RegExp(r'[-.,]')) || _phoneController.text.contains(' ')){
       showErrorToastMessage('Invalid Phone Number');
       return false;
-    }else if(_phoneController.text.length>10 || _phoneController.text.length<10){
+    } else if(_phoneController.text.length>10 || _phoneController.text.length<10){
       showErrorToastMessage("Phone number should be of 10 digit");
       return false;
-    }else{
+    } else {
       return true;
     }
   }
@@ -328,30 +339,26 @@ class _AddLeadState extends State<AddLead> {
                                 name: 'Add lead',
                                 onTap: (){
                                   if(validateData()==true){
-                                    debugPrint(_messageController.text.length.toString());
-                                    //retrieving department ids from department lis
-                                    for(int i=0; i<selectedBoards.length; i++){
-                                      selectedBoardsIds.add(selectedBoards[i].id!);
+                                    //check for optional fields if not empty validate them
+                                    if(_phoneController.text.isNotEmpty) {
+                                      if(validatePhone() == true) {
+                                        //check for email if not empty
+                                        if(_emailController.text.isNotEmpty) {
+                                          if(validateEmail() == true) {
+                                            callAddEvent();
+                                          }
+                                        } else {
+                                          //if email empty than directly call event
+                                          callAddEvent();
+                                        }
+                                      }
+                                    } else if(_emailController.text.isNotEmpty) {
+                                      if(validateEmail() == true) {
+                                        callAddEvent();
+                                      }
+                                    } else {
+                                      callAddEvent();
                                     }
-
-                                    debugPrint("selected department ids: $selectedBoardsIds");
-
-                                    context.read<LeadBloc>().add(LeadEvent.addLead(
-                                      Lead(
-                                        name: _nameController.text.trim(),
-                                        phone: _phoneController.text,
-                                        email: _emailController.text.trim(),
-                                        title: _titleController.text.trim(),
-                                        date: _reminderController.text==''? '' : _reminderController.text.split(' ')[0],
-                                        time: _reminderController.text==''? '' : _reminderController.text.split('  ')[1],
-                                        message: _messageController.text,
-                                        departmentIds: selectedBoardsIds
-                                      ),
-                                      context),
-                                    );
-
-                                    //reset department id
-                                    context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
                                   }
                                 },),
                             ),
@@ -368,5 +375,32 @@ class _AddLeadState extends State<AddLead> {
         );
       },
     );  //const AddLeadBody()
+  }
+
+  callAddEvent() {
+    debugPrint(_messageController.text.length.toString());
+    //retrieving department ids from department lis
+    for(int i=0; i<selectedBoards.length; i++){
+      selectedBoardsIds.add(selectedBoards[i].id!);
+    }
+
+    debugPrint("selected department ids: $selectedBoardsIds");
+
+    context.read<LeadBloc>().add(LeadEvent.addLead(
+        Lead(
+            name: _nameController.text.trim(),
+            phone: _phoneController.text,
+            email: _emailController.text.trim(),
+            title: _titleController.text.trim(),
+            date: _reminderController.text==''? '' : _reminderController.text.split(' ')[0],
+            time: _reminderController.text==''? '' : _reminderController.text.split('  ')[1],
+            message: _messageController.text,
+            departmentIds: selectedBoardsIds
+        ),
+        context),
+    );
+
+    //reset department id
+    context.read<DepartmentBloc>().add(const DepartmentEvent.resetDeptId());
   }
 }

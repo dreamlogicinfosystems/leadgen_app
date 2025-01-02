@@ -29,11 +29,13 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    Widget loading = SizedBox(
-      height: MediaQuery.of(context).size.height*0.7,
-      width: MediaQuery.of(context).size.width,
-      child: const Center(
-        child: CircularProgressIndicator(),
+    Widget loading = Expanded(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height*0.7,
+        width: MediaQuery.of(context).size.width,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
 
@@ -43,65 +45,67 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: CustomTextField(
-                      isBoardAddPage: true,
-                      controller: _searchController,
-                      keyBoardType: TextInputType.text,
-                      labelText: 'Search for customer',
-                    ),
+        child: Column(
+          children: [
+            const SizedBox(height: 15),
+            Row(
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: CustomTextField(
+                    isBoardAddPage: true,
+                    controller: _searchController,
+                    keyBoardType: TextInputType.text,
+                    labelText: 'Search for customer',
                   ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: (){
-                        if(_searchController.text.trim()==""){
-                          showErrorToastMessage('Enter name or email to search!');
-                        }else{
-                          context.read<CustomerBloc>().add(CustomerEvent.searchCustomer(_searchController.text.trim(),'customer_list','all',context));
-                        }
-                      },
-                      child: Container(
-                        height: MediaQuery.of(context).size.height*0.067,
-                        decoration: BoxDecoration(
-                          color: Colors.green.shade400,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Center(
-                          child: Icon(Icons.navigate_next,size: 35,),
-                        ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: (){
+                      if(_searchController.text.trim()==""){
+                        showErrorToastMessage('Enter name or email to search!');
+                      }else{
+                        context.read<CustomerBloc>().add(CustomerEvent.searchCustomer(_searchController.text.trim(),'customer_list','all',context));
+                      }
+                    },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height*0.067,
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade400,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Center(
+                        child: Icon(Icons.navigate_next,size: 35,),
                       ),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 20),
-              BlocConsumer<CustomerBloc, CustomerState>(
-                listener: (context, state) {
-                  state.maybeWhen(
-                    orElse: (){}
-                  );
-                },
-                builder: (context, state) {
-                  return state.maybeWhen(
-                    failed: (error){
-                      return SizedBox(
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(height: 20),
+            BlocConsumer<CustomerBloc, CustomerState>(
+              listener: (context, state) {
+                state.maybeWhen(
+                  orElse: (){}
+                );
+              },
+              builder: (context, state) {
+                return state.maybeWhen(
+                  failed: (error){
+                    return Expanded(
+                      child: SizedBox(
                         height: MediaQuery.of(context).size.height*0.7,
                         width: MediaQuery.of(context).size.width,
                         child: Center(
                           child: Text(error,style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 15),),
                         ),
-                      );
-                    },
-                    successCustomerList: (customersList){
-                      return ListView.builder(
+                      ),
+                    );
+                  },
+                  successCustomerList: (customersList){
+                    return Expanded(
+                      child: ListView.builder(
                           itemCount: customersList.length,
                           shrinkWrap: true,
                           itemBuilder: (context,index){
@@ -110,9 +114,9 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                               child: GestureDetector(
                                 onTap: (){
                                   CustomerBloc.setSelectedCustomer(customersList[index]);
-
+                              
                                   CustomerBloc.setCustomerId(customersList[index].custId!);
-
+                              
                                   Navigator.push(context, MaterialPageRoute(builder: (context) =>
                                       const CustomerLeads()));
                                 },
@@ -207,19 +211,19 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                               ),
                             );
                           }
-                      );
-                    },
-                    loadingInProgress: (){
-                      return loading;
-                    },
-                    orElse: (){
-                      return loading;
-                    }
-                  );
-                },
-              ),
-            ],
-          ),
+                      ),
+                    );
+                  },
+                  loadingInProgress: (){
+                    return loading;
+                  },
+                  orElse: (){
+                    return loading;
+                  }
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

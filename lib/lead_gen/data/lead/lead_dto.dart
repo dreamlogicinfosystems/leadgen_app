@@ -55,7 +55,7 @@ abstract class LeadDto implements _$LeadDto{
       createdAt: leadDto.createdAt,
       showStatus: leadDto.showStatus,
       lastChatDate: leadDto.lastChatDate,
-      departments: leadDto.departments!.map((e) => const DepartmentDto().toDomain(e)).toList()
+      departments: leadDto.departments == null ? [] : leadDto.departments!.map((e) => const DepartmentDto().toDomain(e)).toList()
     );
   }
 }

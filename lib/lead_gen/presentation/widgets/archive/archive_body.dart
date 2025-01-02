@@ -44,11 +44,13 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    Widget loading = SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height*0.8,
-      child: const Center(
-        child: CircularProgressIndicator(),
+    Widget loading = Expanded(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height*0.8,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
 
@@ -58,74 +60,76 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                    const SizedBox(width: 5),
-                    GestureDetector(
-                      onTap: (){
-                        showDialog(context: context, builder: (context) => BlocProvider(
-                          create: (context) => sl<LeadBloc>(),
-                          child: const FilterDialog(),
-                        )).then((value){
-                          setState(() {
-                            filter = value;
-                          });
-                          context.read<LeadBloc>().add(LeadEvent.getArchiveLeads(filter,"one",context));
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("Filter",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                    onTap: (){
+                      showDialog(context: context, builder: (context) => BlocProvider(
+                        create: (context) => sl<LeadBloc>(),
+                        child: const FilterDialog(),
+                      )).then((value){
+                        setState(() {
+                          filter = value;
                         });
-                      },
-                      child: SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: Image.asset('assets/images/Slider.png'),
-                      ),
+                        context.read<LeadBloc>().add(LeadEvent.getArchiveLeads(filter,"one",context));
+                      });
+                    },
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Image.asset('assets/images/Slider.png'),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                child: CustomTextField(
-                  isBoardAddPage: true,
-                  controller: _searchController,
-                  keyBoardType: TextInputType.text,
-                  labelText: 'Search lead',
-                  onEditingComplete: (){
-                    if(_searchController.text.trim()!=""){
-                      context.read<LeadBloc>().add(
-                        LeadEvent.getSearchedLead(_searchController.text,'archived_list',filter,context),
-                      );
-                    }else{
-                      showErrorToastMessage("Please enter name to search");
-                    }
-                  },
-                ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: CustomTextField(
+                isBoardAddPage: true,
+                controller: _searchController,
+                keyBoardType: TextInputType.text,
+                labelText: 'Search lead',
+                onEditingComplete: (){
+                  if(_searchController.text.trim()!=""){
+                    context.read<LeadBloc>().add(
+                      LeadEvent.getSearchedLead(_searchController.text,'archived_list',filter,context),
+                    );
+                  }else{
+                    showErrorToastMessage("Please enter name to search");
+                  }
+                },
               ),
-              const SizedBox(height: 15),
-              BlocBuilder<LeadBloc, LeadState>(
-                builder: (context, state) {
-                  return state.maybeWhen(
-                      loadingInProgress: (){
-                        return loading;
-                      },
-                      emptyLeadList: (error){
-                        return SizedBox(
+            ),
+            const SizedBox(height: 15),
+            BlocBuilder<LeadBloc, LeadState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                    loadingInProgress: (){
+                      return loading;
+                    },
+                    emptyLeadList: (error){
+                      return Expanded(
+                        child: SizedBox(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height*0.7,
                           child: Center(
                             child: Text('No leads',style: GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 16)),
                           ),
-                        );
-                      },
-                      successLeadsList: (leadList){
-                        return ListView.builder(
+                        ),
+                      );
+                    },
+                    successLeadsList: (leadList){
+                      return Expanded(
+                        child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: leadList.length,
                             itemBuilder: (context,index){
@@ -200,16 +204,16 @@ class _ArchivePageBodyState extends State<ArchivePageBody> {
                                 ),
                               );
                             }
-                        );
-                      },
-                      orElse: (){
-                        return loading;
-                      }
-                  );
-                },
-              )
-            ],
-          ),
+                        ),
+                      );
+                    },
+                    orElse: (){
+                      return loading;
+                    }
+                );
+              },
+            )
+          ],
         ),
       ),
     );
