@@ -35,8 +35,8 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
   @override
   void initState() {
     _nameController.text = widget.customer.custName!;
-    _phoneController.text = widget.customer.custPhone!;
-    _emailController.text = widget.customer.custEmail!;
+    _phoneController.text = widget.customer.custPhone ?? "";
+    _emailController.text = widget.customer.custEmail ?? "";
     super.initState();
   }
 

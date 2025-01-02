@@ -148,23 +148,26 @@ class _CustomerPageBodyState extends State<CustomerPageBody> {
                                               children: [
                                                 const SizedBox(height: 2),
                                                 Text(customersList[index].custName!,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500),),
-                                                Expanded(
-                                                  child: SizedBox(
-                                                    width: MediaQuery.of(context).size.width*0.65,
-                                                    height: MediaQuery.of(context).size.height*0.030,
-                                                    child: Row(
-                                                      children: [
-                                                        Text("Phone: ",style:
-                                                        GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
-                                                        GestureDetector(
-                                                          onTap: () async{
-                                                            final url = Uri(scheme: 'tel', path: customersList[index].custPhone);
-                                                            await launchUrl(url);
-                                                          },
-                                                          child: Text(customersList[index].custPhone!,style:
+                                                Visibility(
+                                                  visible: customersList[index].custPhone == null ? false : true,
+                                                  child: Expanded(
+                                                    child: SizedBox(
+                                                      width: MediaQuery.of(context).size.width*0.65,
+                                                      height: MediaQuery.of(context).size.height*0.030,
+                                                      child: Row(
+                                                        children: [
+                                                          Text("Phone: ",style:
                                                           GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
-                                                        ),
-                                                      ],
+                                                          GestureDetector(
+                                                            onTap: () async{
+                                                              final url = Uri(scheme: 'tel', path: customersList[index].custPhone);
+                                                              await launchUrl(url);
+                                                            },
+                                                            child: Text(customersList[index].custPhone ?? "",style:
+                                                            GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400,color: const Color(0xFF8A8A8B)),),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 )

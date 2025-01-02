@@ -37,49 +37,54 @@ class _ChatHeaderCardState extends State<ChatHeaderCard> {
         surfaceTintColor: Colors.white,
         child: Container(
           width: MediaQuery.of(context).size.width*0.92,
-          height: 110,
+          // height: 110,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12)
           ),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 10),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: CustomButton(isChatPage: true, name: 'Call', onTap: () async{
-                          await callOrSms(widget.lead.phone!,'tel');
-                        }),),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: CustomButton(isChatPage: true, name: 'Message', onTap: () async{
-                          await callOrSms(widget.lead.phone!,'sms');
-                        }),),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: CustomButton(isChatPage: true, name: 'Whatsapp', onTap: () async{
-                          await launchUrl(Uri.parse('https://wa.me/+91${widget.lead.phone!}/?text=Hi ${widget.lead.name}\n-Dreamlogic'));
-                        }),),
-                    ),
-                  ],
+              Visibility(
+                visible: widget.lead.phone != null ? true : false,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 40,
+                          child: CustomButton(isChatPage: true, name: 'Call', onTap: () async{
+                            await callOrSms(widget.lead.phone!,'tel');
+                          }),),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: SizedBox(
+                          height: 40,
+                          child: CustomButton(isChatPage: true, name: 'Message', onTap: () async{
+                            await callOrSms(widget.lead.phone!,'sms');
+                          }),),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: SizedBox(
+                          height: 40,
+                          child: CustomButton(isChatPage: true, name: 'Whatsapp', onTap: () async{
+                            await launchUrl(Uri.parse('https://wa.me/+91${widget.lead.phone!}/?text=Hi ${widget.lead.name}\n-Dreamlogic'));
+                          }),),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              const SizedBox(height: 10),
               SizedBox(
                 width: MediaQuery.of(context).size.width*0.85,
-                height: 50,
+                // height: 50,
                 child: Text(widget.lead.title!,style:
                 GoogleFonts.poppins(fontWeight: FontWeight.w500,fontSize: 13),),
-              )
+              ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
