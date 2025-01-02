@@ -34,6 +34,7 @@ class ProfileDataSource{
     userDetails['instagram'] = userDto.instagram;
     userDetails['twitter'] = userDto.twitter;
     userDetails['linkedIn'] = userDto.linkedIn;
+    userDetails['new_lead_days'] = userDto.newLeadDays.toString();
 
     final response = await _apiMethod.post(
         url: _apiEndPoint.updateProfile,
@@ -82,7 +83,8 @@ class ProfileDataSource{
         instagram: result['user']['instagram'] ?? '',
         twitter: result['user']['twitter'] ?? '',
         linkedIn: result['user']['linkedin'] ?? '',
-        validity: result['user']['validity'] ?? ''
+        validity: result['user']['validity'] ?? '',
+        newLeadDays: result["user"]["new_lead_days"] ?? 1
       );
 
       return Right(user);

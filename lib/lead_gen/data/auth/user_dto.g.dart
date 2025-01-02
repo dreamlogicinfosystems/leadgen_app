@@ -28,6 +28,7 @@ _$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
       device: json['device'] as String?,
       password: json['password'] as String?,
       validity: json['validity'] as String?,
+      newLeadDays: (json['newLeadDays'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
@@ -52,4 +53,5 @@ Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
       'device': instance.device,
       'password': instance.password,
       'validity': instance.validity,
+      'newLeadDays': instance.newLeadDays,
     };

@@ -49,7 +49,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                   instagram: e.user.instagram,
                   twitter: e.user.twitter,
                   linkedIn: e.user.linkedIn,
-                  google: e.user.google
+                  google: e.user.google,
+                  newLeadDays: e.user.newLeadDays
               ),
               e.context
           );

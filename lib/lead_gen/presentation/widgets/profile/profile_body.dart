@@ -32,6 +32,7 @@ class _ProfileBodyState extends State<ProfileBody> {
   final _companyWebsiteControll = TextEditingController();
   final _registeredAddressContr = TextEditingController();
   final _licenseValidityController = TextEditingController();
+  final _followUpDaysContr = TextEditingController();
   final _facebook = TextEditingController();
   final _instagram = TextEditingController();
   final _twitter = TextEditingController();
@@ -66,6 +67,7 @@ class _ProfileBodyState extends State<ProfileBody> {
     _pincodeController.dispose();
     _companyWebsiteControll.dispose();
     _registeredAddressContr.dispose();
+    _followUpDaysContr.dispose();
     _facebook.dispose();
     _instagram.dispose();
     _twitter.dispose();
@@ -139,6 +141,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                         _instagram.text = userData.instagram!;
                         _twitter.text = userData.twitter!;
                         _linkedin.text = userData.linkedIn!;
+                        _followUpDaysContr.text = userData.newLeadDays.toString();
 
                         //converting string date time to DateTime Object
                         final validityDate = DateTime.parse(userData.validity!);
@@ -236,8 +239,8 @@ class _ProfileBodyState extends State<ProfileBody> {
                               validator: (value){
                                 if(value!.contains(RegExp(r'[-~`!@#$%^&*()_=+{};:?/.,<>"]'))){
                                   return 'Invalid Business Name';
-                                }else if(value.length>20){
-                                  return "cannot exceed 20 letter's";
+                                }else if(value.length>50){
+                                  return "cannot exceed 50 letter's";
                                 }else{
                                   return null;
                                 }
@@ -334,6 +337,10 @@ class _ProfileBodyState extends State<ProfileBody> {
                                   return null;
                                 }
                               },
+                            ),
+                            Visibility(
+                              visible: DepartmentBloc.role == "organisation" ? true : false,
+                              child: followUpView()
                             ),
                             const SizedBox(height: 20),
                             const Align(
@@ -458,6 +465,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                                           email: _emailController.text,
                                           phoneNumber: _phoneController.text,
                                           businessName: _businessNameControll.text,
+                                          newLeadDays: int.parse(_followUpDaysContr.text.trim()),
                                           address: _addressController.text,
                                           state: _stateController.text,
                                           country: _countryController.text,
@@ -756,6 +764,39 @@ class _ProfileBodyState extends State<ProfileBody> {
           },
         ),
       ),
+    );
+  }
+
+  Widget followUpView() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 20),
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: Text('User Preferences',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15),),
+          ),
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          controller: _followUpDaysContr,
+          labelText: 'Follow-up days',
+          keyBoardType: TextInputType.number,
+          validator: (value){
+            if(value!.trim() == "") {
+              return "Follow-up days can't be empty!";
+            } else if(value.contains("-")) {
+              return "Only Positive value allowed!";
+            } else if(value.contains(RegExp(r'[,.-]')) || value.contains(" ")){
+              return 'Invalid follow-up days';
+            } else{
+              return null;
+            }
+          },
+        ),
+      ],
     );
   }
 }

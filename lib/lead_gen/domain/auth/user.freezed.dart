@@ -36,6 +36,7 @@ mixin _$User {
   String? get device => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   String? get validity => throw _privateConstructorUsedError;
+  int? get newLeadDays => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -66,7 +67,8 @@ abstract class $UserCopyWith<$Res> {
       String? fcmToken,
       String? device,
       String? password,
-      String? validity});
+      String? validity,
+      int? newLeadDays});
 }
 
 /// @nodoc
@@ -102,6 +104,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? device = freezed,
     Object? password = freezed,
     Object? validity = freezed,
+    Object? newLeadDays = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -184,6 +187,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.validity
           : validity // ignore: cast_nullable_to_non_nullable
               as String?,
+      newLeadDays: freezed == newLeadDays
+          ? _value.newLeadDays
+          : newLeadDays // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -215,7 +222,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? fcmToken,
       String? device,
       String? password,
-      String? validity});
+      String? validity,
+      int? newLeadDays});
 }
 
 /// @nodoc
@@ -248,6 +256,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? device = freezed,
     Object? password = freezed,
     Object? validity = freezed,
+    Object? newLeadDays = freezed,
   }) {
     return _then(_$UserImpl(
       userId: freezed == userId
@@ -330,6 +339,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.validity
           : validity // ignore: cast_nullable_to_non_nullable
               as String?,
+      newLeadDays: freezed == newLeadDays
+          ? _value.newLeadDays
+          : newLeadDays // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -357,7 +370,8 @@ class _$UserImpl implements _User {
       this.fcmToken,
       this.device,
       this.password,
-      this.validity});
+      this.validity,
+      this.newLeadDays});
 
   @override
   final int? userId;
@@ -399,10 +413,12 @@ class _$UserImpl implements _User {
   final String? password;
   @override
   final String? validity;
+  @override
+  final int? newLeadDays;
 
   @override
   String toString() {
-    return 'User(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, fcmToken: $fcmToken, device: $device, password: $password, validity: $validity)';
+    return 'User(userId: $userId, name: $name, phoneNumber: $phoneNumber, email: $email, state: $state, country: $country, pincode: $pincode, businessName: $businessName, address: $address, website: $website, registeredAddress: $registeredAddress, facebook: $facebook, instagram: $instagram, twitter: $twitter, linkedIn: $linkedIn, google: $google, fcmToken: $fcmToken, device: $device, password: $password, validity: $validity, newLeadDays: $newLeadDays)';
   }
 
   @override
@@ -438,7 +454,9 @@ class _$UserImpl implements _User {
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.validity, validity) ||
-                other.validity == validity));
+                other.validity == validity) &&
+            (identical(other.newLeadDays, newLeadDays) ||
+                other.newLeadDays == newLeadDays));
   }
 
   @override
@@ -463,7 +481,8 @@ class _$UserImpl implements _User {
         fcmToken,
         device,
         password,
-        validity
+        validity,
+        newLeadDays
       ]);
 
   @JsonKey(ignore: true)
@@ -494,7 +513,8 @@ abstract class _User implements User {
       final String? fcmToken,
       final String? device,
       final String? password,
-      final String? validity}) = _$UserImpl;
+      final String? validity,
+      final int? newLeadDays}) = _$UserImpl;
 
   @override
   int? get userId;
@@ -536,6 +556,8 @@ abstract class _User implements User {
   String? get password;
   @override
   String? get validity;
+  @override
+  int? get newLeadDays;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
