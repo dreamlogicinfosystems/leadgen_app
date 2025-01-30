@@ -80,10 +80,10 @@ class _HomeState extends State<Home> {
     context.read<LeadBloc>().add(LeadEvent.getLeads('all',deptId, context));
     context.read<LicenceBloc>().add(LicenceEvent.checkLicence(context));
     getRole();
+    super.initState();
     if(Platform.isAndroid){
       checkUpdate();
     }
-    super.initState();
   }
 
   getRole() async{
@@ -98,9 +98,11 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> checkUpdate() async {
-    await InAppUpdate.checkForUpdate().then((info) {
+    await InAppUpdate.checkForUpdate().then((info) async {
       if (info.updateAvailability == UpdateAvailability.updateAvailable) {
-        InAppUpdate.startFlexibleUpdate().catchError((e) {
+        await InAppUpdate.startFlexibleUpdate();
+
+        await InAppUpdate.completeFlexibleUpdate().then((_) => {}).catchError((e) {
           debugPrint(e.toString());
         });
       }
