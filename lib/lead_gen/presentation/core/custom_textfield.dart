@@ -8,6 +8,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType keyBoardType;
   final bool? obscureText;
   final int? maxLines;
+  final int? minLines;
   final bool? readOnly;
   final bool? isChatPage;
   final int? maxLength;
@@ -46,7 +47,8 @@ class CustomTextField extends StatefulWidget {
         this.onSubmitted,
         this.clearReminder,
         this.clearReminderWidget,
-        this.isShowPhoneBook
+        this.isShowPhoneBook,
+        this.minLines
       })
       : super(key: key);
 
@@ -94,6 +96,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       focusNode: widget.focusNode,
       readOnly: widget.readOnly==null? false: widget.readOnly!,
       maxLines: widget.maxLines,
+      minLines: widget.minLines,
       obscureText: widget.obscureText==null? false : widget.obscureText!,
       keyboardType: widget.keyBoardType,
       maxLength: widget.maxLength,
