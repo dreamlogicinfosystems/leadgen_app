@@ -8,6 +8,8 @@ class LeadEvent with _$LeadEvent {
 
   const factory LeadEvent.getLeads(String type,int deptId,BuildContext context) = _getLeads;
 
+  const factory LeadEvent.filterLeads(LeadFilterType leadFilterType) = _filterLeads;
+
   const factory LeadEvent.getLeadChat(int leadId,BuildContext context) = _getLeadChat;
 
   const factory LeadEvent.getArchiveLeads(String type,String subType,BuildContext context) = _getArchiveLeads;

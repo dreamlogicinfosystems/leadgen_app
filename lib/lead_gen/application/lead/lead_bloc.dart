@@ -15,6 +15,7 @@ part 'lead_bloc.freezed.dart';
 class LeadBloc extends Bloc<LeadEvent, LeadState> {
   final LeadRepository _leadRepository;
   static List<String> departmentIds = [];
+  static List<Lead> leadList = [];
   static DateTime? pickedDate;
   static TimeOfDay? pickedTime;
   static DateTime? reminderDateTime;
@@ -71,16 +72,17 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
             add(LeadEvent.getLeadChat(e.lead.id!, e.context));
           });
         },
-        getLeads: (e) async{
+        getLeads: (e) async {
           emit(const LeadState.loadingInProgress());
 
           final tryGetLeads = await _leadRepository.getLeadsList(e.type,e.deptId,e.context);
 
           tryGetLeads.fold((emptyList){
             emit(LeadState.emptyLeadList(emptyList));
-          },(leadList){
+          },(leadListData){
+            leadList = leadListData.toList();
             // sorting lead list to show due leads first , than upcoming leads and last past leads
-            leadList.sort((a, b) {
+            leadListData.sort((a, b) {
               if(a.showStatus=="due"){
                 return -1;
               }else if(b.showStatus=="due"){
@@ -93,7 +95,7 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
                 return 0;
               }
             });
-            emit(LeadState.successLeadsList(leadList));
+            emit(LeadState.successLeadsList(leadListData));
           });
         },
         getLeadChat: (e) async{
@@ -166,6 +168,30 @@ class LeadBloc extends Bloc<LeadEvent, LeadState> {
           },(success){
             emit(LeadState.success(success.successMessage));
           });
+        },
+        filterLeads: (e) async {
+          if(leadList.isNotEmpty) {
+            emit(const LeadState.loadingInProgress());
+            List<Lead> filteredList = [];
+            //iterate through lead list
+            for (var lead in leadList) {
+              //check if lead status matches filter type ("due" or "upcoming")
+              //if matches add to filtered list
+              if(lead.showStatus == e.leadFilterType.name) {
+                filteredList.add(lead);
+              }
+
+              //if filtered list has data than emit success else empty
+              if(filteredList.isNotEmpty) {
+                emit(LeadState.successLeadsList(filteredList));
+              } else {
+                emit(const LeadState.emptyLeadList([]));
+              }
+
+            }
+          } else {
+            emit(const LeadState.emptyLeadList([]));
+          }
         }
     );
   }

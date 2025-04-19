@@ -32,6 +32,8 @@ class _HomeState extends State<Home> {
   int deptId = 1;
   String role = '';
   bool? validity;
+  bool isSelectedDueLeads = false;
+  bool isSelectedUpcomingLeads = false;
 
   Widget loading = ListView.builder(
       itemCount: 3,
@@ -164,6 +166,11 @@ class _HomeState extends State<Home> {
           //calling get count and leads api again to load the new data and show
           context.read<LeadBloc>().add(LeadEvent.getLeads(type, deptId, context));
           context.read<LeadCountBloc>().add(LeadCountEvent.getLeadCount(context));
+          //set flag false
+          setState(() {
+            isSelectedDueLeads = false;
+            isSelectedUpcomingLeads = false;
+          });
         }
       },
       body: SingleChildScrollView(
@@ -300,6 +307,9 @@ class _HomeState extends State<Home> {
     return GestureDetector(
       onTap: (){
         setState(() {
+          //mark selected due and upcoming leads flag false
+          isSelectedDueLeads = false;
+          isSelectedUpcomingLeads = false;
           context.read<DepartmentBloc>().add(DepartmentEvent.setDeptId(departmentsList[index].id!));
           deptId = departmentsList[index].id!;
         });
@@ -421,27 +431,40 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Padding filterIndicatorView() {
+  Widget filterIndicatorView() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Row(
         children: [
-          Row(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFF87168)
-                ),
-                height: 22,
-                width: 22,
-              ),
-              const SizedBox(width: 8),
-              Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
-            ],
-          ),
-          const SizedBox(width: 40),
-          Row(
+          _dueLeadTextView(),
+          const SizedBox(width: 30),
+          _upcomingLeadTextView(),
+        ],
+      ),
+    );
+  }
+
+  GestureDetector _upcomingLeadTextView() {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        //on upcoming text selection make isSelectedDueLeads flag false and isSelectedUpcomingLeads flag true
+        setState(() {
+          isSelectedDueLeads = false;
+          isSelectedUpcomingLeads = true;
+        });
+        //call block event to get filtered lead list
+        context.read<LeadBloc>().add(const LeadEvent.filterLeads(LeadFilterType.upcoming));
+      },
+      child: Container(
+        height: 30,
+        decoration: BoxDecoration(
+            color: isSelectedUpcomingLeads ? Colors.grey.shade400 : Colors.transparent,
+            borderRadius: BorderRadius.circular(5)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
             children: [
               Container(
                 decoration: const BoxDecoration(
@@ -453,9 +476,74 @@ class _HomeState extends State<Home> {
               ),
               const SizedBox(width: 8),
               Text("Upcoming",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+              if(isSelectedUpcomingLeads)
+                _clearLeads(isDueLeads: false)
             ],
           ),
-        ],
+        ),
+      ),
+    );
+  }
+
+  GestureDetector _dueLeadTextView() {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        //on due text selection make isSelectedDueLeads flag true and isSelectedUpcomingLeads flag false
+        setState(() {
+          isSelectedDueLeads = true;
+          isSelectedUpcomingLeads = false;
+        });
+        //call block event to get filtered lead list
+        context.read<LeadBloc>().add(const LeadEvent.filterLeads(LeadFilterType.due));
+      },
+      child: Container(
+        height: 30,
+        decoration: BoxDecoration(
+            color: isSelectedDueLeads ? Colors.grey.shade400 : Colors.transparent,
+            borderRadius: BorderRadius.circular(5)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFFF87168)
+                ),
+                height: 22,
+                width: 22,
+              ),
+              const SizedBox(width: 8),
+              Text("Due",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w400),),
+              if(isSelectedDueLeads)
+                _clearLeads(isDueLeads: true)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _clearLeads({required bool isDueLeads}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 5),
+      child: GestureDetector(
+          onTap: () {
+            //on click clear icon make selected view false
+            setState(() {
+              //if isDueLeads true set isSelectedDueLeads flag false else isSelectedUpcomingLeads flag false
+              if(isDueLeads) {
+                isSelectedDueLeads = false;
+              } else {
+                isSelectedUpcomingLeads = false;
+              }
+            });
+            //get all leads again after clearing
+            context.read<LeadBloc>().add(LeadEvent.getLeads('all',deptId, context));
+          },
+          child: const Icon(Icons.clear,size: 20)
       ),
     );
   }

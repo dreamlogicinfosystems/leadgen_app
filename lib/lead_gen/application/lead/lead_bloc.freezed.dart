@@ -16,13 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LeadEvent {
-  BuildContext get context => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Lead lead, BuildContext context) addLead,
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -43,6 +43,7 @@ mixin _$LeadEvent {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -63,6 +64,7 @@ mixin _$LeadEvent {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -84,6 +86,7 @@ mixin _$LeadEvent {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -99,6 +102,7 @@ mixin _$LeadEvent {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -112,6 +116,7 @@ mixin _$LeadEvent {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -121,18 +126,12 @@ mixin _$LeadEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $LeadEventCopyWith<LeadEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LeadEventCopyWith<$Res> {
   factory $LeadEventCopyWith(LeadEvent value, $Res Function(LeadEvent) then) =
       _$LeadEventCopyWithImpl<$Res, LeadEvent>;
-  @useResult
-  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -144,28 +143,13 @@ class _$LeadEventCopyWithImpl<$Res, $Val extends LeadEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-  }) {
-    return _then(_value.copyWith(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$addLeadImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$addLeadImplCopyWith<$Res> {
   factory _$$addLeadImplCopyWith(
           _$addLeadImpl value, $Res Function(_$addLeadImpl) then) =
       __$$addLeadImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Lead lead, BuildContext context});
 
@@ -247,6 +231,7 @@ class _$addLeadImpl implements _addLead {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -270,6 +255,7 @@ class _$addLeadImpl implements _addLead {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -293,6 +279,7 @@ class _$addLeadImpl implements _addLead {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -320,6 +307,7 @@ class _$addLeadImpl implements _addLead {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -338,6 +326,7 @@ class _$addLeadImpl implements _addLead {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -354,6 +343,7 @@ class _$addLeadImpl implements _addLead {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -374,21 +364,17 @@ abstract class _addLead implements LeadEvent {
       _$addLeadImpl;
 
   Lead get lead;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$addLeadImplCopyWith<_$addLeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$addLeadChatImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$addLeadChatImplCopyWith<$Res> {
   factory _$$addLeadChatImplCopyWith(
           _$addLeadChatImpl value, $Res Function(_$addLeadChatImpl) then) =
       __$$addLeadChatImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Lead lead, BuildContext context});
 
@@ -470,6 +456,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -493,6 +480,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -516,6 +504,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -543,6 +532,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -561,6 +551,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -577,6 +568,7 @@ class _$addLeadChatImpl implements _addLeadChat {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -597,21 +589,17 @@ abstract class _addLeadChat implements LeadEvent {
       _$addLeadChatImpl;
 
   Lead get lead;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$addLeadChatImplCopyWith<_$addLeadChatImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$getLeadsImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$getLeadsImplCopyWith<$Res> {
   factory _$$getLeadsImplCopyWith(
           _$getLeadsImpl value, $Res Function(_$getLeadsImpl) then) =
       __$$getLeadsImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String type, int deptId, BuildContext context});
 }
@@ -691,6 +679,7 @@ class _$getLeadsImpl implements _getLeads {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -714,6 +703,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -737,6 +727,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -764,6 +755,7 @@ class _$getLeadsImpl implements _getLeads {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -782,6 +774,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -798,6 +791,7 @@ class _$getLeadsImpl implements _getLeads {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -820,21 +814,224 @@ abstract class _getLeads implements LeadEvent {
 
   String get type;
   int get deptId;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$getLeadsImplCopyWith<_$getLeadsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$getLeadChatImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$filterLeadsImplCopyWith<$Res> {
+  factory _$$filterLeadsImplCopyWith(
+          _$filterLeadsImpl value, $Res Function(_$filterLeadsImpl) then) =
+      __$$filterLeadsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LeadFilterType leadFilterType});
+}
+
+/// @nodoc
+class __$$filterLeadsImplCopyWithImpl<$Res>
+    extends _$LeadEventCopyWithImpl<$Res, _$filterLeadsImpl>
+    implements _$$filterLeadsImplCopyWith<$Res> {
+  __$$filterLeadsImplCopyWithImpl(
+      _$filterLeadsImpl _value, $Res Function(_$filterLeadsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? leadFilterType = null,
+  }) {
+    return _then(_$filterLeadsImpl(
+      null == leadFilterType
+          ? _value.leadFilterType
+          : leadFilterType // ignore: cast_nullable_to_non_nullable
+              as LeadFilterType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$filterLeadsImpl implements _filterLeads {
+  const _$filterLeadsImpl(this.leadFilterType);
+
+  @override
+  final LeadFilterType leadFilterType;
+
+  @override
+  String toString() {
+    return 'LeadEvent.filterLeads(leadFilterType: $leadFilterType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$filterLeadsImpl &&
+            (identical(other.leadFilterType, leadFilterType) ||
+                other.leadFilterType == leadFilterType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, leadFilterType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$filterLeadsImplCopyWith<_$filterLeadsImpl> get copyWith =>
+      __$$filterLeadsImplCopyWithImpl<_$filterLeadsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Lead lead, BuildContext context) addLead,
+    required TResult Function(Lead lead, BuildContext context) addLeadChat,
+    required TResult Function(String type, int deptId, BuildContext context)
+        getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
+    required TResult Function(int leadId, BuildContext context) getLeadChat,
+    required TResult Function(String type, String subType, BuildContext context)
+        getArchiveLeads,
+    required TResult Function(
+            String name, String type, String subType, BuildContext context)
+        getSearchedLead,
+    required TResult Function(
+            int leadId, int statusId, String message, BuildContext context)
+        updateLeadStatus,
+    required TResult Function(int id, List<int> deptIds, BuildContext context)
+        updateLeadDepartments,
+    required TResult Function(int id, String description, BuildContext context)
+        updateLeadDescription,
+  }) {
+    return filterLeads(leadFilterType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Lead lead, BuildContext context)? addLead,
+    TResult? Function(Lead lead, BuildContext context)? addLeadChat,
+    TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
+    TResult? Function(int leadId, BuildContext context)? getLeadChat,
+    TResult? Function(String type, String subType, BuildContext context)?
+        getArchiveLeads,
+    TResult? Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult? Function(
+            int leadId, int statusId, String message, BuildContext context)?
+        updateLeadStatus,
+    TResult? Function(int id, List<int> deptIds, BuildContext context)?
+        updateLeadDepartments,
+    TResult? Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
+  }) {
+    return filterLeads?.call(leadFilterType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Lead lead, BuildContext context)? addLead,
+    TResult Function(Lead lead, BuildContext context)? addLeadChat,
+    TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
+    TResult Function(int leadId, BuildContext context)? getLeadChat,
+    TResult Function(String type, String subType, BuildContext context)?
+        getArchiveLeads,
+    TResult Function(
+            String name, String type, String subType, BuildContext context)?
+        getSearchedLead,
+    TResult Function(
+            int leadId, int statusId, String message, BuildContext context)?
+        updateLeadStatus,
+    TResult Function(int id, List<int> deptIds, BuildContext context)?
+        updateLeadDepartments,
+    TResult Function(int id, String description, BuildContext context)?
+        updateLeadDescription,
+    required TResult orElse(),
+  }) {
+    if (filterLeads != null) {
+      return filterLeads(leadFilterType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_addLead value) addLead,
+    required TResult Function(_addLeadChat value) addLeadChat,
+    required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
+    required TResult Function(_getLeadChat value) getLeadChat,
+    required TResult Function(_getArchiveLeads value) getArchiveLeads,
+    required TResult Function(_getSearchedLead value) getSearchedLead,
+    required TResult Function(_updateLeadStatus value) updateLeadStatus,
+    required TResult Function(_updateLeadDepartments value)
+        updateLeadDepartments,
+    required TResult Function(_updateLeadDescription value)
+        updateLeadDescription,
+  }) {
+    return filterLeads(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_addLead value)? addLead,
+    TResult? Function(_addLeadChat value)? addLeadChat,
+    TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
+    TResult? Function(_getLeadChat value)? getLeadChat,
+    TResult? Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult? Function(_getSearchedLead value)? getSearchedLead,
+    TResult? Function(_updateLeadStatus value)? updateLeadStatus,
+    TResult? Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult? Function(_updateLeadDescription value)? updateLeadDescription,
+  }) {
+    return filterLeads?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_addLead value)? addLead,
+    TResult Function(_addLeadChat value)? addLeadChat,
+    TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
+    TResult Function(_getLeadChat value)? getLeadChat,
+    TResult Function(_getArchiveLeads value)? getArchiveLeads,
+    TResult Function(_getSearchedLead value)? getSearchedLead,
+    TResult Function(_updateLeadStatus value)? updateLeadStatus,
+    TResult Function(_updateLeadDepartments value)? updateLeadDepartments,
+    TResult Function(_updateLeadDescription value)? updateLeadDescription,
+    required TResult orElse(),
+  }) {
+    if (filterLeads != null) {
+      return filterLeads(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _filterLeads implements LeadEvent {
+  const factory _filterLeads(final LeadFilterType leadFilterType) =
+      _$filterLeadsImpl;
+
+  LeadFilterType get leadFilterType;
+  @JsonKey(ignore: true)
+  _$$filterLeadsImplCopyWith<_$filterLeadsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$getLeadChatImplCopyWith<$Res> {
   factory _$$getLeadChatImplCopyWith(
           _$getLeadChatImpl value, $Res Function(_$getLeadChatImpl) then) =
       __$$getLeadChatImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int leadId, BuildContext context});
 }
@@ -906,6 +1103,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -929,6 +1127,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -952,6 +1151,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -979,6 +1179,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -997,6 +1198,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -1013,6 +1215,7 @@ class _$getLeadChatImpl implements _getLeadChat {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -1033,21 +1236,17 @@ abstract class _getLeadChat implements LeadEvent {
       _$getLeadChatImpl;
 
   int get leadId;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$getLeadChatImplCopyWith<_$getLeadChatImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$getArchiveLeadsImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$getArchiveLeadsImplCopyWith<$Res> {
   factory _$$getArchiveLeadsImplCopyWith(_$getArchiveLeadsImpl value,
           $Res Function(_$getArchiveLeadsImpl) then) =
       __$$getArchiveLeadsImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String type, String subType, BuildContext context});
 }
@@ -1128,6 +1327,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -1151,6 +1351,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1174,6 +1375,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1201,6 +1403,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -1219,6 +1422,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -1235,6 +1439,7 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -1257,21 +1462,17 @@ abstract class _getArchiveLeads implements LeadEvent {
 
   String get type;
   String get subType;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$getArchiveLeadsImplCopyWith<_$getArchiveLeadsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$getSearchedLeadImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$getSearchedLeadImplCopyWith<$Res> {
   factory _$$getSearchedLeadImplCopyWith(_$getSearchedLeadImpl value,
           $Res Function(_$getSearchedLeadImpl) then) =
       __$$getSearchedLeadImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String name, String type, String subType, BuildContext context});
 }
@@ -1360,6 +1561,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -1383,6 +1585,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1406,6 +1609,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1433,6 +1637,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -1451,6 +1656,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -1467,6 +1673,7 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -1489,21 +1696,17 @@ abstract class _getSearchedLead implements LeadEvent {
   String get name;
   String get type;
   String get subType;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$getSearchedLeadImplCopyWith<_$getSearchedLeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$updateLeadStatusImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$updateLeadStatusImplCopyWith<$Res> {
   factory _$$updateLeadStatusImplCopyWith(_$updateLeadStatusImpl value,
           $Res Function(_$updateLeadStatusImpl) then) =
       __$$updateLeadStatusImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int leadId, int statusId, String message, BuildContext context});
 }
@@ -1595,6 +1798,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -1618,6 +1822,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1641,6 +1846,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1668,6 +1874,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -1686,6 +1893,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -1702,6 +1910,7 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -1727,22 +1936,18 @@ abstract class _updateLeadStatus implements LeadEvent {
   int get leadId;
   int get statusId;
   String get message;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$updateLeadStatusImplCopyWith<_$updateLeadStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$updateLeadDepartmentsImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$updateLeadDepartmentsImplCopyWith<$Res> {
   factory _$$updateLeadDepartmentsImplCopyWith(
           _$updateLeadDepartmentsImpl value,
           $Res Function(_$updateLeadDepartmentsImpl) then) =
       __$$updateLeadDepartmentsImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int id, List<int> deptIds, BuildContext context});
 }
@@ -1832,6 +2037,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -1855,6 +2061,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1878,6 +2085,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -1905,6 +2113,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -1923,6 +2132,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -1939,6 +2149,7 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -1961,22 +2172,18 @@ abstract class _updateLeadDepartments implements LeadEvent {
 
   int get id;
   List<int> get deptIds;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$updateLeadDepartmentsImplCopyWith<_$updateLeadDepartmentsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$updateLeadDescriptionImplCopyWith<$Res>
-    implements $LeadEventCopyWith<$Res> {
+abstract class _$$updateLeadDescriptionImplCopyWith<$Res> {
   factory _$$updateLeadDescriptionImplCopyWith(
           _$updateLeadDescriptionImpl value,
           $Res Function(_$updateLeadDescriptionImpl) then) =
       __$$updateLeadDescriptionImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int id, String description, BuildContext context});
 }
@@ -2058,6 +2265,7 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
     required TResult Function(Lead lead, BuildContext context) addLeadChat,
     required TResult Function(String type, int deptId, BuildContext context)
         getLeads,
+    required TResult Function(LeadFilterType leadFilterType) filterLeads,
     required TResult Function(int leadId, BuildContext context) getLeadChat,
     required TResult Function(String type, String subType, BuildContext context)
         getArchiveLeads,
@@ -2081,6 +2289,7 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
     TResult? Function(Lead lead, BuildContext context)? addLead,
     TResult? Function(Lead lead, BuildContext context)? addLeadChat,
     TResult? Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult? Function(LeadFilterType leadFilterType)? filterLeads,
     TResult? Function(int leadId, BuildContext context)? getLeadChat,
     TResult? Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -2104,6 +2313,7 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
     TResult Function(Lead lead, BuildContext context)? addLead,
     TResult Function(Lead lead, BuildContext context)? addLeadChat,
     TResult Function(String type, int deptId, BuildContext context)? getLeads,
+    TResult Function(LeadFilterType leadFilterType)? filterLeads,
     TResult Function(int leadId, BuildContext context)? getLeadChat,
     TResult Function(String type, String subType, BuildContext context)?
         getArchiveLeads,
@@ -2131,6 +2341,7 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
     required TResult Function(_addLead value) addLead,
     required TResult Function(_addLeadChat value) addLeadChat,
     required TResult Function(_getLeads value) getLeads,
+    required TResult Function(_filterLeads value) filterLeads,
     required TResult Function(_getLeadChat value) getLeadChat,
     required TResult Function(_getArchiveLeads value) getArchiveLeads,
     required TResult Function(_getSearchedLead value) getSearchedLead,
@@ -2149,6 +2360,7 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
     TResult? Function(_addLead value)? addLead,
     TResult? Function(_addLeadChat value)? addLeadChat,
     TResult? Function(_getLeads value)? getLeads,
+    TResult? Function(_filterLeads value)? filterLeads,
     TResult? Function(_getLeadChat value)? getLeadChat,
     TResult? Function(_getArchiveLeads value)? getArchiveLeads,
     TResult? Function(_getSearchedLead value)? getSearchedLead,
@@ -2165,6 +2377,7 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
     TResult Function(_addLead value)? addLead,
     TResult Function(_addLeadChat value)? addLeadChat,
     TResult Function(_getLeads value)? getLeads,
+    TResult Function(_filterLeads value)? filterLeads,
     TResult Function(_getLeadChat value)? getLeadChat,
     TResult Function(_getArchiveLeads value)? getArchiveLeads,
     TResult Function(_getSearchedLead value)? getSearchedLead,
@@ -2187,9 +2400,7 @@ abstract class _updateLeadDescription implements LeadEvent {
 
   int get id;
   String get description;
-  @override
   BuildContext get context;
-  @override
   @JsonKey(ignore: true)
   _$$updateLeadDescriptionImplCopyWith<_$updateLeadDescriptionImpl>
       get copyWith => throw _privateConstructorUsedError;

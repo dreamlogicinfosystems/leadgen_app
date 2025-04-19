@@ -10,6 +10,11 @@ import 'package:lead_gen/lead_gen/presentation/core/custom_button.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+enum LeadFilterType {
+  due,
+  upcoming
+}
+
 showToastMessage(String message){
   Fluttertoast.showToast(
       msg: message,
