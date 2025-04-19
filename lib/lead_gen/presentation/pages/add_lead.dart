@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/customer/customer_bloc.dart';
 import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
@@ -85,8 +86,17 @@ class _AddLeadState extends State<AddLead> {
   }
 
   bool validateData(){
-    if(_nameController.text.trim()=='' || _titleController.text.trim()=='' || _messageController.text==''){
-      showErrorToastMessage("Please fill in all details");
+    if(_nameController.text.trim()=='' && _titleController.text.trim()=='' && _messageController.text==''){
+      showErrorToastMessage("Please enter name, description and message");
+      return false;
+    } else if(_nameController.text.trim() == "") {
+      showErrorToastMessage("Please enter name");
+      return false;
+    } else if(_titleController.text.trim() == "") {
+      showErrorToastMessage("Please enter short description");
+      return false;
+    } else if(_messageController.text.trim() == "") {
+      showErrorToastMessage("Please enter message");
       return false;
     } else if(selectedBoards.isEmpty){
       showErrorToastMessage("Atleast select one board");
@@ -198,171 +208,28 @@ class _AddLeadState extends State<AddLead> {
                             child: Text("Add Lead",style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 20),),
                           ),
                           const SizedBox(height: 10),
-                          CustomTextField(
-                            labelText: 'Full Name',
-                            isBoardAddPage: true,
-                            controller: _nameController,
-                            keyBoardType: TextInputType.text,
-                            readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
-                          ),
+                          _fullNamTextField(),
                           const SizedBox(height: 20),
-                          CustomTextField(
-                              isBoardAddPage: true,
-                              labelText: 'Short description',
-                              controller: _titleController,
-                              keyBoardType: TextInputType.text
-                          ),
+                          _descriptionTextField(),
                           const SizedBox(height: 20),
-                          CustomTextField(
-                              isBoardAddPage: true,
-                              labelText: 'Phone',
-                              controller: _phoneController,
-                              keyBoardType: TextInputType.number,
-                              readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
-                          ),
+                          _phoneTextField(),
                           const SizedBox(height: 20),
-                          CustomTextField(
-                              isBoardAddPage: true,
-                              labelText: 'Email',
-                              controller: _emailController,
-                              keyBoardType: TextInputType.emailAddress,
-                              readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
-                          ),
+                          _emailTextField(),
                           const SizedBox(height: 20),
-                          CustomTextField(
-                              isBoardAddPage: true,
-                              labelText: 'Message',
-                              maxLines: 4,
-                              controller: _messageController,
-                              keyBoardType: TextInputType.text
-                          ),
+                          _messageTextField(),
                           const SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Text("Add to board",style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400),),
                           ),
                           const SizedBox(height: 10),
-                          BlocConsumer<DepartmentBloc, DepartmentState>(
-                            listener: (context, state){
-                              state.maybeWhen(
-                                  loadingInProgress: (){
-                                    showLoader(context);
-                                  },
-                                  departmentList: (departList){
-                                    Navigator.pop(context);
-                                  },
-                                  orElse: (){}
-                              );
-                            },
-                            builder: (context, state) {
-                              return state.maybeWhen(
-                                  departmentList: (departments){
-                                    return CustomDropDown(
-                                      getSelectedValue: selectedBoard,
-                                      hintText: 'Please select board',
-                                      departments: departments,
-                                    );
-                                  },
-                                  orElse: (){
-                                    return CustomDropDown(
-                                      getSelectedValue: selectedBoard,
-                                      hintText: 'Please select board',
-                                      departments: const [],
-                                    );
-                                  }
-                              );
-                            },
-                          ),
+                          _departmentSelectionView(),
                           const SizedBox(height: 10),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Wrap(
-                              spacing: 8.0,
-                              runSpacing: 4,
-                              direction: Axis.horizontal,
-                              children: selectedBoards.map<Widget>((Department department){
-                                return SizedBox(
-                                  height: 20,
-                                  child: Chip(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20)
-                                    ),
-                                    padding: const EdgeInsets.only(bottom: 15),
-                                    label: Text(department.departmentName!,style: GoogleFonts.poppins(fontSize: 9,fontWeight: FontWeight.w400),),
-                                    deleteIcon: Container(
-                                      height: 12,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xFFC2E90B),
-                                      ),
-                                      child: Image.asset("assets/images/filled.png"),
-                                    ),
-                                    onDeleted: (){
-                                      setState(() {
-                                        selectedBoards.remove(department);
-                                      });
-                                    },
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          ),
+                          _selectedDeptDisplayView(),
                           const SizedBox(height: 20),
-                          CustomTextField(
-                              isBoardAddPage: true,
-                              labelText: 'Reminder',
-                              clearReminder: true,
-                              clearReminderWidget: Padding(
-                                padding: const EdgeInsets.only(top:5),
-                                child: GestureDetector(
-                                  onTap: (){
-                                    _reminderController.clear();
-                                    //also mark picked date , time & reminder time null
-                                    LeadBloc.pickedDate = null;
-                                    LeadBloc.pickedTime = null;
-                                    LeadBloc.reminderDateTime = null;
-                                  },
-                                  child: Icon(Icons.clear,size: 16),
-                                ),
-                              ),
-                              controller: _reminderController,
-                              onTap: (){
-                                pickReminderDate();
-                              },
-                              keyBoardType: TextInputType.none
-                          ),
+                          _reminderTextField(),
                           const SizedBox(height: 30),
-                          Center(
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width*0.5,
-                              child: CustomButton(
-                                name: 'Add lead',
-                                onTap: (){
-                                  if(validateData()==true){
-                                    //check for optional fields if not empty validate them
-                                    if(_phoneController.text.isNotEmpty) {
-                                      if(validatePhone() == true) {
-                                        //check for email if not empty
-                                        if(_emailController.text.isNotEmpty) {
-                                          if(validateEmail() == true) {
-                                            callAddEvent();
-                                          }
-                                        } else {
-                                          //if email empty than directly call event
-                                          callAddEvent();
-                                        }
-                                      }
-                                    } else if(_emailController.text.isNotEmpty) {
-                                      if(validateEmail() == true) {
-                                        callAddEvent();
-                                      }
-                                    } else {
-                                      callAddEvent();
-                                    }
-                                  }
-                                },),
-                            ),
-                          ),
+                          _addLeadButton(),
                           const SizedBox(height: 10),
                         ],
                       ),
@@ -375,6 +242,223 @@ class _AddLeadState extends State<AddLead> {
         );
       },
     );  //const AddLeadBody()
+  }
+
+  Center _addLeadButton() {
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width*0.5,
+        child: CustomButton(
+          name: 'Add lead',
+          onTap: (){
+            if(validateData()==true){
+              //check for optional fields if not empty validate them
+              if(_phoneController.text.isNotEmpty) {
+                if(validatePhone() == true) {
+                  //check for email if not empty
+                  if(_emailController.text.isNotEmpty) {
+                    if(validateEmail() == true) {
+                      callAddEvent();
+                    }
+                  } else {
+                    //if email empty than directly call event
+                    callAddEvent();
+                  }
+                }
+              } else if(_emailController.text.isNotEmpty) {
+                if(validateEmail() == true) {
+                  callAddEvent();
+                }
+              } else {
+                callAddEvent();
+              }
+            }
+          },
+        ),
+      ),
+    );
+  }
+
+  CustomTextField _reminderTextField() {
+    return CustomTextField(
+        isBoardAddPage: true,
+        labelText: 'Reminder',
+        clearReminder: true,
+        clearReminderWidget: Padding(
+          padding: const EdgeInsets.only(top:5),
+          child: GestureDetector(
+            onTap: (){
+              _reminderController.clear();
+              //also mark picked date , time & reminder time null
+              LeadBloc.pickedDate = null;
+              LeadBloc.pickedTime = null;
+              LeadBloc.reminderDateTime = null;
+            },
+            child: Icon(Icons.clear,size: 16),
+          ),
+        ),
+        controller: _reminderController,
+        onTap: (){
+          pickReminderDate();
+        },
+        keyBoardType: TextInputType.none
+    );
+  }
+
+  SingleChildScrollView _selectedDeptDisplayView() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Wrap(
+        spacing: 8.0,
+        runSpacing: 4,
+        direction: Axis.horizontal,
+        children: selectedBoards.map<Widget>((Department department){
+          return SizedBox(
+            height: 20,
+            child: Chip(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+              ),
+              padding: const EdgeInsets.only(bottom: 15),
+              label: Text(department.departmentName!,style: GoogleFonts.poppins(fontSize: 9,fontWeight: FontWeight.w400),),
+              deleteIcon: Container(
+                height: 12,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFFC2E90B),
+                ),
+                child: Image.asset("assets/images/filled.png"),
+              ),
+              onDeleted: (){
+                setState(() {
+                  selectedBoards.remove(department);
+                });
+              },
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  BlocConsumer<DepartmentBloc, DepartmentState> _departmentSelectionView() {
+    return BlocConsumer<DepartmentBloc, DepartmentState>(
+      listener: (context, state){
+        state.maybeWhen(
+            loadingInProgress: (){
+              showLoader(context);
+            },
+            departmentList: (departList){
+              Navigator.pop(context);
+            },
+            orElse: (){}
+        );
+      },
+      builder: (context, state) {
+        return state.maybeWhen(
+            departmentList: (departments){
+              return CustomDropDown(
+                getSelectedValue: selectedBoard,
+                hintText: 'Please select board',
+                departments: departments,
+              );
+            },
+            orElse: (){
+              return CustomDropDown(
+                getSelectedValue: selectedBoard,
+                hintText: 'Please select board',
+                departments: const [],
+              );
+            }
+          );
+        },
+    );
+  }
+
+  CustomTextField _messageTextField() {
+    return CustomTextField(
+        isBoardAddPage: true,
+        labelText: 'Message',
+        maxLines: 4,
+        controller: _messageController,
+        keyBoardType: TextInputType.text
+    );
+  }
+
+  CustomTextField _emailTextField() {
+    return CustomTextField(
+      isBoardAddPage: true,
+      labelText: 'Email',
+      controller: _emailController,
+      keyBoardType: TextInputType.emailAddress,
+      readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
+    );
+  }
+
+  CustomTextField _phoneTextField() {
+    return CustomTextField(
+      isBoardAddPage: true,
+      labelText: 'Phone',
+      controller: _phoneController,
+      keyBoardType: TextInputType.number,
+      readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
+    );
+  }
+
+  CustomTextField _descriptionTextField() {
+    return CustomTextField(
+        isBoardAddPage: true,
+        labelText: 'Short description',
+        controller: _titleController,
+        keyBoardType: TextInputType.text
+    );
+  }
+
+  CustomTextField _fullNamTextField() {
+    return CustomTextField(
+      labelText: 'Full Name',
+      isBoardAddPage: true,
+      controller: _nameController,
+      keyBoardType: TextInputType.text,
+      readOnly: widget.sourcePage==Source.customerLeadsPage? true : false,
+      isShowPhoneBook: true,
+      suffixIcon: GestureDetector(
+        onTap: () async {
+          await _getContactInfo();
+        },
+        child: const Icon(Icons.contacts),
+      ),
+    );
+  }
+
+  Future<void> _getContactInfo() async {
+    // Request contact permission
+    if(await FlutterContacts.requestPermission()){
+      return;
+    }
+    // Get all contacts (fully fetched)
+    try {
+      final selectedContact = await FlutterContacts.openExternalPick();
+      if(selectedContact != null) {
+        setState(() {
+          //clear existing lead data
+          clearExistingLeadData();
+          _nameController.text = selectedContact.displayName;
+          _phoneController.text = selectedContact.phones[0].normalizedNumber.substring(3);
+          if(selectedContact.emails[0].address.isNotEmpty) {
+            _emailController.text = selectedContact.emails[0].address;
+          }
+        });
+      }
+    } catch (e) {
+      debugPrint("error: ${e.toString()}");
+    }
+  }
+
+  clearExistingLeadData() {
+    _nameController.clear();
+    _emailController.clear();
+    _phoneController.clear();
   }
 
   callAddEvent() {

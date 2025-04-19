@@ -47,5 +47,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSContactsUsageDescription</key>
+    <string>Allow user to read contacts to add lead details</string>
 </dict>
 </plist>

@@ -175,107 +175,123 @@ class _HomeState extends State<Home> {
               orElse: (){}
             );
           },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 5,left: 10,right: 10),
-                child: SizedBox(
-                    height: MediaQuery.of(context).size.height*0.055,
-                    width: MediaQuery.of(context).size.width,
-                    child: BlocBuilder<DepartmentBloc, DepartmentState>(
-                      builder: (context, state) {
-                        return state.maybeWhen(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const LeadsCountContainer(),
+                //department
+                _departmentList(),
+                // DepartmentsContainer(refresh: refreshPage),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: BlocBuilder<LeadBloc, LeadState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
                           loadingInProgress: (){
-                            return loading;
+                            return leadLoading;
                           },
-                          departmentList: (departmentsList){
-                            return ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
-                              itemCount: departmentsList.length,
-                              itemBuilder: (context,index){
-                                return departmentView(departmentsList, index);
-                              },
-                            );
+                          emptyLeadList: (emptyList){
+                            return _noLeadView();
+                          },
+                          successLeadsList: (leadsList){
+                            return _leadListView(leadsList);
                           },
                           orElse: (){
-                            return loading;
-                          });
-                        },
-                    )
+                            return leadLoading;
+                          }
+                      );
+                    },
+                  ),
                 ),
-              ),
-              // DepartmentsContainer(refresh: refreshPage),
-              const SizedBox(height: 10),
-              const LeadsCountContainer(),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: BlocBuilder<LeadBloc, LeadState>(
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                        loadingInProgress: (){
-                          return leadLoading;
-                        },
-                        emptyLeadList: (emptyList){
-                          return SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height*0.58,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: MediaQuery.of(context).size.height*0.07,
-                                  child: filterIndicatorView(),
-                                ),
-                                SizedBox(
-                                  height: MediaQuery.of(context).size.height*0.45,
-                                  child: Center(
-                                    child: Text("No leads found!",style:
-                                    GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        successLeadsList: (leadsList){
-                          return SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height*0.585,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: MediaQuery.of(context).size.height*0.07,
-                                  child: filterIndicatorView(),
-                                ),
-                                Expanded(
-                                  child: ListView.builder(
-                                      shrinkWrap: true,
-                                      itemCount: leadsList.length,
-                                      itemBuilder: (context,index){
-                                        return leadCardView(leadsList, index);
-                                      }
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        orElse: (){
-                          return leadLoading;
-                        }
-                    );
-                  },
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _leadListView(List<Lead> leadsList) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height*0.585,
+      child: Column(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*0.07,
+            child: filterIndicatorView(),
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.only(bottom: 15),
+              shrinkWrap: true,
+              itemCount: leadsList.length,
+              itemBuilder: (context,index){
+                return leadCardView(leadsList, index);
+              }
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _noLeadView() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height*0.58,
+      child: Column(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*0.07,
+            child: filterIndicatorView(),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height*0.45,
+            child: Center(
+              child: Text("No leads found!",style:
+              GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _departmentList() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 5,left: 12,right: 12),
+      child: SizedBox(
+          height: MediaQuery.of(context).size.height*0.055,
+          width: MediaQuery.of(context).size.width,
+          child: BlocBuilder<DepartmentBloc, DepartmentState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                  loadingInProgress: (){
+                    return loading;
+                  },
+                  departmentList: (departmentsList){
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: departmentsList.length,
+                      itemBuilder: (context,index){
+                        return departmentView(departmentsList, index);
+                      },
+                    );
+                  },
+                  orElse: (){
+                    return loading;
+                  });
+              },
+          )
       ),
     );
   }

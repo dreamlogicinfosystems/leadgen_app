@@ -24,6 +24,7 @@ class CustomTextField extends StatefulWidget {
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final FocusNode? focusNode;
+  final bool? isShowPhoneBook;
 
   const CustomTextField(
       {Key? key,
@@ -40,7 +41,12 @@ class CustomTextField extends StatefulWidget {
         this.isLogin, this.labelText,
         this.isLoginPass, this.suffixIcon,
         this.onEditingComplete,
-        this.isBoardAddPage, this.focusNode, this.onSubmitted, this.clearReminder, this.clearReminderWidget
+        this.isBoardAddPage,
+        this.focusNode,
+        this.onSubmitted,
+        this.clearReminder,
+        this.clearReminderWidget,
+        this.isShowPhoneBook
       })
       : super(key: key);
 
@@ -100,7 +106,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         filled: true,
         hintText: widget.hintText,
         labelText: widget.labelText,
-        suffixIcon: widget.isLogin==true? widget.suffixIcon : null,
+        suffixIcon: widget.isLogin == true || widget.isShowPhoneBook == true? widget.suffixIcon : null,
         labelStyle: GoogleFonts.poppins(color: const Color(0xFF727373),
             fontSize: widget.isBoardAddPage==true? 13: 14,fontWeight: FontWeight.w400),
         enabled: true,
