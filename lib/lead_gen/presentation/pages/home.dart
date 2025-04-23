@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,6 +8,7 @@ import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
+import 'package:lead_gen/lead_gen/constants/responsive.dart';
 import 'package:lead_gen/lead_gen/domain/department/department.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_appbar.dart';
@@ -83,8 +85,11 @@ class _HomeState extends State<Home> {
     context.read<LicenceBloc>().add(LicenceEvent.checkLicence(context));
     getRole();
     super.initState();
-    if(Platform.isAndroid) {
-      checkUpdate();
+    //if platform is mobile
+    if(!kIsWeb) {
+      if(Platform.isAndroid) {
+        checkUpdate();
+      }
     }
   }
 
@@ -218,6 +223,27 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _webView() {
+    final height = MediaQuery.of(context).size.height;
+    return SizedBox(
+      height: height,
+      child: Row(
+        children: [
+          Drawer(
+            width: MediaQuery.of(context).size.width*0.25,
+            shape: const RoundedRectangleBorder(),
+            shadowColor: Colors.white,
+            backgroundColor: Colors.white,
+            child: BlocProvider(
+              create: (context) => sl<ReminderBloc>(),
+              child: const MainDrawer(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -408,9 +434,10 @@ class _HomeState extends State<Home> {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width*0.22,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top:5,right: 5),
+                        padding: const EdgeInsets.only(top:5,right: 15),
                         child: Text(modifyDate(leadsList[index].lastChatDate!),style: GoogleFonts.poppins(fontSize: 11,fontWeight: FontWeight.w400),),
                       ),
                       const Spacer(),

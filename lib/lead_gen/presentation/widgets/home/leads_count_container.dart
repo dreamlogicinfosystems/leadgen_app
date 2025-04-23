@@ -38,7 +38,7 @@ class _LeadsCountContainerState extends State<LeadsCountContainer> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height*0.09,
+                        // height: MediaQuery.of(context).size.height*0.09,
                         width: MediaQuery.of(context).size.width*0.25,
                         child: Column(
                           children: [
@@ -51,7 +51,7 @@ class _LeadsCountContainerState extends State<LeadsCountContainer> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height*0.09,
+                        // height: MediaQuery.of(context).size.height*0.09,
                         width: MediaQuery.of(context).size.width*0.25,
                         child: Column(
                           children: [
@@ -64,7 +64,7 @@ class _LeadsCountContainerState extends State<LeadsCountContainer> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height*0.09,
+                        // height: MediaQuery.of(context).size.height*0.09,
                         width: MediaQuery.of(context).size.width*0.25,
                         child: Column(
                           children: [

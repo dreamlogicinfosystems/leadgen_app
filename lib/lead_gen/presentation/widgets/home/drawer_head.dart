@@ -30,7 +30,7 @@ class _DrawerHeadState extends State<DrawerHead> {
       padding: const EdgeInsets.only(top: 50),
       child: SizedBox(
         width: MediaQuery.of(context).size.width*0.8,
-        height: MediaQuery.of(context).size.height*0.21,
+        // height: MediaQuery.of(context).size.height*0.21,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

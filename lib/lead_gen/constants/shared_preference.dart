@@ -2,7 +2,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalDataSource{
   final SharedPreferences _sharedPreferences;
+  String isUserExistWeb = "isUserExistWeb";
   LocalDataSource(this._sharedPreferences);
+
+  Future<void> setIsUserExistWeb(int value) async {
+    await _sharedPreferences.setInt(isUserExistWeb, value);
+  }
+
+  Future<int?> getUserExistWeb() async {
+    final result = _sharedPreferences.getInt(isUserExistWeb);
+    return result;
+  }
 
   Future<void> storeUserData(String userName,String email) async{
     await _sharedPreferences.setString('name', userName);

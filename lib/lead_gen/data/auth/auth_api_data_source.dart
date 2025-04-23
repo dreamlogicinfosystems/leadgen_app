@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
@@ -46,7 +47,13 @@ class AuthApiDataSource{
 
       await _localDataSource.setRole(result['user']['role']);
 
-      await _userDBHelper.saveUserData(result['user']);
+      if(kIsWeb) {
+        //mark user login
+        await _localDataSource.setIsUserExistWeb(1);
+      } else {
+        //platform is mobile
+        await _userDBHelper.saveUserData(result['user']);
+      }
 
       await _localDataSource.storeUserData(
           userDto.name!, userDto.email!
@@ -92,7 +99,13 @@ class AuthApiDataSource{
 
       await _localDataSource.setRole(result['user']['role']);
 
-      await _userDBHelper.saveUserData(result['user']);
+      if(kIsWeb) {
+        //mark user login
+        await _localDataSource.setIsUserExistWeb(1);
+      } else {
+        //platform is mobile
+        await _userDBHelper.saveUserData(result['user']);
+      }
 
       await _localDataSource.storeUserData(
         result['user']['name'], email,
@@ -119,7 +132,13 @@ class AuthApiDataSource{
     final result = jsonDecode(response!.body);
 
     if(result['status'] == true){
-      await _userDBHelper.deleteUser();
+      //if platform is web mark user exist 0
+      if(kIsWeb) {
+        await _localDataSource.setIsUserExistWeb(0);
+      } else {
+        //if platform is mobile delete user from sql db
+        await _userDBHelper.deleteUser();
+      }
       await _localDataSource.setLicenceValidity(false);
       await _localDataSource.setRole("");
       await _localDataSource.setToken('');

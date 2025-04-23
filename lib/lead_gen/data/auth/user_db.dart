@@ -14,7 +14,7 @@ class UserDBHelper{
   static const String tableName = 'lead_table';
   static const String databaseName = 'lead_gen.db';
 
-  Future<Database?> get database async{
+  Future<Database?> get database async {
     if(_db!=null){
       return _db;
     }else{
