@@ -12,7 +12,7 @@ class LocalNotificationHandler{
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   init() async{
-    AndroidInitializationSettings androidInitializationSettings = const AndroidInitializationSettings('logo');
+    AndroidInitializationSettings androidInitializationSettings = const AndroidInitializationSettings("ic_launcher");
 
     await _flutterLocalNotificationsPlugin.initialize(
       InitializationSettings(
@@ -34,7 +34,7 @@ class LocalNotificationHandler{
       "LeadGen",
       channelDescription:  "reminder",
       priority: Priority.max,
-      importance: Importance.max,
+      importance: Importance.max
     );
 
     NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails);
