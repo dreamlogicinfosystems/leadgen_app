@@ -16,8 +16,7 @@ class ApiMethods{
   Future<http.Response?> post({required String url,data,required BuildContext context}) async{
     
     final connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.ethernet
-    || connectivityResult == ConnectivityResult.wifi) {
+    if (!connectivityResult.contains(ConnectivityResult.none)) {
 
       final token = await _localDataSource.getToken();
       if(token!=null && token!=''){
@@ -46,7 +45,7 @@ class ApiMethods{
         return response;
       }
       return response;
-    }else if(connectivityResult == ConnectivityResult.none){
+    }else if(connectivityResult.contains(ConnectivityResult.none)){
       if(context.mounted){
         showNoInternalDialog(context);
       }
@@ -57,8 +56,7 @@ class ApiMethods{
   Future<http.Response?> get({required String url,required BuildContext context}) async{
 
     final connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.ethernet
-        || connectivityResult == ConnectivityResult.wifi) {
+    if (!connectivityResult.contains(ConnectivityResult.none)) {
 
       final token = await _localDataSource.getToken();
       if(token!=null && token!=''){
@@ -84,7 +82,7 @@ class ApiMethods{
         //show dialog box
       }
       return response;
-    }else if(connectivityResult == ConnectivityResult.none){
+    }else if(connectivityResult.contains(ConnectivityResult.none)){
       if(context.mounted){
         showNoInternalDialog(context);
       }

@@ -18,21 +18,25 @@ class MaintenanceDataSource{
         context: context
     );
 
-    final result = jsonDecode(response!.body);
+    if(response != null) {
+      final result = jsonDecode(response.body);
 
-    if(result['status'] == true){
-      MaintenanceDto maintenanceDto = MaintenanceDto(
-        id: result['maintenances'][0]['id'],
-        isEnabled: result['maintenances'][0]['is_enabled'],
-        isCompulsory: result['maintenances'][0]['is_compulsory'],
-        message: result['maintenances'][0]['message'],
-        minAndroidVersion: result['maintenances'][0]['min_android_version'],
-        minIosVersion: result['maintenances'][0]['min_ios_version']
-      );
+      if(result['status'] == true){
+        MaintenanceDto maintenanceDto = MaintenanceDto(
+            id: result['maintenances'][0]['id'],
+            isEnabled: result['maintenances'][0]['is_enabled'],
+            isCompulsory: result['maintenances'][0]['is_compulsory'],
+            message: result['maintenances'][0]['message'],
+            minAndroidVersion: result['maintenances'][0]['min_android_version'],
+            minIosVersion: result['maintenances'][0]['min_ios_version']
+        );
 
-      return  Right(maintenanceDto);
+        return  Right(maintenanceDto);
+      } else {
+        return Left(ErrorMessage(result['message']));
+      }
     } else {
-      return Left(ErrorMessage(result['message']));
+      return Left(ErrorMessage("Unable to get maintenance data"));
     }
   }
 }

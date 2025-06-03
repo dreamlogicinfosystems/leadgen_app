@@ -12,7 +12,7 @@ class LocalNotificationHandler{
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   init() async{
-    AndroidInitializationSettings androidInitializationSettings = const AndroidInitializationSettings("ic_launcher");
+    AndroidInitializationSettings androidInitializationSettings = const AndroidInitializationSettings("@mipmap/launcher_icon");
 
     await _flutterLocalNotificationsPlugin.initialize(
       InitializationSettings(
@@ -34,7 +34,8 @@ class LocalNotificationHandler{
       "LeadGen",
       channelDescription:  "reminder",
       priority: Priority.max,
-      importance: Importance.max
+      importance: Importance.max,
+      icon: "@mipmap/launcher_icon"
     );
 
     NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails);
@@ -55,7 +56,7 @@ class LocalNotificationHandler{
           message,
           scheduledDateTime,
           notificationDetails,
-          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle
       );
     }else if(interval=="Daily"){
       for(int i=0;i<count;i++){
@@ -79,7 +80,7 @@ class LocalNotificationHandler{
             message,
             scheduledDateTime,
             notificationDetails,
-            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+            androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle
         );
       }
     }else if(interval=="Weekly"){
@@ -110,7 +111,7 @@ class LocalNotificationHandler{
             message,
             scheduledDateTime,
             notificationDetails,
-            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+            androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle
         );
       }
     }else if(interval=="Monthly"){
@@ -141,8 +142,7 @@ class LocalNotificationHandler{
             message,
             scheduledDateTime,
             notificationDetails,
-            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation
-                .absoluteTime
+            androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle
         );
       }
     }else{
@@ -172,8 +172,7 @@ class LocalNotificationHandler{
             message,
             scheduledDateTime,
             notificationDetails,
-            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation
-                .absoluteTime
+            androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle
         );
       }
     }
@@ -185,6 +184,7 @@ class LocalNotificationHandler{
     channelDescription:  "reminder",
     priority: Priority.max,
     importance: Importance.max,
+    icon: "launcher_icon"
   );
 
   setRemainder(String message,DateTime date,TimeOfDay time) async{
@@ -205,7 +205,7 @@ class LocalNotificationHandler{
         message,
         scheduledDateTime,
         notificationDetails,
-        uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 

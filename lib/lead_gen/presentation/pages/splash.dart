@@ -76,6 +76,9 @@ class _SplashScreenState extends State<SplashScreen> {
       body: BlocListener<MaintenanceBloc,MaintenanceState>(
         listener: (context, state) {
           state.maybeWhen(
+            failure: (error) {
+              navigate();
+            },
             success: (maintenance) async{
               final packageInfo = await PackageInfo.fromPlatform();
 

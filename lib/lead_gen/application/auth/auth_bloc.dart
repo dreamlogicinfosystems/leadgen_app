@@ -119,7 +119,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final firebaseToken = await _firebaseMessaging.getToken();
     if(firebaseToken!=null){
       fcmToken = firebaseToken;
+      print("firebase token: $firebaseToken");
     }
+
+    print("firebase token: $firebaseToken");
 
     if(Platform.isAndroid){
       device = 'android';
