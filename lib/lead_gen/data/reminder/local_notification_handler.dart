@@ -184,7 +184,6 @@ class LocalNotificationHandler{
     channelDescription:  "reminder",
     priority: Priority.max,
     importance: Importance.max,
-    icon: "launcher_icon"
   );
 
   setRemainder(String message,DateTime date,TimeOfDay time) async{
@@ -209,7 +208,7 @@ class LocalNotificationHandler{
     );
   }
 
-  void showNotification(String title,String body) async {
+  Future<void> showNotification(String title,String body) async {
     NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails);
 
     await _flutterLocalNotificationsPlugin.show(

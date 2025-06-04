@@ -46,13 +46,13 @@ class LeadDataSource{
       final result = jsonDecode(response!.body);
 
       if(result['status'] == true){
-        if(reminderTime != DateTime(0) && leadDto.date!.isNotEmpty){
-          final randomNumber = DateTime.now().millisecondsSinceEpoch;
-          //generating a random number
-          final id = int.parse(randomNumber.toString().substring(7,13));
-
-          await _localNotificationHandler.setReminder1(id, leadDto.title!, reminderTime, "Fixed", 0);
-        }
+        // if(reminderTime != DateTime(0) && leadDto.date!.isNotEmpty){
+        //   final randomNumber = DateTime.now().millisecondsSinceEpoch;
+        //   //generating a random number
+        //   final id = int.parse(randomNumber.toString().substring(7,13));
+        //
+        //   await _localNotificationHandler.setReminder1(id, leadDto.title!, reminderTime, "Fixed", 0);
+        // }
         return Right(Success(result['message']));
       }else{
         return Left(ErrorMessage(result['message']));

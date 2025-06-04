@@ -34,9 +34,10 @@ class FCM {
   init() async{
     await registerNotification();
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+      debugPrint("Notification in Foreground state: title : ${message.notification!.title}");
       //show localNotification when received
-      localNotificationHandler.showNotification(
+      await localNotificationHandler.showNotification(
           message.notification!.title!,
           message.notification!.body!
       );

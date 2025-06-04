@@ -52,13 +52,12 @@ class ReminderApiDataSource{
       // };
 
       if(result['status'] == true){
-
-        final randomNumber = DateTime.now().millisecondsSinceEpoch;
-        //generating a random number
-        final id = int.parse(randomNumber.toString().substring(7,13));
-
-        final count = int.parse(reminderDto.repeatCount!);
-        await _localNotificationHandler.setReminder1(id, reminderDto.message!, reminderDateTime, reminderDto.repeatInterval!,count);
+        // final randomNumber = DateTime.now().millisecondsSinceEpoch;
+        // //generating a random number
+        // final id = int.parse(randomNumber.toString().substring(7,13));
+        //
+        // final count = int.parse(reminderDto.repeatCount!);
+        // await _localNotificationHandler.setReminder1(id, reminderDto.message!, reminderDateTime, reminderDto.repeatInterval!,count);
         return Right(Success(result['message']));
       }else{
         return Left(ErrorMessage(result['message']));
