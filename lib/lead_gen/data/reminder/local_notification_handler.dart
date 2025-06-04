@@ -182,8 +182,9 @@ class LocalNotificationHandler{
     "1",
     "LeadGen",
     channelDescription:  "reminder",
-    priority: Priority.max,
-    importance: Importance.max,
+    priority: Priority.high,
+    importance: Importance.high,
+    playSound: true
   );
 
   setRemainder(String message,DateTime date,TimeOfDay time) async{
