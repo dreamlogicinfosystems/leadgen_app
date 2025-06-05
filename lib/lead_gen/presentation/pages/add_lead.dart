@@ -19,7 +19,8 @@ import 'customer_leads.dart';
 
 class AddLead extends StatefulWidget {
   final Source sourcePage;
-  const AddLead({Key? key, required this.sourcePage}) : super(key: key);
+  final Lead? lead;
+  const AddLead({super.key, required this.sourcePage,this.lead});
 
   @override
   State<AddLead> createState() => _AddLeadState();
@@ -69,6 +70,10 @@ class _AddLeadState extends State<AddLead> {
       _nameController.text = customer.custName!;
       _phoneController.text = customer.custPhone!;
       _emailController.text = customer.custEmail!;
+    } else if(widget.lead != null){
+      _nameController.text = widget.lead!.name ?? "";
+      _titleController.text = widget.lead!.title ?? "";
+      _messageController.text = widget.lead!.message ?? "";
     }
     super.initState();
   }
