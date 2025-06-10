@@ -366,10 +366,10 @@ class LeadDataSource{
 
         return Right(leadDetailsInfoDto);
       } else{
-        return Left(ErrorMessage(result["message"]));
+        return Left(ErrorMessage("Something went wrong. Please try again later"));
       }
     } catch (e) {
-      return Left(ErrorMessage(e.toString()));
+      return Left(ErrorMessage("Something went wrong. Please try again later"));
     }
   }
 }
