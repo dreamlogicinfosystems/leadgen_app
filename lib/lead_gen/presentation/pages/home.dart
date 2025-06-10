@@ -6,6 +6,7 @@ import 'package:in_app_update/in_app_update.dart';
 import 'package:intl/intl.dart';
 import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead_info_extractor/lead_info_extractor_bloc.dart';
 import 'package:lead_gen/lead_gen/application/licence/licence_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/responsive.dart';
@@ -151,10 +152,13 @@ class _HomeState extends State<Home> {
             automaticallyImplyLeading: true
         ),
       ),
-      bottomNavigationBar: validity==false || validity==null? const SizedBox() : const CustomBottomNavBar(
-        title: 'Add Lead',
-        isHomePage: true,
-        sourcePage: Source.dashboardPage,
+      bottomNavigationBar: validity==false || validity==null? const SizedBox() : BlocProvider(
+        create: (context) => sl<LeadInfoExtractorBloc>(),
+        child: CustomBottomNavBar(
+          title: 'Add Lead',
+          isHomePage: true,
+          sourcePage: Source.dashboardPage,
+        ),
       ),
       drawer: Drawer(
         width: MediaQuery.of(context).size.width*0.92,

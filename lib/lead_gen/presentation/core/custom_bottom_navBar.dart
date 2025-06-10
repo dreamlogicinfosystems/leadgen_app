@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
+import 'package:lead_gen/lead_gen/domain/lead/lead_details.dart';
 import 'package:lead_gen/lead_gen/presentation/pages/add_reminder.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
@@ -12,6 +13,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 import '../../../injections.dart';
 import '../../application/department/department_bloc.dart';
 import '../../application/lead/lead_bloc.dart';
+import '../../application/lead_info_extractor/lead_info_extractor_bloc.dart';
 import '../../constants/constant.dart';
 import '../../domain/lead/lead.dart';
 import '../pages/add_lead.dart';
@@ -32,6 +34,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   bool isSpeaking = false;
   bool _speechEnabled = false;
   final SpeechToText _speechToText = SpeechToText();
+  double frequency = 0.0;
 
   @override
   void dispose() {
@@ -39,28 +42,78 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     super.dispose();
   }
 
+  loadingState() => showLoader(context);
+
+  failedState(String error) {
+    //close loader
+    Navigator.pop(context);
+    showErrorToastMessage(error);
+  }
+
+  leadInfoState(LeadDetails leadDetails) {
+    //close loader
+    Navigator.of(context).pop();
+    setState(() {
+      message = "";
+    });
+    if(leadDetails.customerName != null && leadDetails.requirement != null) {
+      //close the dialog
+      Navigator.of(context).pop();
+
+      Lead lead = Lead(
+          name: leadDetails.customerName,
+          title: leadDetails.requirement,
+          message: leadDetails.requirement
+      );
+      ///add lead dialog
+      showDialog(context: context, builder: (context) => MultiBlocProvider(
+          providers: [
+            BlocProvider (
+              create: (BuildContext context) => sl<DepartmentBloc>(),
+            ),
+            BlocProvider (
+              create: (BuildContext context) => sl<LeadBloc>(),
+            )
+          ],
+          child: AddLead(sourcePage: widget.sourcePage!,lead: lead))
+      );
+    } else {
+      showErrorToastMessage("Please try again!");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height*0.08,
-      decoration: BoxDecoration(
-          color: const Color(0xFFF6F6F6),
-          border: Border.all(
-              color: const Color(0xFF8E8E93),
-              width: 0.5
-          )
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: widget.isHomePage == true ? [
-          addLeadBtnView(context),
-          const SizedBox(width: 10),
-          micView()
-        ] : [
-          ///add reminder btn
-          addReminderBtnView(context)
-        ],
+    return BlocListener<LeadInfoExtractorBloc, LeadInfoExtractorState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          leadInfo: leadInfoState,
+          loadingInProgress: loadingState,
+          failed: failedState,
+          orElse: () {}
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height*0.08,
+        decoration: BoxDecoration(
+            color: const Color(0xFFF6F6F6),
+            border: Border.all(
+                color: const Color(0xFF8E8E93),
+                width: 0.5
+            )
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: widget.isHomePage == true ? [
+            addLeadBtnView(context),
+            const SizedBox(width: 10),
+            micView()
+          ] : [
+            ///add reminder btn
+            addReminderBtnView(context)
+          ],
+        ),
       ),
     );
   }
@@ -77,7 +130,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             isBoardAddPage: true,
             name: widget.title,
             onTap: () {
-              ///add lead btn
+              ///add lead dialog
               showDialog(context: context, builder: (context) => MultiBlocProvider(
                   providers: [
                     BlocProvider (
@@ -150,16 +203,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   /// This has to happen only once per app
   Future<void> _initSpeech(void Function(void Function()) setState) async {
-    _speechEnabled = await _speechToText.initialize(onStatus: (value) async {
+    _speechEnabled = await _speechToText.initialize(onStatus: (value) {
       if(value == "notListening") {
-        if(mounted) {
+        // if(mounted) {
           setState(() => isSpeaking = false);
-        }
+        // }
       } else if(value == "done") {
-        await processText(message);
+        getLeadInfo(message);
       }
       debugPrint("init value: $value");
-    });
+    },finalTimeout: Duration(seconds: 3));
     setState(() {});
   }
 
@@ -169,6 +222,11 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     await _speechToText.listen(onResult: (SpeechRecognitionResult result) async {
       setState(() {
         message = result.recognizedWords;
+      });
+    },onSoundLevelChange: (value) {
+      setState(() {
+        debugPrint("sound level: $value");
+        frequency = value < 0.0 ? 0.0 : value;
       });
     });
   }
@@ -180,103 +238,15 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     isSpeaking = false;
   }
 
-  processText(String text) async {
-    if(mounted) {
-      setState(() {
-        isSpeaking = false;
-      });
+  getLeadInfo(String text)  {
+    setState(() {
+      isSpeaking = false;
+    });
+
+    if(text.isNotEmpty) {
+      //call event from bloc to extract lead info
+      context.read<LeadInfoExtractorBloc>().add(LeadInfoExtractorEvent.getLeadInfoFromQuery(message, context));
     }
-
-    String prefix = "remind me to";
-    if(text.contains(prefix)) {
-      ///get the remaining text after prefix
-      String remainingText = text.substring(prefix.length).trim();
-
-      debugPrint("remaining text: $remainingText");
-
-      String preposition = "with";
-      ///check if text contains with
-      if(remainingText.contains(preposition)) {
-        String name = remainingText.split("with ").last.trim();
-
-        debugPrint("user name again: $name");
-
-        String taskMessage = remainingText.replaceAll(name, "");
-
-        String task = removeLastWord(taskMessage.trim());
-
-        debugPrint("task name: $task");
-
-        await Future.delayed(Duration(milliseconds: 500), () async {
-          if(mounted) {
-            //close voice
-            Navigator.pop(context);
-
-            Lead lead = Lead(
-                name: name,
-                message: task,
-                title: task
-            );
-            await showDialog(context: context, builder: (context) => MultiBlocProvider(
-                providers: [
-                  BlocProvider (
-                    create: (BuildContext context) => sl<DepartmentBloc>(),
-                  ),
-                  BlocProvider (
-                    create: (BuildContext context) => sl<LeadBloc>(),
-                  )
-                ],
-                child: AddLead(sourcePage: widget.sourcePage!,lead: lead)));
-          }
-        });
-      } else {
-        //check the length of text
-        final textList = remainingText.split(" ");
-
-        if(textList.length == 2) {
-          String name = textList[1];
-
-          debugPrint("user name: $name");
-
-          String task = textList[0];
-
-          debugPrint("task name: $task");
-
-          await Future.delayed(Duration(milliseconds: 500), () async {
-            if(mounted) {
-              //close voice
-              Navigator.pop(context);
-
-              Lead lead = Lead(
-                  name: name,
-                  message: task,
-                  title: task
-              );
-              await showDialog(context: context, builder: (context) => MultiBlocProvider(
-                  providers: [
-                    BlocProvider (
-                      create: (BuildContext context) => sl<DepartmentBloc>(),
-                    ),
-                    BlocProvider (
-                      create: (BuildContext context) => sl<LeadBloc>(),
-                    )
-                  ],
-                  child: AddLead(sourcePage: widget.sourcePage!,lead: lead)));
-            }
-          });
-        }
-      }
-    }
-  }
-
-  String removeLastWord(String text) {
-    List<String> words =  text.split(" ");
-
-    if(words.last.trim() == "with") {
-      words.removeLast();
-    }
-
-    return words.join(" ");
   }
 
   Future<dynamic> showAddLeadWithVoiceDialog() {
@@ -296,46 +266,49 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                      mainAxisSize: MainAxisSize.min,
                      children: [
                        Text("Add Lead",style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w500)),
-                       const SizedBox(height: 20),
-                       Stack(
-                         alignment: Alignment.center,
-                         children: [
-                           Visibility(
-                             visible: isSpeaking ? true : false,
-                             child: Container(
-                               width: 115,
-                               height: 115,
-                               decoration: BoxDecoration(
-                                   color: Colors.black.withOpacity(0.5),
-                                   shape: BoxShape.circle
+                       const SizedBox(height: 10),
+                       SizedBox(
+                         height: 130,
+                         child: Stack(
+                           alignment: Alignment.center,
+                           children: [
+                             Visibility(
+                               visible: isSpeaking ? true : false,
+                               child: Container(
+                                 width: 15 * frequency,
+                                 height: 15 * frequency,
+                                 decoration: BoxDecoration(
+                                     color: Colors.black.withOpacity(0.5),
+                                     shape: BoxShape.circle
+                                 ),
                                ),
                              ),
-                           ),
-                           GestureDetector(
-                             onTap: () async {
-                               debugPrint("tapped");
-                               await _initSpeech(setState);
-                               if(_speechEnabled) {
-                                 await _startListening(setState);
-                               } else {
-                                 await _stopListening(setState);
-                               }
-                             },
-                             child: Container(
-                               width: 100,
-                               height: 100,
-                               decoration: BoxDecoration(
-                                   color: Colors.grey,
-                                   shape: BoxShape.circle
-                               ),
-                               child: Center(
-                                 child: isSpeaking ? Icon(Icons.mic,size: 40) : Icon(Icons.mic_off,size: 40),
+                             GestureDetector(
+                               onTap: () async {
+                                 debugPrint("tapped");
+                                 await _initSpeech(setState);
+                                 if(_speechEnabled) {
+                                   await _startListening(setState);
+                                 } else {
+                                   await _stopListening(setState);
+                                 }
+                               },
+                               child: Container(
+                                 width: 100,
+                                 height: 100,
+                                 decoration: BoxDecoration(
+                                     color: Colors.grey,
+                                     shape: BoxShape.circle
+                                 ),
+                                 child: Center(
+                                   child: isSpeaking ? Icon(Icons.mic,size: 40) : Icon(Icons.mic_off,size: 40),
+                                 ),
                                ),
                              ),
-                           ),
-                         ],
+                           ],
+                         ),
                        ),
-                       const SizedBox(height: 20),
+                       const SizedBox(height: 10),
                        Text(message.isEmpty ? "Press and Speak" : message,
                            textAlign: TextAlign.center,
                            style: GoogleFonts.poppins(fontSize: 15)

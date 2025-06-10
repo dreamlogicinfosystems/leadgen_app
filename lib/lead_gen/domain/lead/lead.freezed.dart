@@ -30,7 +30,9 @@ mixin _$Lead {
   List<int>? get departmentIds => throw _privateConstructorUsedError;
   List<Department>? get departments => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Lead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LeadCopyWith<Lead> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -65,6 +67,8 @@ class _$LeadCopyWithImpl<$Res, $Val extends Lead>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Lead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,6 +173,8 @@ class __$$LeadImplCopyWithImpl<$Res>
   __$$LeadImplCopyWithImpl(_$LeadImpl _value, $Res Function(_$LeadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Lead
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -352,7 +358,9 @@ class _$LeadImpl implements _Lead {
       const DeepCollectionEquality().hash(_departmentIds),
       const DeepCollectionEquality().hash(_departments));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Lead
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeadImplCopyWith<_$LeadImpl> get copyWith =>
@@ -401,8 +409,11 @@ abstract class _Lead implements Lead {
   List<int>? get departmentIds;
   @override
   List<Department>? get departments;
+
+  /// Create a copy of Lead
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeadImplCopyWith<_$LeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

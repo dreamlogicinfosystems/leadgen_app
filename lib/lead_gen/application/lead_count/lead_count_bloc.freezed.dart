@@ -50,7 +50,9 @@ mixin _$LeadCountEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LeadCountEventCopyWith<LeadCountEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$LeadCountEventCopyWithImpl<$Res, $Val extends LeadCountEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LeadCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$getLeadCountImplCopyWithImpl<$Res>
       _$getLeadCountImpl _value, $Res Function(_$getLeadCountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$getLeadCountImpl implements _getLeadCount {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getLeadCountImplCopyWith<_$getLeadCountImpl> get copyWith =>
@@ -213,8 +221,11 @@ abstract class _getLeadCount implements LeadCountEvent {
 
   @override
   BuildContext get context;
+
+  /// Create a copy of LeadCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getLeadCountImplCopyWith<_$getLeadCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -289,6 +300,9 @@ class _$LeadCountStateCopyWithImpl<$Res, $Val extends LeadCountState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -305,6 +319,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -419,6 +436,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -538,6 +558,8 @@ class __$$successLeadCountImplCopyWithImpl<$Res>
       $Res Function(_$successLeadCountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -551,6 +573,8 @@ class __$$successLeadCountImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LeadCountCopyWith<$Res> get leadCount {
@@ -585,7 +609,9 @@ class _$successLeadCountImpl implements _successLeadCount {
   @override
   int get hashCode => Object.hash(runtimeType, leadCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successLeadCountImplCopyWith<_$successLeadCountImpl> get copyWith =>
@@ -672,7 +698,10 @@ abstract class _successLeadCount implements LeadCountState {
       _$successLeadCountImpl;
 
   LeadCount get leadCount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successLeadCountImplCopyWith<_$successLeadCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -694,6 +723,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -732,7 +763,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -817,7 +850,10 @@ abstract class _failed implements LeadCountState {
   const factory _failed(final String message) = _$failedImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

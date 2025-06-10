@@ -29,8 +29,12 @@ mixin _$ReminderDto {
   String? get repeatCount => throw _privateConstructorUsedError;
   List<ReminderDataDto>? get reminderData => throw _privateConstructorUsedError;
 
+  /// Serializes this ReminderDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReminderDtoCopyWith<ReminderDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$ReminderDtoCopyWithImpl<$Res, $Val extends ReminderDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReminderDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$ReminderDtoImplCopyWithImpl<$Res>
       _$ReminderDtoImpl _value, $Res Function(_$ReminderDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -253,7 +261,7 @@ class _$ReminderDtoImpl extends _ReminderDto {
                 .equals(other._reminderData, _reminderData));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -266,7 +274,9 @@ class _$ReminderDtoImpl extends _ReminderDto {
       repeatCount,
       const DeepCollectionEquality().hash(_reminderData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReminderDtoImplCopyWith<_$ReminderDtoImpl> get copyWith =>
@@ -311,8 +321,11 @@ abstract class _ReminderDto extends ReminderDto {
   String? get repeatCount;
   @override
   List<ReminderDataDto>? get reminderData;
+
+  /// Create a copy of ReminderDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReminderDtoImplCopyWith<_$ReminderDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -327,8 +340,12 @@ mixin _$ReminderDataDto {
   String? get note => throw _privateConstructorUsedError;
   String? get inviteSendOn => throw _privateConstructorUsedError;
 
+  /// Serializes this ReminderDataDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderDataDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReminderDataDtoCopyWith<ReminderDataDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -352,6 +369,8 @@ class _$ReminderDataDtoCopyWithImpl<$Res, $Val extends ReminderDataDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReminderDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -395,6 +414,8 @@ class __$$ReminderDataDtoImplCopyWithImpl<$Res>
       _$ReminderDataDtoImpl _value, $Res Function(_$ReminderDataDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -451,11 +472,13 @@ class _$ReminderDataDtoImpl extends _ReminderDataDto {
                 other.inviteSendOn == inviteSendOn));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, note, inviteSendOn);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderDataDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReminderDataDtoImplCopyWith<_$ReminderDataDtoImpl> get copyWith =>
@@ -486,8 +509,11 @@ abstract class _ReminderDataDto extends ReminderDataDto {
   String? get note;
   @override
   String? get inviteSendOn;
+
+  /// Create a copy of ReminderDataDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReminderDataDtoImplCopyWith<_$ReminderDataDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

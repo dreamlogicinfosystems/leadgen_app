@@ -28,8 +28,12 @@ mixin _$DepartmentUserDto {
   List<int>? get departmentId => throw _privateConstructorUsedError;
   List<DepartmentDto>? get departmentDtos => throw _privateConstructorUsedError;
 
+  /// Serializes this DepartmentUserDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentUserDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DepartmentUserDtoCopyWith<DepartmentUserDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$DepartmentUserDtoCopyWithImpl<$Res, $Val extends DepartmentUserDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DepartmentUserDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,6 +136,8 @@ class __$$DepartmentUserDtoImplCopyWithImpl<$Res>
       $Res Function(_$DepartmentUserDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentUserDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -244,7 +252,7 @@ class _$DepartmentUserDtoImpl extends _DepartmentUserDto {
                 .equals(other._departmentDtos, _departmentDtos));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -256,7 +264,9 @@ class _$DepartmentUserDtoImpl extends _DepartmentUserDto {
       const DeepCollectionEquality().hash(_departmentId),
       const DeepCollectionEquality().hash(_departmentDtos));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentUserDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DepartmentUserDtoImplCopyWith<_$DepartmentUserDtoImpl> get copyWith =>
@@ -299,8 +309,11 @@ abstract class _DepartmentUserDto extends DepartmentUserDto {
   List<int>? get departmentId;
   @override
   List<DepartmentDto>? get departmentDtos;
+
+  /// Create a copy of DepartmentUserDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DepartmentUserDtoImplCopyWith<_$DepartmentUserDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -19,7 +19,9 @@ mixin _$Status {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Status
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StatusCopyWith<Status> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -41,6 +43,8 @@ class _$StatusCopyWithImpl<$Res, $Val extends Status>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Status
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +82,8 @@ class __$$StatusImplCopyWithImpl<$Res>
       _$StatusImpl _value, $Res Function(_$StatusImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Status
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,7 +130,9 @@ class _$StatusImpl implements _Status {
   @override
   int get hashCode => Object.hash(runtimeType, id, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Status
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StatusImplCopyWith<_$StatusImpl> get copyWith =>
@@ -138,8 +146,11 @@ abstract class _Status implements Status {
   int? get id;
   @override
   String? get name;
+
+  /// Create a copy of Status
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StatusImplCopyWith<_$StatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

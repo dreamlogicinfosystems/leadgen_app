@@ -4,6 +4,7 @@ import 'package:lead_gen/lead_gen/application/department/department_bloc.dart';
 import 'package:lead_gen/lead_gen/application/department_user/department_user_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead/lead_bloc.dart';
 import 'package:lead_gen/lead_gen/application/lead_count/lead_count_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead_info_extractor/lead_info_extractor_bloc.dart';
 import 'package:lead_gen/lead_gen/application/reminder/reminder_bloc.dart';
 import 'package:lead_gen/lead_gen/constants/api_endpoint.dart';
 import 'package:lead_gen/lead_gen/data/auth/auth_repo_impl.dart';
@@ -61,6 +62,8 @@ serviceLocator() async{
   sl.registerFactory<DepartmentUserBloc>(() => DepartmentUserBloc(sl()));
 
   sl.registerFactory<LeadBloc>(() => LeadBloc(sl()));
+
+  sl.registerFactory<LeadInfoExtractorBloc>(() => LeadInfoExtractorBloc(sl()));
 
   sl.registerFactory<CustomerBloc>(() => CustomerBloc(sl()));
 

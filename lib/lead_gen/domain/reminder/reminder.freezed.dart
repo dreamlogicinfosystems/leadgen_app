@@ -25,7 +25,9 @@ mixin _$Reminder {
   String? get repeatCount => throw _privateConstructorUsedError;
   List<ReminderDetails>? get reminderData => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Reminder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReminderCopyWith<Reminder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +58,8 @@ class _$ReminderCopyWithImpl<$Res, $Val extends Reminder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Reminder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,6 +136,8 @@ class __$$ReminderImplCopyWithImpl<$Res>
       _$ReminderImpl _value, $Res Function(_$ReminderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Reminder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -255,7 +261,9 @@ class _$ReminderImpl implements _Reminder {
       repeatCount,
       const DeepCollectionEquality().hash(_reminderData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Reminder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReminderImplCopyWith<_$ReminderImpl> get copyWith =>
@@ -289,8 +297,11 @@ abstract class _Reminder implements Reminder {
   String? get repeatCount;
   @override
   List<ReminderDetails>? get reminderData;
+
+  /// Create a copy of Reminder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReminderImplCopyWith<_$ReminderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -301,7 +312,9 @@ mixin _$ReminderDetails {
   String? get note => throw _privateConstructorUsedError;
   String? get inviteSendOn => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReminderDetailsCopyWith<ReminderDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -325,6 +338,8 @@ class _$ReminderDetailsCopyWithImpl<$Res, $Val extends ReminderDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReminderDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -368,6 +383,8 @@ class __$$ReminderDetailsImplCopyWithImpl<$Res>
       _$ReminderDetailsImpl _value, $Res Function(_$ReminderDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -423,7 +440,9 @@ class _$ReminderDetailsImpl implements _ReminderDetails {
   @override
   int get hashCode => Object.hash(runtimeType, id, note, inviteSendOn);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReminderDetailsImplCopyWith<_$ReminderDetailsImpl> get copyWith =>
@@ -443,8 +462,11 @@ abstract class _ReminderDetails implements ReminderDetails {
   String? get note;
   @override
   String? get inviteSendOn;
+
+  /// Create a copy of ReminderDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReminderDetailsImplCopyWith<_$ReminderDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

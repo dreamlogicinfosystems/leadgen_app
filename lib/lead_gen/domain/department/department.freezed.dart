@@ -19,7 +19,9 @@ mixin _$Department {
   int? get id => throw _privateConstructorUsedError;
   String? get departmentName => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Department
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DepartmentCopyWith<Department> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$DepartmentCopyWithImpl<$Res, $Val extends Department>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Department
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$DepartmentImplCopyWithImpl<$Res>
       _$DepartmentImpl _value, $Res Function(_$DepartmentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Department
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$DepartmentImpl implements _Department {
   @override
   int get hashCode => Object.hash(runtimeType, id, departmentName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Department
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DepartmentImplCopyWith<_$DepartmentImpl> get copyWith =>
@@ -143,8 +151,11 @@ abstract class _Department implements Department {
   int? get id;
   @override
   String? get departmentName;
+
+  /// Create a copy of Department
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DepartmentImplCopyWith<_$DepartmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

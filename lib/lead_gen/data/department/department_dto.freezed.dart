@@ -23,8 +23,12 @@ mixin _$DepartmentDto {
   int? get id => throw _privateConstructorUsedError;
   String? get departmentName => throw _privateConstructorUsedError;
 
+  /// Serializes this DepartmentDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DepartmentDtoCopyWith<DepartmentDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$DepartmentDtoCopyWithImpl<$Res, $Val extends DepartmentDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DepartmentDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$DepartmentDtoImplCopyWithImpl<$Res>
       _$DepartmentDtoImpl _value, $Res Function(_$DepartmentDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,11 +141,13 @@ class _$DepartmentDtoImpl extends _DepartmentDto {
                 other.departmentName == departmentName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, departmentName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DepartmentDtoImplCopyWith<_$DepartmentDtoImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _DepartmentDto extends DepartmentDto {
   int? get id;
   @override
   String? get departmentName;
+
+  /// Create a copy of DepartmentDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DepartmentDtoImplCopyWith<_$DepartmentDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

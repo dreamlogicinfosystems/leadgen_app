@@ -6,6 +6,7 @@ import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/data/department/department_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_details_dto.dart';
 import 'package:lead_gen/lead_gen/data/lead/chat_dto.dart';
+import 'package:lead_gen/lead_gen/data/lead/dto/lead_details_dto.dart';
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
 
 import '../../constants/api_endpoint.dart';
@@ -341,6 +342,29 @@ class LeadDataSource{
 
       if(result['status'] == true){
         return Right(Success(result["message"]));
+      } else{
+        return Left(ErrorMessage(result["message"]));
+      }
+    } catch (e) {
+      return Left(ErrorMessage(e.toString()));
+    }
+  }
+
+  Future<Either<ErrorMessage,LeadDetailsDto>> getLeadInfoFromMessage(String message,BuildContext context) async {
+    try{
+      final response = await _apiMethods.get(
+          url: 'read_message?message=$message',
+          context: context
+      );
+
+      final result = jsonDecode(response!.body);
+
+      if(result['status'] == true){
+        Map<String, dynamic> details = result["details"];
+
+        final leadDetailsInfoDto = LeadDetailsDto.fromJson(details);
+
+        return Right(leadDetailsInfoDto);
       } else{
         return Left(ErrorMessage(result["message"]));
       }

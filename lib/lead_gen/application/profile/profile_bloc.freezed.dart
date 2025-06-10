@@ -56,7 +56,9 @@ mixin _$ProfileEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProfileEventCopyWith<ProfileEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +82,8 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,6 +117,8 @@ class __$$getUserDataImplCopyWithImpl<$Res>
       _$getUserDataImpl _value, $Res Function(_$getUserDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +157,9 @@ class _$getUserDataImpl implements _getUserData {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getUserDataImplCopyWith<_$getUserDataImpl> get copyWith =>
@@ -225,8 +233,11 @@ abstract class _getUserData implements ProfileEvent {
 
   @override
   BuildContext get context;
+
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getUserDataImplCopyWith<_$getUserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -252,6 +263,8 @@ class __$$updateUserDataImplCopyWithImpl<$Res>
       _$updateUserDataImpl _value, $Res Function(_$updateUserDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -270,6 +283,8 @@ class __$$updateUserDataImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -306,7 +321,9 @@ class _$updateUserDataImpl implements _updateUserData {
   @override
   int get hashCode => Object.hash(runtimeType, user, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateUserDataImplCopyWith<_$updateUserDataImpl> get copyWith =>
@@ -383,8 +400,11 @@ abstract class _updateUserData implements ProfileEvent {
   User get user;
   @override
   BuildContext get context;
+
+  /// Create a copy of ProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateUserDataImplCopyWith<_$updateUserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -465,6 +485,9 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -481,6 +504,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -601,6 +627,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -724,6 +753,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -762,7 +793,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -853,7 +886,10 @@ abstract class _failed implements ProfileState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -875,6 +911,8 @@ class __$$successImplCopyWithImpl<$Res>
       _$successImpl _value, $Res Function(_$successImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -913,7 +951,9 @@ class _$successImpl implements _success {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successImplCopyWith<_$successImpl> get copyWith =>
@@ -1004,7 +1044,10 @@ abstract class _success implements ProfileState {
   const factory _success(final String message) = _$successImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successImplCopyWith<_$successImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1028,6 +1071,8 @@ class __$$userDataImplCopyWithImpl<$Res>
       _$userDataImpl _value, $Res Function(_$userDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1041,6 +1086,8 @@ class __$$userDataImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -1074,7 +1121,9 @@ class _$userDataImpl implements _userData {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$userDataImplCopyWith<_$userDataImpl> get copyWith =>
@@ -1165,7 +1214,10 @@ abstract class _userData implements ProfileState {
   const factory _userData(final User user) = _$userDataImpl;
 
   User get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$userDataImplCopyWith<_$userDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

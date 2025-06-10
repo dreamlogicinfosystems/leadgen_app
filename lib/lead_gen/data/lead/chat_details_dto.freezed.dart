@@ -24,8 +24,12 @@ mixin _$ChatDetailsDto {
   String? get message => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
+  /// Serializes this ChatDetailsDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatDetailsDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatDetailsDtoCopyWith<ChatDetailsDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$ChatDetailsDtoCopyWithImpl<$Res, $Val extends ChatDetailsDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatDetailsDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ChatDetailsDtoImplCopyWithImpl<$Res>
       _$ChatDetailsDtoImpl _value, $Res Function(_$ChatDetailsDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatDetailsDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,11 +156,13 @@ class _$ChatDetailsDtoImpl extends _ChatDetailsDto {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, createdAt, message, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatDetailsDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatDetailsDtoImplCopyWith<_$ChatDetailsDtoImpl> get copyWith =>
@@ -183,8 +193,11 @@ abstract class _ChatDetailsDto extends ChatDetailsDto {
   String? get message;
   @override
   String? get name;
+
+  /// Create a copy of ChatDetailsDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatDetailsDtoImplCopyWith<_$ChatDetailsDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

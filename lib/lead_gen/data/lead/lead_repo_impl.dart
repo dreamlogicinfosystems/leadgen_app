@@ -8,6 +8,7 @@ import 'package:lead_gen/lead_gen/data/lead/lead_dto.dart';
 import 'package:lead_gen/lead_gen/domain/lead/chat.dart';
 
 import 'package:lead_gen/lead_gen/domain/lead/lead.dart';
+import 'package:lead_gen/lead_gen/domain/lead/lead_details.dart';
 
 import '../../domain/lead/lead_repository.dart';
 import 'lead_data_source.dart';
@@ -138,5 +139,15 @@ class LeadRepositoryImpl extends LeadRepository{
         return Right(success);
       });
     }
+  }
+
+  @override
+  Future<Either<ErrorMessage, LeadDetails>> getLeadDetailsFromMessage(String message, BuildContext context) async {
+    return await _leadDataSource.getLeadInfoFromMessage(message, context).then((successOrFailure) {
+      return successOrFailure.fold(
+          (error) => Left(error),
+          (leadDetails) => Right(leadDetails.toDomain())
+      );
+    });
   }
 }

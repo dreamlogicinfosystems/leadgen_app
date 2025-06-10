@@ -20,7 +20,9 @@ mixin _$LeadCount {
   int? get dueLeads => throw _privateConstructorUsedError;
   int? get upcomingLeads => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LeadCountCopyWith<LeadCount> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$LeadCountCopyWithImpl<$Res, $Val extends LeadCount>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LeadCount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +90,8 @@ class __$$LeadCountImplCopyWithImpl<$Res>
       _$LeadCountImpl _value, $Res Function(_$LeadCountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadCount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +150,9 @@ class _$LeadCountImpl implements _LeadCount {
   int get hashCode =>
       Object.hash(runtimeType, totalLeads, dueLeads, upcomingLeads);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadCount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeadCountImplCopyWith<_$LeadCountImpl> get copyWith =>
@@ -163,8 +171,11 @@ abstract class _LeadCount implements LeadCount {
   int? get dueLeads;
   @override
   int? get upcomingLeads;
+
+  /// Create a copy of LeadCount
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeadCountImplCopyWith<_$LeadCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

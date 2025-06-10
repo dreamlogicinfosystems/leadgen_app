@@ -24,7 +24,9 @@ mixin _$DepartmentUser {
   List<int>? get departmentId => throw _privateConstructorUsedError;
   List<Department>? get departments => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DepartmentUserCopyWith<DepartmentUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$DepartmentUserCopyWithImpl<$Res, $Val extends DepartmentUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DepartmentUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,6 +129,8 @@ class __$$DepartmentUserImplCopyWithImpl<$Res>
       _$DepartmentUserImpl _value, $Res Function(_$DepartmentUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -246,7 +252,9 @@ class _$DepartmentUserImpl implements _DepartmentUser {
       const DeepCollectionEquality().hash(_departmentId),
       const DeepCollectionEquality().hash(_departments));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DepartmentUserImplCopyWith<_$DepartmentUserImpl> get copyWith =>
@@ -278,8 +286,11 @@ abstract class _DepartmentUser implements DepartmentUser {
   List<int>? get departmentId;
   @override
   List<Department>? get departments;
+
+  /// Create a copy of DepartmentUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DepartmentUserImplCopyWith<_$DepartmentUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

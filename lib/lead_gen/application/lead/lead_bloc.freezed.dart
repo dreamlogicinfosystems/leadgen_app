@@ -143,6 +143,9 @@ class _$LeadEventCopyWithImpl<$Res, $Val extends LeadEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -164,6 +167,8 @@ class __$$addLeadImplCopyWithImpl<$Res>
       _$addLeadImpl _value, $Res Function(_$addLeadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,6 +187,8 @@ class __$$addLeadImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LeadCopyWith<$Res> get lead {
@@ -218,7 +225,9 @@ class _$addLeadImpl implements _addLead {
   @override
   int get hashCode => Object.hash(runtimeType, lead, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$addLeadImplCopyWith<_$addLeadImpl> get copyWith =>
@@ -365,7 +374,10 @@ abstract class _addLead implements LeadEvent {
 
   Lead get lead;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$addLeadImplCopyWith<_$addLeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -389,6 +401,8 @@ class __$$addLeadChatImplCopyWithImpl<$Res>
       _$addLeadChatImpl _value, $Res Function(_$addLeadChatImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -407,6 +421,8 @@ class __$$addLeadChatImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LeadCopyWith<$Res> get lead {
@@ -443,7 +459,9 @@ class _$addLeadChatImpl implements _addLeadChat {
   @override
   int get hashCode => Object.hash(runtimeType, lead, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$addLeadChatImplCopyWith<_$addLeadChatImpl> get copyWith =>
@@ -590,7 +608,10 @@ abstract class _addLeadChat implements LeadEvent {
 
   Lead get lead;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$addLeadChatImplCopyWith<_$addLeadChatImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -612,6 +633,8 @@ class __$$getLeadsImplCopyWithImpl<$Res>
       _$getLeadsImpl _value, $Res Function(_$getLeadsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -666,7 +689,9 @@ class _$getLeadsImpl implements _getLeads {
   @override
   int get hashCode => Object.hash(runtimeType, type, deptId, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getLeadsImplCopyWith<_$getLeadsImpl> get copyWith =>
@@ -815,7 +840,10 @@ abstract class _getLeads implements LeadEvent {
   String get type;
   int get deptId;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getLeadsImplCopyWith<_$getLeadsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -837,6 +865,8 @@ class __$$filterLeadsImplCopyWithImpl<$Res>
       _$filterLeadsImpl _value, $Res Function(_$filterLeadsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -876,7 +906,9 @@ class _$filterLeadsImpl implements _filterLeads {
   @override
   int get hashCode => Object.hash(runtimeType, leadFilterType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$filterLeadsImplCopyWith<_$filterLeadsImpl> get copyWith =>
@@ -1022,7 +1054,10 @@ abstract class _filterLeads implements LeadEvent {
       _$filterLeadsImpl;
 
   LeadFilterType get leadFilterType;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$filterLeadsImplCopyWith<_$filterLeadsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1044,6 +1079,8 @@ class __$$getLeadChatImplCopyWithImpl<$Res>
       _$getLeadChatImpl _value, $Res Function(_$getLeadChatImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1090,7 +1127,9 @@ class _$getLeadChatImpl implements _getLeadChat {
   @override
   int get hashCode => Object.hash(runtimeType, leadId, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getLeadChatImplCopyWith<_$getLeadChatImpl> get copyWith =>
@@ -1237,7 +1276,10 @@ abstract class _getLeadChat implements LeadEvent {
 
   int get leadId;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getLeadChatImplCopyWith<_$getLeadChatImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1259,6 +1301,8 @@ class __$$getArchiveLeadsImplCopyWithImpl<$Res>
       _$getArchiveLeadsImpl _value, $Res Function(_$getArchiveLeadsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1313,7 +1357,9 @@ class _$getArchiveLeadsImpl implements _getArchiveLeads {
   @override
   int get hashCode => Object.hash(runtimeType, type, subType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getArchiveLeadsImplCopyWith<_$getArchiveLeadsImpl> get copyWith =>
@@ -1463,7 +1509,10 @@ abstract class _getArchiveLeads implements LeadEvent {
   String get type;
   String get subType;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getArchiveLeadsImplCopyWith<_$getArchiveLeadsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1485,6 +1534,8 @@ class __$$getSearchedLeadImplCopyWithImpl<$Res>
       _$getSearchedLeadImpl _value, $Res Function(_$getSearchedLeadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1547,7 +1598,9 @@ class _$getSearchedLeadImpl implements _getSearchedLead {
   @override
   int get hashCode => Object.hash(runtimeType, name, type, subType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getSearchedLeadImplCopyWith<_$getSearchedLeadImpl> get copyWith =>
@@ -1697,7 +1750,10 @@ abstract class _getSearchedLead implements LeadEvent {
   String get type;
   String get subType;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getSearchedLeadImplCopyWith<_$getSearchedLeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1719,6 +1775,8 @@ class __$$updateLeadStatusImplCopyWithImpl<$Res>
       $Res Function(_$updateLeadStatusImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1784,7 +1842,9 @@ class _$updateLeadStatusImpl implements _updateLeadStatus {
   int get hashCode =>
       Object.hash(runtimeType, leadId, statusId, message, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateLeadStatusImplCopyWith<_$updateLeadStatusImpl> get copyWith =>
@@ -1937,7 +1997,10 @@ abstract class _updateLeadStatus implements LeadEvent {
   int get statusId;
   String get message;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateLeadStatusImplCopyWith<_$updateLeadStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1960,6 +2023,8 @@ class __$$updateLeadDepartmentsImplCopyWithImpl<$Res>
       $Res Function(_$updateLeadDepartmentsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2023,7 +2088,9 @@ class _$updateLeadDepartmentsImpl implements _updateLeadDepartments {
   int get hashCode => Object.hash(
       runtimeType, id, const DeepCollectionEquality().hash(_deptIds), context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateLeadDepartmentsImplCopyWith<_$updateLeadDepartmentsImpl>
@@ -2173,7 +2240,10 @@ abstract class _updateLeadDepartments implements LeadEvent {
   int get id;
   List<int> get deptIds;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateLeadDepartmentsImplCopyWith<_$updateLeadDepartmentsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2196,6 +2266,8 @@ class __$$updateLeadDescriptionImplCopyWithImpl<$Res>
       $Res Function(_$updateLeadDescriptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2251,7 +2323,9 @@ class _$updateLeadDescriptionImpl implements _updateLeadDescription {
   @override
   int get hashCode => Object.hash(runtimeType, id, description, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateLeadDescriptionImplCopyWith<_$updateLeadDescriptionImpl>
@@ -2401,7 +2475,10 @@ abstract class _updateLeadDescription implements LeadEvent {
   int get id;
   String get description;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateLeadDescriptionImplCopyWith<_$updateLeadDescriptionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2493,6 +2570,9 @@ class _$LeadStateCopyWithImpl<$Res, $Val extends LeadState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2509,6 +2589,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2641,6 +2724,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2776,6 +2862,8 @@ class __$$successImplCopyWithImpl<$Res>
       _$successImpl _value, $Res Function(_$successImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2814,7 +2902,9 @@ class _$successImpl implements _success {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successImplCopyWith<_$successImpl> get copyWith =>
@@ -2917,7 +3007,10 @@ abstract class _success implements LeadState {
   const factory _success(final String message) = _$successImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successImplCopyWith<_$successImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2939,6 +3032,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2977,7 +3072,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -3080,7 +3177,10 @@ abstract class _failed implements LeadState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3102,6 +3202,8 @@ class __$$emptyLeadListImplCopyWithImpl<$Res>
       _$emptyLeadListImpl _value, $Res Function(_$emptyLeadListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3146,7 +3248,9 @@ class _$emptyLeadListImpl implements _emptyLeadList {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_empty));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$emptyLeadListImplCopyWith<_$emptyLeadListImpl> get copyWith =>
@@ -3249,7 +3353,10 @@ abstract class _emptyLeadList implements LeadState {
   const factory _emptyLeadList(final List<Lead> empty) = _$emptyLeadListImpl;
 
   List<Lead> get empty;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$emptyLeadListImplCopyWith<_$emptyLeadListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3271,6 +3378,8 @@ class __$$successLeadsListImplCopyWithImpl<$Res>
       $Res Function(_$successLeadsListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3315,7 +3424,9 @@ class _$successLeadsListImpl implements _successLeadsList {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_leads));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successLeadsListImplCopyWith<_$successLeadsListImpl> get copyWith =>
@@ -3420,7 +3531,10 @@ abstract class _successLeadsList implements LeadState {
       _$successLeadsListImpl;
 
   List<Lead> get leads;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successLeadsListImplCopyWith<_$successLeadsListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3442,6 +3556,8 @@ class __$$successChatListImplCopyWithImpl<$Res>
       _$successChatListImpl _value, $Res Function(_$successChatListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3486,7 +3602,9 @@ class _$successChatListImpl implements _successChatList {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_leadChat));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successChatListImplCopyWith<_$successChatListImpl> get copyWith =>
@@ -3591,7 +3709,10 @@ abstract class _successChatList implements LeadState {
       _$successChatListImpl;
 
   List<Chat> get leadChat;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successChatListImplCopyWith<_$successChatListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

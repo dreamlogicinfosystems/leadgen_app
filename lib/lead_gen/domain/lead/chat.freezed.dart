@@ -19,7 +19,9 @@ mixin _$Chat {
   String? get date => throw _privateConstructorUsedError;
   List<ChatDetails>? get chatData => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Chat
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatCopyWith<Chat> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -41,6 +43,8 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Chat
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +81,8 @@ class __$$ChatImplCopyWithImpl<$Res>
   __$$ChatImplCopyWithImpl(_$ChatImpl _value, $Res Function(_$ChatImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Chat
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,7 +138,9 @@ class _$ChatImpl implements _Chat {
   int get hashCode => Object.hash(
       runtimeType, date, const DeepCollectionEquality().hash(_chatData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Chat
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>
@@ -147,8 +155,11 @@ abstract class _Chat implements Chat {
   String? get date;
   @override
   List<ChatDetails>? get chatData;
+
+  /// Create a copy of Chat
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

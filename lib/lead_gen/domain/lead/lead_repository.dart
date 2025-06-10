@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:lead_gen/lead_gen/constants/error.dart';
 import 'package:lead_gen/lead_gen/constants/success.dart';
 import 'package:lead_gen/lead_gen/domain/lead/chat.dart';
+import 'package:lead_gen/lead_gen/domain/lead/lead_details.dart';
 
 import 'lead.dart';
 
@@ -26,4 +27,6 @@ abstract class LeadRepository{
   Future<Either<ErrorMessage, Success>> updateLeadDepts(int leadId,List<int> deptIds,BuildContext context);
 
   Future<Either<ErrorMessage,Success>> updateLeadDescription(int leadId,String description,BuildContext context);
+
+  Future<Either<ErrorMessage,LeadDetails>> getLeadDetailsFromMessage(String message, BuildContext context);
 }

@@ -34,8 +34,12 @@ mixin _$LeadDto {
   List<int>? get departmentIds => throw _privateConstructorUsedError;
   List<DepartmentDto>? get departments => throw _privateConstructorUsedError;
 
+  /// Serializes this LeadDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LeadDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LeadDtoCopyWith<LeadDto> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -70,6 +74,8 @@ class _$LeadDtoCopyWithImpl<$Res, $Val extends LeadDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LeadDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,6 +181,8 @@ class __$$LeadDtoImplCopyWithImpl<$Res>
       _$LeadDtoImpl _value, $Res Function(_$LeadDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LeadDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -345,7 +353,7 @@ class _$LeadDtoImpl extends _LeadDto {
                 .equals(other._departments, _departments));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -363,7 +371,9 @@ class _$LeadDtoImpl extends _LeadDto {
       const DeepCollectionEquality().hash(_departmentIds),
       const DeepCollectionEquality().hash(_departments));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LeadDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LeadDtoImplCopyWith<_$LeadDtoImpl> get copyWith =>
@@ -422,8 +432,11 @@ abstract class _LeadDto extends LeadDto {
   List<int>? get departmentIds;
   @override
   List<DepartmentDto>? get departments;
+
+  /// Create a copy of LeadDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LeadDtoImplCopyWith<_$LeadDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

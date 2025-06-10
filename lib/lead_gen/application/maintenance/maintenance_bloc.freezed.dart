@@ -50,7 +50,9 @@ mixin _$MaintenanceEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaintenanceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MaintenanceEventCopyWith<MaintenanceEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$MaintenanceEventCopyWithImpl<$Res, $Val extends MaintenanceEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MaintenanceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$checkMaintenanceImplCopyWithImpl<$Res>
       $Res Function(_$checkMaintenanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaintenanceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$checkMaintenanceImpl implements _checkMaintenance {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaintenanceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$checkMaintenanceImplCopyWith<_$checkMaintenanceImpl> get copyWith =>
@@ -215,8 +223,11 @@ abstract class _checkMaintenance implements MaintenanceEvent {
 
   @override
   BuildContext get context;
+
+  /// Create a copy of MaintenanceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$checkMaintenanceImplCopyWith<_$checkMaintenanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -291,6 +302,9 @@ class _$MaintenanceStateCopyWithImpl<$Res, $Val extends MaintenanceState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -307,6 +321,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +438,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -540,6 +560,8 @@ class __$$successImplCopyWithImpl<$Res>
       _$successImpl _value, $Res Function(_$successImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -553,6 +575,8 @@ class __$$successImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MaintenanceCopyWith<$Res> get maintenance {
@@ -587,7 +611,9 @@ class _$successImpl implements _success {
   @override
   int get hashCode => Object.hash(runtimeType, maintenance);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successImplCopyWith<_$successImpl> get copyWith =>
@@ -672,7 +698,10 @@ abstract class _success implements MaintenanceState {
   const factory _success(final Maintenance maintenance) = _$successImpl;
 
   Maintenance get maintenance;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successImplCopyWith<_$successImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -694,6 +723,8 @@ class __$$failureImplCopyWithImpl<$Res>
       _$failureImpl _value, $Res Function(_$failureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -732,7 +763,9 @@ class _$failureImpl implements _failure {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failureImplCopyWith<_$failureImpl> get copyWith =>
@@ -817,7 +850,10 @@ abstract class _failure implements MaintenanceState {
   const factory _failure(final String error) = _$failureImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaintenanceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failureImplCopyWith<_$failureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

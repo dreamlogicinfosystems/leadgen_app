@@ -76,7 +76,9 @@ mixin _$CustomerEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomerEventCopyWith<CustomerEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -100,6 +102,8 @@ class _$CustomerEventCopyWithImpl<$Res, $Val extends CustomerEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,6 +137,8 @@ class __$$getCustomersImplCopyWithImpl<$Res>
       _$getCustomersImpl _value, $Res Function(_$getCustomersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,7 +177,9 @@ class _$getCustomersImpl implements _getCustomers {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getCustomersImplCopyWith<_$getCustomersImpl> get copyWith =>
@@ -265,8 +273,11 @@ abstract class _getCustomers implements CustomerEvent {
 
   @override
   BuildContext get context;
+
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getCustomersImplCopyWith<_$getCustomersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -290,6 +301,8 @@ class __$$getCustomersLeadImplCopyWithImpl<$Res>
       $Res Function(_$getCustomersLeadImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -336,7 +349,9 @@ class _$getCustomersLeadImpl implements _getCustomersLead {
   @override
   int get hashCode => Object.hash(runtimeType, custId, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getCustomersLeadImplCopyWith<_$getCustomersLeadImpl> get copyWith =>
@@ -433,8 +448,11 @@ abstract class _getCustomersLead implements CustomerEvent {
   int get custId;
   @override
   BuildContext get context;
+
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getCustomersLeadImplCopyWith<_$getCustomersLeadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -459,6 +477,8 @@ class __$$searchCustomerImplCopyWithImpl<$Res>
       _$searchCustomerImpl _value, $Res Function(_$searchCustomerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -524,7 +544,9 @@ class _$searchCustomerImpl implements _searchCustomer {
   int get hashCode =>
       Object.hash(runtimeType, custDetail, type, subType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$searchCustomerImplCopyWith<_$searchCustomerImpl> get copyWith =>
@@ -623,8 +645,11 @@ abstract class _searchCustomer implements CustomerEvent {
   String get subType;
   @override
   BuildContext get context;
+
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$searchCustomerImplCopyWith<_$searchCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -650,6 +675,8 @@ class __$$updateCustomerImplCopyWithImpl<$Res>
       _$updateCustomerImpl _value, $Res Function(_$updateCustomerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -668,6 +695,8 @@ class __$$updateCustomerImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CustomerCopyWith<$Res> get customer {
@@ -705,7 +734,9 @@ class _$updateCustomerImpl implements _updateCustomer {
   @override
   int get hashCode => Object.hash(runtimeType, customer, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateCustomerImplCopyWith<_$updateCustomerImpl> get copyWith =>
@@ -803,8 +834,11 @@ abstract class _updateCustomer implements CustomerEvent {
   Customer get customer;
   @override
   BuildContext get context;
+
+  /// Create a copy of CustomerEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateCustomerImplCopyWith<_$updateCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -891,6 +925,9 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -907,6 +944,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1033,6 +1073,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1162,6 +1205,8 @@ class __$$successCustomerListImplCopyWithImpl<$Res>
       $Res Function(_$successCustomerListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1208,7 +1253,9 @@ class _$successCustomerListImpl implements _successCustomerList {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_customerList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successCustomerListImplCopyWith<_$successCustomerListImpl> get copyWith =>
@@ -1307,7 +1354,10 @@ abstract class _successCustomerList implements CustomerState {
       _$successCustomerListImpl;
 
   List<Customer> get customerList;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successCustomerListImplCopyWith<_$successCustomerListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1329,6 +1379,8 @@ class __$$successCustLeadListImplCopyWithImpl<$Res>
       $Res Function(_$successCustLeadListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1375,7 +1427,9 @@ class _$successCustLeadListImpl implements _successCustLeadList {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_custLeadsList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successCustLeadListImplCopyWith<_$successCustLeadListImpl> get copyWith =>
@@ -1474,7 +1528,10 @@ abstract class _successCustLeadList implements CustomerState {
       _$successCustLeadListImpl;
 
   List<Lead> get custLeadsList;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successCustLeadListImplCopyWith<_$successCustLeadListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1496,6 +1553,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1534,7 +1593,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -1631,7 +1692,10 @@ abstract class _failed implements CustomerState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1653,6 +1717,8 @@ class __$$successImplCopyWithImpl<$Res>
       _$successImpl _value, $Res Function(_$successImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1691,7 +1757,9 @@ class _$successImpl implements _success {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successImplCopyWith<_$successImpl> get copyWith =>
@@ -1788,7 +1856,10 @@ abstract class _success implements CustomerState {
   const factory _success(final String message) = _$successImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successImplCopyWith<_$successImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

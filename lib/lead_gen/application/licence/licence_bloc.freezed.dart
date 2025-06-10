@@ -50,7 +50,9 @@ mixin _$LicenceEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LicenceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LicenceEventCopyWith<LicenceEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$LicenceEventCopyWithImpl<$Res, $Val extends LicenceEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LicenceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$checkLicenceImplCopyWithImpl<$Res>
       _$checkLicenceImpl _value, $Res Function(_$checkLicenceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LicenceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$checkLicenceImpl implements _checkLicence {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LicenceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$checkLicenceImplCopyWith<_$checkLicenceImpl> get copyWith =>
@@ -213,8 +221,11 @@ abstract class _checkLicence implements LicenceEvent {
 
   @override
   BuildContext get context;
+
+  /// Create a copy of LicenceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$checkLicenceImplCopyWith<_$checkLicenceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -283,6 +294,9 @@ class _$LicenceStateCopyWithImpl<$Res, $Val extends LicenceState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LicenceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -299,6 +313,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LicenceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -407,6 +424,9 @@ class __$$successImplCopyWithImpl<$Res>
   __$$successImplCopyWithImpl(
       _$successImpl _value, $Res Function(_$successImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LicenceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -515,6 +535,9 @@ class __$$failedImplCopyWithImpl<$Res>
   __$$failedImplCopyWithImpl(
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LicenceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

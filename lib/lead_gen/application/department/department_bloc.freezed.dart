@@ -101,6 +101,9 @@ class _$DepartmentEventCopyWithImpl<$Res, $Val extends DepartmentEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -120,6 +123,8 @@ class __$$createDepartmentImplCopyWithImpl<$Res>
       $Res Function(_$createDepartmentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,7 +172,9 @@ class _$createDepartmentImpl implements _createDepartment {
   @override
   int get hashCode => Object.hash(runtimeType, departName, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$createDepartmentImplCopyWith<_$createDepartmentImpl> get copyWith =>
@@ -273,7 +280,10 @@ abstract class _createDepartment implements DepartmentEvent {
 
   String get departName;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$createDepartmentImplCopyWith<_$createDepartmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -295,6 +305,8 @@ class __$$getDepartmentsImplCopyWithImpl<$Res>
       _$getDepartmentsImpl _value, $Res Function(_$getDepartmentsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -333,7 +345,9 @@ class _$getDepartmentsImpl implements _getDepartments {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getDepartmentsImplCopyWith<_$getDepartmentsImpl> get copyWith =>
@@ -437,7 +451,10 @@ abstract class _getDepartments implements DepartmentEvent {
       _$getDepartmentsImpl;
 
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getDepartmentsImplCopyWith<_$getDepartmentsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -461,6 +478,8 @@ class __$$updateDepartmentImplCopyWithImpl<$Res>
       $Res Function(_$updateDepartmentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -479,6 +498,8 @@ class __$$updateDepartmentImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DepartmentCopyWith<$Res> get department {
@@ -516,7 +537,9 @@ class _$updateDepartmentImpl implements _updateDepartment {
   @override
   int get hashCode => Object.hash(runtimeType, department, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateDepartmentImplCopyWith<_$updateDepartmentImpl> get copyWith =>
@@ -622,7 +645,10 @@ abstract class _updateDepartment implements DepartmentEvent {
 
   Department get department;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateDepartmentImplCopyWith<_$updateDepartmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -644,6 +670,8 @@ class __$$deleteDepartmentImplCopyWithImpl<$Res>
       $Res Function(_$deleteDepartmentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -690,7 +718,9 @@ class _$deleteDepartmentImpl implements _deleteDepartment {
   @override
   int get hashCode => Object.hash(runtimeType, id, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$deleteDepartmentImplCopyWith<_$deleteDepartmentImpl> get copyWith =>
@@ -795,7 +825,10 @@ abstract class _deleteDepartment implements DepartmentEvent {
 
   int get id;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$deleteDepartmentImplCopyWith<_$deleteDepartmentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -817,6 +850,8 @@ class __$$setDeptIdImplCopyWithImpl<$Res>
       _$setDeptIdImpl _value, $Res Function(_$setDeptIdImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -855,7 +890,9 @@ class _$setDeptIdImpl implements _setDeptId {
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$setDeptIdImplCopyWith<_$setDeptIdImpl> get copyWith =>
@@ -957,7 +994,10 @@ abstract class _setDeptId implements DepartmentEvent {
   const factory _setDeptId(final int id) = _$setDeptIdImpl;
 
   int get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$setDeptIdImplCopyWith<_$setDeptIdImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -976,6 +1016,9 @@ class __$$resetDeptIdImplCopyWithImpl<$Res>
   __$$resetDeptIdImplCopyWithImpl(
       _$resetDeptIdImpl _value, $Res Function(_$resetDeptIdImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DepartmentEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1169,6 +1212,9 @@ class _$DepartmentStateCopyWithImpl<$Res, $Val extends DepartmentState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1185,6 +1231,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1305,6 +1354,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1428,6 +1480,8 @@ class __$$successImplCopyWithImpl<$Res>
       _$successImpl _value, $Res Function(_$successImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1466,7 +1520,9 @@ class _$successImpl implements _success {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successImplCopyWith<_$successImpl> get copyWith =>
@@ -1557,7 +1613,10 @@ abstract class _success implements DepartmentState {
   const factory _success(final String message) = _$successImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successImplCopyWith<_$successImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1579,6 +1638,8 @@ class __$$departmentListImplCopyWithImpl<$Res>
       _$departmentListImpl _value, $Res Function(_$departmentListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1625,7 +1686,9 @@ class _$departmentListImpl implements _departmentList {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_departments));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$departmentListImplCopyWith<_$departmentListImpl> get copyWith =>
@@ -1718,7 +1781,10 @@ abstract class _departmentList implements DepartmentState {
       _$departmentListImpl;
 
   List<Department> get departments;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$departmentListImplCopyWith<_$departmentListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1740,6 +1806,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1778,7 +1846,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -1869,7 +1939,10 @@ abstract class _failed implements DepartmentState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepartmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

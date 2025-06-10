@@ -27,8 +27,12 @@ mixin _$MaintenanceDto {
   int? get minAndroidVersion => throw _privateConstructorUsedError;
   int? get minIosVersion => throw _privateConstructorUsedError;
 
+  /// Serializes this MaintenanceDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaintenanceDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MaintenanceDtoCopyWith<MaintenanceDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$MaintenanceDtoCopyWithImpl<$Res, $Val extends MaintenanceDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MaintenanceDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$MaintenanceDtoImplCopyWithImpl<$Res>
       _$MaintenanceDtoImpl _value, $Res Function(_$MaintenanceDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaintenanceDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +219,14 @@ class _$MaintenanceDtoImpl extends _MaintenanceDto {
                 other.minIosVersion == minIosVersion));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, isEnabled, message,
       isCompulsory, minAndroidVersion, minIosVersion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaintenanceDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MaintenanceDtoImplCopyWith<_$MaintenanceDtoImpl> get copyWith =>
@@ -256,8 +266,11 @@ abstract class _MaintenanceDto extends MaintenanceDto {
   int? get minAndroidVersion;
   @override
   int? get minIosVersion;
+
+  /// Create a copy of MaintenanceDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaintenanceDtoImplCopyWith<_$MaintenanceDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -50,7 +50,9 @@ mixin _$StatusEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StatusEventCopyWith<StatusEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$StatusEventCopyWithImpl<$Res, $Val extends StatusEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StatusEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$getStatusesImplCopyWithImpl<$Res>
       _$getStatusesImpl _value, $Res Function(_$getStatusesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StatusEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$getStatusesImpl implements _getStatuses {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StatusEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getStatusesImplCopyWith<_$getStatusesImpl> get copyWith =>
@@ -213,8 +221,11 @@ abstract class _getStatuses implements StatusEvent {
 
   @override
   BuildContext get context;
+
+  /// Create a copy of StatusEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getStatusesImplCopyWith<_$getStatusesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -289,6 +300,9 @@ class _$StatusStateCopyWithImpl<$Res, $Val extends StatusState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -305,6 +319,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -419,6 +436,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -536,6 +556,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -574,7 +596,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -659,7 +683,10 @@ abstract class _failed implements StatusState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -681,6 +708,8 @@ class __$$successStatusesListImplCopyWithImpl<$Res>
       $Res Function(_$successStatusesListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -727,7 +756,9 @@ class _$successStatusesListImpl implements _successStatusesList {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_statusesList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successStatusesListImplCopyWith<_$successStatusesListImpl> get copyWith =>
@@ -814,7 +845,10 @@ abstract class _successStatusesList implements StatusState {
       _$successStatusesListImpl;
 
   List<Status> get statusesList;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successStatusesListImplCopyWith<_$successStatusesListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

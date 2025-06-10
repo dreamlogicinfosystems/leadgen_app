@@ -98,6 +98,9 @@ class _$ReminderEventCopyWithImpl<$Res, $Val extends ReminderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -119,6 +122,8 @@ class __$$addReminderImplCopyWithImpl<$Res>
       _$addReminderImpl _value, $Res Function(_$addReminderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +142,8 @@ class __$$addReminderImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReminderCopyWith<$Res> get reminder {
@@ -174,7 +181,9 @@ class _$addReminderImpl implements _addReminder {
   @override
   int get hashCode => Object.hash(runtimeType, reminder, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$addReminderImplCopyWith<_$addReminderImpl> get copyWith =>
@@ -275,7 +284,10 @@ abstract class _addReminder implements ReminderEvent {
 
   Reminder get reminder;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$addReminderImplCopyWith<_$addReminderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -297,6 +309,8 @@ class __$$getRemindersImplCopyWithImpl<$Res>
       _$getRemindersImpl _value, $Res Function(_$getRemindersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -335,7 +349,9 @@ class _$getRemindersImpl implements _getReminders {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getRemindersImplCopyWith<_$getRemindersImpl> get copyWith =>
@@ -434,7 +450,10 @@ abstract class _getReminders implements ReminderEvent {
   const factory _getReminders(final BuildContext context) = _$getRemindersImpl;
 
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getRemindersImplCopyWith<_$getRemindersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -456,6 +475,8 @@ class __$$deleteReminderImplCopyWithImpl<$Res>
       _$deleteReminderImpl _value, $Res Function(_$deleteReminderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -503,7 +524,9 @@ class _$deleteReminderImpl implements _deleteReminder {
   @override
   int get hashCode => Object.hash(runtimeType, reminderId, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$deleteReminderImplCopyWith<_$deleteReminderImpl> get copyWith =>
@@ -605,7 +628,10 @@ abstract class _deleteReminder implements ReminderEvent {
 
   int get reminderId;
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$deleteReminderImplCopyWith<_$deleteReminderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -627,6 +653,8 @@ class __$$getRemindersCountImplCopyWithImpl<$Res>
       $Res Function(_$getRemindersCountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -665,7 +693,9 @@ class _$getRemindersCountImpl implements _getRemindersCount {
   @override
   int get hashCode => Object.hash(runtimeType, context);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getRemindersCountImplCopyWith<_$getRemindersCountImpl> get copyWith =>
@@ -766,7 +796,10 @@ abstract class _getRemindersCount implements ReminderEvent {
       _$getRemindersCountImpl;
 
   BuildContext get context;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getRemindersCountImplCopyWith<_$getRemindersCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -788,6 +821,8 @@ class __$$setRemainderImplCopyWithImpl<$Res>
       _$setRemainderImpl _value, $Res Function(_$setRemainderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -845,7 +880,9 @@ class _$setRemainderImpl implements _setRemainder {
   int get hashCode =>
       Object.hash(runtimeType, message, reminderDate, reminderTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$setRemainderImplCopyWith<_$setRemainderImpl> get copyWith =>
@@ -947,7 +984,10 @@ abstract class _setRemainder implements ReminderEvent {
   String get message;
   DateTime get reminderDate;
   TimeOfDay get reminderTime;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$setRemainderImplCopyWith<_$setRemainderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1035,6 +1075,9 @@ class _$ReminderStateCopyWithImpl<$Res, $Val extends ReminderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1051,6 +1094,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1178,6 +1224,9 @@ class __$$loadingInProgressImplCopyWithImpl<$Res>
   __$$loadingInProgressImplCopyWithImpl(_$loadingInProgressImpl _value,
       $Res Function(_$loadingInProgressImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1308,6 +1357,8 @@ class __$$savedImplCopyWithImpl<$Res>
       _$savedImpl _value, $Res Function(_$savedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1346,7 +1397,9 @@ class _$savedImpl implements _saved {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$savedImplCopyWith<_$savedImpl> get copyWith =>
@@ -1444,7 +1497,10 @@ abstract class _saved implements ReminderState {
   const factory _saved(final String message) = _$savedImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$savedImplCopyWith<_$savedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1466,6 +1522,8 @@ class __$$successRemCountImplCopyWithImpl<$Res>
       _$successRemCountImpl _value, $Res Function(_$successRemCountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1504,7 +1562,9 @@ class _$successRemCountImpl implements _successRemCount {
   @override
   int get hashCode => Object.hash(runtimeType, count);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successRemCountImplCopyWith<_$successRemCountImpl> get copyWith =>
@@ -1603,7 +1663,10 @@ abstract class _successRemCount implements ReminderState {
   const factory _successRemCount(final int count) = _$successRemCountImpl;
 
   int get count;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successRemCountImplCopyWith<_$successRemCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1625,6 +1688,8 @@ class __$$successRemindersListImplCopyWithImpl<$Res>
       $Res Function(_$successRemindersListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1671,7 +1736,9 @@ class _$successRemindersListImpl implements _successRemindersList {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_remindersList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$successRemindersListImplCopyWith<_$successRemindersListImpl>
@@ -1772,7 +1839,10 @@ abstract class _successRemindersList implements ReminderState {
       _$successRemindersListImpl;
 
   List<Reminder> get remindersList;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$successRemindersListImplCopyWith<_$successRemindersListImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1794,6 +1864,8 @@ class __$$failedImplCopyWithImpl<$Res>
       _$failedImpl _value, $Res Function(_$failedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1832,7 +1904,9 @@ class _$failedImpl implements _failed {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
@@ -1930,7 +2004,10 @@ abstract class _failed implements ReminderState {
   const factory _failed(final String error) = _$failedImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$failedImplCopyWith<_$failedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
