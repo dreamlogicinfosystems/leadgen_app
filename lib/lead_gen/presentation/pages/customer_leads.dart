@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lead_gen/lead_gen/application/customer/customer_bloc.dart';
+import 'package:lead_gen/lead_gen/application/lead_info_extractor/lead_info_extractor_bloc.dart';
 import 'package:lead_gen/lead_gen/presentation/core/custom_bottom_navBar.dart';
 import 'package:lead_gen/lead_gen/presentation/widgets/customer/customer_leads_body.dart';
 
@@ -21,7 +22,12 @@ class _CustomerLeadsState extends State<CustomerLeads> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: const CustomBottomNavBar(title: "Add Lead",isHomePage: true,sourcePage: Source.customerLeadsPage),
+      bottomNavigationBar: BlocProvider(
+        create: (context) => sl<LeadInfoExtractorBloc>(),
+        child: CustomBottomNavBar(title: "Add Lead",
+            isHomePage: true,
+            sourcePage: Source.customerLeadsPage),
+      ),
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight * 1),
         child: CustomAppBar(

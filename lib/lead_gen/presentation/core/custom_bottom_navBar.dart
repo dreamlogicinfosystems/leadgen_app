@@ -35,10 +35,12 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   bool _speechEnabled = false;
   final SpeechToText _speechToText = SpeechToText();
   double frequency = 0.0;
+  Timer? _debounceTimer;
 
   @override
   void dispose() {
     _speechToText.cancel();
+    _debounceTimer?.cancel();
     super.dispose();
   }
 
@@ -107,8 +109,10 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: widget.isHomePage == true ? [
             addLeadBtnView(context),
-            const SizedBox(width: 10),
-            micView()
+            if(widget.sourcePage != Source.customerLeadsPage)
+              const SizedBox(width: 10),
+            if(widget.sourcePage != Source.customerLeadsPage)
+              micView()
           ] : [
             ///add reminder btn
             addReminderBtnView(context)
@@ -120,7 +124,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   Widget addLeadBtnView(BuildContext context) {
     return Padding(
-      padding:const EdgeInsets.only(left: 40),
+      padding: EdgeInsets.only(left: widget.sourcePage != Source.customerLeadsPage ? 40 : 0),
       child: Center(
         child: SizedBox(
           width: MediaQuery.of(context).size.width*0.5,
@@ -223,10 +227,19 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       setState(() {
         message = result.recognizedWords;
       });
-    },onSoundLevelChange: (value) {
+    },onSoundLevelChange: (level) {
+      // getSoundLevel(value);
       setState(() {
-        debugPrint("sound level: $value");
-        frequency = value < 0.0 ? 0.0 : value;
+        frequency = level < 0.0 ? 0.0 : level;
+      });
+    });
+  }
+
+  getSoundLevel(double level) {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(Duration(milliseconds: 0), () {
+      setState(() {
+        frequency = level < 0.0 ? 0.0 : level;
       });
     });
   }
@@ -274,7 +287,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                            children: [
                              Visibility(
                                visible: isSpeaking ? true : false,
-                               child: Container(
+                               child: AnimatedContainer(
+                                 duration: Duration(milliseconds: 150),
                                  width: 15 * frequency,
                                  height: 15 * frequency,
                                  decoration: BoxDecoration(
